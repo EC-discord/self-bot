@@ -29,7 +29,7 @@ class EC:
     
      @commands.command()
      async def gib(self, ctx):
-         """(づ｡◕‿‿◕｡)づ""""
+         """(づ｡◕‿‿◕｡)づ"""
          await ctx.message.edit(content="(づ｡◕‿‿◕｡)づ")
      
      @commands.command()
