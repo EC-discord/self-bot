@@ -7,19 +7,13 @@ class EC:
           self.bot = bot
 
 
-     #@commands.group(invoke_without_command=True)
-    # async def lenny(self, ctx):
-     #    """group commands"""
-     #    msg = 'Available: `{}lenny face`, `{}lenny shrug`, `{}lenny flip`, `{}unflip`, `{}lenny gib`'
-      #   await ctx.send(msg.format(ctx.prefix))
-
      @commands.command()
      async def shrug(self, ctx):
          """Shrugs!"""
          await ctx.message.edit(content='¯\\\_(ツ)\_/¯')
 
      @commands.command()
-     async def tableflip(self, ctx):
+     async def tflip(self, ctx):
          """Tableflip!"""
          await ctx.message.edit(content='(╯°□°）╯︵ ┻━┻')
 
@@ -36,6 +30,26 @@ class EC:
      @commands.command()
      async def gib(self, ctx):
          await ctx.message.edit(content='(づ｡◕‿‿◕｡)づ')
+     
+     @command.command()
+     async def kflip(self, ctx):
+         await ctx.message.edit(content='(づ｡◕‿‿◕｡)づ︵ ┻━┻')
+     
+     @commands.command()
+     async def thumbs(self, ctx):
+         await ctx.message.edit(content='( 👍 ' - ') 👍')
+     
+     @commands.command()
+     async def warp(self, ctx):
+         await ctx.message.edit(content='(   ' - ')__ (warp drive)')
     
+     @commands.command()
+     async def hi(self, ctx):
+         await ctx.message.edit(content='(  ^ - ^)/')
+     
+     @commands.command()
+     async def ghost(self, ctx):
+         await ctx.message.edit(content='〜(  ' - '  )〜')
+     
 def setup(bot):
     bot.add_cog(EC(bot))
