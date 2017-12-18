@@ -31,7 +31,7 @@ class EC:
      async def gib(self, ctx):
          await ctx.message.edit(content='(づ｡◕‿‿◕｡)づ')
      
-     @command.command()
+     @commands.command()
      async def kflip(self, ctx):
          await ctx.message.edit(content='(づ｡◕‿‿◕｡)づ︵ ┻━┻')
      
