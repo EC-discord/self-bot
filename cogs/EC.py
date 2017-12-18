@@ -9,7 +9,7 @@ class EC:
 
      @commands.command()
      async def shrug(self, ctx):
-         """¯\\\_(ツ)\_/¯"""
+         """¯\\_(ツ)_/¯"""
          await ctx.message.edit(content="¯\\\_(ツ)\_/¯")
 
      @commands.command()
