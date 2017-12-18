@@ -2,6 +2,10 @@ import discord
 import asyncio
 from discord.ext import commands
 
+class EC: 
+     def __init__(self, bot):
+          self.bot = bot
+
 
 @commands.group(invoke_without_command=True)
 async def lenny(self, ctx):
