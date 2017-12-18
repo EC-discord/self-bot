@@ -18,8 +18,8 @@ class EC:
          await ctx.message.edit(content='(╯°□°）╯︵ ┻━┻')
 
      @commands.command()
-         """(  * O *  )"""
      async def cool(self, ctx):
+         """(  * O *  )"""
          await ctx.message.edit(content="(  * O *  )")
 
      @commands.command()
