@@ -241,36 +241,6 @@ class Misc:
         emb.set_footer(text=f"Definition written by {definition.author}", icon_url="http://urbandictionary.com/favicon.ico")
         await ctx.send(embed=emb)
 
-    @commands.group(invoke_without_command=True)
-    async def lenny(self, ctx):
-        """group commands"""
-        msg = 'Available: `{}lenny face`, `{}lenny shrug`, `{}lenny flip`, `{}unflip`, `{}lenny gib`'
-        await ctx.send(msg.format(ctx.prefix))
-
-    @lenny.command()
-    async def shrug(self, ctx):
-        """Shrugs!"""
-        await ctx.message.edit(content='¯\\\_(ツ)\_/¯')
-
-    @lenny.command()
-    async def tableflip(self, ctx):
-        """Tableflip!"""
-        await ctx.message.edit(content='(╯°□°）╯︵ ┻━┻')
-
-    @lenny.command()
-    async def unflip(self, ctx):
-        """Unfips!"""
-        await ctx.message.edit(content='┬─┬﻿ ノ( ゜-゜ノ)')
-
-    @lenny.command()
-    async def lenny(self, ctx):
-        """Lenny Face!"""
-        await ctx.message.edit(content='( ͡° ͜ʖ ͡°)')
-    
-    @lenny.command()
-    async def gib(self, ctx):
-        await crx.message.edit(content='(づ｡◕‿‿◕｡)づ')
-
     @commands.command()
     async def textemote(self, ctx, *, msg):
         """Convert text into emojis"""
