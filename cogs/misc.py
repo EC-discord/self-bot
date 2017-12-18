@@ -242,32 +242,32 @@ class Misc:
         await ctx.send(embed=emb)
 
     @commands.group(invoke_without_command=True)
-    async def emojis(self, ctx):
+    async def lenny(self, ctx):
         """group commands"""
-        msg = 'Available: `{}lennyface`, `{}shrug`, `{}tableflip`, `{}unflip`'
+        msg = 'Available: `{}lenny face`, `{}lenny shrug`, `{}lenny flip`, `{}unflip`, `{}lenny gib`'
         await ctx.send(msg.format(ctx.prefix))
 
-    @emojis.command()
+    @lenny.command()
     async def shrug(self, ctx):
         """Shrugs!"""
         await ctx.message.edit(content='¯\\\_(ツ)\_/¯')
 
-    @emojis.command()
+    @lenny.command()
     async def tableflip(self, ctx):
         """Tableflip!"""
         await ctx.message.edit(content='(╯°□°）╯︵ ┻━┻')
 
-    @emojis.command()
+    @lenny.command()
     async def unflip(self, ctx):
         """Unfips!"""
         await ctx.message.edit(content='┬─┬﻿ ノ( ゜-゜ノ)')
 
-    @emojis.command()
+    @lenny.command()
     async def lenny(self, ctx):
         """Lenny Face!"""
         await ctx.message.edit(content='( ͡° ͜ʖ ͡°)')
     
-    @emojis.command()
+    @lenny.command()
     async def gib(self, ctx):
         await crx.message.edit(content='(づ｡◕‿‿◕｡)づ')
 
