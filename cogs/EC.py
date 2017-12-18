@@ -37,11 +37,11 @@ class EC:
      
      @commands.command()
      async def thumbs(self, ctx):
-         await ctx.message.edit(content='( 👍 ' - ') 👍')
+         await ctx.message.edit(content="( 👍 ' - ') 👍")
      
      @commands.command()
      async def warp(self, ctx):
-         await ctx.message.edit(content='(   ' - ')__ (warp drive)')
+         await ctx.message.edit(content="(   ' - ')__ (warp drive)")
     
      @commands.command()
      async def hi(self, ctx):
@@ -49,7 +49,7 @@ class EC:
      
      @commands.command()
      async def ghost(self, ctx):
-         await ctx.message.edit(content='〜(  ' - '  )〜')
+         await ctx.message.edit(content="〜(  ' - '  )〜")
      
 def setup(bot):
     bot.add_cog(EC(bot))
