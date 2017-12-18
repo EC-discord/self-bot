@@ -9,54 +9,69 @@ class EC:
 
      @commands.command()
      async def shrug(self, ctx):
-         """Shrugs!"""
+         """¯\\\_(ツ)\_/¯"""
          await ctx.message.edit(content="¯\\\_(ツ)\_/¯")
 
      @commands.command()
      async def tflip(self, ctx):
-         """Tableflip!"""
+         """(╯°□°）╯︵ ┻━┻"""
          await ctx.message.edit(content='(╯°□°）╯︵ ┻━┻')
 
      @commands.command()
+         """(  * O *  )"""
      async def cool(self, ctx):
          await ctx.message.edit(content="(  * O *  )")
 
      @commands.command()
      async def lenny(self, ctx):
-         """Lenny Face!"""
+         """( ͡° ͜ʖ ͡°)"""
          await ctx.message.edit(content="( ͡° ͜ʖ ͡°)")
     
      @commands.command()
      async def gib(self, ctx):
+         """(づ｡◕‿‿◕｡)づ""""
          await ctx.message.edit(content="(づ｡◕‿‿◕｡)づ")
      
      @commands.command()
      async def kflip(self, ctx):
+         """(づ｡◕‿‿◕｡)づ︵ ┻━┻"""
          await ctx.message.edit(content="(づ｡◕‿‿◕｡)づ︵ ┻━┻")
      
      @commands.command()
      async def thumbs(self, ctx):
-         await ctx.message.edit(content="( 👍 ' - ') 👍")
+         """(👍 ' - ')👍"""
+         await ctx.message.edit(content="(👍 ' - ')👍")
      
      @commands.command()
      async def warp(self, ctx):
-         await ctx.message.edit(content="(   ' - ')__ (warp drive)")
+         """(   ' - ')__(warp drive)"""
+         await ctx.message.edit(content="(   ' - ')__(warp drive)")
     
      @commands.command()
      async def hi(self, ctx):
+         """(  ^ - ^)/"""
          await ctx.message.edit(content="(  ^ - ^)/")
      
      @commands.command()
      async def ghost(self, ctx):
+         """〜(  ' - '  )〜"""
          await ctx.message.edit(content="〜(  ' - '  )〜")
      
      @commands.command()
      async def wow(self, ctx):
+         """(   ' O ')"""
          await ctx.message.edit(content="(   ' O ')")
      
      @commands.command()
      async def noble(self, ctx):
+         """(  . - .  ) i am noble!"""
          await ctx.message.edit(content="(  . - .  ) i am noble!")
+          
+     @commands.command()
+     async def cookie(self, ctx):
+         """(  ^ - ^)-🍪"""
+         await ctx.message.edit(content="(  ^ - ^)-🍪")
+     
      
 def setup(bot):
     bot.add_cog(EC(bot))
