@@ -39,7 +39,7 @@ class Selfbot(commands.Bot):
         self.commands_used = defaultdict(int)
         self.remove_command('help')
         self.load_extensions()
-        self.load_community_extensions()
+        
 
     def load_extensions(self, cogs=None, path='cogs.'):
         '''Loads the default set of extensions or a seperate one if given'''
@@ -51,12 +51,7 @@ class Selfbot(commands.Bot):
                 print(f'LoadError: {extension}\n'
                       f'{type(e).__name__}: {e}')
 
-    def load_community_extensions(self):
-        '''Loads up community extensions.'''
-        with open('data/community_cogs.txt') as fp:
-            to_load = fp.read().splitlines()
-        self.load_extensions(to_load, 'cogs.community.')
-
+   
     @property
     def token(self):
         '''Returns your token wherever it is'''
