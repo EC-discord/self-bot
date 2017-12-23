@@ -47,7 +47,7 @@ class Noble:
     @commands.command()
     async def textgif(self,ctx,*,args):#EC DO NOT COPY PASTE THIS INTO A BOT! I WILL KEEL YOU IF YOU DO!
         '''Turn TEXT to GIF'''
-        img = Image.new('RGB', (500, 45),"black")
+        img = Image.new('RGB', (500, 45),"red")
         d = ImageDraw.Draw(img)
         c = 0
         length = int(len(args))
