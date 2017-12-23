@@ -99,7 +99,7 @@ class Noble:
         xoff, yoff = (10,5)
         img = Image.new('RGB', (500, 45),'black')
         d = ImageDraw.Draw(img)
-        d.text((9, 5), args, fill="white",font = font)
+        d.text((9, 5), args, fill="green",font = font)
         img.save('content.jpeg')
         await ctx.message.delete()
         await ctx.send(file=discord.File('content.jpeg'))
