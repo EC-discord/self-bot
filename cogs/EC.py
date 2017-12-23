@@ -74,9 +74,9 @@ class EC:
           
      @commands.command()
      async def cat(self, ctx):
-         await ctx.edit(content="{ \  / }
-( ^ - ^ )
-( u   u )～")
+         await ctx.edit(content="{ \  / }"
+"( ^ - ^ )"
+"( u   u )～")
      
      
 def setup(bot):
