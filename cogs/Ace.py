@@ -15,4 +15,4 @@ class Ace:
          await ctx.send("t!daily 394111231474270208")
     
 def setup(bot):
-    bot.add_cog(Ace(bot)
+     bot.add_cog(Ace(bot)
