@@ -19,7 +19,7 @@ class Ace:
          channel = self.bot.get_channel('385439832362582027')
          while True:
              await asyncio.sleep(30)
-             await self.bot.send_message(channel, "t!fish")
+             await self.bot.say(channel, "t!fish")
     
 def setup(bot):
     bot.add_cog(Ace(bot))
