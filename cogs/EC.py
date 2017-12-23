@@ -71,6 +71,16 @@ class EC:
      async def cookie(self, ctx):
          """(  ^ - ^)-🍪"""
          await ctx.message.edit(content="(  ^ - ^)-🍪")
+          
+     @commands.command()
+     async def cat(self, ctx):
+          """{ \  / }
+( ^ - ^ )
+( u   u )～"""
+         await ctx.edit(content="{ \  / }
+( ^ - ^ )
+( u   u )～")
+     
      
      
 def setup(bot):
