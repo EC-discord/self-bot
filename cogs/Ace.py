@@ -8,11 +8,11 @@ class Ace:
     
      @commands.command()
      async def r(self,ctx):
-         await ctx.send("t!rep @Zirus👑#8872")
+         await ctx.send("t!rep <@264634027280039938>")
 
      @commands.command()
      async def d(self,ctx):
-         await ctx.send("t!daily @Zirus👑#8872")
+         await ctx.send("t!daily <@264634027280039938>")
      
      @commands.command()
      async def t(self,ctx):
