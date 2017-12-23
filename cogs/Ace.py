@@ -16,10 +16,10 @@ class Ace:
      
      @commands.command()
      async def t(self, ctx):
+         channel = self.bot.get_channel('385439832362582027')
          while True:
              await asyncio.sleep(30)
-             channel = self.get_channel('385439832362582027')
-             await self.send_message(channel, "t!fish")
+             await self.bot.send_message(channel, "t!fish")
     
 def setup(bot):
     bot.add_cog(Ace(bot))
