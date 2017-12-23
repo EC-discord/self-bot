@@ -77,7 +77,7 @@ class EC:
           """{ \  / }
 ( ^ - ^ )
 ( u   u )～"""
-         await ctx.edit(content="{ \  / }
+          await ctx.edit(content="{ \  / }
 ( ^ - ^ )
 ( u   u )～")
      
