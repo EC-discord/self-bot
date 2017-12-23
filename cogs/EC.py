@@ -74,8 +74,8 @@ class EC:
           
      @commands.command()
      async def cat(self, ctx):
-         """{ \  / }
-( ^ - ^ )
+         """{ \  / } \
+( ^ - ^ ) \
 ( u   u )～"""
          await ctx.edit(content="{ \  / }
 ( ^ - ^ )
