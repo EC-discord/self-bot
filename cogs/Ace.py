@@ -7,11 +7,11 @@ class Ace:
           self.bot = bot
     
 @commands.command()
-async def r(self,ctx):
+async def rep(self,ctx):
     await ctx.message.send("t!rep 394111231474270208")
 
 @commands.command()
-async def d(self,ctx):
+async def daily(self,ctx):
     await ctx.message.send("t!daily 394111231474270208")
     
 def setup(bot):
