@@ -8,11 +8,11 @@ class Ace:
     
 @commands.command()
 async def r(self,ctx):
-    await ctx.message.send(content="t!rep 394111231474270208")
+    await ctx.message.send("t!rep 394111231474270208")
 
 @commands.command()
 async def d(self,ctx):
-    await ctx.message.send(content="t!daily 394111231474270208")
+    await ctx.message.send("t!daily 394111231474270208")
     
 def setup(bot):
     bot.add_cog(Ace(bot))
