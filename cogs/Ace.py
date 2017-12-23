@@ -18,7 +18,7 @@ class Ace:
      async def t(self, ctx):
          while True:
              await asyncio.sleep(30)
-             channel = self.get_channel(385439832362582027)
+             channel = self.get_channel('385439832362582027')
              await channel.send("t!fish")
     
 def setup(bot):
