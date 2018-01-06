@@ -616,7 +616,7 @@ class Utility:
     async def get_google_entries(self, query):
         url = f'https://www.google.com/search?q={uriquote(query)}'
         params = {
-            'safe': 'on',
+            'safe': 'off',
             'lr': 'lang_en',
             'hl': 'en'
         }
