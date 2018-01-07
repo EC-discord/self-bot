@@ -74,13 +74,14 @@ class EC:
           
      @commands.command()
      async def cat(self, ctx):
-         """{ \  / }
-( ^ - ^ )
-( u   u )～
-"""
          await ctx.message.edit(content="""{ \  / }
 ( ^ - ^ )
 ( u   u )～""")
+     
+     @commands.command()
+     async def chaos(self, ctx):
+         """Everything will fall into CHAOS"""
+         await ctx.message.edit(content="Everything will fall into CHAOS")
      
      
 def setup(bot):
