@@ -1,0 +1,28 @@
+import discord
+import asyncio
+from discord.ext import commands
+
+class Anim: 
+     def __init__(self, bot):
+          self.bot = bot
+
+    @commands.command()
+    async def boom(self, ctx):
+       await ctx.send('`THIS MESSAGE WILL SELFDESTRUCT IN 5`')
+       await asyncio.sleep(0.6)
+       ctx.message.edit(content='`THIS MESSAGE WILL SELF DESTRUCT IN 4`')
+       await asyncio.sleep(0.6)
+       ctx.message.edit(content='`THIS MESSAGE WILL SELF DESTRUCT IN 3`')
+       await asyncio.sleep(0.6)
+       ctx.message.edit(content='`THIS MESSAGE WILL SELF DESTRUCT IN 2`')
+       await asyncio.sleep(0.6)
+       ctx.message.edit(content='`THIS MESSAGE WILL SELF DESTRUCT IN 1`')
+       await asyncio.sleep(0.6)
+       ctx.message.edit(content='`THIS MESSAGE WILL SELF DESTRUCT IN 0`')
+       await asyncio.sleep(0.6)
+       ctx.message.edit(content='`💣`')
+       await asyncio.sleep(0.6)
+       ctx.message.edit(content='`💥`')
+       
+def setup(bot):
+   bot.add_cog(Anim(bot))
