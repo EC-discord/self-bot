@@ -18,7 +18,7 @@ class Anim:
      @commands.command
      async def hax(self, ctx):
          print ('be ye here the see dis command executesu')
-         await ctx.message.edit(content="`[▓▓▓                    ] / {virus}-virus.exe Packing files.`")
+         await ctx.send(content="`[▓▓▓                    ] / {virus}-virus.exe Packing files.`")
          await asyncio.sleep(0.4)
          await ctx.message.edit(content="`[▓▓▓▓▓▓▓                ] - {virus}-virus.exe Packing files..`")
          await asyncio.sleep(0.4)
