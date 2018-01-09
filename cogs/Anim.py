@@ -16,7 +16,7 @@ class Anim:
          await ctx.message.edit(content="💥")
      
      @commands.command()
-     async def hax(self, ctx):
+     async def virus(self, ctx):
          await ctx.message.edit(content="`[▓▓▓                    ] / {virus}-virus.exe Packing files.`")
          await asyncio.sleep(0.4)
          await ctx.message.edit(content="`[▓▓▓▓▓▓▓                ] - {virus}-virus.exe Packing files..`")
@@ -32,13 +32,13 @@ class Anim:
          await ctx.message.edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] \ {virus}-virus.exe Packing files..`")
          await asyncio.sleep(0.4)
          await ctx.message.edit(content="`Successfully downloaded {virus}-virus.exe`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.7)
          await ctx.message.edit(content="`Injecting virus.   |`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.6)
          await ctx.message.edit(content="`Injecting virus..  /`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.6)
          await ctx.message.edit(content="`Injecting virus... -`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.7)
          await ctx.message.edit(content="`Successfully Injected {virus}-virus.exe into {user}`")
        
 def setup(bot):
