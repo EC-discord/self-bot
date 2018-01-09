@@ -10,9 +10,9 @@ class Anim:
      async def boom(self, ctx):
          for c in range(5, 0, -1):
             await ctx.message.edit(content="`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c)
-            await asyncio.sleep(0.6)
+            await asyncio.sleep(0.65)
          await ctx.message.edit(content="💣")
-         await asyncio.sleep(0.6)
+         await asyncio.sleep(0.65)
          await ctx.message.edit(content="💥")
      
      @commands.command()
@@ -29,7 +29,7 @@ class Anim:
          await asyncio.sleep(0.4)
          await ctx.message.edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ] - {virus}-virus.exe Packing files..`")
          await asyncio.sleep(0.4)
-         await ctx.message,edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] \ {virus}-virus.exe Packing files..`")
+         await ctx.message.edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] \ {virus}-virus.exe Packing files..`")
          await asyncio.sleep(0.4)
          await ctx.message.edit(content="`Successfully downloaded {virus}-virus.exe`")
          await asyncio.sleep(0.4)
