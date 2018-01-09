@@ -11,9 +11,9 @@ class Anim:
          c=5
          for c in range(5, 0, -1):
             await ctx.message.edit(content="`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c)
-            await asyncio.sleep(0.9)
+            await asyncio.sleep(0.7)
          await ctx.message.edit(content="💣")
-         await asyncio.sleep(0.9)
+         await asyncio.sleep(0.7)
          await ctx.message.edit(content="💥")
        
 def setup(bot):
