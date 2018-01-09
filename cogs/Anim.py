@@ -7,14 +7,14 @@ class Anim:
           self.bot = bot
 
      @commands.command()
-     async def anim(self, ctx):
+     async def boom(self, ctx):
          c=5
          if c >= 0:
             await ctx.message.edit(content="`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c)
-            await asyncio.sleep(1)
+            await asyncio.sleep(1.5)
             c -=1
          await ctx.message.edit(content="💣")
-         await asyncio.sleep(0.6)
+         await asyncio.sleep(1.5)
          await ctx.message.edit(content="💥")
        
 def setup(bot):
