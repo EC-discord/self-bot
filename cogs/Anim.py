@@ -9,14 +9,12 @@ class Anim:
      @commands.command()
      async def boom(self, ctx):
          c=5
-         if c >= 0:
+         for c in range(5, 0, -1):
             await ctx.message.edit(content="`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c)
-            await asyncio.sleep(2.5)
-            c -=1
-         else:
-            await ctx.message.edit(content="💣")
-            await asyncio.sleep(2.5)
-            await ctx.message.edit(content="💥")
+            await asyncio.sleep(2)
+         await ctx.message.edit(content="💣")
+         await asyncio.sleep(2)
+         await ctx.message.edit(content="💥")
        
 def setup(bot):
    bot.add_cog(Anim(bot))
