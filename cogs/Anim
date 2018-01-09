@@ -13,9 +13,9 @@ class Anim:
             await ctx.message.edit(content="`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c)
             await asyncio.sleep(0.6)
             c -=1
-            await ctx.message.edit(content="💣")
-            await asyncio.sleep(0.6)
-            await ctx.message.edit(content="💥")
+         await ctx.message.edit(content="💣")
+         await asyncio.sleep(0.6)
+         await ctx.message.edit(content="💥")
        
 def setup(bot):
    bot.add_cog(Anim(bot))
