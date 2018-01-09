@@ -8,7 +8,6 @@ class Anim:
 
      @commands.command()
      async def boom(self, ctx):
-         c=5
          for c in range(5, 0, -1):
             await ctx.message.edit(content="`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c)
             await asyncio.sleep(0.6)
@@ -17,7 +16,7 @@ class Anim:
          await ctx.message.edit(content="💥")
      
      @commands.command
-     async def hax(self, ctx, member : discord.member):
+     async def hax(self, ctx):
          print ('be ye here the see dis command executesu')
          await ctx.message.edit(content="`[▓▓▓                    ] / {virus}-virus.exe Packing files.`")
          await asyncio.sleep(0.4)
