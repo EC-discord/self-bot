@@ -39,7 +39,7 @@ class Anim:
          await asyncio.sleep(0.6)
          await ctx.message.edit(content="`Injecting virus... -`")
          await asyncio.sleep(0.6)
-         await ctx.message.author(content="{0} successfully Injected {virus}.exe into  {1.mention}".format(args, ctx.message.author) )
+         await ctx.message.author(content="{1} successfully Injected {virus}.exe into  {0.mention}".format(args, ctx.message.author) )
        
 def setup(bot):
    bot.add_cog(Anim(bot))
