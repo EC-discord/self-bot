@@ -10,9 +10,9 @@ class Anim:
      async def boom(self, ctx):
          for c in range(5, 0, -1):
             await ctx.message.edit(content="`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c)
-            await asyncio.sleep(0.65)
+            await asyncio.sleep(0.61)
          await ctx.message.edit(content="💣")
-         await asyncio.sleep(0.65)
+         await asyncio.sleep(0.61)
          await ctx.message.edit(content="💥")
      
      @commands.command()
@@ -32,14 +32,14 @@ class Anim:
          await ctx.message.edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] \ {virus}.exe Packing files..`")
          await asyncio.sleep(0.4)
          await ctx.message.edit(content="`Successfully downloaded {virus}.exe`")
-         await asyncio.sleep(0.7)
+         await asyncio.sleep(0.6)
          await ctx.message.edit(content="`Injecting virus.   |`")
          await asyncio.sleep(0.6)
          await ctx.message.edit(content="`Injecting virus..  /`")
          await asyncio.sleep(0.6)
          await ctx.message.edit(content="`Injecting virus... -`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`Successfully Injected {virus}-virus.exe into %s `" % discord.User)
+         await asyncio.sleep(0.6)
+         await ctx.message.edit(content="`Successfully Injected virus.exe into %s `" % user.mention)
        
 def setup(bot):
    bot.add_cog(Anim(bot))
