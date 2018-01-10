@@ -16,7 +16,7 @@ class Anim:
          await ctx.message.edit(content="💥")
      
      @commands.command()
-     async def virus(self, ctx, member : discord.User):
+     async def virus(self, ctx,*, args):
          await ctx.message.edit(content="`[▓▓▓                    ] / {virus}.exe Packing files.`")
          await asyncio.sleep(0.4)
          await ctx.message.edit(content="`[▓▓▓▓▓▓▓                ] - {virus}.exe Packing files..`")
