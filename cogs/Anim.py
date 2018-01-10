@@ -41,7 +41,7 @@ class Anim:
          await asyncio.sleep(0.6)
          await ctx.message.edit(content="Successfully Injected {virus}.exe into User")
      
-     @commands.commad()
+     @commands.command()
      async def table(self, ctx):
          await ctx.message.edit(content="`(\°-°)\  ┬─┬`")
          await asyncio.sleep(0.5)
