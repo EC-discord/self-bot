@@ -6,18 +6,18 @@ class Anim:
      def __init__(self, bot):
           self.bot = bot
 
-async def on_message(self,ctx):
-   if message.content = "=boom"
-      message = " %s " =boom
-
      @commands.command()
      async def boom(self, ctx):
-         for c in range(5, 0, -1):
-            await ctx.message.edit(content="`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c)
-            await asyncio.sleep(0.61)
-         await ctx.message.edit(content="💣")
-         await asyncio.sleep(0.61)
-         await ctx.message.edit(content="💥")
+         async def on_message(self, message):
+             boomIndex = message.content.find('=boom')
+             msgBeforeBoom = message.content[:boomIndex]
+             msgAfterBoom = message.content[boomIndex + len('boom'):]
+             for c in range(5, 0, -1):
+                 await ctx.message.edit(content= msgBeforeBoom + "`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c + msgAfterBoom)
+                 await asyncio.sleep(0.61)
+             await ctx.message.edit(content="💣")
+             await asyncio.sleep(0.61)
+             await ctx.message.edit(content="💥") 
      
      @commands.command()
      async def virus(self, ctx):
