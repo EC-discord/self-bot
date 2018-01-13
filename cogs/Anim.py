@@ -6,6 +6,10 @@ class Anim:
      def __init__(self, bot):
           self.bot = bot
 
+async def on_message(self,ctx):
+   if message.content = "=boom"
+      message = " %s " =boom
+
      @commands.command()
      async def boom(self, ctx):
          for c in range(5, 0, -1):
