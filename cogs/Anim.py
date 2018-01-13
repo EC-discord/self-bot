@@ -8,7 +8,7 @@ class Anim:
      
      
      async def on_message(self, message):
-         if message.author.id != '332040459335761921':
+         if message.author.id != self.user.id:
              return
          if message.content.find('=bomb') != -1:
              await self._boom(message) 
@@ -32,11 +32,11 @@ class Anim:
      async def animpres(self, ctx):
          for c in range(5, 0, -1):
              await ctx.send("=presence online SELF DESTRUCT IN %s" % c)
-             await asyncio.sleep(0.5)
+             await asyncio.sleep(1.5)
          await ctx.send("=presence online 💣")
-         await asyncio.sleep(0.5)
+         await asyncio.sleep(1.5)
          await ctx.send("=presence online 💥")
-         await asyncio.sleep(0.5)
+         await asyncio.sleep(1.5)
      
      @commands.command()
      async def virus(self, ctx):
@@ -73,27 +73,27 @@ class Anim:
          await ctx.message.edit(content="`(-°□°)-  ┬─┬`")
          await asyncio.sleep(0.4)
          await ctx.message.edit(content="`(╯°□°)╯    ]`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.5)
          await ctx.message.edit(content="`(╯°□°)╯     ┻━┻`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.5)
          await ctx.message.edit(content="`(╯°□°)╯       [`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.5)
          await ctx.message.edit(content="`(╯°□°)╯          ┬─┬`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.1)
          await ctx.message.edit(content="`(╯°□°)╯                 ]`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.5)
          await ctx.message.edit(content="`(╯°□°)╯                  ┻━┻`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.5)
          await ctx.message.edit(content="`(╯°□°)╯                         [`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.5)
          await ctx.message.edit(content="`(\°-°)\                               ┬─┬`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.5)
          await ctx.message.edit(content="`(\°-°)\                                     ]`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.6)
          await ctx.message.edit(content="`(\°-°)\                                       ┻━┻`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.6)
          await ctx.message.edit(content="`(\°-°)\                                               [`")
-         await asyncio.sleep(0.4)
+         await asyncio.sleep(0.6)
          await ctx.message.edit(content="`(\°-°)\                                              ┬─┬`")
        
      @commands.command()
