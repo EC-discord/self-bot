@@ -22,6 +22,7 @@ class Anim:
              await asyncio.sleep(0.61)
          await message.edit(content="💣")
          await asyncio.sleep(0.61)
+         await message.edit(content="💥")
      
      @commands.command()
      async def boom(self, ctx):
