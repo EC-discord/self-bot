@@ -5,21 +5,29 @@ from discord.ext import commands
 class Anim: 
      def __init__(self, bot):
           self.bot = bot
-
+     
+     
      async def on_message(self, message):
-                  boomIndex = message.content.find('=boom')
-             msgBeforeBoom = message.content[:boomIndex]
-             msgAfterBoom = message.content[boomIndex + len('boom'):]
+         if message.author.id != '332040459335761921':
+             return
+         if message.content.find('=bomb') != -1:
+             await self._boom(message) 
+          
+     async def _boom(self, message):
+         boomIndex = message.content.find('=boom')
+         msgBeforeBoom = message.content[:boomIndex]
+         msgAfterBoom = message.content[boomIndex + len('boom'):]
+         for c in range(5, 0, -1):
+             await message.edit(content= msgBeforeBoom + "`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c + msgAfterBoom)
+             await asyncio.sleep(0.61)
+         await message.edit(content="💣")
+         await asyncio.sleep(0.61)
      
      @commands.command()
      async def boom(self, ctx):
-         for c in range(5, 0, -1):
-             await ctx.message.edit(content= msgBeforeBoom + "`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c + msgAfterBoom)
-             await asyncio.sleep(0.61)
-         await ctx.message.edit(content="💣")
-         await asyncio.sleep(0.61)
-         await ctx.message.edit(content="💥") 
-     
+         await self._boom(ctx.message)
+             
+          
      @commands.command()
      async def virus(self, ctx):
          await ctx.message.edit(content="`[▓▓▓                    ] / {virus}.exe Packing files.`")
