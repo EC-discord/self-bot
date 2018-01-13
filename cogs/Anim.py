@@ -28,7 +28,16 @@ class Anim:
      async def boom(self, ctx):
          await self._boom(ctx.message)
              
-          
+     @commands.command()
+     async def animpres(self, ctx):
+         for c in range(5, 0, -1):
+             await ctx.send("=presence online THIS MESSAGE WILL SELF DESTRUCT IN %s") % c
+             await asyncio.sleep(0.5)
+         await ctx.send("=presence online 💣")
+         await asyncio.sleep(0.5)
+         await ctx.send("=presence online 💥")
+         await asyncio.sleep(0.5)
+     
      @commands.command()
      async def virus(self, ctx):
          await ctx.message.edit(content="`[▓▓▓                    ] / {virus}.exe Packing files.`")
