@@ -89,7 +89,7 @@ class EC:
          await ctx.message.edit(content="(   ' - ')>------------ pew pew")
      
      @commands.command()
-     async def lpew()
+     async def lpew(self, ctx):
          """pew pew ------------<(' - '   )"""
          await ctx.message.edit(content="pew pew ------------<(' - '   )")
     
