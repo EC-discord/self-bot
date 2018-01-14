@@ -47,7 +47,7 @@ class EC:
          """(   ' - ')__(warp drive)"""
          await ctx.message.edit(content="(   ' - ')__(warp drive)")
     
-     @commands.command(aliases = "bye")
+     @commands.command(aliases = {"bye"})
      async def hi(self, ctx):
          """(  ^ - ^)/"""
          await ctx.message.edit(content="(  ^ - ^)/")
