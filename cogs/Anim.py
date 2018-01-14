@@ -31,11 +31,11 @@ class Anim:
          while True:
              for c in range(5, 0, -1):
                  await ctx.send("=presence online (\°□°)\  ┬─┬")
-                 await asyncio.sleep(2.9)
+                 await asyncio.sleep(2.7)
                  await ctx.send("=presence online (-°□°)-  ┬─┬")
-                 await asyncio.sleep(2.9)
+                 await asyncio.sleep(2.7)
                  await ctx.send("=presence online (╯°□°)╯    ]")
-                 await asyncio.sleep(2.9)
+                 await asyncio.sleep(2.7)
                  await ctx.send("=presence online (╯°□°)╯     ┻━┻")
                  await asyncio.sleep(13)
      
