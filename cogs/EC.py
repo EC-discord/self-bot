@@ -47,7 +47,7 @@ class EC:
          """(   ' - ')__(warp drive)"""
          await ctx.message.edit(content="(   ' - ')__(warp drive)")
     
-     @commands.command()
+     @commands.command(aliases = "bye")
      async def hi(self, ctx):
          """(  ^ - ^)/"""
          await ctx.message.edit(content="(  ^ - ^)/")
@@ -64,7 +64,7 @@ class EC:
      
      @commands.command()
      async def noble(self, ctx):
-         """(  . - .  ) i am noble!"""
+         """\\(  . - .  )/ i am noble!"""
          await ctx.message.edit(content="(  . - .  ) i am noble!")
           
      @commands.command()
@@ -82,6 +82,34 @@ class EC:
      async def chaos(self, ctx):
          """Everything will fall into CHAOS"""
          await ctx.message.edit(content="Everything will fall into CHAOS")
+     
+     @commands.command()
+     async def pew(self, ctx):
+         """(   ' - ')>------------ pew pew"""
+         await ctx.message.edit(content="(   ' - ')>------------ pew pew")
+     
+     @commands.command()
+     async def lpew()
+         """pew pew ------------<(' - '   )"""
+         await ctx.message.edit(content="pew pew ------------<(' - '   )")
+    
+     @commands.command()
+     async def dawae(self, ctx):
+         """shows you DA WAE"""
+         await ctx.message.edit(content=""".....::::::･''･::::::.... ..... 
+:::::･'''　　　　　'''･:::::
+::　　　　　　　　　::
+:　　  DA WAE   　          :
+::　　　　　　　　　::
+::･...　　　　　　...･::
+　　'''::::::･,,･::::::'''
+　     　∩∧_∧∩
+　　　(　･ω･)
+　　 　/　　ﾉ
+　　　しーU""")                               
+     
+                                
+     
      
      
 def setup(bot):
