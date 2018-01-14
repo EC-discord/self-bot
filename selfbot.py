@@ -112,7 +112,6 @@ class Selfbot(commands.Bot):
             self.uptime = datetime.datetime.utcnow()
         print(textwrap.dedent('Logged in!'))
 
-        print(dir(self))
         await self.change_presence(status=discord.Status.invisible, afk=True)
 
     async def on_command(self, ctx):
