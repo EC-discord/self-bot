@@ -33,14 +33,13 @@ class Anim:
          while True:
              for c in range(5, 0, -1):
                  await ctx.send("=presence online (\°□°)\  ┬─┬")
-                 await asyncio.sleep(1)
+                 await asyncio.sleep(1.5)
                  await ctx.send("=presence online (-°□°)-  ┬─┬")
-                 await asyncio.sleep(1)
+                 await asyncio.sleep(1.5)
                  await ctx.send("=presence online (╯°□°)╯    ]")
-                 await asyncio.sleep(1)
+                 await asyncio.sleep(1.5)
                  await ctx.send("=presence online (╯°□°)╯     ┻━┻")
-                 await asyncio.sleep(1)
-             await asyncio.sleep(5)
+             await asyncio.sleep(9.5)
      
      @commands.command()
      async def virus(self, ctx):
