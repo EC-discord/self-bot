@@ -30,13 +30,17 @@ class Anim:
              
      @commands.command()
      async def animpres(self, ctx):
-         for c in range(5, 0, -1):
-             await ctx.send("=presence online SELF DESTRUCT IN %s" % c)
-             await asyncio.sleep(9.6)
-         await ctx.send("=presence online 💣")
-         await asyncio.sleep(9.6)
-         await ctx.send("=presence online 💥")
-         await asyncio.sleep(9.6)
+         while True:
+             for c in range(5, 0, -1):
+                 await ctx.send("=presence online (\°□°)\  ┬─┬")
+                 await asyncio.sleep(1)
+                 await ctx.send("=presence online (-°□°)-  ┬─┬")
+                 await asyncio.sleep(1)
+                 await ctx.send("=presence online (╯°□°)╯    ]")
+                 await asyncio.sleep(1)
+                 await ctx.send("=presence online (╯°□°)╯     ┻━┻")
+                 await asyncio.sleep(1)
+             await asyncio.sleep(5)
      
      @commands.command()
      async def virus(self, ctx):
