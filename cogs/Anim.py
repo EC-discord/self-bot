@@ -8,8 +8,6 @@ class Anim:
      
      
      async def on_message(self, message):
-         if message.author.id != self.user.id:
-             return
          if message.content.find('=bomb') != -1:
              await self._boom(message) 
           
