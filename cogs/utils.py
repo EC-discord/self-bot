@@ -754,6 +754,13 @@ class Utility:
             return await ctx.send('Not enough choices to pick from.')
         choices[0] = ' ' + choices[0]
         await ctx.send(str(random.choice(choices))[1:])
+        
+    @commands.command()
+    """gets the profile pic of the user"""
+    async def picsu(self, ctx, member : discord.member):
+        ctx.message.delete
+        memsu = ctx.author OR member
+        await ctx.send("memsu.avatar_url")
 
 def setup(bot):
     bot.add_cog(Utility(bot))
