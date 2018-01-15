@@ -8,7 +8,6 @@ class Anim:
      
      
      async def on_message(self, message):
-         print ('woosh')
          if message.content.find('=bomb') != -1:
              await self._boom(message) 
           
