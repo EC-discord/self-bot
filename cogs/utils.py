@@ -25,17 +25,6 @@ import io
 import os
 import random
 
-#Feel free to add to these via a PR
-emotes_servers = [
-    368436386157690880,
-    356823991215980544,
-    310157548244434947,
-    361611981024919552,
-    355117358743945216,
-    285670702294630401,
-    227543998590353408,
-    358365432564154369
-]
 
 class Utility:
     def __init__(self, bot):
@@ -756,8 +745,8 @@ class Utility:
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    """gets the profile pic of the user"""
     async def picsu(self, ctx, member : discord.member):
+        """gets the profile pic of the user"""
         ctx.message.delete()
         memsu = ctx.author OR member
         await ctx.send(memsu.avatar_url)
