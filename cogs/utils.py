@@ -745,11 +745,11 @@ class Utility:
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, member : discord.Member = None):
+    async def picsu(self, ctx, member : discord.Member : None):
         """gets the profile pic of the user"""
         ctx.message.delete()
         memsu = ctx.message.author or member
-        await ctx.send("memsu.avatar_url")
+        await ctx.send(memsu.avatar_url)
 
 def setup(bot):
     bot.add_cog(Utility(bot))
