@@ -144,6 +144,16 @@ class Anim:
          await asyncio.sleep(0.4)
          await ctx.message.edit(content="`CTRL + R FOR MANUAL OVERRIDE..`")
      
+     @commands.command()
+     async def :o(self, ctx):
+         await ctx.message.edit(content="(   ' O ')")
+         await asyncio.sleep(0.8)
+         await ctx.message.edit(content="(  ' O '  )")
+         await asyncio.sleep(0.8
+         await ctx.message.edit(content="(' O '   )")
+         await asyncio.sleep(0.8)
+         await ctx.message.edit(content="(  . O .  )")
+         await asyncio.sleep(0.8)                    
      
 def setup(bot):
    bot.add_cog(Anim(bot))
