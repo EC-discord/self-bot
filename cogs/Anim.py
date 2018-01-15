@@ -146,11 +146,11 @@ class Anim:
      @commands.command()
      async def woah(self, ctx):
          await ctx.message.edit(content="(   ' O ')")
-         await asyncio.sleep(0.8)
-         await ctx.message.edit(content="(  ' O '  )")
-         await asyncio.sleep(0.8)
+         await asyncio.sleep(1)
          await ctx.message.edit(content="(' O '   )")
-         await asyncio.sleep(0.8)
+         await asyncio.sleep(1)
+         await ctx.message.edit(content="(  ' O '  )")
+         await asyncio.sleep(1)
          await ctx.message.edit(content="(  . O .  )")
      
 def setup(bot):
