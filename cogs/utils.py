@@ -748,7 +748,7 @@ class Utility:
     async def picsu(self, ctx, member : discord.member):
         """gets the profile pic of the user"""
         ctx.message.delete()
-        memsu = ctx.author OR member
+        memsu = ctx.message.author OR member
         await ctx.send(memsu.avatar_url)
 
 def setup(bot):
