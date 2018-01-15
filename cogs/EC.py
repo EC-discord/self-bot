@@ -65,7 +65,7 @@ class EC:
      @commands.command()
      async def noble(self, ctx):
          """\\(  . - .  )/ i am noble!"""
-         await ctx.message.edit(content="(  . - .  ) i am noble!")
+         await ctx.message.edit(content="\\(  . - .  )/ i am noble!")
           
      @commands.command()
      async def cookie(self, ctx):
