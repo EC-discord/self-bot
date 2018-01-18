@@ -11,13 +11,12 @@ class Anim:
          if message.content.find('=boom') != -1:
              await self._boom(message) 
          elif message.content('=boom'):
-          while True:
-              for c in range(5, 0, -1):
-                  await message.edit(content="THIS MESSAGE WILL SELF DESTRUCT IN %s" % c)
-                  await asyncio.sleep(0.61)
-              await message.edit(content="💣")
-              await asyncio.sleep(0.61)
-              await message.edit(content="💥")
+             for c in range(5, 0, -1):
+                 await message.edit(content="THIS MESSAGE WILL SELF DESTRUCT IN %s" % c)
+                 await asyncio.sleep(0.61)
+             await message.edit(content="💣")
+             await asyncio.sleep(0.61)
+             await message.edit(content="💥")
              
           
      async def _boom(self, message):
