@@ -5,6 +5,19 @@ from discord.ext import commands
 class Anim: 
      def __init__(self, bot):
           self.bot = bot
+      
+     async def test(self, ctx):
+         virus = 'TROJAN'
+         wheelList = ['/', '-', '\\', '|']
+         wheelIter = iter(wheelList)
+         for i in range(2, 15, 2):
+             try:
+                 wheel = next(wheelIter)
+             except StopIteration:
+                 wheelIter = iter(wheelList)
+                 wheel = next(wheelIter)
+             await ctx.message.edit(content=f"`[{('▓' * i).ljust(16)}] {wheel} {virus}-virus.exe Packing files.`")
+             await asyncio.sleep(0.6)
      
 
      async def on_message(self, message):
