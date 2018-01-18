@@ -6,11 +6,12 @@ class Anim:
      def __init__(self, bot):
           self.bot = bot
      
+
      async def on_message(self, message):
-         if message.content.find('💣m') != -1:
-             await self._boom(message, '💣m')
-         elif message.content.find('=boom') != -1:
-             await self._boom(message, '=boom')
+         for bombstr in ['=boom', '💣m']:
+             if message.content.find(bombstr) != -1:
+                 await self._boom(message, bombstr)
+                 break
 
      async def _boom(self, message, toreplace):
          boomIndex = message.content.find(toreplace)
@@ -21,7 +22,7 @@ class Anim:
              await asyncio.sleep(0.61)
          await message.edit(content=msgBeforeBoom + "💣" + msgAfterBoom)
          await asyncio.sleep(0.61)
-         await message.edit(content=msgBeforeBoom + "💥" + msgAfterBoom)     
+         await message.edit(content=msgBeforeBoom + "💥" + msgAfterBoom)
           
   
 
