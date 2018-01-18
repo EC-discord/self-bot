@@ -6,30 +6,25 @@ class Anim:
      def __init__(self, bot):
           self.bot = bot
      
-     
      async def on_message(self, message):
-         if message.content.find('=boom') != -1:
-             await self._boom(message) 
-         elif message.content('=boom'):
-             for c in range(5, 0, -1):
-                 await message.edit(content="THIS MESSAGE WILL SELF DESTRUCT IN %s" % c)
-                 await asyncio.sleep(0.61)
-             await message.edit(content="💣")
-             await asyncio.sleep(0.61)
-             await message.edit(content="💥")
-             
-          
-     async def _boom(self, message):
-         boomIndex = message.content.find('=boom')
+         if message.content.find('💣m') != -1:
+             await self._boom(message, '💣m')
+         elif message.content.find('=boom') != -1:
+             await self._boom(message, '=boom')
+
+     async def _boom(self, message, toreplace):
+         boomIndex = message.content.find(toreplace)
          msgBeforeBoom = message.content[:boomIndex]
-         msgAfterBoom = message.content[boomIndex + len('boom'):]
+         msgAfterBoom = message.content[boomIndex + len(toreplace) - 1:]
          for c in range(5, 0, -1):
              await message.edit(content= msgBeforeBoom + "`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c + msgAfterBoom)
              await asyncio.sleep(0.61)
          await message.edit(content=msgBeforeBoom + "💣" + msgAfterBoom)
          await asyncio.sleep(0.61)
-         await message.edit(content=msgBeforeBoom + "💥" + msgAfterBoom)
-             
+         await message.edit(content=msgBeforeBoom + "💥" + msgAfterBoom)     
+          
+  
+
      @commands.command()
      async def animpres(self, ctx):
          while True:
