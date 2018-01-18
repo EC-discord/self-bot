@@ -28,7 +28,7 @@ class Anim:
              await asyncio.sleep(0.61)
          await message.edit(content=msgBeforeBoom + "💣" + msgAfterBoom)
          await asyncio.sleep(0.61)
-         await message.edit(content=msgAfterBoom + "💥" + msgAfterBoom)
+         await message.edit(content=msgBeforeBoom + "💥" + msgAfterBoom)
              
      @commands.command()
      async def animpres(self, ctx):
