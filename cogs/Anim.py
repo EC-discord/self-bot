@@ -8,8 +8,17 @@ class Anim:
      
      
      async def on_message(self, message):
-         if message.content.find('=bomb') != -1:
+         if message.content.find('=boom') != -1:
              await self._boom(message) 
+         elif message.content('=boom'):
+          while True:
+              for c in range(5, 0, -1):
+                  await message.edit(content="THIS MESSAGE WILL SELF DESTRUCT IN %s" % c)
+                  await asyncio.sleep(0.61)
+              await message.edit(content="💣")
+              await asyncio.sleep(0.61)
+              await message.edit(content="💥")
+             
           
      async def _boom(self, message):
          boomIndex = message.content.find('=boom')
@@ -18,13 +27,9 @@ class Anim:
          for c in range(5, 0, -1):
              await message.edit(content= msgBeforeBoom + "`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c + msgAfterBoom)
              await asyncio.sleep(0.61)
-         await message.edit(content="💣")
+         await message.edit(content=msgBeforeBoom + "💣" + msgAfterBoom)
          await asyncio.sleep(0.61)
-         await message.edit(content="💥")
-     
-     @commands.command()
-     async def boom(self, ctx):
-         await self._boom(ctx.message)
+         await message.edit(content=msgAfterBoom + "💥" + msgAfterBoom)
              
      @commands.command()
      async def animpres(self, ctx):
