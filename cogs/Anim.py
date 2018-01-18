@@ -16,7 +16,7 @@ class Anim:
      async def _boom(self, message, toreplace):
          boomIndex = message.content.find(toreplace)
          msgBeforeBoom = message.content[:boomIndex]
-         msgAfterBoom = message.content[boomIndex + len(toreplace) - 1:]
+         msgAfterBoom = message.content[boomIndex + len(toreplace):]
          for c in range(5, 0, -1):
              await message.edit(content= msgBeforeBoom + "`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c + msgAfterBoom)
              await asyncio.sleep(0.61)
