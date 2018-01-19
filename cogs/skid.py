@@ -11,9 +11,9 @@ class skid:
          while True:
              await ctx.message.delete()
              await channel.trigger_typing()
-         if message.content.startswith("=br"):
-             await ctx.message.delete()
-             break
+             if message.content.startswith("=br"):
+                 await ctx.message.delete()
+                 break
      
 def setup(bot):
    bot.add_cog(skid(bot))     
