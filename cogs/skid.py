@@ -10,7 +10,7 @@ class skid:
      async def type(self, ctx):
          while True:
              await ctx.message.delete()
-             await channel.trigger_typing()
+             await ctx.channel.trigger_typing()
              if message.content.startswith("=br"):
                  await ctx.message.delete()
                  break
