@@ -7,7 +7,7 @@ class skid:
           self.bot = bot
      
      @commands.command()
-     async def type(self, ctx):
+     async def type(self, ctx, message):
          while True:
              await ctx.message.delete()
              await ctx.channel.trigger_typing()
