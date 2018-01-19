@@ -7,7 +7,7 @@ class Anim:
           self.bot = bot
      
      @commands.command()
-     async def test(self, ctx):
+     async def virus(self, ctx, *, member : discord.Member = None):
          virus = 'TROJAN'
          wheelList = ['/', '-', '\\', '|']
          wheelIter = iter(wheelList)
@@ -18,7 +18,14 @@ class Anim:
                  wheelIter = iter(wheelList)
                  wheel = next(wheelIter)
              await ctx.message.edit(content=f"`[{('▓' * i).ljust(16)}] {wheel} {virus}-virus.exe Packing files.`")
-             await asyncio.sleep(0.6)     
+             await asyncio.sleep(0.6)
+             await ctx.message.edit(content="`Injecting virus.   {wheel}`")
+             await asyncio.sleep(0.8)
+             await ctx.message.edit(content="`Injecting virus..  {wheel}`")
+             await asyncio.sleep(0.8)  
+             await ctx.message.edit(content="`Injecting virus... {wheel}`")
+             await asyncio.sleep(0.8)
+             await ctx.message.edit(content="`Successfully Injected {virus}-virus.exe into %s`" % member)
 
      async def on_message(self, message):
          for bombstr in ['=boom', '💣m']:
@@ -51,32 +58,6 @@ class Anim:
                  await asyncio.sleep(2.7)
                  await ctx.send("=presence online (╯°□°)╯     ┻━┻")
                  await asyncio.sleep(13)
-     
-     @commands.command()
-     async def virus(self, ctx):
-         await ctx.message.edit(content="`[▓▓▓                    ] / {virus}.exe Packing files.`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`[▓▓▓▓▓▓▓                ] - {virus}.exe Packing files..`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓           ] \ {virus}.exe Packing files..`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓▓▓         ] | {virus}.exe Packing files..`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      ] / {virus}.exe Packing files..`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ] - {virus}.exe Packing files..`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] \ {virus}.exe Packing files..`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`Successfully downloaded {virus}.exe`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`Injecting virus.   |`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`Injecting virus..  /`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`Injecting virus... -`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`Successfully Injected {virus}.exe into User`")
      
      @commands.command()
      async def table(self, ctx):
