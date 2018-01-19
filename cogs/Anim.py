@@ -11,7 +11,7 @@ class Anim:
          virus = 'TROJAN'
          wheelList = ['/', '-', '\\', '|']
          wheelIter = iter(wheelList)
-         for i in range(2, 15, 2):
+         for i in range(2, 16, 2):
              try:
                  wheel = next(wheelIter)
              except StopIteration:
