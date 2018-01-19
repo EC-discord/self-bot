@@ -19,13 +19,13 @@ class Anim:
                  wheel = next(wheelIter)
              await ctx.message.edit(content=f"`[{('▓' * i).ljust(16)}] {wheel} {virus}-virus.exe Packing files.`")
              await asyncio.sleep(0.6)
-         await ctx.message.edit(content=f"`Injecting virus.   {wheel}`")
-         await asyncio.sleep(0.8)
-         await ctx.message.edit(content=f"`Injecting virus..  {wheel}`")
-         await asyncio.sleep(0.8)  
-         await ctx.message.edit(content=f"`Injecting virus... {wheel}`")
-         await asyncio.sleep(0.8)
-         await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into `" + " " + member.mention)
+         await ctx.message.edit(content=f"`Injecting virus.   |`")
+         await asyncio.sleep(0.9)
+         await ctx.message.edit(content=f"`Injecting virus..  /`")
+         await asyncio.sleep(0.9)  
+         await ctx.message.edit(content=f"`Injecting virus... -`")
+         await asyncio.sleep(0.9)
+         await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into  `" + member.mention)
 
      async def on_message(self, message):
          for bombstr in ['=boom', '💣m']:
