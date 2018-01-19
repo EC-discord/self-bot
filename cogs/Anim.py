@@ -5,7 +5,8 @@ from discord.ext import commands
 class Anim: 
      def __init__(self, bot):
           self.bot = bot
-      
+     
+     @commands.command()
      async def test(self, ctx):
          virus = 'TROJAN'
          wheelList = ['/', '-', '\\', '|']
@@ -17,8 +18,7 @@ class Anim:
                  wheelIter = iter(wheelList)
                  wheel = next(wheelIter)
              await ctx.message.edit(content=f"`[{('▓' * i).ljust(16)}] {wheel} {virus}-virus.exe Packing files.`")
-             await asyncio.sleep(0.6)
-     
+             await asyncio.sleep(0.6)     
 
      async def on_message(self, message):
          for bombstr in ['=boom', '💣m']:
