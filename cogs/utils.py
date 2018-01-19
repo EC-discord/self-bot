@@ -747,7 +747,7 @@ class Utility:
     @commands.command()
     async def picsu(self, ctx, *, member : discord.Member = None):
         """gets the profile pic of the user"""
-        ctx.message.delete()
+        await ctx.message.delete()
         mem = member or ctx.author
         avatar = mem.avatar_url
         await ctx.send(avatar)
