@@ -7,11 +7,11 @@ class skid:
           self.bot = bot
      
      @commands.command()
-     async def type(self, ctx, message):
+     async def type(self, ctx):
          while True:
              await ctx.message.delete()
              await ctx.channel.trigger_typing()
-             if message.content.startswith("=br"):
+             if ctx.message.content.startswith("=br"):
                  await ctx.message.delete()
                  break
      
