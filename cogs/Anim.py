@@ -17,8 +17,8 @@ class Anim:
              except StopIteration:
                  wheelIter = iter(wheelList)
                  wheel = next(wheelIter)
-         await ctx.message.edit(content=f"`[{('▓' * i).ljust(16)}] {wheel} {virus}-virus.exe Packing files.`")
-         await asyncio.sleep(0.6)
+             await ctx.message.edit(content=f"`[{('▓' * i).ljust(16)}] {wheel} {virus}-virus.exe Packing files.`")
+             await asyncio.sleep(0.6)
          await ctx.message.edit(content=f"`Injecting virus.   {wheel}`")
          await asyncio.sleep(0.8)
          await ctx.message.edit(content=f"`Injecting virus..  {wheel}`")
