@@ -7,7 +7,7 @@ class Anim:
           self.bot = bot
      
      @commands.command()
-     async def virus(self, ctx, *, member : discord.Member = None, virus : str):
+     async def virus(self, ctx, *, virus : str, member : discord.Member = None):
          wheelList = ['/', '-', '\\', '|']
          wheelIter = iter(wheelList)
          for i in range(2, 17, 2):
