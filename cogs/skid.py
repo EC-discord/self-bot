@@ -23,6 +23,7 @@ import random
 class skid: 
      def __init__(self, bot):
           self.bot = bot
+          self._last_result = None
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
