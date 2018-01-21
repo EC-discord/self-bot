@@ -1,6 +1,24 @@
 import discord
-import asyncio
 from discord.ext import commands
+from discord.ext.commands import TextChannelConverter
+from contextlib import redirect_stdout
+from ext.utility import load_json
+from urllib.parse import quote as uriquote
+from lxml import etree
+from ext import fuzzy
+from ext import embedtobox
+from PIL import Image
+import unicodedata
+import traceback
+import textwrap
+import aiohttp
+import inspect
+import asyncio
+import time
+import re
+import io
+import os
+import random
 
 class skid: 
      def __init__(self, bot):
