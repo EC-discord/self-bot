@@ -24,6 +24,10 @@ class skid:
      def __init__(self, bot):
           self.bot = bot
           self._last_result = None
+          self.lang_conv = load_json('data/langs.json')
+          self._last_embed = None
+          self._rtfm_cache = None
+          self._last_google = None
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
@@ -91,6 +95,21 @@ class skid:
              await out.add_reaction('\u2705') #tick
          if err:
              await err.add_reaction('\u2049') #x
+            
+     def cleanup_code(self, content):
+     """Automatically removes code blocks from the code."""
+     # remove ```py\n```
+     if content.startswith('```') and content.endswith('```'):
+         return '\n'.join(content.split('\n')[1:-1])
+
+     # remove `foo`
+     return content.strip('` \n')
+
+     def get_syntax_error(self, e):
+         if e.text is None:
+             return f'```py\n{e.__class__.__name__}: {e}\n```'
+         return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
+
      
      @commands.command()
      async def type(self, ctx):
