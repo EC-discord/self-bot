@@ -97,13 +97,13 @@ class skid:
              await err.add_reaction('\u2049') #x
             
      def cleanup_code(self, content):
-     """Automatically removes code blocks from the code."""
-     # remove ```py\n```
-     if content.startswith('```') and content.endswith('```'):
-         return '\n'.join(content.split('\n')[1:-1])
+         """Automatically removes code blocks from the code."""
+         # remove ```py\n```
+         if content.startswith('```') and content.endswith('```'):
+             return '\n'.join(content.split('\n')[1:-1])
 
-     # remove `foo`
-     return content.strip('` \n')
+         # remove `foo`
+         return content.strip('` \n')
 
      def get_syntax_error(self, e):
          if e.text is None:
