@@ -60,7 +60,7 @@ class Anim:
              except StopIteration:
                  wheelIter = iter(wheelList)
                  wheel = next(wheelIter)
-             await ctx.message.edit(content=f"`{(i * ' ').ljust(16)} {wheel} `")
+             await ctx.message.edit(content=f"`(╯°□°)╯ {(i * ' ').ljust(16)} {wheel} `")
              await asyncio.sleep(0.6)#await ctx.message.edit(content="`(╯°□°)╯    ]`")
          #await asyncio.sleep(0.7)
          #await ctx.message.edit(content="`(╯°□°)╯     ┻━┻`")
