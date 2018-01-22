@@ -46,21 +46,21 @@ class Anim:
      
      @commands.command()
      async def table(self, ctx):
-         await ctx.message.edit(content="`(\°-°)\  ┬─┬`")
+         await ctx.message.edit(content="`(\°-°)\     ┬─┬`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°□°)\  ┬─┬`")
+         await ctx.message.edit(content="`(\°□°)\     ┬─┬`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(-°□°)-  ┬─┬`")
+         await ctx.message.edit(content="`(-°□°)-     ┬─┬`")
          await asyncio.sleep(0.7)
          wheelList = ['┬─┬', ']', '┻━┻', '[']
          wheelIter = iter(wheelList)
-         for i in range(2, 17, 2):
+         for i in range(13, 25, 3):
              try:
                  wheel = next(wheelIter)
              except StopIteration:
                  wheelIter = iter(wheelList)
                  wheel = next(wheelIter)
-             await ctx.message.edit(content=f"`(╯°□°)╯ {(i * ' ').ljust(16)} {wheel} `")
+             await ctx.message.edit(content=f"`(╯°□°)╯ {(i * ' ')} {wheel} `")
              await asyncio.sleep(0.6)#await ctx.message.edit(content="`(╯°□°)╯    ]`")
          #await asyncio.sleep(0.7)
          #await ctx.message.edit(content="`(╯°□°)╯     ┻━┻`")
