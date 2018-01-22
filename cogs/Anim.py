@@ -43,20 +43,6 @@ class Anim:
          await asyncio.sleep(0.61)
          await message.edit(content=msgBeforeBoom + "💥" + msgAfterBoom)
           
-  
-
-     @commands.command()
-     async def animpres(self, ctx):
-         while True:
-             for c in range(5, 0, -1):
-                 await ctx.send("=presence online (\°□°)\  ┬─┬")
-                 await asyncio.sleep(2.7)
-                 await ctx.send("=presence online (-°□°)-  ┬─┬")
-                 await asyncio.sleep(2.7)
-                 await ctx.send("=presence online (╯°□°)╯    ]")
-                 await asyncio.sleep(2.7)
-                 await ctx.send("=presence online (╯°□°)╯     ┻━┻")
-                 await asyncio.sleep(13)
      
      @commands.command()
      async def table(self, ctx):
@@ -66,20 +52,29 @@ class Anim:
          await asyncio.sleep(0.7)
          await ctx.message.edit(content="`(-°□°)-  ┬─┬`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(╯°□°)╯    ]`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(╯°□°)╯     ┻━┻`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(╯°□°)╯       [`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(╯°□°)╯          ┬─┬`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(╯°□°)╯                 ]`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(╯°□°)╯                  ┻━┻`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(╯°□°)╯                         [`")
-         await asyncio.sleep(0.7)
+         wheelList = ['┬─┬', ']', '┻━┻', '[']
+         wheelIter = iter(wheelList)
+         for i in range(2, 17, 2):
+             try:
+                 wheel = next(wheelIter)
+             except StopIteration:
+                 wheelIter = iter(wheelList)
+                 wheel = next(wheelIter)
+             await ctx.message.edit(content=f"`{(i * ' ').ljust(16)} {wheel} `")
+             await asyncio.sleep(0.6)#await ctx.message.edit(content="`(╯°□°)╯    ]`")
+         #await asyncio.sleep(0.7)
+         #await ctx.message.edit(content="`(╯°□°)╯     ┻━┻`")
+         #await asyncio.sleep(0.7)
+         #await ctx.message.edit(content="`(╯°□°)╯       [`")
+         #await asyncio.sleep(0.7)
+         #await ctx.message.edit(content="`(╯°□°)╯          ┬─┬`")
+         #await asyncio.sleep(0.7)
+         #await ctx.message.edit(content="`(╯°□°)╯                 ]`")
+         #await asyncio.sleep(0.7)
+         #await ctx.message.edit(content="`(╯°□°)╯                  ┻━┻`")
+         #await asyncio.sleep(0.7)
+         #await ctx.message.edit(content="`(╯°□°)╯                         [`")
+         #await asyncio.sleep(0.7)
          await ctx.message.edit(content="`(\°-°)\                               ┬─┬`")
          await asyncio.sleep(0.7)
          await ctx.message.edit(content="`(\°-°)\                                     ]`")
