@@ -19,6 +19,7 @@ import re
 import io
 import os
 import random
+from mttranslate import translate
 
 class skid: 
      def __init__(self, bot):
@@ -110,15 +111,15 @@ class skid:
              return f'```py\n{e.__class__.__name__}: {e}\n```'
          return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
 
+     def eng(self, ctx, text):
+         totranslate = (text, 'en'
+         return totranslate
      
      @commands.command()
-     async def type(self, ctx):
-         while True:
-             await ctx.message.delete()
-             await ctx.channel.trigger_typing()
-             if ctx.message.content.startswith("=br"):
-                 await ctx.message.delete()
-                 break
+     async def trn(self, ctx, *,args:str = None)
+         translated = translate.totranslate
+         await ctx.send(translated)
+                    
      
 def setup(bot):
    bot.add_cog(skid(bot))     
