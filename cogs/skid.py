@@ -111,13 +111,13 @@ class skid:
              return f'```py\n{e.__class__.__name__}: {e}\n```'
          return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
 
-     def eng(self, ctx, text):
+     def eng(self, text):
          totranslate = (text, 'en')
-         return totranslate
+         return translate(totranslate)
      
      @commands.command()
-     async def trn(self, ctx, *,args:str = None)
-         translated = translate.totranslate
+     async def en(self, ctx, *,args:str = None)
+         translated = self.en(args)
          await ctx.send(translated)
      
      @commands.command()
