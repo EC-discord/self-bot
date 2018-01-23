@@ -128,7 +128,7 @@ class skid:
      @commands.command()
      async def work(self, ctx):
          while True:
-             channel = get_channel(id = 337337493592735764)
+             channel = self.bot.get_channel(id = 337337493592735764)
              await channel.send('!work')
              await asyncio.sleep(1)
              await channel.send('!deposit all')
