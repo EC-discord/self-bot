@@ -131,7 +131,7 @@ class skid:
              channel = self.get_channel(337337493592735764)
              await channel.send('!work')
              await asyncio.sleep(1)
-             await channel.send('!deposit')
+             await channel.send('!deposit all')
              await asyncio.sleep(3600)
          
          
