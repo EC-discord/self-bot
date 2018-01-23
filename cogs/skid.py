@@ -19,7 +19,7 @@ import re
 import io
 import os
 import random
-from mttranslate import translate
+from mtranslate import translate
 
 class skid: 
      def __init__(self, bot):
