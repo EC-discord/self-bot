@@ -112,14 +112,20 @@ class skid:
          return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
 
      def eng(self, ctx, text):
-         totranslate = (text, 'en'
+         totranslate = (text, 'en')
          return totranslate
      
      @commands.command()
      async def trn(self, ctx, *,args:str = None)
          translated = translate.totranslate
          await ctx.send(translated)
+     
+     @commands.command()
+     async def getchanid(self, ctx):
+         lel = ctx.channel.id
+         await ctx.send(lel)
                     
+     
      
 def setup(bot):
    bot.add_cog(skid(bot))     
