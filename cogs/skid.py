@@ -112,7 +112,7 @@ class skid:
          return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
 
      def eng(self, text):
-         totranslate = (text, 'en')
+         totranslate = (text)
          return translate(totranslate)
      
      @commands.command()
@@ -124,6 +124,17 @@ class skid:
      async def getchanid(self, ctx):
          lel = ctx.channel.id
          await ctx.send(lel)
+          
+     @commands.command()
+     async def work(self, ctx):
+         while True:
+             channel = self.get_channel(337337493592735764)
+             await channel.send('!work')
+             await asyncio.sleep(1)
+             await channel.send('!deposit')
+             await asyncio.sleep(3600)
+         
+         
                     
      
      
