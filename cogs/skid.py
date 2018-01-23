@@ -116,7 +116,7 @@ class skid:
          return translate(totranslate)
      
      @commands.command()
-     async def en(self, ctx, *,args:str = None)
+     async def en(self, ctx, *,args:str = None):
          translated = self.en(args)
          await ctx.send(translated)
      
