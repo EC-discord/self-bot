@@ -128,6 +128,19 @@ class Anim:
          await asyncio.sleep(1)
          await ctx.message.edit(content="(  . O .  )")
      
+     @commands.command()
+     async def deadchat(self, ctx):
+         wheelList = ['DEAD CHAT', 'T DEAD CHA', 'AT DEAD CH', 'HAT DEAD C', 'CHAT DEAD', 'D CHAT DEA', 'AD CHAT DE', 'EAD CHAT D']
+         wheelIter = iter(wheelList)
+         for i in range(1, 10, 1):
+             try:
+                 wheel = next(wheelIter)
+             except StopIteration:
+                 wheelIter = iter(wheelList)
+                 wheel = next(wheelIter)
+             await ctx.message.edit(content=f"`{wheel}`")
+             await asyncio.sleep(0.7)
+     
      #@commands.command()
      #async def ghostie(self, ctx):
          #await ctx.message.edit(content="""(〜' - ')〜
