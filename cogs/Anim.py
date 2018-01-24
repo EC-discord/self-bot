@@ -54,36 +54,23 @@ class Anim:
          await asyncio.sleep(0.7)
          wheelList = ['┬─┬', ']', '┻━┻', '[']
          wheelIter = iter(wheelList)
-         for i in range(13, 25, 3):
+         for i in range(5, 29, 6):
              try:
                  wheel = next(wheelIter)
              except StopIteration:
                  wheelIter = iter(wheelList)
                  wheel = next(wheelIter)
              await ctx.message.edit(content=f"`(╯°□°)╯ {(i * ' ')} {wheel} `")
-             await asyncio.sleep(0.6)#await ctx.message.edit(content="`(╯°□°)╯    ]`")
-         #await asyncio.sleep(0.7)
-         #await ctx.message.edit(content="`(╯°□°)╯     ┻━┻`")
-         #await asyncio.sleep(0.7)
-         #await ctx.message.edit(content="`(╯°□°)╯       [`")
-         #await asyncio.sleep(0.7)
-         #await ctx.message.edit(content="`(╯°□°)╯          ┬─┬`")
-         #await asyncio.sleep(0.7)
-         #await ctx.message.edit(content="`(╯°□°)╯                 ]`")
-         #await asyncio.sleep(0.7)
-         #await ctx.message.edit(content="`(╯°□°)╯                  ┻━┻`")
-         #await asyncio.sleep(0.7)
-         #await ctx.message.edit(content="`(╯°□°)╯                         [`")
-         #await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                               ┬─┬`")
+             await asyncio.sleep(0.7)
+         await ctx.message.edit(content="`(\°-°)\                             ┬─┬`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                     ]`")
+         await ctx.message.edit(content="`(\°-°)\                           ]`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                       ┻━┻`")
+         await ctx.message.edit(content="`(\°-°)\                                     ┻━┻`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                               [`")
+         await ctx.message.edit(content="`(\°-°)\                                             [`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                              ┬─┬`")
+         await ctx.message.edit(content="`(\°-°)\                                            ┬─┬`")
        
      @commands.command()
      async def warning(self, ctx):
