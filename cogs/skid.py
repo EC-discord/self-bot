@@ -142,7 +142,7 @@ class skid:
          buffer = BytesIO()
          im.save(buffer, "gif") 
          buffer.seek(0)
-         await client.send_file(client.get_channel('%s' % chanid, fp=buffer, filename="4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
+         await client.send_file(client.get_channel('%s') % chanid, fp=buffer, filename="4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
          
                     
      
