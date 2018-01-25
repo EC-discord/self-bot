@@ -47,7 +47,7 @@ class Noble:
     @commands.command()
     async def textgif(self,ctx,*,args):#EC DO NOT COPY PASTE THIS INTO A BOT! I WILL KEEL YOU IF YOU DO!
         '''Turn TEXT to GIF'''
-        img = Image.new('RGB', (500, 45),"red")
+        img = Image.new('RGB', (500, 45),"black")
         d = ImageDraw.Draw(img)
         c = 0
         length = int(len(args))
@@ -87,7 +87,7 @@ class Noble:
         font = ImageFont.truetype('arial.ttf', 19)
         xoff, yoff = (10,5)
         d = ImageDraw.Draw(new_im)
-        d.text((90, 280), args, fill="white",font = font)
+        d.text((90, 280), args, fill="green",font = font)
         new_im.save("on_test.png")
         await ctx.send(file=discord.File('on_test.png'))
         await ctx.message.delete()
