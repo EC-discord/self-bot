@@ -138,7 +138,7 @@ class skid:
      async def cato(self, ctx):
          await ctx.message.delete()
          chanid = ctx.channel.id
-         await client.send_file(client.get_channel('%s' % lel), "4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
+         await cts.send_file(ctx.get_channel('%s' % lel), "4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
          
          
                     
