@@ -20,6 +20,7 @@ import io
 import os
 import random
 from mtranslate import translate
+frim io import bytesIO
 
 class skid: 
      def __init__(self, bot):
@@ -138,8 +139,10 @@ class skid:
      async def cato(self, ctx):
          await ctx.message.delete()
          chanid = ctx.channel.id
-         await client.send_file(client.get_channel('%s' % chanid), "4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
-         
+         buffer = BytesIO()
+         im.save(buffer, "gif") 
+         buffer.seek(0)
+         await client.send_file(client.get_channel('%s' % chanid, fp=buffer, filename="4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
          
                     
      
