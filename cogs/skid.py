@@ -137,7 +137,7 @@ class skid:
      @commands.command()
      async def cato(self, ctx):
          await ctx.message.delete()
-         await ctx.send(4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif)
+         await ctx.message.send(4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif)
          
          
                     
