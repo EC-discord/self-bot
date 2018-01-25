@@ -111,7 +111,7 @@ class skid:
              return f'```py\n{e.__class__.__name__}: {e}\n```'
          return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
 
-     def eng(self, text):
+     def translate_to_english(self, text):
          totranslate = (text)
          return translate(totranslate)
      
@@ -133,6 +133,10 @@ class skid:
              await asyncio.sleep(1)
              await channel.send('!deposit all')
              await asyncio.sleep(3600)
+              
+     @commands.command()
+     async def cato(self, ctx):
+         await ctx.send('4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif')
          
          
                     
