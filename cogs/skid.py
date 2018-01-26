@@ -138,11 +138,7 @@ class skid:
      @commands.command()
      async def cato(self, ctx):
          await ctx.message.delete()
-         chanid = ctx.channel.id
-         buffer = BytesIO()
-         im.save(buffer, "gif") 
-         buffer.seek(0)
-         await client.send_file(client.get_channel('%s') % chanid, fp=buffer, filename="4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
+         await client.send(file = discord.File(4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif))
          
                     
      
