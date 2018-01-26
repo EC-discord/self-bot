@@ -135,10 +135,18 @@ class skid:
              await channel.send('!deposit all')
              await asyncio.sleep(3600)
               
+   #  @commands.command()
+    # async def cato(self, ctx):
+      #   await ctx.message.delete()
+       #  await client.send(file = discord.File(4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif))
+          
      @commands.command()
      async def cato(self, ctx):
          await ctx.message.delete()
-         await client.send(file = discord.File(4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif))
+         chanid = ctx.channel.id
+         with open(path_to_file, 'rb') as f:
+             buffer = BytesIO(f.read())
+         await client.send_file(client.get_channel('%s') % chanid, fp=buffer, filename="4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
          
                     
      
