@@ -20,7 +20,7 @@ import io
 import os
 import random
 from mtranslate import translate
-from io import bytesIO
+from io import BytesIO
 
 class skid: 
      def __init__(self, bot):
