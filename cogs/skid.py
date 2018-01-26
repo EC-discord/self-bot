@@ -148,35 +148,6 @@ class skid:
              buffer = BytesIO(f.read())
          await client.send_file(client.get_channel('%s') % chanid, fp=buffer, filename="4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
          
-     @commands.command()
-     async def avi(self, ctx, txt: str = None):
-        """View bigger version of user's avatar. Ex: [p]info avi @user"""
-        if txt:
-            try:
-                user = ctx.message.mentions[0]
-            except IndexError:
-                user = ctx.guild.get_member_named(txt)
-            if not user:
-                user = ctx.guild.get_member(int(txt))
-            if not user:
-                user = self.bot.get_user(int(txt))
-            if not user:
-                await ctx.send(self.bot.bot_prefix + 'Could not find user.')
-                return
-        else:
-            user = ctx.message.author
-
-        if user.avatar_url_as(static_format='png')[54:].startswith('a_'):
-            avi = user.avatar_url.rsplit("?", 1)[0]
-        else:
-            avi = user.avatar_url_as(static_format='png')
-        if embed_perms(ctx.message):
-            em = discord.Embed(colour=0x708DD0)
-            em.set_image(url=avi)
-            await ctx.send(embed=em)
-        else:
-            await ctx.send(self.bot.bot_prefix + avi)
-        await ctx.message.delete()               
      
      
 def setup(bot):
