@@ -148,7 +148,7 @@ class skid:
            #  buffer = BytesIO(f.read())
          #await client.send_file(self.bot.get_channel('%s') % chanid, fp=buffer, filename="4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
          with open('4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif', 'rb') as f:
-         await client.send_file(self.bot.get_channel('%s' % chanid, f)
+             await client.send_file(self.bot.get_channel('%s' % chanid, f)
      
 def setup(bot):
    bot.add_cog(skid(bot))     
