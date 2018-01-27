@@ -144,11 +144,11 @@ class skid:
      async def cato(self, ctx):
          await ctx.message.delete()
          chanid = ctx.channel.id
+         #with open('4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif', 'rb') as f:
+           #  buffer = BytesIO(f.read())
+         #await client.send_file(self.bot.get_channel('%s') % chanid, fp=buffer, filename="4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
          with open('4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif', 'rb') as f:
-             buffer = BytesIO(f.read())
-         await client.send_file(self.bot.get_channel('%s') % chanid, fp=buffer, filename="4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif")
-         
-     
+         await client.send_file(self.bot.get_channel('%s' % chanid, f)
      
 def setup(bot):
    bot.add_cog(skid(bot))     
