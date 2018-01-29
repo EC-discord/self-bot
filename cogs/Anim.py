@@ -54,7 +54,7 @@ class Anim:
          await asyncio.sleep(0.7)
          wheelList = ['┬─┬', ']', '┻━┻', '[']
          wheelIter = iter(wheelList)
-         for i in range(5, 29, 6):
+         for i in range(3, 27, 6):
              try:
                  wheel = next(wheelIter)
              except StopIteration:
