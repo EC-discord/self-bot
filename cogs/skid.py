@@ -30,6 +30,15 @@ class skid:
           self._last_embed = None
           self._rtfm_cache = None
           self._last_google = None
+          
+     @commands.command()
+     async def getems(self, ctx):
+         l = []
+         for e in ctx.guild.emojis:
+             name = e.name+ " " + "{}".format(e)
+             l.append (name)
+             emo = ' '.join(l)
+             await ctx.send(emo)
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
