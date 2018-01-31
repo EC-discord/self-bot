@@ -44,7 +44,7 @@ class Anim:
          boomIndex = message.content.find(toreplace)
          msgBeforeBoom = message.content[:boomIndex]
          msgAfterBoom = message.content[boomIndex + len(toreplace):]
-         for c in range(5, 0, -1):
+         for c in range(5, -1, -1):
              await message.edit(content= msgBeforeBoom + "`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c + msgAfterBoom)
              await asyncio.sleep(0.61)
          await message.edit(content=msgBeforeBoom + "💣" + msgAfterBoom)
@@ -54,15 +54,16 @@ class Anim:
      
      @commands.command()
      async def table(self, ctx):
-         await ctx.message.edit(content="`(\°-°)\     ┬─┬`")
+         await ctx.message.edit(content="`(\°-°)\   ┬─┬`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°□°)\     ┬─┬`")
+         await ctx.message.edit(content="`(\°□°)\   ┬─┬`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(-°□°)-     ┬─┬`")
+         await ctx.message.edit(content="`(-°□°)-   ┬─┬`")
          await asyncio.sleep(0.7)
-         wheelList = ['┬─┬', ']', '┻━┻', '[']
+         await ctx.message.edit(content="`(╯°□°)╯   ┬─┬`")
+         wheelList = [']', '┻━┻', '[',  '┬─┬']
          wheelIter = iter(wheelList)
-         for i in range(3, 27, 6):
+         for i in range(3, 36, 4):
              try:
                  wheel = next(wheelIter)
              except StopIteration:
