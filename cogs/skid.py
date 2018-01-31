@@ -37,7 +37,7 @@ class skid:
          for e in ctx.guild.emojis:
              name = e.name+ " " + "{}".format(e)
              l.append (name)
-             emo = ' '.join(l)
+         emo = ' '.join(l)
          await ctx.send(emo)
      
      @commands.command(pass_context=True, hidden=True, name='eval')
