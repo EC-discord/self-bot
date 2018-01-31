@@ -61,15 +61,16 @@ class Anim:
          await ctx.message.edit(content="`(-°□°)-   ┬─┬`")
          await asyncio.sleep(0.7)
          await ctx.message.edit(content="`(╯°□°)╯   ┬─┬`")
+         await asyncio.sleep(0.7)
          wheelList = [']', '┻━┻', '[',  '┬─┬']
          wheelIter = iter(wheelList)
-         for i in range(3, 36, 4):
+         for i in range(7, 40, 4):
              try:
                  wheel = next(wheelIter)
              except StopIteration:
                  wheelIter = iter(wheelList)
                  wheel = next(wheelIter)
-             await ctx.message.edit(content=f"`(\°-°)\   {(i * ' ')}{wheel}`")
+             await ctx.message.edit(content=f"`(\°-°)\{(i * ' ')}{wheel}`")
              await asyncio.sleep(0.7)
        
      @commands.command()
