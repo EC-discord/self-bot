@@ -69,17 +69,8 @@ class Anim:
              except StopIteration:
                  wheelIter = iter(wheelList)
                  wheel = next(wheelIter)
-             await ctx.message.edit(content=f"`(╯°□°)╯ {(i * ' ')} {wheel} `")
+             await ctx.message.edit(content=f"`(\°-°)\   {(i * ' ')}{wheel}`")
              await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                           ┬─┬`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                           ]`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                ┻━┻`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                         [`")
-         await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                          ┬─┬`")
        
      @commands.command()
      async def warning(self, ctx):
