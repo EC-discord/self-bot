@@ -9,7 +9,7 @@ class Anim:
      @commands.command()
      async def dance(self, ctx):
          for i in range(1, 8, 1):
-             await ctx.message.edit(content="\\\(' - '   )\\\")
+             await ctx.message.edit(content="\\(' - '   )\\")
              await asyncio.sleep(0.7)
              await ctx.message.edit(content="/(   ' - ')/")
              await asyncio.sleep(0.7)
@@ -70,15 +70,15 @@ class Anim:
                  wheel = next(wheelIter)
              await ctx.message.edit(content=f"`(╯°□°)╯ {(i * ' ')} {wheel} `")
              await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                             ┬─┬`")
+         await ctx.message.edit(content="`(\°-°)\                           ┬─┬`")
          await asyncio.sleep(0.7)
          await ctx.message.edit(content="`(\°-°)\                           ]`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                     ┻━┻`")
+         await ctx.message.edit(content="`(\°-°)\                                ┻━┻`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                             [`")
+         await ctx.message.edit(content="`(\°-°)\                                         [`")
          await asyncio.sleep(0.7)
-         await ctx.message.edit(content="`(\°-°)\                                            ┬─┬`")
+         await ctx.message.edit(content="`(\°-°)\                                          ┬─┬`")
        
      @commands.command()
      async def warning(self, ctx):
@@ -129,12 +129,18 @@ class Anim:
      @commands.command()
      async def woah(self, ctx):
          await ctx.message.edit(content="(   ' O ')")
-         await asyncio.sleep(1)
+         await asyncio.sleep(0.8)
+         await ctx.message.edit(content="(  ' O ' )")
+         await asyncio.sleep(0.8)
+         await ctx.message.edit(content="( ' O '  )")
+         await asyncio.sleep(0.8)
          await ctx.message.edit(content="(' O '   )")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="(  ' O '  )")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="(  . O .  )")
+         await asyncio.sleep(0.8)
+         await ctx.message.edit(content="( ' O '  )")
+         await asyncio.sleep(0.8)
+         await ctx.message.edit(content="(  ' O ' )")
+         await asyncio.sleep(0.8)
+         await ctx.message.edit(content="(   ' O ')")
      
      @commands.command()
      async def deadchat(self, ctx):
