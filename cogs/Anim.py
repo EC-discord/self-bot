@@ -8,8 +8,8 @@ class Anim:
  
      @commands.command()
      async def dance(self, ctx):
-         for i in range(1, 8, 1):
-             await ctx.message.edit(content="\\(' - '   )\\")
+         for i in range(1, 10, 1):
+             await ctx.message.edit(content="\\\(' - '   )\\")
              await asyncio.sleep(0.7)
              await ctx.message.edit(content="/(   ' - ')/")
              await asyncio.sleep(0.7)
