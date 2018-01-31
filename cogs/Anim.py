@@ -5,6 +5,14 @@ from discord.ext import commands
 class Anim: 
      def __init__(self, bot):
           self.bot = bot
+ 
+     @commands.command()
+     async def dance(self, ctx):
+         for i in range(1, 8, 1):
+             await ctx.message.edit(content="\\\(' - '   )\\\")
+             await asyncio.sleep(0.7)
+             await ctx.message.edit(content="/(   ' - ')/")
+             await asyncio.sleep(0.7)
      
      @commands.command()
      async def virus(self, ctx, member : discord.Member = None, *, virus : str):
