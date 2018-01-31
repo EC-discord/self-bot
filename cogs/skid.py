@@ -38,7 +38,7 @@ class skid:
              name = e.name+ " " + "{}".format(e)
              l.append (name)
              emo = ' '.join(l)
-             await ctx.send(emo)
+         await ctx.send(emo)
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
