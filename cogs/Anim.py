@@ -5,7 +5,19 @@ from discord.ext import commands
 class Anim: 
      def __init__(self, bot):
           self.bot = bot
- 
+     
+     @commands.command()
+     async def catsu(self, ctx):
+         for i in range(1, 10, 1):
+             await ctx.message.edit(content="""{ \  / }
+( ^ - ^ )
+( u   u )～""")
+             await asyncio.sleep(0.8)
+             await ctx.message.edit(content="""{ |  | }
+( ^ - ^ )
+( u   u )～""")
+             await asyncio.sleep(0.8)
+     
      @commands.command()
      async def dance(self, ctx):
          for i in range(1, 10, 1):
