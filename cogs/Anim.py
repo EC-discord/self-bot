@@ -8,20 +8,20 @@ class Anim:
      
      @commands.command()
      async def cathi(self, ctx):
-         for i in range(1, 10, 1):
+         for i in range(1, 8, 1):
              await ctx.message.edit(content=""".　　　＿＿_＿＿
 　　／　／　  ／|"
 　　|￣￣￣￣|　|
 　　|　　　　|／
 　　￣￣￣￣""")
-             await asyncio.sleep(0.8)
+             await asyncio.sleep(1.5)
              await ctx.message.edit(content="""　　　Hi...♡
  　   　 ∧＿∧＿_
 　　／(´･ω･`)  ／＼
 　／|￣￣￣￣|＼／
 　　|　　　　|／
 　　￣￣￣￣""")
-             await asyncio.sleep(0.8)
+             await asyncio.sleep(1.5)
      
      @commands.command()
      async def catsu(self, ctx):
