@@ -749,7 +749,7 @@ class Utility:
         """gets the profile pic of the user"""
         await ctx.message.delete()
         mem = member or ctx.author
-        avatar = mem.avatar_url
+        avatar = mem.avatar_url_as(static_format='png')
         await ctx.send(avatar)
 
 def setup(bot):
