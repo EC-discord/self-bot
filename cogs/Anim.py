@@ -13,7 +13,7 @@ class Anim:
 ( ^ - ^ )
 ( u   u )～""")
              await asyncio.sleep(0.8)
-             await ctx.message.edit(content="""{ |   | }
+             await ctx.message.edit(content="""{  |  |  }
 ( ^ - ^ )
 ( u   u )～""")
              await asyncio.sleep(0.8)
@@ -47,7 +47,7 @@ class Anim:
          await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into  `" + member.mention)
 
      async def on_message(self, message):
-         for bombstr in ['=boom', '💣m']:
+         for bombstr in ['*boom', '💣m']:
              if message.content.find(bombstr) != -1:
                  await self._boom(message, bombstr)
                  break
@@ -76,7 +76,7 @@ class Anim:
          await asyncio.sleep(0.7)
          wheelList = [']', '┻━┻', '[',  '┬─┬']
          wheelIter = iter(wheelList)
-         for i in range(7, 44, 4):
+         for i in range(7, 39, 4):
              try:
                  wheel = next(wheelIter)
              except StopIteration:
