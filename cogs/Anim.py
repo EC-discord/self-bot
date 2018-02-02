@@ -7,13 +7,30 @@ class Anim:
           self.bot = bot
      
      @commands.command()
+     async def cathi(self, ctx):
+         for i in range(1, 10, 1):
+             await ctx.message.edit(content=""".　　　＿＿_＿＿
+　　／　／　  ／|"
+　　|￣￣￣￣|　|
+　　|　　　　|／
+　　￣￣￣￣""")
+             await asyncio.sleep(0.8)
+             await ctx.message.edit(content="""　　　Hi...♡
+ 　   　 ∧＿∧＿_
+　　／(´･ω･`)  ／＼
+　／|￣￣￣￣|＼／
+　　|　　　　|／
+　　￣￣￣￣""")
+             await asyncio.sleep(0.8)
+     
+     @commands.command()
      async def catsu(self, ctx):
          for i in range(1, 10, 1):
-             await ctx.message.edit(content="""{ \  / }
+             await ctx.message.edit(content="""{  |  |  }
 ( ^ - ^ )
 ( u   u )～""")
              await asyncio.sleep(0.8)
-             await ctx.message.edit(content="""{  |  |  }
+             await ctx.message.edit(content="""{ \  / }
 ( ^ - ^ )
 ( u   u )～""")
              await asyncio.sleep(0.8)
