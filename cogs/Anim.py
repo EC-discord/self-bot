@@ -13,7 +13,7 @@ class Anim:
 ( ^ - ^ )
 ( u   u )～""")
              await asyncio.sleep(0.8)
-             await ctx.message.edit(content="""{ |  | }
+             await ctx.message.edit(content="""{ |   | }
 ( ^ - ^ )
 ( u   u )～""")
              await asyncio.sleep(0.8)
