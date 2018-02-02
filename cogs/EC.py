@@ -39,8 +39,8 @@ class EC:
      
      @commands.command()
      async def thumbs(self, ctx):
-         """(👍 ' - ')👍"""
-         await ctx.message.edit(content="(👍 ' - ')👍")
+         """(👍' - ')👍"""
+         await ctx.message.edit(content="(👍' - ')👍")
      
      @commands.command()
      async def warp(self, ctx):
