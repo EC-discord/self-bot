@@ -681,7 +681,7 @@ class Utility:
             if len(entries) == 0:
                 return await ctx.send('NONE')
 
-            next_two = [x[0] for x in entries[1:3]]
+            next_two = [x[0] for x in entries[1:6]]
             first_entry = entries[0][0]
             if first_entry[-1] == ')':
                 first_entry = first_entry[:-1] + '%29'
