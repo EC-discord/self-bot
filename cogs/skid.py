@@ -121,14 +121,11 @@ class skid:
              return f'```py\n{e.__class__.__name__}: {e}\n```'
          return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
 
-     def translate_to_english(self, text):
-         totranslate = (text)
-         return translate(totranslate)
-     
      @commands.command()
-     async def en(self, ctx, *,args:str = None):
-         translated = self.en(args)
+     async def translate(self, ctx, language, *, phrase):
+         translated = await ctx.bot.loop.run_in_executor(None, translate, language, phrase)
          await ctx.send(translated)
+
      
      @commands.command()
      async def getchanid(self, ctx):
