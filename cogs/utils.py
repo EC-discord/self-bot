@@ -688,7 +688,7 @@ class Utility:
 
             if next_two:
                 formatted = '\n'.join(f'<{x}>' for x in next_two)
-                msg = f'{first_entry}\n\n**Also:**\n{formatted}'
+                msg = f'{first_entry}\n{formatted}'
             else:
                 msg = first_entry
 
