@@ -170,12 +170,6 @@ class skid:
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
 
-     def getColor(colorHex):
-        return discord.Colour(int(f'0x{colorHex}', 16))
-
-     def randomColor():
-       color = ''.join([random.choice(string.hexdigits) for _ in range(6)])
-       return getColor(color)     
      
 def setup(bot):
    bot.add_cog(skid(bot))     
