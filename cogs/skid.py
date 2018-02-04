@@ -151,7 +151,13 @@ class skid:
      async def cato(self, ctx):
          await ctx.message.delete()
          await ctx.send(file = discord.File('4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif'))
-       
+
+     def getColor(colorHex):
+        return discord.Colour(int(f'0x{colorHex}', 16))
+
+     def randomColor():
+       color = ''.join([random.choice(string.hexdigits) for _ in range(6)])
+       return getColor(color)  
 
      @commands.command()
      async def rc(self, ctx):
