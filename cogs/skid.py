@@ -152,6 +152,7 @@ class skid:
          await ctx.message.delete()
          await ctx.send(file = discord.File('4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif'))
        
+
      @commands.command()
      async def rc(self, ctx):
         '''Generates a random color'''
@@ -167,8 +168,8 @@ class skid:
         return discord.Colour(int(f'0x{colorHex}', 16))
 
      def randomColor():
-        color = ''.join([random.choice(string.hexdigits) for _ in range(6)])
-        return getColor(color)
+       color = ''.join([random.choice(string.hexdigits) for _ in range(6)])
+       return getColor(color)     
      
 def setup(bot):
    bot.add_cog(skid(bot))     
