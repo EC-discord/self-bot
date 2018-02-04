@@ -21,6 +21,7 @@ import os
 import random
 from mtranslate import translate
 from io import BytesIO
+import string
 
 class skid: 
      def __init__(self, bot):
@@ -150,6 +151,23 @@ class skid:
      async def cato(self, ctx):
          await ctx.message.delete()
          await ctx.send(file = discord.File('4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif'))
+       
+     @commands.command()
+     async def rc(self, ctx):
+        '''Generates a random color'''
+        file = io.BytesIO()
+        Image.new('RGB', (200, 90), color.to_rgb()).save(file, format='PNG')
+        file.seek(0)
+        em = discord.Embed(color=color, title=f'Showing Color: {str(color)}')
+        em.set_image(url='attachment://color.png')
+        await ctx.send(file=discord.File(file, 'color.png'), embed=em)
+
+    def getColor(colorHex):
+        return discord.Colour(int(f'0x{colorHex}', 16))
+
+    def randomColor():
+        color = ''.join([random.choice(string.hexdigits) for _ in range(6)])
+        return getColor(color)
      
 def setup(bot):
    bot.add_cog(skid(bot))     
