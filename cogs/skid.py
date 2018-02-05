@@ -141,15 +141,15 @@ class skid:
      def getColor(colorHex):
         return discord.Colour(int(f'0x{colorHex}', 16))
 
-     def randomcolor():
+     def randomcolor(self):
        color = ''.join([random.choice(string.hexdigits) for _ in range(6)])
-       return getColor(color)  
+       return self.getColor(color)  
 
      @commands.command()
      async def rc(self, ctx):
         '''Generates a random color'''
         file = io.BytesIO()
-        color = randomcolor()
+        color = self.randomcolor()
         Image.new('RGB', (200, 90), color.to_rgb()).save(file, format='PNG')
         file.seek(0)
         em = discord.Embed(color=color, title=f'Showing Color: {str(color)}')
