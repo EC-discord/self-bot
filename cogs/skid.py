@@ -131,21 +131,7 @@ class skid:
      @commands.command()
      async def getchanid(self, ctx):
          lel = ctx.channel.id
-         await ctx.send(lel)
-          
-     @commands.command()
-     async def work(self, ctx):
-         while True:
-             channel = self.bot.get_channel(id = 337337493592735764)
-             await channel.send('!work')
-             await asyncio.sleep(1)
-             await channel.send('!deposit all')
-             await asyncio.sleep(1802)
-              
-   #  @commands.command()
-    # async def cato(self, ctx):
-      #   await ctx.message.delete()
-       #  await client.send(file = discord.File(4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif))
+         await ctx.send(lel) 
           
      @commands.command()
      async def cato(self, ctx):
@@ -155,7 +141,7 @@ class skid:
      def getColor(colorHex):
         return discord.Colour(int(f'0x{colorHex}', 16))
 
-     def randomColor():
+     def randomcolor():
        color = ''.join([random.choice(string.hexdigits) for _ in range(6)])
        return getColor(color)  
 
@@ -163,7 +149,7 @@ class skid:
      async def rc(self, ctx):
         '''Generates a random color'''
         file = io.BytesIO()
-        color = randomColor()
+        color = randomcolor()
         Image.new('RGB', (200, 90), color.to_rgb()).save(file, format='PNG')
         file.seek(0)
         em = discord.Embed(color=color, title=f'Showing Color: {str(color)}')
