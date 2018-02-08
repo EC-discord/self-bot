@@ -162,7 +162,7 @@ class skid:
         word = args
         py = "ay"
         first_word = word[p]
-        if args = None:
+        if args == None:
             await ctx.send("Type something O:")
         else:
             new_word = word[1:len(word)]
