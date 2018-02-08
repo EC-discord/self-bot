@@ -157,11 +157,11 @@ class skid:
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
           
      @commands.command()
-     async def plt(self, ctx, *, args = None):
+     async def plt(self, ctx, *, args:str = None):
         """PigLatin Translator"""
         word = args
         py = "ay"
-        first_word = word[p]
+        first_word = word[0]
         if args == None:
             await ctx.send("Type something O:")
         else:
