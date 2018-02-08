@@ -111,6 +111,8 @@ class Selfbot(commands.Bot):
         if not hasattr(self, 'uptime'):
             self.uptime = datetime.datetime.utcnow()
         print(textwrap.dedent('Logged in!'))
+        server = str(+len(self.guilds))
+        await self.change_presence(game = discord.Game(name="$help (' O '   ) O: in" +server+ "servers",type =0))
 
         await self.change_presence(status=discord.Status.invisible, afk=True)
 
