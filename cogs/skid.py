@@ -155,6 +155,22 @@ class skid:
         em = discord.Embed(color=color, title=f'Showing Color: {str(color)}')
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
+          
+     @commands.command()
+     async def plt(self, ctx, *, args = None : str):
+        """PigLatin Translator"""
+        word = args
+        py = "ay"
+        first_word = word[p]
+        if args = None:
+            await ctx.send("Type something O:")
+        else:
+            new_word = word[1:len(word)]
+            new_word = new_word + first_word + py
+            await ctx.send(new_word)
+        
+            
+        
 
      
 def setup(bot):
