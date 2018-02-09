@@ -152,7 +152,7 @@ class Utility:
         status = status.lower()
         em = discord.Embed(color=0xffd500, title="Presence")
         em.description = "Presence has been changed"
-        await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=message2, afk=False)
+        await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=message2, afk=False))
         await ctx.send(embed = em)
                                        
     @commands.command()
