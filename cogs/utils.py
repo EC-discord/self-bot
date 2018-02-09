@@ -147,7 +147,7 @@ class Utility:
                 await ctx.send(page)
     
     @commands.command()
-    async def cpres(self, ctx, message:str=None, *, message:int = None):
+    async def cpres(self, ctx, message:str=None, *, message2:int = None):
         '''discord playing status, type and presence'''
         status = status.lower()
         em = discord.Embed(color=0xffd500, =title="Presence")
