@@ -149,7 +149,6 @@ class Utility:
     @commands.command()
     async def cpres(self, ctx, message:str=None, *, message2:int = None):
         '''discord playing status, type and presence'''
-        status = status.lower()
         em = discord.Embed(color=0xffd500, title="Presence")
         em.description = "Presence has been changed"
         await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=message2, afk=False))
