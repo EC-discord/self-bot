@@ -145,7 +145,17 @@ class Utility:
             em_list = await embedtobox.etb(emb)
             for page in em_list:
                 await ctx.send(page)
-
+    
+    @commands.command()
+    async def cpres(self, ctx, message:str=None, *, message:int = None):
+        '''discord playing status, type and presence'''
+        status = status.lower()
+        em = discord.Embed(title="Presence")
+        em.color = rand.randint(0, 0xFFFFFF)
+        em.description = "Presence has been changed"
+        await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=message2, afk=False)
+        await ctx.send(embed = em)
+                                       
     @commands.command()
     async def richembed(self, ctx, *, params):
         '''rich embeds
