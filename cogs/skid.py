@@ -32,8 +32,16 @@ class skid:
           self._rtfm_cache = None
           self._last_google = None
           
+     @commands.command(aliases=['bn'])
+     async def binary(self, ctx, number:int = None):
+         if number is None:
+             await ctx.send('Enter a number :D')
+         else:
+             await ctx.send(bin(number)[2:])
+          
      @commands.command()
      async def getems(self, ctx):
+         '''gets all emojis in a server'''
          l = []
          for e in ctx.guild.emojis:
              name = e.name+ " " + "{}".format(e)
