@@ -5,6 +5,14 @@ from discord.ext import commands
 class Anim: 
      def __init__(self, bot):
           self.bot = bot
+          
+     @commands.command()
+     asymc def lhi(self, ctx):
+         for i in range(1, 8, 1):
+             await ctx.edit(content="(˙◁˙)7")
+             await asyncio.sleep(0.9)
+             await ctx.edit(content="(˙◁˙)/")
+             await asyncio.sleep(0.9)
      
      @commands.command()
      async def cathi(self, ctx):
