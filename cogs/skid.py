@@ -196,7 +196,7 @@ class skid:
                 em.description = ''.join(new_word)
         await ctx.send(embed = em)
         
-     def engway(word):
+     async def engway(word):
          return word[1:len(word)]+word[0]+"ay"
      @commands.command()
      async def platin(ctx, *args):
