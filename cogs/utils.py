@@ -149,6 +149,7 @@ class Utility:
     @commands.command()
     async def cpres(self, ctx, Type:str=None, *, message:str = None):
         '''discord playing status, type and presence'''
+        em = discord.Embed(color=0x6ed457, title="Presence")
         if Type == "playing":
             await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=0, afk=False))
             em.description = "Presence : Playing %s" % message
@@ -161,7 +162,6 @@ class Utility:
         elif Type == "watching":
             await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=3, afk=False))
             em.description = "Presence : Watching %s" % message
-        em = discord.Embed(color=0x6ed457, title="Presence")
         await ctx.send(embed = em)
                                        
     @commands.command()
