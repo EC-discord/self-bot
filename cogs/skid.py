@@ -177,7 +177,7 @@ class skid:
                 new_word = word[1:len(word)]
                 new_word = new_word + first_word + py
                 em = discord.Embed(color = 0xffd500)
-                em.description = new_word
+                em.description = ''.join(new_word)
                 await ctx.send(embed = em)
         
             
