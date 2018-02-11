@@ -165,46 +165,21 @@ class skid:
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
           
      @commands.command()
-     async def plt(self, ctx, *args):
+     async def plt(self, ctx, *, words):
         """PigLatin Translator"""
-        for i in args:
-            word = i
-            py = "ay"
-            first_word = word[0]
-            if i is None:
-                await ctx.send("Type something O:")
-            else:
-                new_word = word[1:len(word)]
-                new_word = new_word + first_word + py
-                platin = ''.join(new_word)
-        em = discord.Embed(color = 0xffd500)
-        em.description = platin
-        await ctx.send(embed = em)
-          
-     @commands.command()
-     async def pltalt(self, ctx, *, args):
-        """PigLatin Translator"""
-        for i in args:
-            word = i
-            py = "ay"
-            first_word = word[0]
-            if i is None:
-                await ctx.send("Type something O:")
-            else:
-                new_word = word[1:len(word)]
-                new_word = new_word + first_word + py
-                em = discord.Embed(color = 0xffd500)
-                em.description = ''.join(new_word)
-        await ctx.send(embed = em)
-        
-     async def engway(word):
-         return word[1:len(word)]+word[0]+"ay"
-     @commands.command()
-     async def platin(ctx, *args):
-         for word in args:
-             plat = engway(word)
-             new_list = ''.join(plat)
-         await ctx.send(new_list)
+           words1 = words.split()
+           for word in words1:
+               py = "ay"
+               first_word = word[0]
+               if i is None:
+                   await ctx.send("Type something O:")
+               else:
+                   new_word = word[1:len(word)]
+                   new_word = new_word + first_word + py
+                   platin = ''.join(new_word)
+           em = discord.Embed(color = 0xffd500)
+           em.description = platin
+           await ctx.send(embed = em)
             
         
 
