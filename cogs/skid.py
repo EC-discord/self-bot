@@ -178,7 +178,7 @@ class skid:
                 new_word = new_word + first_word + py
                 em = discord.Embed(color = 0xffd500)
                 em.description = ' '.join(new_word)
-        await ctx.send(embed = em)
+            await ctx.send(embed = em)
         
      ''' def engway(word):
          return word[1:len(word)]+word[0]+"ay"
