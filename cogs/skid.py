@@ -178,7 +178,7 @@ class skid:
                 new_word = word[1:]
                 new_word = new_word + first_word + py
                 kappa = translated.append(new_word)
-        platin = ' '.join(new_word)
+        platin = ' '.join(translated)
         em = discord.Embed(color = 0xffd500)
         em.description = platin
         await ctx.send(embed = em)
