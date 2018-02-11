@@ -167,19 +167,19 @@ class skid:
      @commands.command()
      async def plt(self, ctx, *, words):
         """PigLatin Translator"""
-           words1 = words.split()
-           for word in words1:
-               py = "ay"
-               first_word = word[0]
-               if i is None:
-                   await ctx.send("Type something O:")
-               else:
-                   new_word = word[1:len(word)]
-                   new_word = new_word + first_word + py
-                   platin = ''.join(new_word)
-           em = discord.Embed(color = 0xffd500)
-           em.description = platin
-           await ctx.send(embed = em)
+        words1 = words.split()
+        for word in words1:
+            py = "ay"
+            first_word = word[0]
+            if word is None:
+                await ctx.send("Type something O:")
+            else:
+                new_word = word[1:len(word)]
+                new_word = new_word + first_word + py
+                platin = ''.join(new_word)
+        em = discord.Embed(color = 0xffd500)
+        em.description = platin
+        await ctx.send(embed = em)
             
         
 
