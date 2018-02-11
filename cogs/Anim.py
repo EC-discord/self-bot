@@ -9,9 +9,9 @@ class Anim:
      @commands.command()
      async def lhi(self, ctx):
          for i in range(1, 8, 1):
-             await ctx.edit(content="(˙◁˙)7")
+             await ctx.message.edit(content="(˙◁˙)7")
              await asyncio.sleep(0.9)
-             await ctx.edit(content="(˙◁˙)/")
+             await ctx.message.edit(content="(˙◁˙)/")
              await asyncio.sleep(0.9)
      
      @commands.command()
