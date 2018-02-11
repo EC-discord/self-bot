@@ -175,10 +175,10 @@ class skid:
             if word is None:
                 await ctx.send("Type something O:")
             else:
-                new_word = word[1:len(word)]
+                new_word = word[1:]
                 new_word = new_word + first_word + py
                 kappa = translated.append(new_word)
-        platin = ''.join(new_word)
+        platin = ' '.join(new_word)
         em = discord.Embed(color = 0xffd500)
         em.description = platin
         await ctx.send(embed = em)
