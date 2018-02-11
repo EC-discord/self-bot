@@ -177,7 +177,7 @@ class skid:
                 new_word = word[1:len(word)]
                 new_word = new_word + first_word + py
                 em = discord.Embed(color = 0xffd500)
-                em.description = ' '.join(new_word)
+                em.description = ''.join(new_word)
             await ctx.send(embed = em)
           
      @commands.command()
@@ -196,13 +196,14 @@ class skid:
                 em.description = ''.join(new_word)
         await ctx.send(embed = em)
         
-     ''' def engway(word):
+     def engway(word):
          return word[1:len(word)]+word[0]+"ay"
      @commands.command()
      async def platin(ctx, *args):
          for word in args:
              plat = engway(word)
-             new_'''
+             new_list = ''.join(plat)
+         await ctx.send(new_list)
             
         
 
