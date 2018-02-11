@@ -158,7 +158,7 @@ class Utility:
         elif Type == "listeningto":
             await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=2, afk=False))
             em.description = "Presence : Listening to %s" % message
-        elif Type == "watching:
+        elif Type == "watching":
             await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=3, afk=False))
             em.description = "Presence : Watching %s" % message
         em = discord.Embed(color=0x6ed457, title="Presence")
