@@ -179,6 +179,22 @@ class skid:
                 em = discord.Embed(color = 0xffd500)
                 em.description = ' '.join(new_word)
             await ctx.send(embed = em)
+          
+     @commands.command()
+     async def pltalt(self, ctx, *, args):
+        """PigLatin Translator"""
+        for i in args:
+            word = i
+            py = "ay"
+            first_word = word[0]
+            if i is None:
+                await ctx.send("Type something O:")
+            else:
+                new_word = word[1:len(word)]
+                new_word = new_word + first_word + py
+                em = discord.Embed(color = 0xffd500)
+                em.description = ''.join(new_word)
+        await ctx.send(embed = em)
         
      ''' def engway(word):
          return word[1:len(word)]+word[0]+"ay"
