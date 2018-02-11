@@ -147,11 +147,21 @@ class Utility:
                 await ctx.send(page)
     
     @commands.command()
-    async def cpres(self, ctx, message:str=None, *, message2:int = None):
+    async def cpres(self, ctx, Type:str=None, *, message:str = None):
         '''discord playing status, type and presence'''
-        em = discord.Embed(color=0xffd500, title="Presence")
-        em.description = "Presence has been changed"
-        await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=message2, afk=False))
+        if Type == "playing":
+            await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=0, afk=False))
+            em.description = "Presence : Playing %s" % message
+        elif Type == "streaming":
+            await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=1, url=f'https://www.twitch.tv/{message}', afk=False))
+            em.description = "Presence : Streaming %s" % message
+        elif Type == "listeningto":
+            await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=2, afk=False))
+            em.description = "Presence : Listening to %s" % message
+        elif Type == "watching:
+            await self.bot.change_presence(status=discord.Status.online, game=discord.Game(name=message,type=3, afk=False))
+            em.description = "Presence : Watching %s" % message
+        em = discord.Embed(color=0x6ed457, title="Presence")
         await ctx.send(embed = em)
                                        
     @commands.command()
