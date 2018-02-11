@@ -7,7 +7,7 @@ class Anim:
           self.bot = bot
           
      @commands.command()
-     asymc def lhi(self, ctx):
+     async def lhi(self, ctx):
          for i in range(1, 8, 1):
              await ctx.edit(content="(˙◁˙)7")
              await asyncio.sleep(0.9)
