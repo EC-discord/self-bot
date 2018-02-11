@@ -165,8 +165,9 @@ class skid:
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
           
      @commands.command()
-     async def plt(self, ctx, *, args):
+     async def plt(ctx, *, args):
         """PigLatin Translator"""
+        new_list = ' '
         for i in args:
             word = i
             py = "ay"
@@ -177,9 +178,16 @@ class skid:
                 new_word = word[1:len(word)]
                 new_word = new_word + first_word + py
                 em = discord.Embed(color = 0xffd500)
-                em.description = ''.join(new_word)
+                em.description = new_list.join(new_word)
         await ctx.send(embed = em)
         
+    ''' def engway(word):
+         return word[1:len(word)]+word[0]+"ay"
+     @commands.command()
+     async def platin(ctx, *args):
+         for word in args:
+             plat = engway(word)
+             new_'''
             
         
 
