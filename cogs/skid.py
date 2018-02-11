@@ -165,7 +165,7 @@ class skid:
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
           
      @commands.command()
-     async def plt(ctx, *args):
+     async def plt(self, ctx, *args):
         """PigLatin Translator"""
         new_list = ' '
         for i in args:
