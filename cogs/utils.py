@@ -640,7 +640,7 @@ class Utility:
 
         async with self.bot.session.get(url, params=params, headers=headers) as resp:
             if resp.status != 200:
-                log.info('Google failed to respond with %s status code.', resp.status)
+                #log.info('Google failed to respond with %s status code.', resp.status)
                 raise RuntimeError('Google has failed to respond.')
 
             root = etree.fromstring(await resp.text(), etree.HTMLParser())
