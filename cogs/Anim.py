@@ -52,7 +52,7 @@ class Anim:
              await asyncio.sleep(1)
      
      @commands.command()
-     async def virus(self, ctx, , virus: str, member : discord.Member = None):
+     async def virus(self, ctx, , member : discord.Member = None, *, virus: str):
          wheelList = ['/', '-', '\\', '|']
          wheelIter = iter(wheelList)
          for i in range(2, 17, 2):
