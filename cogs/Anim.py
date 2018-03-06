@@ -70,7 +70,7 @@ class Anim:
          await ctx.message.edit(content=f"`Injecting virus... -`")
          await asyncio.sleep(1)
          if member is None:
-             await ctx.message.edit(content="`Successfully Injected {virus}-virus.exe into Random User`")
+             await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into Random User`")
          else:
              await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into  `" + member.mention)
 
