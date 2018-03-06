@@ -151,16 +151,16 @@ class Utility:
         '''discord playing status, type and presence'''
         em = discord.Embed(color=0x6ed457, title="Presence")
         if Type == "playing":
-            await self.change_presence(status=discord.Status.online, activity=discord.Game(name=message))
+            await self.bot.change_presence(status=discord.Status.online, activity=discord.Game(name=message))
             em.description = "Presence : Playing %s" % message
         elif Type == "streaming":
-            await self.change_presence(status=discord.Status.online, activity=discord.Streaming(name=f"{message}", url=f'www.twitch.tv/{message}'))
+            await self.bot.change_presence(status=discord.Status.online, activity=discord.Streaming(name=f"{message}", url=f'www.twitch.tv/{message}'))
             em.description = "Presence : Streaming %s" % message
         elif Type == "listeningto":
-            await self.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening, name=f"{message}"))
+            await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening, name=f"{message}"))
             em.description = "Presence : Listening to %s" % message
         elif Type == "watching":
-            await self.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{message}"))
+            await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{message}"))
             em.description = "Presence : Watching %s" % message
         await ctx.send(embed = em)
                                        
