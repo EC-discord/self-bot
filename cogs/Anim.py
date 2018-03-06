@@ -69,10 +69,7 @@ class Anim:
          await asyncio.sleep(1)  
          await ctx.message.edit(content=f"`Injecting virus... -`")
          await asyncio.sleep(1)
-         if member is None:
-             await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into Random User`")
-         else:
-             await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into  `" + member.mention)
+         await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into   `" + member.mention)
 
      async def on_message(self, message):
          for bombstr in ['*boom', '💣m']:
