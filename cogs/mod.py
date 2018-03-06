@@ -89,7 +89,7 @@ class Mod:
         await ctx.purge(limit=limit+1) # TODO: add more functionality
 
     @commands.command()
-    async def clean(self, ctx, limit : int=15):
+    async def clean(self, ctx, limit : int=1000000):
         '''Clean a number of your own messages'''
         await ctx.purge(limit=limit+1, check=lambda m: m.author == ctx.author)
 
