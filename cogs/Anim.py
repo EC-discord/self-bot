@@ -52,7 +52,7 @@ class Anim:
              await asyncio.sleep(1)
      
      @commands.command()
-     async def virus(self, ctx, member : discord.Member = None, *, virus : str):
+     async def virus(self, ctx, , virus: str, member : discord.Member = None):
          wheelList = ['/', '-', '\\', '|']
          wheelIter = iter(wheelList)
          for i in range(2, 17, 2):
@@ -69,7 +69,10 @@ class Anim:
          await asyncio.sleep(1)  
          await ctx.message.edit(content=f"`Injecting virus... -`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into  `" + member.mention)
+         if member is None:
+             await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into Random User `")
+         else:
+             await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into  `" + member.mention)
 
      async def on_message(self, message):
          for bombstr in ['*boom', '💣m']:
