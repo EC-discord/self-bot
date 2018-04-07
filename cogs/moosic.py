@@ -12,8 +12,8 @@ class moosic:
         music = ['avicii the nights audio', 'zhiend blood color', 'imagine dragons demons audio', 'chainsmokers closer lyrics'
         , 'tokyo ghoul op unravel', 'layers recreators', 'imagine dragons bleeding out', 'akame ga kill op 1'
         , 'onerepublic kids audio', 'starset it has begun']
-        song = random.choice(music)
         while True:
+            song = random.choice(music)
             await ctx.send(f"{prefix}play {song}")
             music.remove(song)
             await asyncio.sleep(240)
