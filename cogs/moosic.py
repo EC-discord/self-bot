@@ -18,3 +18,6 @@ class moosic:
             await asyncio.sleep(240)
             if ctx.message.content = '*break!':
                 break
+
+def setup(bot):
+    bot.add_cog(moosic(bot))
