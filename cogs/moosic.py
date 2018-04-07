@@ -13,7 +13,7 @@ class moosic:
         , 'onerepublic kids audio', 'starset it has begun']
         song = random.choice(music)
         while True:
-            await ctx.send(f'{prefix}play {song}')
+            await ctx.send(f"{prefix}play {song}")
             music.remove(song)
             await asyncio.sleep(240)
             if ctx.message.content = '*break!':
