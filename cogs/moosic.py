@@ -16,7 +16,7 @@ class moosic:
             await ctx.send(f"{prefix}play {song}")
             music.remove(song)
             await asyncio.sleep(240)
-            if ctx.message.content = '*break!':
+            if ctx.message.content == '*break!':
                 break
 
 def setup(bot):
