@@ -91,22 +91,22 @@ class EC:
      @commands.command()
      async def lpew(self, ctx):
          """pew pew ----------<(' - '   )"""
-         await ctx.edit(content="pew pew ----------<(' - '   )")
+         await ctx.message.edit(content="pew pew ----------<(' - '   )")
           
      @commands.command()
      async def poof(self, ctx):
          """poofness"""
-         await ctx.edit(content = "(   ' - ')")
+         await ctx.message.edit(content = "(   ' - ')")
          await asyncio.sleep(1)
-         await ctx.edit(content = "' - ')")
+         await ctx.message.edit(content = "' - ')")
          await asyncio.sleep(1)
-         await ctx.edit(content = "- ')")
+         await ctx.message.edit(content = "- ')")
          await asyncio.sleep(1)
-         await ctx.edit(content = "')")
+         await ctx.message.edit(content = "')")
          await asyncio.sleep(1)
-         await ctx.edit(content = ")")
+         await ctx.message.edit(content = ")")
          await asyncio.sleep(1)
-         await ctx.edit(content = "*poofness*")
+         await ctx.message.edit(content = "*poofness*")
 
      @commands.command()
      async def dawae(self, ctx):
