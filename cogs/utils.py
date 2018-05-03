@@ -682,7 +682,7 @@ class Utility:
         return card, entries
 
     @commands.command(aliases=['gle'])
-    async def google(self, ctx, *, query):
+    async def google(self, ctx, , numberOfResults : int, *, query):
         """Search google"""
         await ctx.trigger_typing()
         try:
@@ -699,7 +699,7 @@ class Utility:
             if len(entries) == 0:
                 return await ctx.send('NONE')
 
-            next_two = [x[0] for x in entries[1:6]]
+            next_two = [x[0] for x in entries[:numberOfResults]]
             first_entry = entries[0][0]
             if first_entry[-1] == ')':
                 first_entry = first_entry[:-1] + '%29'
