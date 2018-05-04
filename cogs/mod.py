@@ -91,7 +91,12 @@ class Mod:
     @commands.command()
     async def clean(self, ctx, limit : int=1000000):
         '''Clean a number of your own messages'''
-        await ctx.purge(limit=limit+1, check=lambda m: m.author == ctx.author)
+        if ctx.message.author.id == 427749324257230869 and limit > 15:
+            return """you can only clean a maximum of 15 messages
+            with hate
+            from EC"""
+        else:
+            await ctx.purge(limit=limit+1, check=lambda m: m.author == ctx.author)
 
 
     @commands.command()
