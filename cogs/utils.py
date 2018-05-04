@@ -644,6 +644,7 @@ class Utility:
     @commands.command(aliases=['gle'])
     async def google(self, ctx, numberOfResults:int, *, query):
         """Search google"""
+        numberOfResults -= 1
         await ctx.trigger_typing()
         try:
             card, entries = await self.get_google_entries(query)
