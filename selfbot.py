@@ -19,7 +19,7 @@ import io
 
 class Selfbot(commands.Bot):
     '''
-    Custom Client for selfbot.py - Made by NOT MINE
+    Custom Client for selfbot.py - Made by someone
     '''
     _mentions_transforms = {
         '@everyone': '@\u200beveryone',
@@ -112,9 +112,8 @@ class Selfbot(commands.Bot):
             self.uptime = datetime.datetime.utcnow()
         print(textwrap.dedent('Logged in!'))
         server = str(+len(self.guilds))
-        await self.change_presence(game = discord.Game(name="$help (' O '   ) O: in" +server+ "servers",type =0))
-
-        await self.change_presence(status=discord.Status.invisible, afk=True)
+        await self.change_presence(activity = discord.Game(name="Vainglory"))
+        await self.change_presence(status=discord.Status.online, afk=False)
 
     async def on_command(self, ctx):
         cmd = ctx.command.qualified_name.replace(' ', '_')
