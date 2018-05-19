@@ -7,12 +7,14 @@ class Anim:
           self.bot = bot
           
      @commands.command()
-     async def lhi(self, ctx):
-         for i in range(1, 8, 1):
-             await ctx.message.edit(content="(˙◁˙)7")
-             await asyncio.sleep(1)
-             await ctx.message.edit(content="(˙◁˙)/")
-             await asyncio.sleep(1)
+     async def bam(self, ctx):
+         c = await ctx.send(content = "( ͡° ͜ʖ ͡° )")
+         await asyncio.sleep(1)
+         await c.edit(content = "╰( ͡° ͜ʖ ͡° )つ")
+         await asyncio.sleep(1)
+         await c.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆")
+         await asyncio.sleep(1)
+         await c.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ💥")
      
      @commands.command()
      async def cathi(self, ctx):
