@@ -5,16 +5,31 @@ from discord.ext import commands
 class Anim: 
      def __init__(self, bot):
           self.bot = bot
+
+     @commands.command()
+     async def poof(self, ctx):
+         """poofness"""
+         await ctx.message.edit(content = "(   ' - ')")
+         await asyncio.sleep(1)
+         await ctx.message.edit(content = "' - ')")
+         await asyncio.sleep(1)
+         await ctx.message.edit(content = "- ')")
+         await asyncio.sleep(1)
+         await ctx.message.edit(content = "')")
+         await asyncio.sleep(1)
+         await ctx.message.edit(content = ")")
+         await asyncio.sleep(1)
+         await ctx.message.edit(content = "*poofness*")
           
      @commands.command()
      async def bam(self, ctx):
-         c = await ctx.send(content = "( ͡° ͜ʖ ͡° )")
+         await ctx.edit(content = "( ͡° ͜ʖ ͡° )")
          await asyncio.sleep(1)
-         await c.edit(content = "╰( ͡° ͜ʖ ͡° )つ")
+         await ctx.edit(content = "╰( ͡° ͜ʖ ͡° )つ")
          await asyncio.sleep(1)
-         await c.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆")
+         await ctx.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆")
          await asyncio.sleep(1)
-         await c.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ💥")
+         await ctx.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ💥")
      
      @commands.command()
      async def cathi(self, ctx):
