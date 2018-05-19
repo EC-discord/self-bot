@@ -23,13 +23,13 @@ class Anim:
           
      @commands.command()
      async def bam(self, ctx):
-         await ctx.edit(content = "( ͡° ͜ʖ ͡° )")
+         await ctx.message.edit(content = "( ͡° ͜ʖ ͡° )")
          await asyncio.sleep(1)
-         await ctx.edit(content = "╰( ͡° ͜ʖ ͡° )つ")
+         await ctx.message.edit(content = "╰( ͡° ͜ʖ ͡° )つ")
          await asyncio.sleep(1)
-         await ctx.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆")
+         await ctx.message.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆")
          await asyncio.sleep(1)
-         await ctx.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ💥")
+         await ctx.message.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ💥")
      
      @commands.command()
      async def cathi(self, ctx):
@@ -202,13 +202,13 @@ class Anim:
              await ctx.message.edit(content=f"`{wheel}`")
              await asyncio.sleep(1)
      
-     #@commands.command()
-     #async def ghostie(self, ctx):
-         #await ctx.message.edit(content="""(〜' - ')〜
-#〜(' - '〜)""")
-         #await asyncio.sleep(0.8)
-         #await ctx.message.edit(content="""(〜' - ')〜
-#〜(' - '〜)
-     
+     @commands.command()
+     async def ghostie(self, ctx):
+         for i in range(7):                           
+         await ctx.message.edit(content="""(〜' - ')〜""")
+         await asyncio.sleep(1)
+         await ctx.message.edit(content="""〜(' - '〜)""")
+         await asyncio.sleep(1)
+                                    
 def setup(bot):
    bot.add_cog(Anim(bot))
