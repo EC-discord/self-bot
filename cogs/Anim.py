@@ -205,10 +205,10 @@ class Anim:
      @commands.command()
      async def ghostie(self, ctx):
          for i in range(7):                           
-         await ctx.message.edit(content="""(〜' - ')〜""")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="""〜(' - '〜)""")
-         await asyncio.sleep(1)
+             await ctx.message.edit(content="""(〜' - ')〜""")
+             await asyncio.sleep(1)
+             await ctx.message.edit(content="""〜(' - '〜)""")
+             await asyncio.sleep(1)
                                     
 def setup(bot):
    bot.add_cog(Anim(bot))
