@@ -35,9 +35,7 @@ from discord.ext import commands
 from ext.utility import parse_equation
 from ext.colours import ColorNames
 from random import randint, choice
-import imageio
 
-imageio.plugins.ffmpeg.download()
 
 class Noble:
     def __init__(self, bot):
