@@ -103,6 +103,14 @@ class EC:
 　　 　/　　ﾉ
 　　　しーU""")                               
      
+     @commands.command()
+     async def life(self, ctx):
+          """get a life"""
+          await ctx.message.edit(content = """ຸ               ∧ ＿ ∧
+　        ( ・ω・) 
+┏━Ｕ━━━Ｕ━┓
+┃　  Get A Life      ┃
+┗━━━━━━━┛""")
                                 
      
      
