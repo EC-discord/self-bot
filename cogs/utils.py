@@ -105,6 +105,9 @@ class Utility:
                 for page in em_list:
                     await ctx.send(page)
       
+    @commands.command()
+    async def nick(self, ctx, user : discord.Member, nickname : str = None):
+        await user.edit(nick = nickname)
     
     @commands.command()
     async def cpres(self, ctx, Type:str=None, *, message:str = None):
@@ -724,10 +727,10 @@ class Utility:
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, *, member : discord.Member = None):
+    async def picsu(self, ctx, *, user : discord.Member = None):
         """gets the profile pic of the user"""
         await ctx.message.delete()
-        mem = member or ctx.author
+        mem = user or ctx.author
         avatar = mem.avatar_url_as(static_format='png', size=512)
         await ctx.send(avatar)
 
