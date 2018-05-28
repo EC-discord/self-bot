@@ -106,7 +106,7 @@ class Utility:
                     await ctx.send(page)
       
     @commands.command()
-    async def nick(self, ctx, user : discord.Member, nickname : str = None):
+    async def nick(self, ctx, user : discord.Member, *, nickname : str = None):
         await user.edit(nick = nickname)
     
     @commands.command()
