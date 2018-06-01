@@ -184,11 +184,11 @@ class skid:
         await ctx.send(embed = em)
             
      @commands.command()
-     async def haxu(self, ctx):
-         async for message in ctx.channel.history(limit = 10):
+     async def haxu(self, ctx, limit : int = 10):
+         async for message in ctx.channel.history(limit = limit):
              if message.author == self.bot.user:
                 await message.edit(content = "ㅤ ")
-                await asyncio.sleep(0.8)
+                await asyncio.sleep(1)
                 await message.delete()
      
 def setup(bot):
