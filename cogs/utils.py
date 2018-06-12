@@ -34,7 +34,11 @@ class Utility:
         self._rtfm_cache = None
         self._last_google = None
         self._last_result = None
-
+        
+    @commands.command()
+    async def emojiurl(self, ctx, emoji: discord.Emoji):
+        id = emoji.id
+        await ctx.send(f"https://cdn.discordapp.com/emojis/{id}.png?v=1")
 
     @commands.command(name='logout')
     async def _logout(self, ctx):
@@ -111,7 +115,8 @@ class Utility:
     
     @commands.command()
     async def cpres(self, ctx, Type:str=None, *, message:str = None):
-        '''discord playing status, type and presence'''
+        '''Sets a custom presence, the Type argument can be "playing", "streaming", "listeningto" or "watching"
+        Example : (prefix)cpres watching a movie'''
         em = discord.Embed(color=0x6ed457, title="Presence")
         if Type == "playing":
             await self.bot.change_presence(status=discord.Status.online, activity=discord.Game(name=message), afk = False)
