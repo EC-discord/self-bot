@@ -3,7 +3,6 @@ from discord.ext import commands
 import datetime
 import asyncio
 import random
-import pip
 import os
 import io
 
