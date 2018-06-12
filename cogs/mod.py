@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from urllib.parse import urlparse
 import datetime
 import asyncio
 import random
