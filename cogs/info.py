@@ -1,12 +1,10 @@
 import discord
 from discord.ext import commands
-from urllib.parse import urlparse
 from ext import embedtobox
 import datetime
 import asyncio
 import psutil
 import random
-import pip
 import os
 import io
 
