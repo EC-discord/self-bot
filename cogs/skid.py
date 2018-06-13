@@ -157,9 +157,9 @@ class skid:
      async def rc(self, ctx):
         '''Generates a random color'''
         file = io.BytesIO()
+        color = 0x36393E
         Image.new('RGB', (200, 90), color.to_rgb()).save(file, format='PNG')
         file.seek(0)
-        color = 0x36393E
         em = discord.Embed(color=color, title=f'Showing Color: {str(color)}')
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
