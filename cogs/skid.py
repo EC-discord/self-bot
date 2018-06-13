@@ -159,7 +159,8 @@ class skid:
         file = io.BytesIO()
         Image.new('RGB', (200, 90), color.to_rgb()).save(file, format='PNG')
         file.seek(0)
-        em = discord.Embed(color=0x36393E, title=f'Showing Color: {str(color)}')
+        color = 0x36393E
+        em = discord.Embed(color=color, title=f'Showing Color: {str(color)}')
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
           
