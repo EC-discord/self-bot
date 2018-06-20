@@ -148,7 +148,7 @@ class skid:
          await ctx.send(file = discord.File('4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif'))
 
      def getColor(self, colorHex):
-        return discord.Colour(int(f'0x{colorHex}', 16))
+        return discord.Colour(int(f'0x{colorHex[0:]}', 16))
 
      def randomcolor(self):
        values = [int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1)]
