@@ -149,7 +149,7 @@ class skid:
 
      def getColor(self, colorHex):
         colorHex = str(colorHex)
-        return discord.Colour(int(f'0x{colorHex[0:]}', 16))
+        return discord.Colour(int(f'0x{colorHex[1:]}', 16))
 
      def randomcolor(self):
        values = [int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1)]
