@@ -119,19 +119,22 @@ class Utility:
         '''Sets a custom presence, the Type argument can be "playing", "streaming", "listeningto" or "watching"
         Example : (prefix)cpres watching a movie'''
         em = discord.Embed(color=0x6ed457, title="Presence")
-        if Type == "playing":
-            await self.bot.change_presence(status=discord.Status.online, activity=discord.Game(name=message), afk = False)
-            em.description = "Presence : Playing %s" % message
-        elif Type == "streaming":
-            await self.bot.change_presence(status=discord.Status.online, activity=discord.Streaming(name=f"{message}", url=f'www.twitch.tv/{message}'), afk = False)
-            em.description = "Presence : Streaming %s" % message
-        elif Type == "listeningto":
-            await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening, name=f"{message}"), afk = False)
-            em.description = "Presence : Listening to %s" % message
-        elif Type == "watching":
-            await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{message}"), afk = False)
-            em.description = "Presence : Watching %s" % message
-        await ctx.send(embed = em)
+        if message is None:
+            await self.bot.change_presence(status=discord.Status.online, activity= None, afk = True)
+        else:
+            if Type == "playing":
+                await self.bot.change_presence(status=discord.Status.online, activity=discord.Game(name=message), afk = True)
+                em.description = "Presence : Playing %s" % message
+            elif Type == "streaming":
+                await self.bot.change_presence(status=discord.Status.online, activity=discord.Streaming(name=f"{message}", url=f'www.twitch.tv/{message}'), afk = Truee)
+                em.description = "Presence : Streaming %s" % message
+            elif Type == "listeningto":
+                await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening, name=f"{message}"), afk = True)
+                em.description = "Presence : Listening to %s" % message
+            elif Type == "watching":
+                await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{message}"), afk = True)
+                em.description = "Presence : Watching %s" % message
+            await ctx.send(embed = em)
                                        
     @commands.command()
     async def richembed(self, ctx, *, params):
