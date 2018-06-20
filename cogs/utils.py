@@ -126,7 +126,7 @@ class Utility:
             await self.bot.change_presence(status=discord.Status.online, activity=discord.Streaming(name=f"{message}", url=f'www.twitch.tv/{message}'), afk = False)
             em.description = "Presence : Streaming %s" % message
         elif Type == "listeningto":
-            await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening, name=f"{message}"), afk = Flase)
+            await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.listening, name=f"{message}"), afk = False)
             em.description = "Presence : Listening to %s" % message
         elif Type == "watching":
             await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{message}"), afk = False)
