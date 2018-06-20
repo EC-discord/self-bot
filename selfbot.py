@@ -112,8 +112,7 @@ class Selfbot(commands.Bot):
             self.uptime = datetime.datetime.utcnow()
         print(textwrap.dedent('Logged in!'))
         server = str(+len(self.guilds))
-        await self.change_presence(activity = discord.Game(name="Vainglory"))
-        await self.change_presence(status=discord.Status.online, afk=False)
+        await self.change_presence(status=discord.Status.online, activity = discord.Game(name="nothing"), afk = False)
 
     async def on_command(self, ctx):
         cmd = ctx.command.qualified_name.replace(' ', '_')
