@@ -22,6 +22,7 @@ import random
 from mtranslate import translate
 from io import BytesIO
 import string
+import colorsys
 
 class skid: 
      def __init__(self, bot):
@@ -150,7 +151,8 @@ class skid:
         return discord.Colour(int(f'0x{colorHex}', 16))
 
      def randomcolor(self):
-       color = ''.join([random.choice(string.hexdigits) for _ in range(6)])
+       values = [int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1)]
+       color = discord.Color.from_rgb(*values)
        return self.getColor(color)  
 
      @commands.command()
@@ -160,7 +162,7 @@ class skid:
         color = self.randomcolor()
         Image.new('RGB', (200, 90), color.to_rgb()).save(file, format='PNG')
         file.seek(0)
-        em = discord.Embed(color=0x36393E, title=f'Showing Color: {str(color)}')
+        em = discord.Embed(color=color , title=f'Showing Color: {str(color)}')
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
           
