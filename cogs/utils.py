@@ -34,6 +34,14 @@ class Utility:
         self._rtfm_cache = None
         self._last_google = None
         self._last_result = None
+    
+    @commands.command()
+    async def source(self, ctx, *, text: str):
+        """Shows source code of a command."""
+        nl2 = '`'
+        nl = f"``{nl2}"
+        source_thing = inspect.getsource(self.bot.get_command(text).callback)
+        await ctx.send(f"{nl}py\n{source_thing}{nl}")
         
     @commands.command()
     async def emojiurl(self, ctx, emoji: discord.Emoji):
