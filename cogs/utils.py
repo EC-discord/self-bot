@@ -48,7 +48,7 @@ class Utility:
             if num_of_emoji_urls == num_of_emoji_urls_to_get:
                 break
             emoji = emoji_re.search(message.content)
-            if emoji.group() is not None:
+            if str(type(emoji.group())) is not "<class 'NoneType'>":
                 num_of_emoji_urls += 1
                 id = id_re.search(emoji.group())
                 list_of_ids.append(id.group())
