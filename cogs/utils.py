@@ -40,15 +40,15 @@ class Utility:
         """gets emoji urls from messages containing emojis"""
         lift_of_ids = []
         num_of_emoji_urls = 0
-        emoji_re = re.compile(r"<(a):.+:\d{8}>")
-        id_re = re.compile(r"\d{8}")
+        emoji_re = re.compile(r"<(a)?:.+:\d{18}>")
+        id_re = re.compile(r"\d{18}")
         channel = channel_id or ctx.channel.id
         channel = self.bot.get_channel(channel)
         async for message in channel.history(limit = 5000):
             if num_of_emoji_urls == num_of_emoji_urls_to_get:
                 break
             emoji = emoji_re.search(message.content)
-            if str(type(emoji)) is not "<class 'NoneType'>":
+            if emoji is not None:
                 num_of_emoji_urls += 1
                 id = id_re.search(emoji.group())
                 list_of_ids.append(id.group())
