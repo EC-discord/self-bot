@@ -43,7 +43,7 @@ class Utility:
         emoji_re = re.compile(r"<(a):.+:\d{8}>")
         id_re = re.compile(r"\d{8}")
         channel = channel or ctx.channel.id
-        channel self.bot.get_channel(channel)
+        channel = self.bot.get_channel(channel)
         async for message in ctx.channel.history(limit = 5000):
             if num_of_emoji_urls == num_of_emoji_urls_to_get:
                 break
