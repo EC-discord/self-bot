@@ -50,8 +50,8 @@ class Utility:
                 num_of_emoji_urls += 1
                 id_re.search(emoji_re.group)
                 list_of_ids.append(id_re.group())
-        for id in list_of_ids:
-            await ctx.send(f"https://cdn.discordapp.com/emojis/{id}.png?v=1")
+        for emoji_id in list_of_ids:
+            await ctx.send(f"https://cdn.discordapp.com/emojis/{emoji_id}.png?v=1")
                 
     
     @commands.command()
