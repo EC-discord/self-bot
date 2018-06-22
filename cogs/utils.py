@@ -34,6 +34,25 @@ class Utility:
         self._rtfm_cache = None
         self._last_google = None
         self._last_result = None
+        
+    @commands.command()
+    async def getemojiurl(self, ctx, num_of_emoji_urls_to_get : int = 1, channel : int = ctx.channel.id):
+        """gets emoji urls from messages containing emojis"""
+        lift_of_ids = []
+        num_of_emoji_urls = 0
+        emoji_re = re.compile(r"<(a):.+:\d{8}>")
+        id_re = re.compile(r"\d{8}")
+        async for message in ctx.channel.history(limit = 5000):
+            if num_of_emoji_urls == num_of_emoji_urls_to_get:
+                break
+            emoji_re.search(message.content)
+            if emoji_re.group() is not None:
+                num_of_emoji_urls += 1
+                id_re.search(emoji_re.group)
+                list_of_ids.append(id_re.group())
+        for id in list_of_ids:
+            await ctx.send(f"https://cdn.discordapp.com/emojis/{id}.png?v=1")
+                
     
     @commands.command()
     async def source(self, ctx, *, text: str):
