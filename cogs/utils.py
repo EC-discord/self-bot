@@ -50,7 +50,7 @@ class Utility:
             emoji_re.search(message.content)
             if emoji_re.group() is not None:
                 num_of_emoji_urls += 1
-                id_re.search(emoji_re.group)
+                id_re.search(emoji_re.group())
                 list_of_ids.append(id_re.group())
         for emoji_id in list_of_ids:
             await ctx.send(f"https://cdn.discordapp.com/emojis/{emoji_id}.png?v=1")
