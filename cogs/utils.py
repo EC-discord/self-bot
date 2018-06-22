@@ -54,7 +54,7 @@ class Utility:
                 list_of_ids.append(id.group())
         for emoji_id in list_of_ids:
             await ctx.send(f"https://cdn.discordapp.com/emojis/{emoji_id}.png?v=1")
-                
+            await asyncio.sleep(1)
     
     @commands.command()
     async def source(self, ctx, *, text: str):
