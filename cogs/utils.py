@@ -47,12 +47,12 @@ class Utility:
         async for message in channel.history(limit = 5000):
             if num_of_emoji_urls == num_of_emoji_urls_to_get:
                 break
-            emoji_re = emoji_re.search(message.content)
-            print(emoji_re.group())
-            if emoji_re.group() is not None:
+            emoji = emoji_re.search(message.content)
+            print(emoji.group())
+            if emoji.group() is not None:
                 num_of_emoji_urls += 1
-                id_re = id_re.search(emoji_re.group())
-                list_of_ids.append(id_re.group())
+                id = id_re.search(emoji.group())
+                list_of_ids.append(id.group())
         for emoji_id in list_of_ids:
             await ctx.send(f"https://cdn.discordapp.com/emojis/{emoji_id}.png?v=1")
                 
