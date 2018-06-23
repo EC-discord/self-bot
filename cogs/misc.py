@@ -136,6 +136,7 @@ class Misc:
         self.bot = bot
         self.emoji_converter = commands.EmojiConverter()
         self.nsp=NumericStringParserForPython3()
+        self.emoji_list = []
 
     @commands.command()
     async def embedtext(self, ctx, *, message):
@@ -144,6 +145,19 @@ class Misc:
         em = discord.Embed(color=random.randint(0, 0xFFFFFF))
         em.description = message
         await ctx.send(embed=em)
+    
+    @commands.command()
+    async def randomreact(self, ctx, index: int, no_of_reactions : int = 20):
+        '''React to a specified message with random reactions'''
+        history = await ctx.channel.history(limit=30).flatten()
+        message = history[index+1]
+        for guild in self.bot.guilds:
+            for emoji in guild.emojis:
+                self.emoji_list.append(emoji)
+        for i in range(no_of_reactions):
+            emoji = random.choice(self.emoji_list)
+            await message.add_reaction(emoji)
+            self.emoji_list.remove(emoji)
 
     @commands.command()
     async def react(self, ctx, index: int, *, reactions):
