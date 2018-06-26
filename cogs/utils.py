@@ -55,14 +55,6 @@ class Utility:
         for emoji_id in list_of_ids:
             await ctx.send(f"https://cdn.discordapp.com/emojis/{emoji_id}.png?v=1")
             await asyncio.sleep(1)
-    
-    @commands.command()
-    async def source(self, ctx, *, text: str):
-        """Shows source code of a command."""
-        nl2 = '`'
-        nl = f"``{nl2}"
-        source_thing = inspect.getsource(self.bot.get_command(text).callback)
-        await ctx.send(f"{nl}py\n{source_thing}{nl}")
         
     @commands.command()
     async def emojiurl(self, ctx, emoji: discord.Emoji):
