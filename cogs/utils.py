@@ -166,7 +166,7 @@ class Utility:
             if ctx.author.guild_permissions.embed_links:
                 await ctx.send(embed = em)
             else:
-                await ctx.send(f"Presence : {types[Type]} {message}"
+                await ctx.send(f"Presence : {types[Type]} {message}")
                                        
     @commands.command()
     async def richembed(self, ctx, *, params):
