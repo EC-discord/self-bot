@@ -37,7 +37,7 @@ class skid:
      async def welcome(self, ctx, user : discord.Member):
          await ctx.message.delete()
          await ctx.send(f"""{user.mention} welcome to Sacred Champions. 
-Please read #guild_introduction to learn more about our guild and if you have any questions, feel free to ask.""")
+Please read <#364789432030593035> to learn more about our guild and if you have any questions, feel free to ask.""")
           
      @commands.command(aliases=['bn'])
      async def binary(self, ctx, number:int = None):
