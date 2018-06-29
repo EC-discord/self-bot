@@ -34,7 +34,6 @@ class skid:
           self._last_google = None
           self.loop = True
     
-     @commands.command()
      @commands.group()
      async def ultrahax(self, ctx):
          while self.loop:
