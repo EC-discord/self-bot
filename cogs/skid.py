@@ -32,6 +32,21 @@ class skid:
           self._last_embed = None
           self._rtfm_cache = None
           self._last_google = None
+    
+     @commands.group()
+     async def ultrahax(self, ctx):
+         while True:
+            channel = bot.get_channel(385439832362582027)
+            async for message in channel.history(limit = 1):
+                try:
+                    if message.content == int(message.content):
+                        await channel.send(f"{message.content} + 1")
+                except:
+                    await channel.send("lel")
+            await asyncio.sleep(5)
+     @ultrahax.command()
+     async def subhax(self, ctx):
+         break
       
      @commands.command(hidden = True, aliases = ["wel", "wl"])
      async def welcome(self, ctx, user : discord.Member):
