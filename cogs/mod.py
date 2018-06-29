@@ -51,7 +51,7 @@ class Mod:
 
         await ctx.send(embed=emb)
 
-    @commands.command()
+    @commands.command(aliases = ["banana"])
     async def ban(self, ctx, member : discord.Member, *, reason='Please write a reason!'):
         '''Ban someone'''
         try:
