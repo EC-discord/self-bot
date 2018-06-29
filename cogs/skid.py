@@ -34,7 +34,7 @@ class skid:
           self._last_google = None
           self.loop = True
     
-     @commands.group()
+     @commands.command()
      async def ultrahax(self, ctx):
          while self.loop:
             channel = self.bot.get_channel(385439832362582027)
@@ -45,9 +45,9 @@ class skid:
                 except:
                     await channel.send("lel")
             await asyncio.sleep(5)
-     @ultrahax.command()
-     async def subhax(self, ctx):
-         self.loop = False
+     #@ultrahax.command()
+     #async def subhax(self, ctx):
+         #self.loop = False
       
      @commands.command(hidden = True, aliases = ["wel", "wl"])
      async def welcome(self, ctx, user : discord.Member):
