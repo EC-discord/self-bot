@@ -32,12 +32,12 @@ class skid:
           self._last_embed = None
           self._rtfm_cache = None
           self._last_google = None
-          self.loop = True
           self.count = 0
+          self.loop = True
     
      @commands.group()
      async def ultrahax(self, ctx):
-         while True:
+         while self.loop:
             channel = self.bot.get_channel(461849031749140480)
             async for message in channel.history(limit = 1):
                 try:
