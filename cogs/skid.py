@@ -41,9 +41,9 @@ class skid:
             channel = self.bot.get_channel(461849031749140480)
             async for message in channel.history(limit = 1):
                 try:
-                    int(message.content)
-                    await channel.send(f"{message.content + 1}")
-                    self.count = message.content + 1
+                     num = int(message.content)
+                    await channel.send(num + 1)
+                    self.count = num + 1
                 except:
                     await channel.send(self.count + 1)
             await asyncio.sleep(5)
