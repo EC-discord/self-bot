@@ -41,14 +41,14 @@ class skid:
             channel = self.bot.get_channel(461849031749140480)
             async for message in channel.history(limit = 1):
                 try:
-                     num = int(message.content)
+                    num = int(message.content)
                     await channel.send(num + 1)
                     self.count = num + 1
                 except:
                     await channel.send(self.count + 1)
             await asyncio.sleep(5)
      @ultrahax.command()
-     async def subhax(self, ctx):
+     async def subhax(self):
          self.loop = False
       
      @commands.command(hidden = True, aliases = ["wel", "wl"])
