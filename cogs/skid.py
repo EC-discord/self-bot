@@ -42,7 +42,7 @@ class skid:
             async for message in channel.history(limit = 1):
                 try:
                     int(message.content)
-                    await channel.send(f"{message.content} + 1")
+                    await channel.send(f"{message.content + 1}")
                     self.count = message.content + 1
                 except:
                     await channel.send(self.count + 1)
