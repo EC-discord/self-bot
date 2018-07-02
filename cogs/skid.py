@@ -33,11 +33,11 @@ class skid:
           self._rtfm_cache = None
           self._last_google = None
           self.count = 0
-          self.loop = True
     
      @commands.group()
      async def ultrahax(self, ctx):
-         while self.loop:
+         bot.loop = True
+         while bot.loop:
             channel = self.bot.get_channel(461849031749140480)
             async for message in channel.history(limit = 1):
                 try:
@@ -45,11 +45,12 @@ class skid:
                     await channel.send(num + 1)
                     self.count = num + 1
                 except:
-                    await channel.send(self.count + 1)
-            await asyncio.sleep(5)
+                    self.count = self.count + 1
+                    await channel.send(self.count)
+            await asyncio.sleep(60)
      @ultrahax.command()
      async def subhax(self):
-         self.loop = False
+         bot.loop = False
       
      @commands.command(hidden = True, aliases = ["wel", "wl"])
      async def welcome(self, ctx, user : discord.Member):
