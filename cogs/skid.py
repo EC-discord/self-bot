@@ -37,7 +37,7 @@ class skid:
      @commands.command()
      async def ultrahax(self, ctx):
          while True:
-            channel = self.bot.get_channel(385439832362582027)
+            channel = self.bot.get_channel(461849031749140480)
             async for message in channel.history(limit = 1):
                 try:
                     int(message.content)
@@ -45,9 +45,9 @@ class skid:
                 except:
                     await channel.send("lel")
             await asyncio.sleep(5)
-     #@ultrahax.command()
-     #async def subhax(self, ctx):
-         #self.loop = False
+     @ultrahax.command()
+     async def subhax(self, ctx):
+         self.loop = False
       
      @commands.command(hidden = True, aliases = ["wel", "wl"])
      async def welcome(self, ctx, user : discord.Member):
