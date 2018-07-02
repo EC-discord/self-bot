@@ -33,8 +33,9 @@ class skid:
           self._rtfm_cache = None
           self._last_google = None
           self.loop = True
+          self.count = 0
     
-     @commands.command()
+     @commands.group()
      async def ultrahax(self, ctx):
          while True:
             channel = self.bot.get_channel(461849031749140480)
@@ -42,8 +43,9 @@ class skid:
                 try:
                     int(message.content)
                     await channel.send(f"{message.content} + 1")
+                    self.count = message.content + 1
                 except:
-                    await channel.send("lel")
+                    await channel.send(self.count + 1)
             await asyncio.sleep(5)
      @ultrahax.command()
      async def subhax(self, ctx):
