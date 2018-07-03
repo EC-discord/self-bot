@@ -37,9 +37,7 @@ class skid:
     
      @commands.group()
      async def ultrahax(self, ctx):
-         while True:
-            if self.loop == False:
-                break
+         while self.loop is True:
             channel = self.bot.get_channel(461849031749140480)
             async for message in channel.history(limit = 1):
                 try:
