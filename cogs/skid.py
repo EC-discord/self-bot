@@ -51,7 +51,7 @@ class skid:
                     await channel.send(self.count)
             await asyncio.sleep(60)
      @ultrahax.command()
-     async def subhax(self):
+     async def subhax(self, ctx):
          self.loop = False
       
      @commands.command(hidden = True, aliases = ["wel", "wl"])
