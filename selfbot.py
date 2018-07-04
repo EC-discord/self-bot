@@ -132,8 +132,8 @@ class Selfbot(commands.Bot):
         self.last_message = time.time()
         await self.process_commands(message)
 
-    def get_server(self, id):
-        return discord.utils.get(self.guilds, id=id)
+    #def get_server(self, id):
+        #return discord.utils.get(self.guilds, id=id)
 
 
 if __name__ == '__main__':
