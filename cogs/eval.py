@@ -1,7 +1,7 @@
 import datetime
 import discord
 from discord.ext import commands
-from .util import coliru
+from utils import coliru
 
 
 LANGUAGE_IMAGES = {
