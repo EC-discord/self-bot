@@ -46,7 +46,7 @@ class Eval:
         to_newline = code_block[3:code_block.find('\n')]
         return to_newline.replace(' ', '').replace('\n', '')
 
-    @commands.command(name='eval')
+    @commands.command(name='evaluate')
     async def eval_(self, ctx, *, code_block: str):
         """Evaluate the given Codeblock. The language must be specified."""
         lang = self.get_lang(code_block)
