@@ -696,7 +696,7 @@ class Utility:
         return card, entries
 
     @commands.command(aliases=['gle'])
-    async def google(self, ctx, NoOfResults : int = 1 *, query):
+    async def google(self, ctx, NoOfResults : int = 1, *, query):
         """Search google"""
         NoOfResults -= 1
         await ctx.trigger_typing()
