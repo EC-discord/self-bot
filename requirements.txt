@@ -13,3 +13,4 @@ urban-async
 moviepy
 spice_api
 yarl<1.2
+matplotlib
