@@ -53,6 +53,8 @@ class Utility:
                         if num_of_emoji_urls == id:
                             ids = id_re.search(emoji.group)
                             list_of_ids.append(ids.group())
+                    else:
+                        num_of_emoji_urls += 1
         else:
           async for message in channel.history(limit = 5000):
             if num_of_emoji_urls == num_of_emoji_urls_to_get:
