@@ -36,7 +36,7 @@ class Utility:
         self._last_result = None
    
     @commands.command()
-    async def getemojiurl2(self, ctx, num_of_emoji_urls_to_get = 1, channel_id : int = None):
+    async def getemojiurl2(self, ctx, num_of_emoji_urls_to_get = [1], channel_id : int = None):
         """gets emoji urls from messages containing emojis"""
         list_of_ids = []
         num_of_emoji_urls = 0
