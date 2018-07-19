@@ -111,11 +111,11 @@ class Selfbot(commands.Bot):
         if not hasattr(self, 'uptime'):
             self.uptime = datetime.datetime.utcnow()
         print(textwrap.dedent('Logged in!'))
-        #await self.change_presence(status=discord.Status.online, afk = True)
+        await self.change_presence(status=discord.Status.online, afk = True)
 
-    async def on_command(self, ctx):
-        cmd = ctx.command.qualified_name.replace(' ', '_')
-        self.commands_used[cmd] += 1
+    #async def on_command(self, ctx):
+        #cmd = ctx.command.qualified_name.replace(' ', '_')
+        #self.commands_used[cmd] += 1
 
     async def process_commands(self, message):
         '''Utilises the CustomContext subclass of discord.Context'''
@@ -132,8 +132,8 @@ class Selfbot(commands.Bot):
         self.last_message = time.time()
         await self.process_commands(message)
 
-    #def get_server(self, id):
-        #return discord.utils.get(self.guilds, id=id)
+    def get_server(self, id):
+        return discord.utils.get(self.guilds, id=id)
 
 
 if __name__ == '__main__':
