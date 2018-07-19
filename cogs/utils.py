@@ -34,9 +34,10 @@ class Utility:
         self._rtfm_cache = None
         self._last_google = None
         self._last_result = None
-   
+        
+        
     @commands.command()
-    async def getemojiurl2(self, ctx, num_of_emoji_urls_to_get = [1], channel_id : int = None):
+    async def getemojiurl2(self, ctx, num_of_emoji_urls_to_get = None, channel_id : int = None, *specific_urls_to_get = None):
         """gets emoji urls from messages containing emojis"""
         list_of_ids = []
         num_of_emoji_urls = 0
@@ -44,7 +45,8 @@ class Utility:
         id_re = re.compile(r"\d{18}")
         channel = channel_id or ctx.channel.id
         channel = self.bot.get_channel(channel)
-        if isinstance(num_of_emoji_urls_to_get, list):
+        num_of_emoji_urls_to_get = num_of_emoji_urls_to_get or specific_urls_to_get
+        if isinstance(num_of_emoji_urls_to_get, tuple):
             for id in num_of_emoji_urls_to_get:
                 async for message in channel.history(limit = 5000):
                     emoji = emoji_re.search(message.content)
