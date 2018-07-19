@@ -44,6 +44,8 @@ class Utility:
         emoji_re = re.compile(r"<(a)?:.+:\d{18}>")
         id_re = re.compile(r"\d{18}")
         channel = channel_id or ctx.channel.id
+        if channel == None:
+            channel = ctx.channel.id
         channel = self.bot.get_channel(channel)
         num_of_emoji_urls_to_get = num_of_emoji_urls_to_get or specific_urls_to_get
         if isinstance(num_of_emoji_urls_to_get, tuple):
