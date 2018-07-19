@@ -77,9 +77,12 @@ class Utility:
         
     @commands.command()
     async def emojiurl(self, ctx, emoji: discord.Emoji):
-        await ctx.send(emoji)
-        id = emoji.id
-        await ctx.send(f"https://cdn.discordapp.com/emojis/{id}.png?v=1")
+        id_re = re.compile(r"\d{18}")
+        id = id_re.search(emoji)
+        if id == None:
+            await ctx.send("No emoji found")
+        else:
+            await ctx.send(f"https://cdn.discordapp.com/emojis/{id}.png?v=1")
 
     @commands.command(name='logout')
     async def _logout(self, ctx):
