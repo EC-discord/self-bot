@@ -34,6 +34,7 @@ class Utility:
         self._rtfm_cache = None
         self._last_google = None
         self._last_result = None
+        self.channel = None
         
         
     @commands.command()
@@ -43,10 +44,10 @@ class Utility:
         num_of_emoji_urls = 0
         emoji_re = re.compile(r"<(a)?:.+:\d{18}>")
         id_re = re.compile(r"\d{18}")
-        channel = channel_id or ctx.channel.id
-        if channel == None:
-            channel = ctx.channel.id
-        channel = self.bot.get_channel(channel)
+        self.channel = channel_id or ctx.channel.id
+        if self.channel == None:
+            self.channel = ctx.channel.id
+        channel = self.bot.get_channel(self.channel)
         num_of_emoji_urls_to_get = num_of_emoji_urls_to_get or specific_urls_to_get
         if isinstance(num_of_emoji_urls_to_get, tuple):
             for id in num_of_emoji_urls_to_get:
