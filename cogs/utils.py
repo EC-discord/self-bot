@@ -51,7 +51,7 @@ class Utility:
         num_of_emoji_urls_to_get = num_of_emoji_urls_to_get or specific_urls_to_get
         if isinstance(num_of_emoji_urls_to_get, tuple):
             for id in num_of_emoji_urls_to_get:
-                async for message in channel.history(limit = 1000):
+                async for message in channel.history(limit = 300):
                     emoji = emoji_re.search(message.content)
                     if emoji is not None:
                         num_of_emoji_urls += 1
@@ -61,7 +61,7 @@ class Utility:
                     else:
                         num_of_emoji_urls += 1
         else:
-          async for message in channel.history(limit = 1000):
+          async for message in channel.history(limit = 300):
             if num_of_emoji_urls == num_of_emoji_urls_to_get:
                 break
             emoji = emoji_re.search(message.content)
