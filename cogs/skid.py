@@ -4,7 +4,6 @@ from discord.ext.commands import TextChannelConverter
 from contextlib import redirect_stdout
 from ext.utility import load_json
 from urllib.parse import quote as uriquote
-from ext import fuzzy
 from ext import embedtobox
 from PIL import Image
 import traceback
@@ -158,7 +157,7 @@ Please read {channel.mention} to learn more about our guild and if you have any 
 
      @commands.command()
      async def translate(self, ctx, language, *, phrase):
-         translated = await ctx.bot.loop.run_in_executor(None, translate, language, phrase)
+         translated = translate(phrase, language)
          await ctx.send(translated)
 
      
@@ -218,6 +217,11 @@ Please read {channel.mention} to learn more about our guild and if you have any 
                 await message.edit(content = "ㅤ ")
                 await asyncio.sleep(1)
                 await message.delete()
+           
+     @commands.command()
+     async def getrekt(self, ctx, role : discord.Role):
+          for member in role.members:
+              await member.kick()
      
 def setup(bot):
    bot.add_cog(skid(bot))     
