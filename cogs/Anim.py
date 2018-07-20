@@ -5,6 +5,18 @@ from discord.ext import commands
 class Anim: 
      def __init__(self, bot):
           self.bot = bot
+          
+     @commands.command()
+     async def flop(self, ctx):
+          await ctx.message.edit(content = "(   ° - °) (' - '   )")
+          await asyncio.sleep(1)
+          await ctx.message.edit(content = "(\\\° - °)\ (' - '   )")
+          await asyncio.sleep(1)
+          await ctx.message.edit(content = "(—°□°)— (' - '   )")
+          await asyncio.sleep(1)
+          await ctx.message.edit(content = "(╯°□°)╯(' - '   )")
+          await asyncio.sleep(1)
+          await ctx.message.edit(content = "(╯°□°)╯︵(\\\ .o.)\\")
 
      @commands.command()
      async def poof(self, ctx):
