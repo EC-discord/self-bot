@@ -5,7 +5,10 @@ from discord.ext import commands
 class EC: 
      def __init__(self, bot):
           self.bot = bot
-
+          
+     @commands.command(hidden = True)
+     async def shook(self, ctx):
+          await ctx.message.edit(content = "<:GWgweShook:396057209462587393> 👌")
 
      @commands.command()
      async def shrug(self, ctx):
