@@ -95,7 +95,6 @@ class Mod:
                 return amsg.author.id == user.id
             return True
         await ctx.channel.purge(limit=limit, check=msgcheck)
-	await ctx.message.delete()
 
     @commands.command()
     async def bans(self, ctx):
