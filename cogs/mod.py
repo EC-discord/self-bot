@@ -8,14 +8,14 @@ import io
 
 
 class Mod:
-
+    """useful commands for moderation ;o"""
     def __init__(self, bot):
         self.bot = bot
 
     async def format_mod_embed(self, ctx, user, success, method, duration = None, location=None):
         '''Helper func to format an embed to prevent extra code'''
         emb = discord.Embed()
-        emb.set_author(name=method.title(), icon_url=user.avatar_url)
+        emb.set_author(name=method.title(), icon_url=user.avatar_url_as(static_format="png"))
         emb.color = await ctx.get_dominant_color(user.avatar_url)
         emb.set_footer(text=f'User ID: {user.id}')
         if success:
@@ -81,15 +81,21 @@ class Mod:
 
         await ctx.send(embed=emb)
 
-    @commands.command(aliases=['del','p','prune'])
+    @commands.command(aliases=['prune'])
     async def purge(self, ctx, limit : int):
         '''Clean a number of messages'''
         await ctx.purge(limit=limit+1) # TODO: add more functionality
 
     @commands.command()
-    async def clean(self, ctx, limit : int=1000000):
-        '''Clean a number of your own messages'''
-        await ctx.purge(limit=limit+1, check=lambda m: m.author == ctx.author)
+    async def clean(self, ctx, limit : int=15, member : discord.Member = None):
+        '''Clean a number of your own or another users messages'''
+	await ctx.message.delete()
+	user = member or ctx.message.author
+        def msgcheck(amsg):
+            if user:
+                return amsg.author.id == target.id
+            return True
+        await ctx.channel.purge(limit=limit, check=msgcheck)
 
 
     @commands.command()
