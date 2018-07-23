@@ -90,7 +90,7 @@ class Mod:
     async def clean(self, ctx, limit : int=15, member : discord.Member = None):
         '''Clean a number of your own or another users messages'''
         await ctx.message.delete()
-	user = member or ctx.message.author
+        user = member or ctx.message.author
         def msgcheck(amsg):
             if user:
                 return amsg.author.id == target.id
