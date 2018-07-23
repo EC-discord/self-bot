@@ -93,7 +93,7 @@ class Mod:
         user = member or ctx.message.author
         def msgcheck(amsg):
             if user:
-                return amsg.author.id == target.id
+                return amsg.author.id == user.id
             return True
         await ctx.channel.purge(limit=limit, check=msgcheck)
 
