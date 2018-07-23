@@ -84,19 +84,18 @@ class Mod:
     @commands.command(aliases=['prune'])
     async def purge(self, ctx, limit : int):
         '''Clean a number of messages'''
-        await ctx.purge(limit=limit+1) # TODO: add more functionality
+        await ctx.purge(limit=limit+1)
 
     @commands.command()
     async def clean(self, ctx, limit : int=15, member : discord.Member = None):
         '''Clean a number of your own or another users messages'''
-        await ctx.message.delete()
         user = member or ctx.message.author
         def msgcheck(amsg):
             if user:
                 return amsg.author.id == user.id
             return True
         await ctx.channel.purge(limit=limit, check=msgcheck)
-
+	await ctx.message.delete()
 
     @commands.command()
     async def bans(self, ctx):
