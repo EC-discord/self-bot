@@ -2,7 +2,8 @@ import discord
 import asyncio
 from discord.ext import commands
 
-class Anim: 
+class Anim:
+     """Animated messages"""
      def __init__(self, bot):
           self.bot = bot
           
@@ -100,33 +101,25 @@ class Anim:
          await asyncio.sleep(1)
          await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into   `" + member.mention)
 
-     async def on_message(self, message):
-         for bombstr in ['*boom', '💣m']:
-             if message.content.find(bombstr) != -1:
-                 await self._boom(message, bombstr)
-                 break
-
-     async def _boom(self, message, toreplace):
-         boomIndex = message.content.find(toreplace)
-         msgBeforeBoom = message.content[:boomIndex]
-         msgAfterBoom = message.content[boomIndex + len(toreplace):]
-         for c in range(5, -1, -1):
-             await message.edit(content= msgBeforeBoom + "`THIS MESSAGE WILL SELF DESTRUCT IN %s`" % c + msgAfterBoom)
+     @commands.command()
+     async def boom(self, ctx):
+         for counter in range(5, -1, -1):
+             await ctx.message.edit(content = f"`THIS MESSAGE WILL SELF DESTRUCT IN {counter}`")
              await asyncio.sleep(1)
-         await message.edit(content=msgBeforeBoom + "💣" + msgAfterBoom)
+         await ctx.message.edit(content = "💣")
          await asyncio.sleep(1)
-         await message.edit(content=msgBeforeBoom + "💥" + msgAfterBoom)
+         await ctx.message.edit(content = "💥")
           
      
      @commands.command()
      async def table(self, ctx):
-         await ctx.message.edit(content="`(\°-°)\   ┬─┬`")
+         await ctx.message.edit(content="`(\°-°)\    ┬─┬`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content="`(\°□°)\   ┬─┬`")
+         await ctx.message.edit(content="`(\°□°)\    ┬─┬`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content="`(-°□°)-   ┬─┬`")
+         await ctx.message.edit(content="`(-°□°)-    ┬─┬`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content="`(╯°□°)╯   ┬─┬`")
+         await ctx.message.edit(content="`(╯°□°)╯    ┬─┬`")
          await asyncio.sleep(1)
          wheelList = [']', '┻━┻', '[',  '┬─┬']
          wheelIter = iter(wheelList)
