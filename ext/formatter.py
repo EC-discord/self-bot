@@ -193,7 +193,7 @@ class EmbedHelp(commands.HelpFormatter):
 
     def get_ending_note(self):
         command_name = self.context.invoked_with
-        return "A selfbot made by EC#3816 using a drived base"
+        return "A selfbot made by EC#3816 using a derived base"
 
     async def filter_command_list(self):
         """Returns a filtered list of commands based on the two attributes
