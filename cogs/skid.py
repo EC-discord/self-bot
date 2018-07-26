@@ -30,26 +30,14 @@ class skid:
           self._last_embed = None
           self._rtfm_cache = None
           self._last_google = None
-          self.count = 0
-          self.loop = True
     
      @commands.group()
-     async def ultrahax(self, ctx):
-         while self.loop is True:
-            channel = self.bot.get_channel(461849031749140480)
-            async for message in channel.history(limit = 1):
-                try:
-                    num = int(message.content)
-                    await channel.send(num + 1)
-                    self.count = num + 1
-                except:
-                    self.count = self.count + 1
-                    await channel.send(self.count)
-            await asyncio.sleep(60)
-     @ultrahax.command()
-     async def subhax(self, ctx):
-         self.loop = False
-      
+     async def spam(self, ctx, text : str, spam_frequency : int, *spam_delay : int):
+         spam_delay = list(spam_delay)
+         for i in range(spam_frequency):
+             await ctx.send(text)
+             await asyncio.sleep(random.choice([num for num in spam_delay]))
+                
      @commands.command(hidden = True, aliases = ["wel", "wl"])
      async def welcome(self, ctx, user : discord.Member):
          await ctx.message.delete()
