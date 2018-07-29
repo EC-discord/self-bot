@@ -7,17 +7,17 @@ class Anim:
      def __init__(self, bot):
           self.bot = bot
           
-     @command.command()
+     @commands.command()
      async def loading(self, ctx):
-        await ctx.message.edit(content = "```loading. ```")
-        await asyncio.sleep(1)
-        for num in range(1, 6, 1):
-            dots = "." * num
-            await ctx.message.edit(content = f"```loading.{dots}   {num}%```")
-            await asyncio.sleep(1)
-        await ctx.message.edit(content = "``` Error! :C```")
-        await asyncio.sleep(1)
-        await ctx.message.edit(content = "```Reloading......```")    
+         await ctx.message.edit(content = "```loading. ```")
+         await asyncio.sleep(1)
+         for num in range(1, 6, 1):
+             dots = "." * num
+             await ctx.message.edit(content = f"```loading.{dots}   {num}%```")
+             await asyncio.sleep(1)
+         await ctx.message.edit(content = "``` Error! :C```")
+         await asyncio.sleep(1)
+         await ctx.message.edit(content = "```Reloading......```")    
           
      @commands.command()
      async def flop(self, ctx):
