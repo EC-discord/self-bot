@@ -45,12 +45,12 @@ class Information:
         if days:
             fmt = '{d}d ' + fmt
         uptime = fmt.format(d=days, h=hours, m=minutes, s=seconds)
-        embed.add_field(name='Author', value='QoS (N)')
+        embed.add_field(name='Author', value='EC')
         embed.add_field(name='Uptime', value=uptime)
         embed.add_field(name='Guilds', value=len(self.bot.guilds))
         embed.add_field(name='Members', value=f'{total_unique} total\n{total_online} online')
         embed.add_field(name='Channels', value=f'{text} text\n{voice} voice\n{dm} direct')
-        embed.set_footer(text=f'DiscordSelfbot derived ,js')
+        embed.set_footer(text=f'DiscordSelfbot derived ,py')
         await ctx.send(embed=embed)
 
 
