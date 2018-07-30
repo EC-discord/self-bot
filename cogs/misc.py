@@ -245,7 +245,7 @@ class Misc:
         except LookupError:
             emb.title = "Search term not found."
             return await ctx.send(embed=emb)
-        emb.color = await ctx.get_dominant_color(url=ctx.message.author.avatar_url)
+        emb.color = await ctx.get_dominant_color(url=ctx.message.author.avatar_url_as(static_format = "png"))
         definition = term.definitions[definition_number]
         emb.title = f"{definition.word}  ({definition_number+1}/{len(term.definitions)})"
         emb.description = definition.definition
