@@ -97,7 +97,7 @@ class Noble:
         xoff, yoff = (10,5)
         img = Image.new('RGB', (500, 45),'black')
         d = ImageDraw.Draw(img)
-        d.text((9, 5), args, fill="green",font = font)
+        d.text((9, 5), args, fill="white",font = font)
         img.save('content.jpeg')
         await ctx.message.delete()
         await ctx.send(file=discord.File('content.jpeg'))
@@ -147,7 +147,6 @@ class Noble:
             result = api.caption_image(meme, "I forget to add", "Captions!")
         else:
             result = api.caption_image(meme, "{}".format(args1), "{}".format(args2))
-        #print("Meme available at URL: " + result['url'])
         em = discord.Embed()
         em.set_image(url = result['url'])
         try:
@@ -175,12 +174,6 @@ class Noble:
         new_im.save("disabled.jpg")
         await ctx.message.delete()
         await ctx.send(file=discord.File('disabled.jpg'))
-
-    @commands.command()
-    async def replycmd(self, ctx):
-        'Other commands from a different worker run'
-        ncommands = "New Commands: `noble!set [online/offline]`, `noble!status`"
-        await ctx.send(ncommands)
 
     @commands.command()
     async def kington(self, ctx,*,args):
