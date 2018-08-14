@@ -39,10 +39,10 @@ class Utility:
     async def edit(self, ctx, message_number, *, content):
         messageNo = 0
         async for message in ctx.channel.history(limit = 5000):
-            if message.author.id == ctx.author.id:
-                messageNo += 1
             if message_number == messageNo:
                 await message.edit(content = content)
+            if message.author == ctx.author:
+                messageNo += 1
             
         
     @commands.command()
