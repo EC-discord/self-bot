@@ -35,7 +35,16 @@ class Utility:
         self._last_google = None
         self._last_result = None
        
-      
+    @commands.command()
+    async def edit(self, ctx, message_number, *, content):
+        messageNo = 0
+        async for message in ctx.channel.history(limit = 5000):
+            if message.author.id == ctx.author.id:
+                messageNo += 1
+            if message_number == messageNo:
+                await message.edit(content = content)
+            
+        
     @commands.command()
     async def addemoji(self, ctx, emoji_name, emoji_link = ''):
         session = ClientSession()
