@@ -149,24 +149,27 @@ class Misc:
     @commands.command(aliases = ["rr"])
     async def randomreact(self, ctx, index: int, no_of_reactions : int = 20):
         '''React to a message with random custom emojis'''
-        history = await ctx.channel.history(limit=40).flatten()
+        history = await ctx.channel.history(limit=30).flatten()
         message = history[index+1]
         for guild in self.bot.guilds:
             for emoji in guild.emojis:
                 if emoji.name.startswith("GW"):
                     self.emoji_list.append(emoji)
+                    await asyncio.sleep(0.1)
         for i in range(no_of_reactions):
             emoji = random.choice(self.emoji_list)
             await message.add_reaction(emoji)
             self.emoji_list.remove(emoji)
+        await ctx.message.delete()
 
     @commands.command()
     async def react(self, ctx, index: int, *, reactions):
         '''React to a specified message with reactions'''
-        history = await ctx.channel.history(limit=40).flatten()
+        history = await ctx.channel.history(limit=30).flatten()
         message = history[index]
         async for emoji in self.validate_emojis(ctx, reactions):
             await message.add_reaction(emoji)
+        await ctx.message.delete()
 
     async def validate_emojis(self, ctx, reactions):
         '''
