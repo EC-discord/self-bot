@@ -156,10 +156,12 @@ class Misc:
             for emoji in guild.emojis:
                 if emoji.name.startswith("GW"):
                     self.emoji_list.append(emoji)
+                await asyncio.sleep(0.01)
         for i in range(no_of_reactions):
             emoji = random.choice(self.emoji_list)
             await message.add_reaction(emoji)
             self.emoji_list.remove(emoji)
+            await asyncio.sleep(0.1)
 
     @commands.command()
     async def react(self, ctx, index: int, *, reactions):
