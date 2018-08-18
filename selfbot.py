@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 from ext.context import CustomContext
 from ext.formatter import EmbedHelp
-from collections import defaultdict
 from ext import embedtobox
 import asyncio
 import aiohttp
@@ -34,7 +33,6 @@ class Selfbot(commands.Bot):
         self.session = aiohttp.ClientSession(loop=self.loop)
         self.process = psutil.Process()
         self._extensions = [x.replace('.py', '') for x in os.listdir('cogs') if x.endswith('.py')]
-        self.commands_used = defaultdict(int)
         self.remove_command('help')
         self.load_extensions()
         
@@ -110,10 +108,6 @@ class Selfbot(commands.Bot):
             self.uptime = datetime.datetime.utcnow()
         print(textwrap.dedent('Logged in!'))
         await self.change_presence(status=discord.Status.online, afk = True)
-
-    #async def on_command(self, ctx):
-        #cmd = ctx.command.qualified_name.replace(' ', '_')
-        #self.commands_used[cmd] += 1
 
     async def process_commands(self, message):
         '''Utilises the CustomContext subclass of discord.Context'''
