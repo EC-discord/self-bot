@@ -33,8 +33,8 @@ class skid:
           self.char_list = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}"
           self.alt_char_list = "{|}zʎxʍʌnʇsɹbdouɯlʞɾᴉɥƃɟǝpɔqɐ,‾^[\]Z⅄XMΛ∩┴SɹQԀONW˥ʞſIHפℲƎpƆq∀@¿<=>;:68ㄥ9ϛㄣƐᄅƖ0/˙-'+*(),⅋%$#¡"[::-1]
           for idx, char in enumerate(self.char_list):
-          self.text_flip[char] = self.alt_char_list[idx]
-          self.text_flip[self.alt_char_list[idx]] = char
+              self.text_flip[char] = self.alt_char_list[idx]
+              self.text_flip[self.alt_char_list[idx]] = char
      
      @commands.command()
      async def textflip(self, ctx, *, message):
