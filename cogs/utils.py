@@ -85,7 +85,7 @@ class Utility:
             await asyncio.sleep(1)
         
     @commands.command()
-    async def emojiurl(self, ctx, emoji: discord.Emoji):
+    async def emojiurl(self, ctx, emoji):
         id_re = re.compile(r"\d{18}")
         id = id_re.search(emoji)
         if id == None:
