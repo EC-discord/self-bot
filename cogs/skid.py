@@ -38,7 +38,7 @@ class skid:
      
      @commands.command()
      async def textflip(self, ctx, *, message):
-         results = " "
+         result = " "
          for char in message:
              if char in self.text_flip:
                  result += self.text_flip[char]
