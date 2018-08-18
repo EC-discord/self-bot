@@ -34,8 +34,6 @@ class Selfbot(commands.Bot):
         self.session = aiohttp.ClientSession(loop=self.loop)
         self.process = psutil.Process()
         self._extensions = [x.replace('.py', '') for x in os.listdir('cogs') if x.endswith('.py')]
-        self.last_message = None
-        self.messages_sent = 0
         self.commands_used = defaultdict(int)
         self.remove_command('help')
         self.load_extensions()
@@ -128,8 +126,6 @@ class Selfbot(commands.Bot):
         '''Responds only to yourself'''
         if message.author.id != self.user.id:
             return
-        self.messages_sent += 1
-        self.last_message = time.time()
         await self.process_commands(message)
 
     def get_server(self, id):
