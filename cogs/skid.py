@@ -12,8 +12,6 @@ import aiohttp
 import inspect
 import asyncio
 import time
-import re
-import io
 import os
 import random
 from mtranslate import translate
