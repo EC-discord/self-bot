@@ -29,6 +29,22 @@ class skid:
           self._last_embed = None
           self._rtfm_cache = None
           self._last_google = None
+          self.text_flip = {}
+          self.char_list = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}"
+          self.alt_char_list = "{|}zʎxʍʌnʇsɹbdouɯlʞɾᴉɥƃɟǝpɔqɐ,‾^[\]Z⅄XMΛ∩┴SɹQԀONW˥ʞſIHפℲƎpƆq∀@¿<=>;:68ㄥ9ϛㄣƐᄅƖ0/˙-'+*(),⅋%$#¡"[::-1]
+     for idx, char in enumerate(self.char_list):
+        self.text_flip[char] = self.alt_char_list[idx]
+        self.text_flip[self.alt_char_list[idx]] = char
+     
+     @commands.command()
+     async def textflip(self, ctx, *, message):
+         results = " "
+         for char in message:
+             if char in self.textflip:
+                 result += self.text_flip[char]
+             else:
+                 result += char
+         await ctx.message.edit(content=result[::-1])
     
      @commands.group()
      async def spam(self, ctx, text : str, spam_frequency : int, *spam_delay : int):
