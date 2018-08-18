@@ -82,9 +82,14 @@ class Mod:
         await ctx.send(embed=emb)
 
     @commands.command(aliases=['prune'])
-    async def purge(self, ctx, limit : int):
-        '''Clean a number of messages'''
-        await ctx.purge(limit=limit+1)
+    async def purge(self, ctx, limit : int, ignore_pins = None):
+        '''Clean a number of messages
+        set ignore_pins to p to ignore pinned messages
+        e.g (prefix)purge 30 p'''
+        if ignore_pins == "p":
+            await ctx.purge(limit = limit + 1, check = lambda m : m.pinned == False)
+        else:
+            await ctx.purge(limit=limit+1)
 
     @commands.command()
     async def clean(self, ctx, limit : int=15, member : discord.Member = None):
