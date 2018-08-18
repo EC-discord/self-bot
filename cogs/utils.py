@@ -91,7 +91,7 @@ class Utility:
         if id == None:
             await ctx.send("No emoji found")
         else:
-            await ctx.send(f"https://cdn.discordapp.com/emojis/{id}.png?v=1")
+            await ctx.send(f"https://cdn.discordapp.com/emojis/{id.group()}.png?v=1")
 
     @commands.command(name='logout')
     async def _logout(self, ctx):
