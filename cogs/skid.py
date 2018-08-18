@@ -40,7 +40,7 @@ class skid:
      async def textflip(self, ctx, *, message):
          results = " "
          for char in message:
-             if char in self.textflip:
+             if char in self.text_flip:
                  result += self.text_flip[char]
              else:
                  result += char
