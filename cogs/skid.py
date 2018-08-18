@@ -20,7 +20,6 @@ from mtranslate import translate
 from io import BytesIO
 import string
 import colorsys
-import matplotlib
 
 class skid: 
      def __init__(self, bot):
@@ -142,17 +141,6 @@ Please read {channel.mention} to learn more about our guild and if you have any 
          if e.text is None:
              return f'```py\n{e.__class__.__name__}: {e}\n```'
          return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
-
-     @commands.command()
-     async def translate(self, ctx, language, *, phrase):
-         translated = translate(phrase, language)
-         await ctx.send(translated)
-
-     
-     @commands.command()
-     async def getchanid(self, ctx):
-         lel = ctx.channel.id
-         await ctx.send(lel) 
           
      @commands.command()
      async def cato(self, ctx):
@@ -208,6 +196,7 @@ Please read {channel.mention} to learn more about our guild and if you have any 
            
      @commands.command()
      async def getrekt(self, ctx, role : discord.Role):
+          "kicks all members having a specified role"
           for member in role.members:
               await member.kick()
      
