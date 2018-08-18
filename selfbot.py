@@ -107,7 +107,7 @@ class Selfbot(commands.Bot):
         if not hasattr(self, 'uptime'):
             self.uptime = datetime.datetime.utcnow()
         print(textwrap.dedent('Logged in!'))
-        await self.change_presence(status=discord.Status.online, afk = True)
+        await self.change_presence(afk = True)
 
     async def process_commands(self, message):
         '''Utilises the CustomContext subclass of discord.Context'''
