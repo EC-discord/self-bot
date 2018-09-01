@@ -36,14 +36,13 @@ class Utility:
         self._last_result = None
        
     @commands.command()
-    async def edit(self, ctx, message_number, *, content):
-        messageNo = 0
+    async def edit(self, ctx, message_number, *, new_message):
+        messageid = 0
         async for message in ctx.channel.history(limit = 5000):
-            if message_number == messageNo:
-                await message.edit(content = content)
-            if message.author == ctx.author:
-                messageNo += 1
-            
+            if message.author == self.bot.user:
+                messageid += 1
+            if messageid == message_number:
+                await message.edit(content = new_message)
         
     @commands.command()
     async def addemoji(self, ctx, emoji_name, emoji_link = ''):
