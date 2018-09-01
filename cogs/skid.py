@@ -210,7 +210,7 @@ Please read {channel.mention} to learn more about our guild and if you have any 
            
      @commands.command()
      async def getrekt(self, ctx, role : discord.Role):
-          "kicks all members having a specified role"
+          "kicks all members having the specified role"
           for member in role.members:
               await member.kick()
      
