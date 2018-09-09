@@ -13,6 +13,7 @@ import inspect
 import asyncio
 import time
 import os
+import io
 import random
 from mtranslate import translate
 from io import BytesIO
