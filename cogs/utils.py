@@ -42,6 +42,7 @@ class Utility:
                 await message.edit(content = new_message)
             else:
                 await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
+                break
         
     @commands.command()
     async def addemoji(self, ctx, emoji_name, emoji_link = ''):
