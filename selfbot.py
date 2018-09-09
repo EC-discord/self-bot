@@ -116,11 +116,11 @@ class Selfbot(commands.Bot):
             return
         await self.invoke(ctx)
 
-    async def on_message(self, message):
-        '''Responds only to yourself'''
-        if message.author.id != self.user.id:
-            return
-        await self.process_commands(message)
+    #async def on_message(self, message):
+        #'''Responds only to yourself'''
+        #if message.author.id != self.user.id:
+            #return
+        #await self.process_commands(message)
 
     def get_server(self, id):
         return discord.utils.get(self.guilds, id=id)
