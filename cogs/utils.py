@@ -37,12 +37,11 @@ class Utility:
        
     @commands.command()
     async def edit(self, ctx, message_number, *, new_message):
-        messageid = 0
         async for message in ctx.channel.history(limit = 5000):
             if message.author == self.bot.user:
-                messageid += 1
-            if messageid == message_number:
                 await message.edit(content = new_message)
+            else:
+                await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
         
     @commands.command()
     async def addemoji(self, ctx, emoji_name, emoji_link = ''):
