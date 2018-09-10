@@ -39,11 +39,11 @@ class Utility:
     async def edit(self, ctx, message_number, *, new_message):
         messageId = 0
         async for message in ctx.channel.history(limit = 5000):
-            if message.author == self.bot.user and message_number == messageId:
+            if message.author == ctx.message.author and message_number == messageId:
                 await message.edit(content = new_message)
                 await ctx.send(message.content)
                 break
-            else:
+            elif message.author != ctx.message.author:
                 await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
                 await ctx.send(message.content)
                 break
