@@ -51,13 +51,12 @@ class Utility:
         
     @commands.command()
     async def addemoji(self, ctx, emoji_name, emoji_link = ''):
-        session = ClientSession()
         msg: discord.Message = ctx.message
         if ctx.author.guild_permissions.manage_emojis == True:
             if msg.attachments:
                 image = msg.attachments[0]
             elif emoji_link:
-                async with session.get(emoji_link) as resp:
+                async with ctx.session.get(emoji_link) as resp:
                     image = await resp.read()
             else:
                 await ctx.send("No valid emoji provided.")
