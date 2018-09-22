@@ -136,7 +136,7 @@ class Misc:
         self.bot = bot
         self.emoji_converter = commands.EmojiConverter()
         self.nsp=NumericStringParserForPython3()
-        self.emoji_list = []
+        self.emoji_list = ()
 
     @commands.command()
     async def embedtext(self, ctx, *, message):
