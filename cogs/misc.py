@@ -151,7 +151,7 @@ class Misc:
         '''React to a message with random custom emojis'''
         messageid = 0
         await ctx.message.delete()
-        await for message in ctx.channel.history(limit = 40):
+        async for message in ctx.channel.history(limit = 40):
           if messageNo != messageid:
             continue
         #message = history[index]
