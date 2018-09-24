@@ -41,7 +41,7 @@ from enum import Enum
 
 
 
-'''class NumericStringParserForPython3(object):
+class NumericStringParserForPython3(object):
     '''
     Most of this code comes from the fourFn.py pyparsing example
 
@@ -129,7 +129,7 @@ from enum import Enum
         self.exprStack=[]
         results=self.bnf.parseString(num_string,parseAll)
         val=self.evaluateStack( self.exprStack[:] )
-        return val'''
+        return val
 
 class Misc:
     def __init__(self, bot):
