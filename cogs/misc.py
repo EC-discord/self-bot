@@ -139,7 +139,7 @@ class Misc:
         self.emoji_list = ()
         
     @commands.command()
-    async def hexcode(self, ctx, role):
+    async def hexcode(self, ctx, *, role):
       """the role argument can be the name of the role or its tag"""
       if isinstance(role, discord.Role):
         await ctx.send(role.color)
