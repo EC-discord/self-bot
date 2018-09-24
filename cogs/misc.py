@@ -41,7 +41,7 @@ from enum import Enum
 
 
 
-class NumericStringParserForPython3(object):
+'''class NumericStringParserForPython3(object):
     '''
     Most of this code comes from the fourFn.py pyparsing example
 
@@ -129,7 +129,7 @@ class NumericStringParserForPython3(object):
         self.exprStack=[]
         results=self.bnf.parseString(num_string,parseAll)
         val=self.evaluateStack( self.exprStack[:] )
-        return val
+        return val'''
 
 class Misc:
     def __init__(self, bot):
@@ -137,6 +137,15 @@ class Misc:
         self.emoji_converter = commands.EmojiConverter()
         self.nsp=NumericStringParserForPython3()
         self.emoji_list = ()
+        
+    @commands.command()
+    async def hexcode(self, ctx, role):
+      """the role argument can be the name of the role or its tag"""
+      if isinstance(role, discord.Role):
+        await ctx.send(role.color)
+      else:
+        role = discord.utils.get(ctx.guild.roles, name = role)
+        await ctx.send(role.color)
 
     @commands.command()
     async def embedtext(self, ctx, *, message):
