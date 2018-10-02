@@ -41,13 +41,12 @@ class Utility:
         async for message in ctx.channel.history(limit = 5000):
             if message.author == ctx.message.author and message_number == messageId:
                 await message.edit(content = new_message)
-                await ctx.send(message.content)
                 break
             elif message.author != ctx.message.author:
-                await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
-                await ctx.send(message.content)
+                await ctx.send(content = "you can't edit someone elses message", delete_after = 4)            
                 break
             messageId += 1
+            continue
         
     @commands.command()
     async def addemoji(self, ctx, emoji_name, emoji_link = ''):
@@ -65,37 +64,7 @@ class Utility:
             await ctx.send("Emoji {} created!".format(created_emoji))
         else:
             await ctx.send("You do not have the **Manage emojis** perm")
-        
-    @commands.command()
-    async def getemojiurl(self, ctx, num_of_emoji_urls_to_get : int = 1, channel_id : int = None):
-        """gets emoji urls from messages containing emojis"""
-        list_of_ids = []
-        num_of_emoji_urls = 0
-        emoji_re = re.compile(r"<(a)?:.+:\d{18}>")
-        id_re = re.compile(r"\d{18}")
-        channel = channel_id or ctx.channel.id
-        channel = self.bot.get_channel(channel)
-        async for message in channel.history(limit = 5000):
-            if num_of_emoji_urls == num_of_emoji_urls_to_get:
-                break
-            emoji = emoji_re.search(message.content)
-            if emoji is not None:
-                num_of_emoji_urls += 1
-                id = id_re.search(emoji.group())
-                list_of_ids.append(id.group())
-        for emoji_id in list_of_ids:
-            await ctx.send(f"https://cdn.discordapp.com/emojis/{emoji_id}.png?v=1")
-            await asyncio.sleep(1)
-        
-    @commands.command()
-    async def emojiurl(self, ctx, emoji):
-        id_re = re.compile(r"\d{18}")
-        id = id_re.search(emoji)
-        if id == None:
-            await ctx.send("No emoji found")
-        else:
-            await ctx.send(f"https://cdn.discordapp.com/emojis/{id.group()}.png?v=1")
-
+   
     @commands.command(name='logout')
     async def _logout(self, ctx):
         '''
