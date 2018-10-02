@@ -142,7 +142,6 @@ class Noble:
         api = pyimgflip.Imgflip(username='xjcn6iokow', password='xjcnb6i0k0w')
         memes = api.get_memes()
         meme = random.choice(memes)
-        #print("Generating a meme from template: " + meme.name)
         if args1 == None and args2 == None:
             result = api.caption_image(meme, "I forget to add", "Captions!")
         else:
@@ -175,37 +174,6 @@ class Noble:
         await ctx.message.delete()
         await ctx.send(file=discord.File('disabled.jpg'))
 
-    @commands.command()
-    async def kington(self, ctx,*,args):
-        'TEXT TO KLINGTON XD'
-        URL = "http://mrklingo.freeshell.org/uta/index.php"
-        regex = re.compile(r"-{12}\s+(.+?)\s+\-{12}", re.MULTILINE)
-        cache = {}
-
-        def translate(phrase):
-            try:
-                return cache[phrase]
-            except KeyError:
-                pass
-
-            handle = urllib.request.urlopen(URL, urllib.parse.urlencode({'eng' : phrase, 'language' : 'klingon'}).encode("utf-8"))
-            try:
-                text = handle.read()
-            except:
-                return phrase
-
-            match = regex.search(text.decode("utf-8"))
-            if not match:
-                return phrase
-
-            cache[phrase] = match.group(1)
-            return match.group(1)
-
-        word = translate(args)
-        await ctx.send(word)
-        await ctx.message.delete()
-
-
-
+        
 def setup(bot):
     bot.add_cog(Noble(bot))
