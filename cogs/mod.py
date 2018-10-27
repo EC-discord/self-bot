@@ -94,12 +94,22 @@ class Mod:
     @commands.command()
     async def clean(self, ctx, limit : int=15, member : discord.Member = None):
         '''Clean a number of your own or another users messages'''
+        deleted = 0
         user = member or ctx.message.author
         def msgcheck(amsg):
             if user:
                 return amsg.author.id == user.id
             return True
-        await ctx.channel.purge(limit=limit, check=msgcheck)
+        try:
+            await ctx.channel.purge(limit=limit, check=msgcheck)
+        except:
+            channel = ctx.message.channel
+            asyn for msg in channel.history():
+                if msgcheck(msg):
+                    await msg.delete()
+                    deleted += 1
+                if deleted == limit:
+                    break
 
     @commands.command()
     async def bans(self, ctx):
