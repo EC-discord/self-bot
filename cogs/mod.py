@@ -104,7 +104,7 @@ class Mod:
             await ctx.channel.purge(limit=limit, check=msgcheck)
         except:
             channel = ctx.message.channel
-            asyn for msg in channel.history():
+            async for msg in channel.history():
                 if msgcheck(msg):
                     await msg.delete()
                     deleted += 1
