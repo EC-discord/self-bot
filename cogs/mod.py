@@ -108,8 +108,8 @@ class Mod:
                 if msgcheck(msg):
                     await msg.delete()
                     deleted += 1
-                if deleted == limit:
-                    break
+                    if deleted == limit:
+                        break
 
     @commands.command()
     async def bans(self, ctx):
