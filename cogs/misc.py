@@ -158,16 +158,15 @@ class Misc:
     @commands.command(aliases = ["rr"])
     async def randomreact(self, ctx, messageNo: int, no_of_reactions : int = 20):
         '''React to a message with random custom emojis'''
+        for emoji in self.bot.emojis:
+          if emoji.name.startswith("GW"):
+            self.emoji_list.append(emoji)
         messageid = 0
         await ctx.message.delete()
-        async for message in ctx.channel.history(limit = 40):
+        async for message in ctx.channel.history(limit = 25):  
           if messageNo != messageid:
+            messageid += 1
             continue
-        #message = history[index]
-          else:
-            for emoji in self.bot.emojis:
-              if emoji.name.startswith("GW"):
-                self.emoji_list.append(emoji)
             for i in range(no_of_reactions):
               emoji = random.choice(self.emoji_list)
               await message.add_reaction(emoji)
