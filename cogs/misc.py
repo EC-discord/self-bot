@@ -160,7 +160,7 @@ class Misc:
         '''React to a message with random custom emojis'''
         for emoji in self.bot.emojis:
           if emoji.name.startswith("GW"):
-            self.emoji_list.append(emoji)
+            self.emoji_list += (emoji,)
         messageid = 0
         await ctx.message.delete()
         async for message in ctx.channel.history(limit = 25):  
