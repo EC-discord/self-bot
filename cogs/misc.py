@@ -23,15 +23,14 @@ from discord.ext import commands
 from ext.utility import parse_equation
 from ext.colours import ColorNames
 from urllib.request import urlopen
-from random import randint, choice
-#from enum import Enum       
+from random import randint, choice    
 
 
 class Misc:
     def __init__(self, bot):
         self.bot = bot
         self.emoji_converter = commands.EmojiConverter()
-        self.emoji_list = ()
+        self.emoji_list = []
         
     @commands.command()
     async def hexcode(self, ctx, *, role):
@@ -60,7 +59,7 @@ class Misc:
             continue
         for emoji in self.bot.emojis:
             if emoji.name.startswith("GW"):
-                self.emoji_list += (emoji,)
+                self.emoji_list.append(emoji)
         for i in range(no_of_reactions):
             emoji = random.choice(self.emoji_list)
             await message.add_reaction(emoji)
