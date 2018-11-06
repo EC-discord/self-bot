@@ -52,6 +52,7 @@ class Misc:
     @commands.command(aliases = ["rr"])
     async def randomreact(self, ctx, messageNo: int, no_of_reactions : int = 20):
         '''React to a message with random custom emojis'''
+        self.emoji_list = []
         messageid = 0
         async for message in ctx.channel.history(limit = 25):  
           if messageid != messageNo:
