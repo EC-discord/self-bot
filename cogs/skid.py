@@ -68,7 +68,7 @@ Please read {channel.mention} to learn more about our guild and if you have any 
              await ctx.send(bin(number)[2:])
           
      @commands.command()
-     async def getems(self, ctx):
+     async def getemojis(self, ctx):
          '''gets all emojis in a server'''
          l = []
          for e in ctx.guild.emojis:
@@ -158,11 +158,6 @@ Please read {channel.mention} to learn more about our guild and if you have any 
              return f'```py\n{e.__class__.__name__}: {e}\n```'
          return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
           
-     @commands.command()
-     async def cato(self, ctx):
-         await ctx.message.delete()
-         await ctx.send(file = discord.File('4A583EDC-0A6F-47D8-8D3F-F4EDD06E2BB7.gif'))
-
      def getColor(self, colorHex):
         colorHex = str(colorHex)
         return discord.Colour(int(f'0x{colorHex[1:]}', 16))
