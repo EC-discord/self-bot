@@ -14,7 +14,6 @@ import os
 import re
 import textwrap
 from PIL import Image
-import io
 
 class Selfbot(commands.Bot):
     '''
@@ -107,7 +106,6 @@ class Selfbot(commands.Bot):
         if not hasattr(self, 'uptime'):
             self.uptime = datetime.datetime.utcnow()
         print(textwrap.dedent('Logged in!'))
-        await self.change_presence(afk = True)
 
     async def process_commands(self, message):
         '''Utilises the CustomContext subclass of discord.Context'''
@@ -115,12 +113,6 @@ class Selfbot(commands.Bot):
         if ctx.command is None:
             return
         await self.invoke(ctx)
-
-    #async def on_message(self, message):
-        #'''Responds only to yourself'''
-        #if message.author.id != self.user.id:
-            #return
-        #await self.process_commands(message)
 
     def get_server(self, id):
         return discord.utils.get(self.guilds, id=id)
