@@ -65,6 +65,7 @@ class Misc:
             emoji = random.choice(self.emoji_list)
             await message.add_reaction(emoji)
             self.emoji_list.remove(emoji)
+          break
         await ctx.message.delete()
 
     @commands.command()
