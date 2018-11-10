@@ -57,7 +57,7 @@ class Anim:
          await ctx.message.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ💥")
      
      @commands.command()
-     async def cathi(self, ctx):
+     async def cathi(self, ctx, message = "Hi):
          for i in range(1, 8, 1):
              await ctx.message.edit(content="""ຸ 　　　＿＿_＿＿
 　　／　／　  ／|"
@@ -65,7 +65,7 @@ class Anim:
 　　|　　　　|／
 　　￣￣￣￣""")
              await asyncio.sleep(1.5)
-             await ctx.message.edit(content="""ຸ 　　　Hi...♡
+             await ctx.message.edit(content=f"""ຸ 　　　{message}...♡
  　   　 ∧＿∧＿_
 　　／(´･ω･`)  ／＼
 　／|￣￣￣￣|＼／
@@ -94,7 +94,7 @@ class Anim:
              await asyncio.sleep(1)
      
      @commands.command()
-     async def virus(self, ctx, member : discord.Member = None, *, virus: str):
+     async def virus(self, ctx, member : discord.Member = None, *, virus: str = "trojan"):
          wheelList = ['/', '-', '\\', '|']
          wheelIter = iter(wheelList)
          for i in range(2, 17, 2):
