@@ -57,7 +57,7 @@ class Anim:
          await ctx.message.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ💥")
      
      @commands.command()
-     async def cathi(self, ctx, message = "Hi):
+     async def cathi(self, ctx, message = "Hi"):
          for i in range(1, 8, 1):
              await ctx.message.edit(content="""ຸ 　　　＿＿_＿＿
 　　／　／　  ／|"
