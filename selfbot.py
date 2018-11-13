@@ -3,17 +3,11 @@ from discord.ext import commands
 from ext.context import CustomContext
 from ext.formatter import EmbedHelp
 from ext import embedtobox
-import asyncio
 import aiohttp
 import datetime
-import psutil
-import time
 import json
-import sys
 import os
 import re
-import textwrap
-from PIL import Image
 
 class Selfbot(commands.Bot):
     '''
@@ -30,7 +24,6 @@ class Selfbot(commands.Bot):
         super().__init__(command_prefix=self.get_pre, self_bot=True)
         self.formatter = EmbedHelp()
         self.session = aiohttp.ClientSession(loop=self.loop)
-        self.process = psutil.Process()
         self._extensions = [x.replace('.py', '') for x in os.listdir('cogs') if x.endswith('.py')]
         self.remove_command('help')
         self.load_extensions()
