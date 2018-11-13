@@ -7,8 +7,6 @@ sympy
 psutil
 emoji
 wikipedia
-cr-py
 urban-async
 moviepy
-spice_api
 yarl<1.2
