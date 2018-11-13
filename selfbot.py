@@ -8,6 +8,7 @@ import datetime
 import json
 import os
 import re
+import textwrap
 
 class Selfbot(commands.Bot):
     '''
