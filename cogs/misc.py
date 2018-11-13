@@ -54,6 +54,7 @@ class Misc:
         '''React to a message with random custom emojis'''
         self.emoji_list = []
         messageid = 0
+        await ctx.message.delete()
         for emoji in self.bot.emojis:
           if emoji.name.startswith("GW"):
             self.emoji_list.append(emoji)
@@ -66,7 +67,6 @@ class Misc:
             await message.add_reaction(emoji)
             self.emoji_list.remove(emoji)
           break
-        await ctx.message.delete()
 
     @commands.command()
     async def react(self, ctx, index: int, *, reactions):
