@@ -15,8 +15,6 @@ import wikipedia
 import aiohttp
 import inspect
 import asyncio
-import urbanasync
-import cr_py
 import time
 import re
 import io
