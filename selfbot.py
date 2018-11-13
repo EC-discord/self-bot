@@ -113,11 +113,6 @@ class Selfbot(commands.Bot):
         if ctx.command is None:
             return
         await self.invoke(ctx)
-    
-    async def on_member_update(self, before, after):
-        stats = {"online" : discord.Status.online, "dnd" : discord.Status.dnd, "idle" : discord.Status.idle, "invisible" : discord.Status.invisible}
-        if author.status != before.status:
-            await self.change_presence(status = stats[author.status])
 
 if __name__ == '__main__':
     Selfbot.init()
