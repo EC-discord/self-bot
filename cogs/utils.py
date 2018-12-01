@@ -35,11 +35,11 @@ class Utility:
     @commands.command()
     async def edit(self, ctx, message_number, *, new_message):
         messageId = 0
-        async for message in ctx.channel.history(limit = 5000):
+        async for message in ctx.channel.history(limit = 100):
             if message.author == ctx.message.author and message_number == messageId:
                 await message.edit(content = new_message)
                 break
-            elif message.author != ctx.message.author:
+            elif:
                 await ctx.send(content = "you can't edit someone elses message", delete_after = 4)            
                 break
             messageId += 1
@@ -61,7 +61,18 @@ class Utility:
             await ctx.send("Emoji {} created!".format(created_emoji))
         else:
             await ctx.send("You do not have the **Manage emojis** perm")
-   
+     
+    @commands.command()
+    async def deleteemoji(self, ctx, name: str):
+        "Deletes an emoji"
+        emoji = discord.utils.get(ctx.guild.emojis, name = name)
+        await emoji.delete()
+        
+    @commands.command()
+    async def editemoji(self, ctx, name: str):
+        emoji = discord.utils.get(ctx.guild.emojis, name = name)
+        await emoji.edit(name = name)
+    
     @commands.command(name='logout')
     async def _logout(self, ctx):
         '''
@@ -688,7 +699,7 @@ class Utility:
             await ctx.send(str(e))
         else:
             if card:
-                value = '\n'.join(f'[{title}]({url.replace(")", "%29")})' for url, title in entries[:3])
+                value = '\n'.join(f'[{title}]({url.replace(")", "%29")})' for url, title in entries[:NoOfResults])
                 if value:
                     card.add_field(name='Results', value=value, inline=False)
                 return await ctx.send(embed=card)
@@ -725,7 +736,7 @@ class Utility:
         return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
 
     @commands.command()
-    async def clear(self, ctx, *, serverid = None):
+    async def clear(self, ctx, *, serverid = "all"):
         '''Marks messages from selected servers or emote servers as read'''
         if serverid != None:
             if serverid == 'all':
@@ -760,10 +771,10 @@ class Utility:
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, *, member : discord.Member = None):
+    async def picsu(self, ctx, *member : discord.Member = None):
         """gets the profile pic of the user"""
         await ctx.message.delete()
-        mem = member or ctx.author
+        mem = user for user in member or ctx.author
         avatar = mem.avatar_url_as(static_format='png', size=512)
         await ctx.send(avatar)
 
