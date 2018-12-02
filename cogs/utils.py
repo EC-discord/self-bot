@@ -35,12 +35,13 @@ class Utility:
     @commands.command()
     async def edit(self, ctx, message_number, *, new_message):
         messageId = 0
-        async for message in ctx.channel.history(limit = 100):
+        async for message in ctx.channel.history(limit = 50):
             if message.author == ctx.message.author and message_number == messageId:
                 await message.edit(content = new_message)
                 break
             else:
-                await ctx.send(content = "you can't edit someone elses message", delete_after = 4)            
+                await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
+                print(message.content)
                 break
             messageId += 1
             continue
@@ -70,7 +71,7 @@ class Utility:
         
     @commands.command()
     async def editemoji(self, ctx, emoji_name, new_name):
-        emoji = discord.utils.get(ctx.guild.emojis, name = name)
+        emoji = discord.utils.get(ctx.guild.emojis, name = emoji_name)
         await emoji.edit(name = new_name)
     
     @commands.command(name='logout')
