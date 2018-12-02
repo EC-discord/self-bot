@@ -69,9 +69,9 @@ class Utility:
         await emoji.delete()
         
     @commands.command()
-    async def editemoji(self, ctx, name: str):
+    async def editemoji(self, ctx, emoji_name, new_name):
         emoji = discord.utils.get(ctx.guild.emojis, name = name)
-        await emoji.edit(name = name)
+        await emoji.edit(name = new_name)
     
     @commands.command(name='logout')
     async def _logout(self, ctx):
@@ -771,10 +771,10 @@ class Utility:
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, *member : discord.Member = None):
+    async def picsu(self, ctx, *, member : discord.Member = None):
         """gets the profile pic of the user"""
         await ctx.message.delete()
-        mem = user for user in member or ctx.author
+        mem = member or ctx.author
         avatar = mem.avatar_url_as(static_format='png', size=512)
         await ctx.send(avatar)
 
