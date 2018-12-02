@@ -39,7 +39,7 @@ class Utility:
             if message.author == ctx.message.author and message_number == messageId:
                 await message.edit(content = new_message)
                 break
-            elif:
+            else:
                 await ctx.send(content = "you can't edit someone elses message", delete_after = 4)            
                 break
             messageId += 1
