@@ -31,6 +31,10 @@ class Utility:
         self._rtfm_cache = None
         self._last_google = None
         self._last_result = None
+        
+    @commands.command()
+    async def createrole(self, ctx, name, color):
+        await ctx.guild.create_role(name = name, color = color)
        
     @commands.command()
     async def edit(self, ctx, message_number, *, new_message):
