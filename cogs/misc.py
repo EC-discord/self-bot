@@ -23,6 +23,7 @@ from discord.ext import commands
 from ext.utility import parse_equation
 from ext.colours import ColorNames
 from urllib.request import urlopen
+import io
 from random import randint, choice    
 
 
