@@ -34,7 +34,8 @@ class Utility:
         
     @commands.command()
     async def createrole(self, ctx, name, color):
-        await ctx.guild.create_role(name = name, color = color)
+        role = await ctx.guild.create_role(name = name, color = discord.Color(color))
+        await ctx.send(f"Created role : {name}")
        
     @commands.command()
     async def edit(self, ctx, message_number, *, new_message):
@@ -65,18 +66,20 @@ class Utility:
             created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
             await ctx.send("Emoji {} created!".format(created_emoji))
         else:
-            await ctx.send("You do not have the **Manage emojis** perm")
+            await ctx.send(content = "You do not have the **Manage emojis** perm", delete_after = 2)
      
     @commands.command()
-    async def deleteemoji(self, ctx, name: str):
+    async def delemoji(self, ctx, name: str):
         "Deletes an emoji"
         emoji = discord.utils.get(ctx.guild.emojis, name = name)
         await emoji.delete()
+        await ctx.send(content = f"Deleted emoji : {name}", delete_after = 2)
         
     @commands.command()
     async def editemoji(self, ctx, emoji_name, new_name):
         emoji = discord.utils.get(ctx.guild.emojis, name = emoji_name)
         await emoji.edit(name = new_name)
+        await ctx.send(content = f"Edited emoji {emoji_name} to {new_name}")
     
     @commands.command(name='logout')
     async def _logout(self, ctx):
@@ -150,9 +153,10 @@ class Utility:
     @commands.command()
     async def nick(self, ctx, user : discord.Member, *, nickname : str = None):
         await user.edit(nick = nickname)
+        await ctx.send("Changed {user.name}'s nickname to {nickname}")
     
     @commands.command()
-    async def cpres(self, ctx, status : str, Type:str = None, *, message:str = None):
+    async def cpres(self, ctx, status : str, Type:str = playing, *, message:str = None):
         '''Sets a custom presence, the Type argument can be "playing", "streaming", "listeningto" or "watching"
         status can be "online", "dnd", "idle", "invisible"
         Example : (prefix)cpres idle watching a movie'''
@@ -174,30 +178,7 @@ class Utility:
             if ctx.author.guild_permissions.embed_links:
                 await ctx.send(embed = em)
             else:
-                await ctx.send(f"Presence : {types[Type]} {message}")
-                                       
-    @commands.command()
-    async def richembed(self, ctx, *, params):
-        '''rich embeds
-
-        ```
-        {description: Discord format supported}
-        {title: required | url: optional}
-        {author: required | icon: optional | url: optional}
-        {image: image_url_here}
-        {thumbnail: image_url_here}
-        {field: required | value: required}
-        {footer: footer_text_here | icon: optional}
-        {timestamp} <-this will include a timestamp
-        ```
-        '''
-        em = await self.to_embed(ctx, params)
-        await ctx.message.delete()
-        try:
-            await ctx.send(embed=em)
-            self._last_embed = params
-        except:
-            await ctx.send('Improperly formatted embed!')
+                await ctx.send(f"Presence : {types[Type]} {message}")                                     
 
     @commands.command(pass_context=True)
     async def wiki(self, ctx, *, search: str = None):
