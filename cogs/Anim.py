@@ -9,11 +9,11 @@ class Anim:
           
      @commands.command()
      async def loading(self, ctx):
-         await ctx.message.edit(content = "```loading. ```")
-         await asyncio.sleep(1)
+         spaces = "      "
          for num in range(1, 6, 1):
              dots = "." * num
-             await ctx.message.edit(content = f"```loading.{dots}   {num}%```")
+             spaces -= num
+             await ctx.message.edit(content = f"```loading.{dots}{spaces}{num}%```")
              await asyncio.sleep(1)
          await ctx.message.edit(content = "``` Error! :C```")
          await asyncio.sleep(1)
@@ -87,7 +87,7 @@ class Anim:
      
      @commands.command()
      async def dance(self, ctx):
-         for i in range(1, 10, 1):
+         for i in range(1, 6, 1):
              await ctx.message.edit(content="\\\(' - '   )\\")
              await asyncio.sleep(1)
              await ctx.message.edit(content="/(   ' - ')/")
@@ -111,7 +111,7 @@ class Anim:
          await asyncio.sleep(1)  
          await ctx.message.edit(content=f"`Injecting virus... -`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into   `" + member.mention)
+         await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into {member.name}`")
 
      @commands.command()
      async def boom(self, ctx):
@@ -125,13 +125,13 @@ class Anim:
      
      @commands.command()
      async def table(self, ctx):
-         await ctx.message.edit(content="`(\°-°)\    ┬─┬`")
+         await ctx.message.edit(content="`(\°-°)\     ┬─┬`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content="`(\°□°)\    ┬─┬`")
+         await ctx.message.edit(content="`(\°□°)\     ┬─┬`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content="`(-°□°)-    ┬─┬`")
+         await ctx.message.edit(content="`(-°□°)-     ┬─┬`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content="`(╯°□°)╯    ┬─┬`")
+         await ctx.message.edit(content="`(╯°□°)╯     ┬─┬`")
          await asyncio.sleep(1)
          wheelList = [']', '┻━┻', '[',  '┬─┬']
          wheelIter = iter(wheelList)
