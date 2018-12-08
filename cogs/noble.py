@@ -1,8 +1,3 @@
-'''
-~
-witten by Noble#5242(Banned) (using PIL) feel free to edit and make it better.
-
-'''
 from __future__ import division
 import discord
 import operator
@@ -10,10 +5,8 @@ import base64
 import asyncio
 import codecs
 import random
-import pyimgflip
 import time
 import datetime
-import io
 import aiohttp
 import urllib.request
 import re
@@ -23,7 +16,6 @@ import os
 import shutil
 import requests
 import urllib.parse
-import urbanasync
 import glob
 import moviepy.editor as mpy
 from discord.ext import commands
