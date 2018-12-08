@@ -45,20 +45,13 @@ class skid:
                  result += char
          await ctx.message.edit(content=result[::-1])
     
-     @commands.group()
+     @commands.command()
      async def spam(self, ctx, text : str, spam_frequency : int, *spam_delay : int):
          spam_delay = list(spam_delay)
          await ctx.message.delete()
          for i in range(spam_frequency):
              await ctx.send(text)
              await asyncio.sleep(random.choice([num for num in spam_delay]))
-                
-     @commands.command(hidden = True, aliases = ["wel", "wl"])
-     async def welcome(self, ctx, user : discord.Member):
-         await ctx.message.delete()
-         channel = discord.utils.get(ctx.guild.channels, name = "guild_introduction")
-         await ctx.send(f"""{user.mention} welcome to Sacred Champions. 
-Please read {channel.mention} to learn more about our guild and if you have any questions, feel free to ask.""")
           
      @commands.command(aliases=['bn'])
      async def binary(self, ctx, number:int = None):
