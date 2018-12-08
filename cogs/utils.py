@@ -156,7 +156,7 @@ class Utility:
         await ctx.send("Changed {user.name}'s nickname to {nickname}")
     
     @commands.command()
-    async def cpres(self, ctx, status : str, Type:str = playing, *, message:str = None):
+    async def cpres(self, ctx, status : str, Type:str = "playing", *, message:str = None):
         '''Sets a custom presence, the Type argument can be "playing", "streaming", "listeningto" or "watching"
         status can be "online", "dnd", "idle", "invisible"
         Example : (prefix)cpres idle watching a movie'''
