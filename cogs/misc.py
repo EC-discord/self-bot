@@ -8,7 +8,6 @@ import emoji
 import json
 import requests
 import urllib.parse
-import urbanasync
 from discord.ext import commands
 from ext.utility import parse_equation
 from ext.colours import ColorNames
@@ -135,36 +134,6 @@ class Misc:
         with io.BytesIO(image) as file:
             await ctx.message.delete()
             await ctx.send(file=discord.File(file, 'emote.png'))
-
-    @commands.command()
-    async def urban(self, ctx, *, search_terms: str):
-        '''Urban Dictionary'''
-        client = urbanasync.Client(ctx.session)
-        search_terms = search_terms.split()
-        definition_number = terms = None
-        try:
-            definition_number = int(search_terms[-1]) - 1
-            search_terms.remove(search_terms[-1])
-        except ValueError:
-            definition_number = 0
-        if definition_number not in range(0, 11):
-            pos = 0
-        search_terms = " ".join(search_terms)
-        emb = discord.Embed()
-        try:
-            term = await client.get_term(search_terms)
-        except LookupError:
-            emb.title = "Search term not found."
-            return await ctx.send(embed=emb)
-        emb.color = await ctx.get_dominant_color(url=ctx.message.author.avatar_url_as(static_format = "png"))
-        definition = term.definitions[definition_number]
-        emb.title = f"{definition.word}  ({definition_number+1}/{len(term.definitions)})"
-        emb.description = definition.definition
-        emb.url = definition.permalink
-        emb.add_field(name='Example', value=definition.example)
-        emb.add_field(name='Votes', value=f'{definition.upvotes}👍    {definition.downvotes}👎')
-        emb.set_footer(text=f"Definition written by {definition.author}", icon_url="http://urbandictionary.com/favicon.ico")
-        await ctx.send(embed=emb)
 
     @commands.command()
     async def textemote(self, ctx, *, msg):
