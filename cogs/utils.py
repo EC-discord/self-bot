@@ -32,7 +32,7 @@ class Utility:
     @commands.command()
     async def edit(self, ctx, messageNo, *, new_message):
         messageId = 0
-        async for message in ctx.channel.history(limit = 50):
+        async for message in ctx.channel.history(limit = 30):
             if message.author.id == ctx.message.author.id and messageNo == messageId:
                 await message.edit(content = new_message)
                 break
