@@ -30,13 +30,13 @@ class Utility:
         await ctx.send(f"Created role : {name}")
        
     @commands.command()
-    async def edit(self, ctx, message_number, *, new_message):
+    async def edit(self, ctx, messageNo, *, new_message):
         messageId = 0
         async for message in ctx.channel.history(limit = 50):
-            if message.author == ctx.message.author and message_number == messageId:
+            if message.author.id == ctx.message.author.id and messageNo == messageId:
                 await message.edit(content = new_message)
                 break
-            else:
+            elif messageNo == messageId and message.author.id != ctx.message.author.id:
                 await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
                 print(message.content)
                 break
