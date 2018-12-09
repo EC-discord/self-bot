@@ -11,6 +11,7 @@ import aiohttp
 import urllib.request
 import re
 import json
+import pyimgflip
 import PIL
 import os
 import shutil
