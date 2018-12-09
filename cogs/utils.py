@@ -25,7 +25,7 @@ class Utility:
         await ctx.send(translate(text, language))
                
     @commands.command()
-    async def createrole(self, ctx, name, color : int):
+    async def createrole(self, ctx, name, color : hex):
         role = await ctx.guild.create_role(name = name, color = discord.Color(color))
         await ctx.send(f"Created role : {name}")
        
