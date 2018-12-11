@@ -29,16 +29,15 @@ class Utility:
         messageId = 0
         async for message in ctx.channel.history(limit = 30):
             if message.author.id == ctx.message.author.id and messageNo == messageId:
+                await ctx.send("debug : if")
                 await message.edit(content = new_message)
                 break
             elif messageNo == messageId and message.author.id != ctx.message.author.id:
+                await ctx.send("debug : else if")
                 await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
                 break
             if message.author.id == ctx.message.author.id:
                 messageId += 1
-            else:
-                continue
-            continue
         
     @commands.command()
     async def addemoji(self, ctx, emoji_name, emoji_link = ''):
