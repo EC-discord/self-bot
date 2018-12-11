@@ -37,6 +37,7 @@ class Utility:
                 await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
                 break
             if message.author.id == ctx.message.author.id:
+                await ctx.send("debug : increment")
                 messageId += 1
         
     @commands.command()
