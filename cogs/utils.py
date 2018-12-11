@@ -23,11 +23,6 @@ class Utility:
     @commands.command()
     async def translate(self, ctx, language, *, text):
         await ctx.send(translate(text, language))
-               
-    @commands.command()
-    async def createrole(self, ctx, name, color : hex):
-        role = await ctx.guild.create_role(name = name, color = discord.Color(color))
-        await ctx.send(f"Created role : {name}")
        
     @commands.command()
     async def edit(self, ctx, messageNo, *, new_message):
@@ -38,9 +33,11 @@ class Utility:
                 break
             elif messageNo == messageId and message.author.id != ctx.message.author.id:
                 await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
-                print(message.content)
                 break
-            messageId += 1
+            if message.author.id == ctx.message.author.id:
+                messageId += 1
+            else:
+                continue
             continue
         
     @commands.command()
