@@ -32,11 +32,7 @@ class Utility:
                 await ctx.send("debug : if")
                 await message.edit(content = new_message)
                 break
-            elif messageNo == messageId and message.author.id != ctx.message.author.id:
-                await ctx.send("debug : else if")
-                await ctx.send(content = "you can't edit someone elses message", delete_after = 4)
-                break
-            if message.author.id == ctx.message.author.id:
+            elif message.author.id == ctx.message.author.id:
                 await ctx.send("debug : increment")
                 messageId += 1
         
