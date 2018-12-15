@@ -9,11 +9,9 @@ class Anim:
           
      @commands.command()
      async def loading(self, ctx):
-         spaces = "      "
          for num in range(1, 6, 1):
              dots = "." * num
-             spaces -= num
-             await ctx.message.edit(content = f"```loading.{dots}{spaces}{num}%```")
+             await ctx.message.edit(content = f"```loading.{dots}{num}%```")
              await asyncio.sleep(1)
          await ctx.message.edit(content = "``` Error! :C```")
          await asyncio.sleep(1)
