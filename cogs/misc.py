@@ -67,7 +67,10 @@ class Misc:
             await message.add_reaction(emoji)
             self.emoji_list.remove(emoji)
           break
-
+    @commands.command()
+    async def prem(self, ctx):
+      await ctx.send(ctx.author.premium)
+          
     @commands.command()
     async def react(self, ctx, index: int, *, reactions):
         '''React to a specified message with reactions'''
