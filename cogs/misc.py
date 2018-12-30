@@ -54,7 +54,7 @@ class Misc:
         '''React to a message with random custom emojis'''
         self.emoji_list = []
         messageid = 0
-        server = discord.utils.get(self.bot.guilds.lower(), name = server)
+        server = discord.utils.find(server, bot.guilds)
         await ctx.message.delete()
         if server is None:
           for emoji in self.bot.emojis:
