@@ -63,12 +63,8 @@ class skid:
      @commands.command()
      async def getemojis(self, ctx):
          '''gets all emojis in a server'''
-         l = []
-         for e in ctx.guild.emojis:
-             name = e.name+ " " + "{}".format(e)
-             l.append (name)
-         emo = ' '.join(l)
-         await ctx.send(emo)
+         emoji_list = [e for e in ctx.guild.emojis if not emoji.animated]
+         await ctx.send(emoji_list)
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
@@ -172,22 +168,11 @@ class skid:
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
           
      @commands.command()
-     async def plt(self, ctx, *, words):
+     async def plt(self, ctx, *words):
         """PigLatin Translator"""
-        translated = []
-        words1 = words.split()
-        for word in words1:
-            py = "ay"
-            first_word = word[0]
-            if word is None:
-                await ctx.send("Type something O:")
-            else:
-                new_word = word[1:]
-                new_word = new_word + first_word + py
-                kappa = translated.append(new_word)
-        platin = ' '.join(translated)
+        translated = [w[1:] + w[0] + "ay" for w in words]
         em = discord.Embed(color = 0xffd500)
-        em.description = platin
+        em.description = " ".join(translated)
         await ctx.send(embed = em)
             
      @commands.command()
