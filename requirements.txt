@@ -7,3 +7,4 @@ psutil
 emoji
 moviepy
 yarl<1.2
+requests
