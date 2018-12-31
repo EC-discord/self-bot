@@ -20,7 +20,6 @@ import urllib.parse
 import glob
 import moviepy.editor as mpy
 from discord.ext import commands
-from bs4 import BeautifulSoup
 from sympy import solve
 from PIL import Image,ImageFilter,ImageDraw,ImageFont
 from discord.ext import commands
