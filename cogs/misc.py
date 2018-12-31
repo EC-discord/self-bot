@@ -34,14 +34,14 @@ class Misc:
         
     @commands.command()
     async def hexcode(self, ctx, *, role):
-      """the role argument can be the name of the role or its tag"""
+      """the role can be its name or its tag"""
       if isinstance(role, discord.Role):
         await ctx.send(role.color)
       else:
         role = discord.utils.get(ctx.guild.roles, name = role)
         await ctx.send(role.color)
 
-    @commands.command()
+    @commands.command(aliases = ["emt"])
     async def embedtext(self, ctx, *, message):
         '''embed messages '''
         await ctx.message.delete()
