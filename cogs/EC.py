@@ -5,10 +5,6 @@ from discord.ext import commands
 class EC: 
      def __init__(self, bot):
           self.bot = bot
-          
-     @commands.command(hidden = True)
-     async def shook(self, ctx):
-          await ctx.message.edit(content = "<:GWgweShook:396057209462587393> 👌")
 
      @commands.command()
      async def shrug(self, ctx):
@@ -64,11 +60,6 @@ class EC:
      async def wow(self, ctx):
          """(   ' O ')"""
          await ctx.message.edit(content="(   ' O ')")
-     
-     @commands.command()
-     async def noble(self, ctx):
-         """\\(  . - .  )/ i am noble!"""
-         await ctx.message.edit(content="\\\(  . - .  )/ i am noble!")
           
      @commands.command()
      async def cookie(self, ctx):
