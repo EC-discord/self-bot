@@ -102,48 +102,23 @@ class Misc:
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
 
-    def check_emojis(self, bot_emojis, emoji):
-        for exist_emoji in bot_emojis:
-            if emoji[0] == "<" or emoji[0] == "":
-                if exist_emoji.name.lower() == emoji[1]:
-                    return [True, exist_emoji]
-            else:
-                if exist_emoji.name.lower() == emoji[0]:
-                    return [True, exist_emoji]
-        return [False, None]
-
     @commands.group(invoke_without_command=True, name='emoji', aliases=['emote', 'e'])
-    async def _emoji(self, ctx, *, emoji: str):
+    async def _emoji(self, ctx, *, emoji : discord.Emoji):
         '''send emoji pic'''
-        emoji = emoji.split(":")
-        emoji_check = self.check_emojis(ctx.bot.emojis, emoji)
-        if emoji_check[0]:
-            emo = emoji_check[1]
-        else:
-            emoji = [e.lower() for e in emoji]
-            if emoji[0] == "<" or emoji[0] == "":
-                emo = discord.utils.find(lambda e: emoji[1] in e.name.lower(), ctx.bot.emojis)
-            else:
-                emo = discord.utils.find(lambda e: emoji[0] in e.name.lower(), ctx.bot.emojis)
-            if emo == None:
-                em = discord.Embed(title="None", description="No emoji found.")
-                em.color = await ctx.get_dominant_color(ctx.author.avatar_url)
-                await ctx.send(embed=em)
-                return
-        async with ctx.session.get(emo.url) as resp:
+        await ctx.message.delete()
+        async with ctx.session.get(emoji.url) as resp:
             image = await resp.read()
-        with io.BytesIO(image) as file:
-            await ctx.message.delete()
-            await ctx.send(file=discord.File(file, 'emote.png'))
+        if emoji.animated:
+            with io.BytesIO(image) as file:
+                await ctx.send(file=discord.File(file, "emote.gif", save_all = True))
+        else:
+            with io.BytesIO(image) as file:
+                await ctx.send(file = discord.File(file, "emote.png"))
 
     @commands.command()
     async def textemote(self, ctx, *, msg):
         """Convert text into emojis"""
-        try:
-            await ctx.message.delete()
-        except discord.Forbidden:
-            pass
-
+        await ctx.message.delete()
         if msg != None:
             out = msg.lower()
             text = out.replace(' ', '    ').replace('10', '\u200B:keycap_ten:')\
