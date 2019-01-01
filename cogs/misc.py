@@ -110,7 +110,7 @@ class Misc:
             image = await resp.read()
         if emoji.animated:
             with io.BytesIO(image) as file:
-                await ctx.send(file=discord.File(file, "emote.gif", save_all = True))
+                await ctx.send(file=discord.File(file, "emote.gif"))
         else:
             with io.BytesIO(image) as file:
                 await ctx.send(file = discord.File(file, "emote.png"))
