@@ -64,7 +64,7 @@ class skid:
      async def getemojis(self, ctx):
          '''gets all emojis in a server'''
          emoji_list = [e for e in ctx.guild.emojis if not emoji.animated]
-         await ctx.send(emoji_list)
+         await ctx.send(" ".join(emoji_list))
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
