@@ -53,11 +53,11 @@ class Misc:
         '''React to a message with random custom emojis'''
         self.emoji_list = []
         messageid = 0
-        server = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
         await ctx.message.delete()
         if server is None:
           self.emoji_list = [emoji for emoji in self.bot.emojis if emoji.name.startswith("GW")]
         elif server:
+          server = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
           self.emoji_list = [emoji for emoji in server.emojis if not emoji.animated]
         async for message in ctx.channel.history(limit = 25):  
           if messageid != messageNo:
