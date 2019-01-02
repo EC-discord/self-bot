@@ -28,8 +28,8 @@ class Selfbot(commands.Bot):
         self._extensions = [x.replace('.py', '') for x in os.listdir('cogs') if x.endswith('.py')]
         self.remove_command('help')
         self.load_extensions()   
-        self.server = discord.utils.get(self.bot.guilds, name = "Private Server O:")
-        self.channel = discord.utils.get(self.bot.guilds, name = "bot-logs")
+        self.server = discord.utils.get(bot.guilds, name = "Private Server O:")
+        self.channel = discord.utils.get(bot.guilds, name = "bot-logs")
 
     def load_extensions(self, cogs=None, path='cogs.'):
         '''Loads the default set of extensions or a seperate one if given'''
