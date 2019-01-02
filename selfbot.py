@@ -27,8 +27,7 @@ class Selfbot(commands.Bot):
         self.session = aiohttp.ClientSession(loop=self.loop)
         self._extensions = [x.replace('.py', '') for x in os.listdir('cogs') if x.endswith('.py')]
         self.remove_command('help')
-        self.load_extensions()
-        self.ctx = await self.get_context(message, cls=CustomContext)
+        self.load_extensions()   
         self.server = discord.utils.get(self.bot.guilds, name = "Private Server O:")
         self.channel = discord.utils.get(self.bot.guilds, name = "bot-logs")
 
@@ -110,7 +109,7 @@ class Selfbot(commands.Bot):
             return
         await self.invoke(ctx)
        
-    async def on_command_error(self, self.ctx, error):
+    async def on_command_error(self, ctx, error):
         """The event triggered when an error is raised while invoking a command.
         ctx   : Context
         error : Exception"""
