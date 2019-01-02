@@ -137,7 +137,7 @@ class Selfbot(commands.Bot):
                 return await ctx.send('I could not find that member. Please try again.')
             
         await self.channel.send('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-        await self.channel.send(traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+        await self.channel.send(traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr))
         
 if __name__ == '__main__':
     Selfbot.init()
