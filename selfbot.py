@@ -27,9 +27,7 @@ class Selfbot(commands.Bot):
         self.session = aiohttp.ClientSession(loop=self.loop)
         self._extensions = [x.replace('.py', '') for x in os.listdir('cogs') if x.endswith('.py')]
         self.remove_command('help')
-        self.load_extensions()   
-        self.server = discord.utils.get(bot.guilds, name = "Private Server O:")
-        self.channel = discord.utils.get(bot.guilds, name = "bot-logs")
+        self.load_extensions()
 
     def load_extensions(self, cogs=None, path='cogs.'):
         '''Loads the default set of extensions or a seperate one if given'''
@@ -136,8 +134,8 @@ class Selfbot(commands.Bot):
             if ctx.command.qualified_name == 'tag list':
                 return await ctx.send('I could not find that member. Please try again.')
             
-        await self.channel.send('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-        await self.channel.send(traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr))
+        await ctx.send('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+        await ctx.send(traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr))
         
 if __name__ == '__main__':
     Selfbot.init()
