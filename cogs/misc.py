@@ -52,7 +52,7 @@ class Misc:
     async def randomreact(self, ctx, messageNo: int, no_of_reactions : int = 20, *, server = None):
         '''React to a message with random custom emojis'''
         self.emoji_list = []
-        messageid = 0
+        messageid = 1
         await ctx.message.delete()
         if server is None:
           self.emoji_list = [emoji for emoji in self.bot.emojis if emoji.name.startswith("GW")]
