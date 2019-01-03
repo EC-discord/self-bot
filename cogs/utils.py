@@ -27,14 +27,14 @@ class Utility:
     @commands.command()
     async def edit(self, ctx, messageNo, *, new_message):
         messageId = 0
-        async for message in ctx.channel.history(limit = 30):
+        history = await ctx.channel.history(limit = 40).flatten:
+        for message in history:
             if message.author.id == ctx.message.author.id and messageNo == messageId:
-                await ctx.send("debug : if")
                 await message.edit(content = new_message)
                 break
-            elif message.author.id == ctx.message.author.id:
-                await ctx.send("debug : increment")
+            elif message.author.id == ctx.message.author.id:   
                 messageId += 1
+        await ctx.delete()
         
     @commands.command()
     async def addemoji(self, ctx, emoji_name, emoji_link = ''):
