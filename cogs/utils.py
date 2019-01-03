@@ -28,7 +28,7 @@ class Utility:
     async def edit(self, ctx, messageNo, *, new_message):
         messageId = 0
         history = await ctx.channel.history(limit = 40).flatten()
-        for message in history:
+        async for message in history:
             if message.author.id == ctx.message.author.id and messageNo == messageId:
                 await message.edit(content = new_message)
                 break
