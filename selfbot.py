@@ -22,7 +22,7 @@ class Selfbot(commands.Bot):
     _mention_pattern = re.compile('|'.join(_mentions_transforms.keys()))
 
     def __init__(self, **attrs):
-        super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = False)
+        super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = True)
         self.formatter = EmbedHelp()
         self.session = aiohttp.ClientSession(loop=self.loop)
         self._extensions = [x.replace('.py', '') for x in os.listdir('cogs') if x.endswith('.py')]
