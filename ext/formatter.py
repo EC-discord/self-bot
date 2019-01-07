@@ -140,7 +140,7 @@ class EmbedHelp(commands.HelpFormatter):
         The maximum number of characters that fit in a line.
         Defaults to 80.
     """
-    def __init__(self, show_hidden=False, show_check_failure=False, width=80):
+    def __init__(self, show_hidden=False, show_check_failure=False, width=75):
         self.width = width
         self.show_hidden = show_hidden
         self.show_check_failure = show_check_failure
