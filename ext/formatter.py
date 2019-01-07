@@ -247,9 +247,9 @@ class EmbedHelp(commands.HelpFormatter):
                 # skip aliases
                 continue
 
-            entry = '{2.context.prefix}{0:<{width}} {1}'.format(name, command.short_doc, self, width=max_width)
+            entry = '**{2.context.prefix}{0:<{width}}** `{1}`'.format(name, command.short_doc, self, width=max_width)
             shortened = self.shorten(entry)
-            self._paginator.add_line(f'```{shortened}```')
+            self._paginator.add_line(f'{shortened}')
 
     async def format_help_for(self, context, command_or_bot):
         """Formats the help page and handles the actual heavy lifting of how
