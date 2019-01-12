@@ -62,7 +62,7 @@ class Utility:
         await ctx.send('`Selfbot Logging out...`')
         await self.bot.logout()
 
-    @commands.command(name='help')
+    @commands.command(name='help', hidden = 'True')
     async def new_help_command(self, ctx, *commands : str):
         """get help cmds"""
         destination = ctx.message.author if self.bot.pm_help else ctx.message.channel
