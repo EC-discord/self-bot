@@ -25,20 +25,24 @@ class Utility:
         await ctx.send(translate(text, language))
         
     @commands.command()
-    async def addemoji(self, ctx, emoji_name, emoji_link = ''):
-        msg: discord.Message = ctx.message
-        if ctx.author.guild_permissions.manage_emojis == True:
-            if msg.attachments:
-                image = msg.attachments[0]
+    async def addemoji(self, ctx, emoji_name, emoji_link = '', *roles):
+        """Add an emoji to a server
+        __**Parameters**__
+        • emoji_name – The emoji name. Must be at least 2 characters
+        • emoji_link – The url or attachment of an image to turn into an emoji
+        • roles – A list of Roles that can use this emoji. Leave empty to make it available to everyone
+        """
+            if ctx.author.guild_permissions.manage_emojis == False:
+                await ctx.send("No valid emoji provided.")
+                return
+            if ctx.message.attachments:
+                image = ctx.message.attachments[0]
             elif emoji_link:
                 async with ctx.session.get(emoji_link) as resp:
                     image = await resp.read()
-            else:
-                await ctx.send("No valid emoji provided.")
-                return
-            created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
-            await ctx.send("Emoji {} created!".format(created_emoji))
-        else:
+            roles = roles or None
+            created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image, roles = [r for r in roles if roles is not None])
+            await ctx.send(f"Emoji {created_emoji} created!")
             await ctx.send(content = "You do not have the **Manage emojis** perm", delete_after = 2)
      
     @commands.command()
@@ -57,9 +61,9 @@ class Utility:
     @commands.command(name='logout')
     async def _logout(self, ctx):
         '''
-        restart bot
+        restart the bot
         '''
-        await ctx.send('`Selfbot Logging out...`')
+        await ctx.send('`Selfbot Logging out`')
         await self.bot.logout()
 
     @commands.command(name='help', hidden = 'True')
@@ -191,8 +195,8 @@ class Utility:
     @commands.command()
     async def picsu(self, ctx, user : discord.Member = None, size : typing.Optional[int] = 512, format = None):
         """gets the Display Picture of a user
-        **Parameters**
-        • user – The tagged user
+        __**Parameters**__
+        • user – Tag of the user to fetch his avatar
         • size – The size of the image to display
         • format – The format to attempt to convert the avatar to. If the format is None, then it is automatically detected
         """
