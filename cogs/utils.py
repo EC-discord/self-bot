@@ -194,7 +194,7 @@ class Utility:
         to get an animated avatar as png or jpg set format as None and static_format as png or jpg"""
         await ctx.message.delete()
         mem = user or ctx.author
-            avatar = mem.avatar_url_as(format = format static_format = static_format, size = size)
+        avatar = mem.avatar_url_as(format = format static_format = static_format, size = size)
         await ctx.send(avatar)
 
 def setup(bot):
