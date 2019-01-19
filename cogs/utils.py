@@ -189,11 +189,17 @@ class Utility:
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, user : discord.Member = None, size : typing.Optional[int] = 512, format = "png"):
-        """gets the Display Picture of a user"""
+    async def picsu(self, ctx, user : discord.Member = None, size : typing.Optional[int] = 512, format = None):
+        """gets the Display Picture of a user
+        **Parameters**
+        • format – The format to attempt to convert the avatar to. If the format is None, then it is automatically detected.
+        • size (int) – The size of the image to display.
+        """
         await ctx.message.delete()
         mem = user or ctx.author
-        avatar = mem.avatar_url_as(static_format = format, size = size)
+        if format is None and ctx.author.is_avatar_animated() != True:
+            format = "png" 
+        avatar = mem.avatar_url_as(format = format, size = size)
         await ctx.send(avatar)
 
 def setup(bot):
