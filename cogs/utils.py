@@ -189,7 +189,7 @@ class Utility:
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, , user : discord.Member = None, size : typing.Optional[int] = 512, format = "png", static_format = None):
+    async def picsu(self, ctx, user : discord.Member = None, size : typing.Optional[int] = 512, format = "png", static_format = None):
         """gets the profile pic of the user
         to get an animated avatar as png or jpg set format as None and static_format as png or jpg"""
         await ctx.message.delete()
