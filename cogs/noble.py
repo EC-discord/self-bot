@@ -129,25 +129,6 @@ class Noble:
             self.stopwatches.pop(author.id, None)
 
     @commands.command()
-    async def memeit(self, ctx, args1,args2):
-        'MEME IT! memeit [text1] [text2]'
-        api = pyimgflip.Imgflip(username='xjcn6iokow', password='xjcnb6i0k0w')
-        memes = api.get_memes()
-        meme = random.choice(memes)
-        if args1 == None and args2 == None:
-            result = api.caption_image(meme, "I forget to add", "Captions!")
-        else:
-            result = api.caption_image(meme, "{}".format(args1), "{}".format(args2))
-        em = discord.Embed()
-        em.set_image(url = result['url'])
-        try:
-            await ctx.send(embed = em)
-            await ctx.message.delete()
-        except:
-            await ctx.send(result['url'])
-            await ctx.message.delete()
-
-    @commands.command()
     async def disabled(self,ctx,*, member: discord.Member = None):
         'Make A disabled MEME Image (one pic only) XD'
         server = ctx.guild
