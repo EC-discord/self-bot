@@ -192,8 +192,9 @@ class Utility:
     async def picsu(self, ctx, user : discord.Member = None, size : typing.Optional[int] = 512, format = None):
         """gets the Display Picture of a user
         **Parameters**
-        • format – The format to attempt to convert the avatar to. If the format is None, then it is automatically detected.
-        • size (int) – The size of the image to display.
+        • user – The tagged user
+        • size – The size of the image to display
+        • format – The format to attempt to convert the avatar to. If the format is None, then it is automatically detected
         """
         await ctx.message.delete()
         mem = user or ctx.author
