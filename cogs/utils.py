@@ -30,7 +30,7 @@ class Utility:
         __**Parameters**__
         • emoji_name – The emoji name. Must be at least 2 characters
         • emoji_link – The url or attachment of an image to turn into an emoji
-        • roles – A list of Roles that can use this emoji. Leave empty to make it available to everyone
+        • roles – A list of Roles that can use this emoji (case sensitive). Leave empty to make it available to everyone
         """
         if ctx.author.guild_permissions.manage_emojis == False:
             await ctx.send("No valid emoji provided.")
@@ -42,9 +42,9 @@ class Utility:
                 image = await resp.read()
         found_roles = []
         for role in roles:
-            role = discord.utils.find(lambda role: r in role.name.lower(), ctx.guild.roles)
+            role = discord.utils.get(ctx.guild.roles, name = role)
             found_roles.append(role)
-        created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image, roles = [r for r in roles if roles is not None])
+        created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image, roles = [r for r in found_roles if found_roles is not None])
         await ctx.send(f"Emoji {created_emoji} created!")
         await ctx.send(content = "You do not have the **Manage emojis** perm", delete_after = 2)
      
