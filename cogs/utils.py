@@ -32,17 +32,17 @@ class Utility:
         • emoji_link – The url or attachment of an image to turn into an emoji
         • roles – A list of Roles that can use this emoji. Leave empty to make it available to everyone
         """
-            if ctx.author.guild_permissions.manage_emojis == False:
-                await ctx.send("No valid emoji provided.")
-                return
-            if ctx.message.attachments:
-                image = ctx.message.attachments[0]
-            elif emoji_link:
-                async with ctx.session.get(emoji_link) as resp:
-                    image = await resp.read()
-            roles = roles or None
-            created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image, roles = [r for r in roles if roles is not None])
-            await ctx.send(f"Emoji {created_emoji} created!")
+        if ctx.author.guild_permissions.manage_emojis == False:
+            await ctx.send("No valid emoji provided.")
+            return
+        if ctx.message.attachments:
+            image = ctx.message.attachments[0]
+        elif emoji_link:
+            async with ctx.session.get(emoji_link) as resp:
+                image = await resp.read()
+        roles = roles or None
+        created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image, roles = [r for r in roles if roles is not None])
+        await ctx.send(f"Emoji {created_emoji} created!")
             await ctx.send(content = "You do not have the **Manage emojis** perm", delete_after = 2)
      
     @commands.command()
