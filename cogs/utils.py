@@ -42,7 +42,7 @@ class Utility:
                 image = await resp.read()
         found_roles = []
         for role in roles:
-            role = discord.utils.find(lambda r: role in r.name.lower(), roles)
+            role = discord.utils.find(lambda role: r in role.name.lower(), ctx.guild.roles)
             found_roles.append(role)
         created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image, roles = [r for r in roles if roles is not None])
         await ctx.send(f"Emoji {created_emoji} created!")
