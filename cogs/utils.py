@@ -22,6 +22,11 @@ class Utility:
     
     @commands.command()
     async def translate(self, ctx, language, *, text):
+        """translates the string into a given language
+        __**Parameters**__
+        • language - the language to translate to
+        • text - the text to be translated
+        """
         await ctx.send(translate(text, language))
         
     @commands.command()
@@ -36,7 +41,7 @@ class Utility:
             await ctx.send("No valid emoji provided.")
             return
         if ctx.message.attachments:
-            image = ctx.message.attachments[0]
+            image = ctx.message.attachments[0].url
         elif emoji_link:
             async with ctx.session.get(emoji_link) as resp:
                 image = await resp.read()
