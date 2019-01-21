@@ -30,28 +30,25 @@ class Utility:
         await ctx.send(translate(text, language))
         
     @commands.command()
-    async def addemoji(self, ctx, emoji_name, emoji_link = '', *roles):
+    @commands.has_permissions(manage_emojis = True)
+    async def addemoji(self, ctx, emoji_name, emoji_link = '', *roles : discord.Role):
         """Add an emoji to a server
         __**Parameters**__
         • emoji_name – The emoji name. Must be at least 2 characters
         • emoji_link – The url or attachment of an image to turn into an emoji
         • roles – A list of Roles that can use this emoji (case sensitive). Leave empty to make it available to everyone
         """
-        if ctx.author.guild_permissions.manage_emojis == False:
-            await ctx.send("No valid emoji provided.")
-            return
         if ctx.message.attachments:
-            image = ctx.message.attachments[0].url
+            emoji_link = ctx.message.attachments[0].url
+            async with ctx.session.get(emoji_link) as resp:
+                image = await resp.read()
         elif emoji_link:
             async with ctx.session.get(emoji_link) as resp:
                 image = await resp.read()
-        found_roles = []
-        for role in roles:
-            role = discord.utils.get(ctx.guild.roles, name = role)
-            found_roles.append(role)
-        created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image, roles = [r for r in found_roles if found_roles is not None])
+        file = io.BytesIO(image)
+        file.seek(0)
+        created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = file, roles = [r for r in roles if roles is not None])
         await ctx.send(f"Emoji {created_emoji} created!")
-        await ctx.send(content = "You do not have the **Manage emojis** perm", delete_after = 2)
      
     @commands.command()
     async def delemoji(self, ctx, name: str):
