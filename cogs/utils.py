@@ -14,6 +14,7 @@ import time
 import re
 import random
 import typing
+import io
 
 class Utility:
     def __init__(self, bot):
