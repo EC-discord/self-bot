@@ -46,9 +46,7 @@ class Utility:
         elif emoji_link:
             async with ctx.session.get(emoji_link) as resp:
                 image = await resp.read()
-        with io.BytesIO(image) as file:
-            file.seek(0)
-            created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = file, roles = [r for r in roles if roles is not None])
+        created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = file, roles = [r for r in roles if roles is not None])
         await ctx.send(f"Emoji {created_emoji} created!")
      
     @commands.command()
