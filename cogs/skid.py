@@ -25,9 +25,6 @@ class skid:
           self.bot = bot
           self._last_result = None
           self.lang_conv = load_json('data/langs.json')
-          self._last_embed = None
-          self._rtfm_cache = None
-          self._last_google = None
           self.text_flip = {}
           self.char_list = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}"
           self.alt_char_list = "{|}zʎxʍʌnʇsɹbdouɯlʞɾᴉɥƃɟǝpɔqɐ,‾^[\]Z⅄XMΛ∩┴SɹQԀONW˥ʞſIHפℲƎpƆq∀@¿<=>;:68ㄥ9ϛㄣƐᄅƖ0/˙-'+*(),⅋%$#¡"[::-1]
@@ -53,18 +50,16 @@ class skid:
              await ctx.send(text)
              await asyncio.sleep(random.choice([num for num in spam_delay]))
           
-     @commands.command(aliases=['bn'])
-     async def binary(self, ctx, number:int = None):
-         if number is None:
-             await ctx.send('Enter a number :D')
-         else:
-             await ctx.send(bin(number)[2:])
-          
      @commands.command()
-     async def getemojis(self, ctx):
-         '''gets all emojis in a server'''
-         emoji_list = [e for e in ctx.guild.emojis if not emoji.animated]
-         await ctx.send(" ".join(emoji_list))
+     async def animated(self, ctx, size = 32):
+         '''displays all animated emojis from a server in the form of gifs'''
+         emojis = []
+         for emoji in (e for e in ctx.guild.emojis if e.animated):
+               async with ctx.session.get(f"{e.url}size={size}") as resp:
+                    image = await resp.read()
+                    file = discord.File(io.BytesIO(image), f"{e.name}.gif")
+                    emojis.append(file)
+         await ctx.send(files = [f in emojis])
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
