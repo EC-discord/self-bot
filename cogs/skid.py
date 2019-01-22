@@ -51,13 +51,14 @@ class skid:
              await asyncio.sleep(random.choice([num for num in spam_delay]))
           
      @commands.command()
-     async def animated(self, ctx, size = 32):
-         '''displays all animated emojis from a server in the form of gifs'''
+     async def aemojis(self, ctx, size = 32):
+         '''displays all animated emojis from a server in the form of gifs
+         '''
          emojis = []
          for emoji in (e for e in ctx.guild.emojis if e.animated):
-               async with ctx.session.get(f"{e.url}size={size}") as resp:
+               async with ctx.session.get(f"{emoji.url}size={size}") as resp:
                     image = await resp.read()
-                    file = discord.File(io.BytesIO(image), f"{e.name}.gif")
+                    file = discord.File(io.BytesIO(image), f"{emoji.name}.gif")
                     emojis.append(file)
          await ctx.send(files = [f in emojis])
      
