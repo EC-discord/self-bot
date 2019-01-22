@@ -4,6 +4,5 @@ colorthief
 pyparsing
 sympy
 psutil
-emoji
 moviepy
 requests
