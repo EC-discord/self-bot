@@ -60,7 +60,7 @@ class skid:
                     image = await resp.read()
                     file = discord.File(io.BytesIO(image), f"{emoji.name}.gif")
                     emojis.append(file)
-         await ctx.send(files = [f in emojis])
+         await ctx.send(files = [f for f in emojis])
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
