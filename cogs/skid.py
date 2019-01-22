@@ -49,23 +49,10 @@ class skid:
          for i in range(spam_frequency):
              await ctx.send(text)
              await asyncio.sleep(random.choice([num for num in spam_delay]))
-          
-     @commands.command()
-     async def aemojis(self, ctx, size = 32):
-         '''displays all animated emojis from a server in the form of gifs
-         '''
-         emojis = []
-         for emoji in (e for e in ctx.guild.emojis if e.animated):
-               async with ctx.session.get(f"{emoji.url}size={size}") as resp:
-                    image = await resp.read()
-                    file = discord.File(io.BytesIO(image), f"{emoji.name}.gif")
-                    emojis.append(file)
-         await ctx.send(files = [f for f in emojis])
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
          """Evaluates python code"""
-
          env = {
              'bot': self.bot,
              'ctx': ctx,
@@ -80,7 +67,6 @@ class skid:
          env.update(globals())
 
          body = self.cleanup_code(body)
-         #await self.edit_to_codeblock(ctx, body)
          stdout = io.StringIO()
          err = out = None
 
@@ -131,11 +117,8 @@ class skid:
             
      def cleanup_code(self, content):
          """Automatically removes code blocks from the code."""
-         # remove ```py\n```
          if content.startswith('```') and content.endswith('```'):
              return '\n'.join(content.split('\n')[1:-1])
-
-         # remove `foo`
          return content.strip('` \n')
 
      def get_syntax_error(self, e):
