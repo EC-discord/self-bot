@@ -8,7 +8,7 @@ import io
 
 
 class Mod:
-    """useful commands for moderation ;o"""
+    """useful commands for moderation"""
     def __init__(self, bot):
         self.bot = bot
 
@@ -139,29 +139,23 @@ class Mod:
         await ctx.send(embed=em)
 
     @commands.command()
-    async def addrole(self, ctx, member: discord.Member, *, rolename: str):
+    @commands.has_permissions(manage_roles = True)
+    async def addrole(self, ctx, member: discord.Member, *, rolename: discord.Role):
         '''Add a role to someone else.'''
-        role = discord.utils.find(lambda m: rolename.lower() in m.name.lower(), ctx.message.guild.roles)
         if not role:
             return await ctx.send('That role does not exist.')
-        try:
-            await member.add_roles(role)
-            await ctx.send(f'Added: `{role.name}`')
-        except:
-            await ctx.send("I don't have the perms to add that role.")
+        await member.add_roles(role)
+        await ctx.send(f'Added: `{role.name}`')
 
 
     @commands.command()
-    async def removerole(self, ctx, member: discord.Member, *, rolename: str):
+    @commands.has_permissions(manage_roles = True)
+    async def removerole(self, ctx, member: discord.Member, *, rolename: discord.Role):
         '''Remove a role from someone else.'''
-        role = discord.utils.find(lambda m: rolename.lower() in m.name.lower(), ctx.message.guild.roles)
         if not role:
             return await ctx.send('That role does not exist.')
-        try:
-            await member.remove_roles(role)
-            await ctx.send(f'Removed: `{role.name}`')
-        except:
-            await ctx.send("I don't have the perms to add that role.")
+        await member.remove_roles(role)
+        await ctx.send(f'Removed: `{role.name}`')
 
 def setup(bot):
 	bot.add_cog(Mod(bot))
