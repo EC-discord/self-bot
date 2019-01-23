@@ -6,3 +6,4 @@ sympy
 psutil
 moviepy
 requests
+emoji
