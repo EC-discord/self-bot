@@ -140,9 +140,9 @@ class Mod:
 
     @commands.command()
     @commands.has_permissions(manage_roles = True)
-    async def addrole(self, ctx, member: discord.Member, *, rolename: discord.Role):
+    async def addrole(self, ctx, member: discord.Member, *, role: discord.Role):
         '''Add a role to someone else.'''
-        if not rolename:
+        if not role:
             return await ctx.send('That role does not exist.')
         await member.add_roles(role)
         await ctx.send(f'Added: `{role.name}`')
@@ -150,9 +150,9 @@ class Mod:
 
     @commands.command()
     @commands.has_permissions(manage_roles = True)
-    async def removerole(self, ctx, member: discord.Member, *, rolename: discord.Role):
+    async def removerole(self, ctx, member: discord.Member, *, role: discord.Role):
         '''Remove a role from someone else.'''
-        if not rolename:
+        if not role:
             return await ctx.send('That role does not exist.')
         await member.remove_roles(role)
         await ctx.send(f'Removed: `{role.name}`')
