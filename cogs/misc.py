@@ -32,13 +32,8 @@ class Misc:
         self.emoji_list = []
         
     @commands.command()
-    async def hexcode(self, ctx, *, role):
-      """the role can be its name or its tag"""
-      if isinstance(role, discord.Role):
-        await ctx.send(role.color)
-      else:
-        role = discord.utils.get(ctx.guild.roles, name = role)
-        await ctx.send(role.color)
+    async def hexcode(self, ctx, *, role : discord.Role):
+        await ctx.send(f"{role.name} : role.color")
 
     @commands.command(aliases = ["emt"])
     async def embedtext(self, ctx, *, message):
@@ -102,7 +97,7 @@ class Misc:
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
 
-    @commands.group(invoke_without_command=True, name='emoji', aliases=['emote', 'e'])
+    @commands.command(name='emoji', aliases=['emote', 'e'])
     async def _emoji(self, ctx, *, emoji : discord.Emoji):
         '''send emoji pic'''
         await ctx.message.delete()
