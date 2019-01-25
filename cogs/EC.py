@@ -5,26 +5,6 @@ from discord.ext import commands
 class EC: 
      def __init__(self, bot):
           self.bot = bot
-
-     @commands.command()
-     async def shrug(self, ctx):
-         """¯\\_(ツ)_/¯"""
-         await ctx.message.edit(content="¯\\\_(ツ)\_/¯")
-
-     @commands.command()
-     async def tflip(self, ctx):
-         """(╯°□°）╯︵ ┻━┻"""
-         await ctx.message.edit(content='(╯°□°）╯︵ ┻━┻')
-
-     @commands.command()
-     async def cool(self, ctx):
-         """(  * O *  )"""
-         await ctx.message.edit(content="(  * O *  )")
-
-     @commands.command()
-     async def lenny(self, ctx):
-         """( ͡° ͜ʖ ͡°)"""
-         await ctx.message.edit(content="( ͡° ͜ʖ ͡°)")
     
      @commands.command()
      async def gib(self, ctx):
@@ -40,11 +20,6 @@ class EC:
      async def thumbs(self, ctx):
          """(👍' - ')👍"""
          await ctx.message.edit(content="(👍' - ')👍")
-     
-     @commands.command()
-     async def warp(self, ctx):
-         """(   ' - ')__(warp drive)"""
-         await ctx.message.edit(content="(   ' - ')__(warp drive)")
     
      @commands.command(aliases = ["bye"])
      async def hi(self, ctx):
