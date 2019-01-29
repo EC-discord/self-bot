@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands import TextChannelConverter
 from contextlib import redirect_stdout
 from ext.utility import load_json
 from urllib.parse import quote as uriquote
@@ -9,14 +8,11 @@ from PIL import Image
 import traceback
 import textwrap
 import aiohttp
-import inspect
 import asyncio
 import time
-import os
 import io
 import random
 from mtranslate import translate
-from io import BytesIO
 import string
 import colorsys
 
@@ -76,7 +72,7 @@ class skid:
              exec(to_compile, env)
          except Exception as e:
              err = await ctx.send(f'```py\n{e.__class__.__name__}: {e}\n```')
-             return await err.add_reaction('\u2049')
+             return await err.add_reaction('❌')
 
          func = env['func']
          try:
