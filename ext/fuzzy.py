@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+'''# -*- coding: utf-8 -*-
 
 """
 The MIT License (MIT)
@@ -140,3 +140,4 @@ def extract_matches(query, choices, *, scorer=quick_ratio, score_cutoff=0):
 
         to_return.append(match)
     return to_return
+'''
