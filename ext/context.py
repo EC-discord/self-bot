@@ -36,7 +36,7 @@ class CustomContext(commands.Context):
 
     async def _get_message(self, channel, id):
         '''Goes through channel history to get a message'''
-        async for message in channel.history(limit=2000):
+        async for message in channel.history(limit=5000):
             if message.id == id:
                 return message
 
@@ -47,16 +47,6 @@ class CustomContext(commands.Context):
         else:
             msg = await self._get_message(channel=channel_or_id, id=id)
         return msg
-
-    async def confirm(self, msg):
-        '''Small helper for confirmation messages.'''
-        await self.send(msg or '*Are you sure you want to proceed?* `(Y/N)`')
-        resp = self.bot.wait_for('message', check=lambda m: m == ctx.author)
-        falsy = ['n', 'no', 'false','0','fuck off','f']
-        if resp.content.lower().strip() in falsy:
-            return False
-        else:
-            return True
 
     async def send_cmd_help(self):
         '''Sends command help'''
@@ -72,7 +62,7 @@ class CustomContext(commands.Context):
     @staticmethod
     def is_valid_image_url(url):
         '''Checks if a url leads to an image.'''
-        types = ['.png', '.jpg', '.gif', '.bmp', '.webp']
+        types = ['.png', '.jpg', '.gif', '.bmp', '.webp', 'jpeg']
         parsed = urlparse(url)
         if any(parsed.path.endswith(i) for i in types):
             return url.replace(parsed.query, 'size=128')
@@ -109,13 +99,13 @@ class CustomContext(commands.Context):
         if msg:
             await self.send(msg)
         else:
-            await self.message.add_reaction('✅')
+            await self.message.add_reaction('✔')
 
     async def failure(self, msg=None):
         if msg:
             await self.send(msg)
         else:
-            await self.message.add_reaction('⁉')
+            await self.message.add_reaction('❌')
 
     @staticmethod
     def paginate(text: str):
