@@ -111,9 +111,9 @@ class skid:
                          await ctx.send(f'```py\n{page}\n```')
 
          if out:
-             await out.add_reaction('\u2705') #tick
+             await out.add_reaction('✔')
          if err:
-             await err.add_reaction('\u2049') #x
+             await err.add_reaction('❌')
             
      def cleanup_code(self, content):
          """Automatically removes code blocks from the code."""
