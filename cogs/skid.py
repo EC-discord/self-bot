@@ -15,6 +15,7 @@ import random
 from mtranslate import translate
 import string
 import colorsys
+import inspect
 
 class skid: 
      def __init__(self, bot):
