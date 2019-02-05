@@ -207,7 +207,7 @@ class Utility:
         mem = user or ctx.author
         if format is None and ctx.author.is_avatar_animated() != True:
             format = "png" 
-        avatar = mem.avatar_url_as(format = format, size = size)
+        avatar = mem.avatar_url_as(format = format if format is not "gif" else None, size = size)
         await ctx.send(avatar)
 
 def setup(bot):
