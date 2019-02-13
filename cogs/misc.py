@@ -112,12 +112,13 @@ class Misc:
                 
     @commands.command()
     async def textreact(self, ctx, messageNo = 1, *, text):
-        text = [c for c in text]
+        text = [c for c in text.lower()]
         messageId = 0
+        emotes = {a : "🇦", b : "🇧", c : "🇨", d : "🇩", e : "🇪", f : "🇫", g : "🇬", h : "🇭", i : "🇮", j : "🇯", k : "🇰", l : "🇱", m : "🇲", n : "🇳", o : "🇴", p : "🇵", q : "🇶", r : "🇷", s : "🇸", t : "🇹", u : "🇺", v : "🇻", w : "🇼", x : "🇽", y : "🇾", z : "🇿"}
         async for m in ctx.channel.history(limit = 100):
             if messageNo == messageId:
               for c in text:
-                  await m.add_reaction(f":regional_indicator_{c}:")
+                  await m.add_reaction(f"{emotes[c]}")
               break
             messageId += 1
         
