@@ -133,7 +133,7 @@ class Utility:
     @commands.command()
     async def nick(self, ctx, user : discord.Member, *, nickname : str = None):
         await user.edit(nick = nickname)
-        await ctx.send("Changed {user.name}'s nickname to {nickname}")
+        await ctx.send(f"Changed {user.name}'s nickname to {nickname}")
     
     @commands.command()
     async def cpres(self, ctx, status : str, Type:str = "playing", *, message:str = None):
