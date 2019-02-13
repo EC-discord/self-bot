@@ -109,6 +109,7 @@ class Misc:
         else:
             with io.BytesIO(image) as file:
                 await ctx.send(file = discord.File(file, "emote.png"))
+                
     @commands.command()
     async def textreact(self, ctx, messageNo = 1, *, text):
         text = [c for c in text]
@@ -116,7 +117,7 @@ class Misc:
         async for m in ctx.channel.history(limit = 100):
             if messageNo == messageId:
               for c in text:
-                  await m.add_reaction(":regional_indicator_{c}:")
+                  await m.add_reaction(f":regional_indicator_{c}:")
               break
             messageId += 1
         
