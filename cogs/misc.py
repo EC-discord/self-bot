@@ -116,7 +116,7 @@ class Misc:
         async for m in ctx.channel.history(limit = 100):
             if messageNo == messageId:
               for c in text:
-                  await m.add_reaction("regional_indicator_{c}")
+                  await m.add_reaction(":regional_indicator_{c}:")
               break
             messageId += 1
         
