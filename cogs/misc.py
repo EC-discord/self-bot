@@ -67,7 +67,7 @@ class Misc:
     @commands.command()
     async def react(self, ctx, index: int, *, reactions):
         '''React to a specified message with reactions'''
-        history = await ctx.channel.history(limit=30).flatten()
+        history = await ctx.channel.history(limit = 30).flatten()
         message = history[index]
         async for emoji in self.validate_emojis(ctx, reactions):
             await message.add_reaction(emoji)
@@ -109,7 +109,17 @@ class Misc:
         else:
             with io.BytesIO(image) as file:
                 await ctx.send(file = discord.File(file, "emote.png"))
-
+    @commands.command()
+    async def textreact(self, ctx, messageNo = 1, *, text):
+        text = [c for c in text]
+        messageId = 0
+        async for m in ctx.channel.history(limit = 100):
+            if messageNo == messageId:
+              for c in text:
+                  await m.add_reaction("regional_indicator_{c}")
+              break
+            messageId += 1
+        
     @commands.command()
     async def textemote(self, ctx, *, msg):
         """Convert text into emojis"""
