@@ -194,7 +194,7 @@ class Utility:
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, user : discord.Member = None, size : typing.Optional[int] = 512, format = None):
+    async def picsu(self, ctx, user : discord.Member = None, size : typing.Optional[int] = 512, format = "gif"):
         """gets the Display Picture of a user
         __**Parameters**__
         • user – Tag of the user to fetch his avatar
@@ -203,7 +203,7 @@ class Utility:
         """
         await ctx.message.delete()
         user = user or ctx.author
-        if format is None and user.is_avatar_animated() != True:
+        if format is "gif" and user.is_avatar_animated() != True:
             format = "png" 
         avatar = user.avatar_url_as(format = format if format is not "gif" else None, size = size)
         async with ctx.session.get(avatar) as resp:
