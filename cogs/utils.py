@@ -49,17 +49,15 @@ class Utility:
         await ctx.send(f"Emoji {created_emoji} created!")
      
     @commands.command()
-    async def delemoji(self, ctx, name: str):
+    async def delemoji(self, ctx, emoji: discord.Emoji):
         "Deletes an emoji"
-        emoji = discord.utils.get(ctx.guild.emojis, name = name)
         await emoji.delete()
-        await ctx.send(content = f"Deleted emoji : {name}", delete_after = 2)
+        await ctx.send(content = f"Deleted emoji : {emoji.name}", delete_after = 2)
         
     @commands.command()
-    async def editemoji(self, ctx, emoji_name, new_name):
-        emoji = discord.utils.get(ctx.guild.emojis, name = emoji_name)
+    async def editemoji(self, ctx, emoji : discord.Emoji, new_name):
         await emoji.edit(name = new_name)
-        await ctx.send(content = f"Edited emoji {emoji_name} to {new_name}")
+        await ctx.send(content = f"Edited emoji {emoji_name} to {new_name}", delete_after = 2)
     
     @commands.command(name='logout')
     async def _logout(self, ctx):
