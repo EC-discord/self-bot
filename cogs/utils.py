@@ -209,7 +209,7 @@ class Utility:
         async with ctx.session.get(avatar) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(avatar, f"image.{format}"))
+            await ctx.send(file = discord.File(file, f"image.{format}"))
 
 def setup(bot):
     bot.add_cog(Utility(bot))
