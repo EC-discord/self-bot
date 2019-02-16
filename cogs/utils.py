@@ -202,11 +202,14 @@ class Utility:
         • format – The format to attempt to convert the avatar to. If the format is None, then it is automatically detected
         """
         await ctx.message.delete()
-        mem = user or ctx.author
+        user = user or ctx.author
         if format is None and ctx.author.is_avatar_animated() != True:
             format = "png" 
-        avatar = mem.avatar_url_as(format = format if format is not "gif" else None, size = size)
-        await ctx.send(avatar)
+        avatar = user.avatar_url_as(format = format if format is not "gif" else None, size = size)
+        async with ctx.session.get(avatar) as resp:
+            image = await resp.read()
+        with io.BytesIO(image) as file:
+            await ctx.send(file = discord.File(avatar, f"image.{format}"))
 
 def setup(bot):
     bot.add_cog(Utility(bot))
