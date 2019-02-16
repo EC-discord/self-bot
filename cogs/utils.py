@@ -203,13 +203,13 @@ class Utility:
         """
         await ctx.message.delete()
         user = user or ctx.author
-        if format is None and ctx.author.is_avatar_animated() != True:
+        if format is None and user.is_avatar_animated() != True:
             format = "png" 
         avatar = user.avatar_url_as(format = format if format is not "gif" else None, size = size)
-        async with ctx.session.get(avatar) as resp:
+        async with ctx.session.get(user) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(avatar, f"image.{format}"))
+            await ctx.send(file = discord.File(user, f"image.{format}"))
 
 def setup(bot):
     bot.add_cog(Utility(bot))
