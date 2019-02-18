@@ -130,31 +130,51 @@ class Utility:
         await user.edit(nick = nickname)
         await ctx.send(f"Changed {user.name}'s nickname to {nickname}")
     
-    @commands.command()
-    async def cpres(self, ctx, status : str, Type:str = "playing", *, message:str = None):
-        '''Sets a custom presence, the Type argument can be "playing", "streaming", "listeningto" or "watching"
-        status can be "online", "dnd", "idle", "invisible"
-        Example : (prefix)cpres idle watching a movie'''
+    @commands.group()
+    async def cpres(self, ctx):
+        """Used to set a presence or status"""
         types = {"playing" : "Playing", "streaming" : "Streaming", "listeningto" : "Listening to", "watching" : "Watching"}
         stats = {"online" : discord.Status.online, "dnd" : discord.Status.dnd, "idle" : discord.Status.idle, "invisible" : discord.Status.invisible}
-        em = discord.Embed(color=0x6ed457, title="Presence")
+        
+    @cpres.command()
+    async def presence(self, ctx, Type : str = "playing", *, message : str = None):
+        """Sets a presence
+        __**Parameters**__
+        • Type - "playing", "streaming", "listeningto" or "watching", defaults to playing
+        • message - The message to display as presence
+        """
         if message is None:
-            await self.bot.change_presence(status=discord.Status.online, activity= message, afk = True)
+            await self.bot.change_presence(activity = message, afk = True)
         else:
             if Type == "playing":
-                await self.bot.change_presence(status=stats[status], activity=discord.Game(name=message), afk = True)
+                await self.bot.change_presence(activity=discord.Game(name=message), afk = True)
             elif Type == "streaming":
-                await self.bot.change_presence(status=stats[status], activity=discord.Streaming(name=message, url=f'https://twitch.tv/{message}'), afk = True)
+                await self.bot.change_presence(activity=discord.Streaming(name=message, url=f'https://twitch.tv/{message}'), afk = True)
             elif Type == "listeningto":
-                await self.bot.change_presence(status=stats[status], activity=discord.Activity(type=discord.ActivityType.listening, name=message), afk = True)
+                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=message), afk = True)
             elif Type == "watching":
-                await self.bot.change_presence(status=stats[status], activity=discord.Activity(type=discord.ActivityType.watching, name=message), afk = True)
+                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=message), afk = True)
+            em = discord.Embed(color=0x6ed457, title="Presence")
             em.description = f"Presence : {types[Type]} {message}"
             if ctx.author.guild_permissions.embed_links:
                 await ctx.send(embed = em)
             else:
-                await ctx.send(f"Presence : {types[Type]} {message}")      
-
+                await ctx.send(f"Presence : {types[Type]} {message}")
+                
+    @cpres.command()
+    async def status(self, ctx, status : str = None):
+        """Sets your status
+        __**Parameters**__
+        • status - "online", "idle", "dnd" or "invisible", defaults to "online"
+        """
+        if status is None:
+            await self.bot.change_presence(status = stats[status], afk = True)
+        elif status == ("online" or "invisible" or "idle"):
+            await self.bot.change_presence(status = stats[status], afk = True)
+        elif status == "dnd":
+            await self.bot.change_presence(status = stats[status], afk = False)
+        await ctx.send("Status : {stats[status]}")
+            
     @commands.command()
     async def clear(self, ctx, *, serverid = "all"):
         '''Marks messages from selected servers or emote servers as read'''
