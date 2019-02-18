@@ -1,31 +1,20 @@
-from __future__ import division
 import discord
 import operator
 import base64
 import asyncio
-import codecs
 import random
 import time
 import datetime
 import aiohttp
 import urllib.request
-import re
 import json
-import PIL
-import os
 import shutil
-import requests
 import urllib.parse
 import glob
 import moviepy.editor as mpy
 from discord.ext import commands
-from sympy import solve
 from PIL import Image,ImageFilter,ImageDraw,ImageFont
-from discord.ext import commands
-from discord.ext import commands
-from ext.utility import parse_equation
 from ext.colours import ColorNames
-from random import randint, choice
 
 
 class Noble:
