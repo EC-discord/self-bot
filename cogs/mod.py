@@ -1,10 +1,6 @@
 import discord
 from discord.ext import commands
-import datetime
 import asyncio
-import random
-import os
-import io
 
 
 class Mod:
@@ -21,19 +17,10 @@ class Mod:
         if success:
             if method == 'ban' or method == 'hackban':
                 emb.description = f'{user} was just {method}ned.'
-            elif method == 'unmute':
-                emb.description = f'{user} was just {method}d.'
-            elif method == 'mute':
-                emb.description = f'{user} was just {method}d for {duration}.'
-            elif method == 'channel-lockdown' or method == 'server-lockdown':
-                emb.description = f'`{location.name}` is now in lockdown mode!'
             else:
                 emb.description = f'{user} was just {method}ed.'
         else:
-            if method == 'lockdown' or 'channel-lockdown':
-                emb.description = f"You do not have the permissions to {method} `{location.name}`."
-            else:
-                emb.description = f"You do not have the permissions to {method} {user.name}."
+            emb.description = f"You do not have the permissions to {method} {user.name}."
 
         return emb
 
@@ -92,7 +79,7 @@ class Mod:
             await ctx.purge(limit=limit+1)
 
     @commands.command()
-    async def clean(self, ctx, limit : int=15, member : discord.Member = None):
+    async def clean(self, ctx, limit : int = 15, member : discord.Member = None):
         '''Clean a number of your own or another users messages'''
         deleted = 0
         user = member or ctx.message.author
@@ -110,20 +97,6 @@ class Mod:
                     deleted += 1
                     if deleted == limit:
                         break
-
-    @commands.command()
-    async def bans(self, ctx):
-        '''See a list of banned users in the guild'''
-        try:
-            bans = await ctx.guild.bans()
-        except:
-            return await ctx.send('You dont have the perms to see bans.')
-
-        em = discord.Embed(title=f'List of Banned Members ({len(bans)}):')
-        em.description = ', '.join([str(b.user) for b in bans])
-        em.color = await ctx.get_dominant_color(ctx.guild.icon_url)
-
-        await ctx.send(embed=em)
 
     @commands.command()
     async def baninfo(self, ctx, *, name_or_id):
