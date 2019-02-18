@@ -1,8 +1,6 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands import TextChannelConverter
 from ext.utility import load_json
-from urllib.parse import quote as uriquote
 from mtranslate import translate
 from ext import embedtobox
 from PIL import Image
@@ -10,7 +8,6 @@ import traceback
 import aiohttp
 import asyncio
 import time
-import re
 import random
 import typing
 import io
