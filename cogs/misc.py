@@ -2,27 +2,13 @@ from __future__ import division
 import discord
 import asyncio
 import random
-import time
-import datetime
 import emoji
 import json
 import requests
-import urllib.parse
 from discord.ext import commands
-from ext.utility import parse_equation
 from ext.colours import ColorNames
-from urllib.request import urlopen
 from PIL import Image,ImageFilter,ImageDraw,ImageFont
-from datetime import datetime
-from discord.ext import commands
-from pyparsing import (Literal,CaselessLiteral,Word,Combine,Group,Optional,
-                    ZeroOrMore,Forward,nums,alphas,oneOf)
-from discord.ext import commands
-from ext.utility import parse_equation
-from ext.colours import ColorNames
-from urllib.request import urlopen
-import io
-from random import randint, choice    
+import io  
 
 
 class Misc:
