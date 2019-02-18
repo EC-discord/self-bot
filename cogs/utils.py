@@ -133,9 +133,8 @@ class Utility:
     @commands.group()
     async def cpres(self, ctx):
         """Used to set a presence or status"""
-        types = {"playing" : "Playing", "streaming" : "Streaming", "listeningto" : "Listening to", "watching" : "Watching"}
-        stats = {"online" : discord.Status.online, "dnd" : discord.Status.dnd, "idle" : discord.Status.idle, "invisible" : discord.Status.invisible}
-        
+        pass
+    
     @cpres.command()
     async def presence(self, ctx, Type : str = "playing", *, message : str = None):
         """Sets a presence
@@ -143,6 +142,7 @@ class Utility:
         • Type - "playing", "streaming", "listeningto" or "watching", defaults to playing
         • message - The message to display as presence
         """
+        types = {"playing" : "Playing", "streaming" : "Streaming", "listeningto" : "Listening to", "watching" : "Watching"}
         if message is None:
             await self.bot.change_presence(activity = message, afk = True)
         else:
@@ -154,7 +154,7 @@ class Utility:
                 await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=message), afk = True)
             elif Type == "watching":
                 await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=message), afk = True)
-            em = discord.Embed(color=0x6ed457, title="Presence")
+            em = discord.Embed(color=0xffd500, title="Presence")
             em.description = f"Presence : {types[Type]} {message}"
             if ctx.author.guild_permissions.embed_links:
                 await ctx.send(embed = em)
@@ -167,13 +167,14 @@ class Utility:
         __**Parameters**__
         • status - "online", "idle", "dnd" or "invisible", defaults to "online"
         """
+        stats = {"online" : discord.Status.online, "dnd" : discord.Status.dnd, "idle" : discord.Status.idle, "invisible" : discord.Status.invisible}
         if status is None:
             await self.bot.change_presence(status = stats[status], afk = True)
         elif status == ("online" or "invisible" or "idle"):
             await self.bot.change_presence(status = stats[status], afk = True)
         elif status == "dnd":
             await self.bot.change_presence(status = stats[status], afk = False)
-        await ctx.send("Status : {stats[status]}")
+        await ctx.send(f"Status : {stats[status]}")
             
     @commands.command()
     async def clear(self, ctx, *, serverid = "all"):
