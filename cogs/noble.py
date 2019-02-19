@@ -5,6 +5,7 @@ import asyncio
 import random
 import time
 import datetime
+import codecs
 import aiohttp
 import urllib.request
 import json
