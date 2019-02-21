@@ -217,7 +217,7 @@ class Utility:
         __**Parameters**__
         • user – Tag of the user to fetch his avatar
         • size – The size of the image to display
-        • format – The format to attempt to convert the avatar to. If the format is None, then it is automatically detected
+        • format – The format("png", "webp", "jpeg", "jpg" or "gif") to attempt to convert the avatar to.
         """
         await ctx.message.delete()
         user = user or ctx.author
@@ -227,7 +227,20 @@ class Utility:
         async with ctx.session.get(avatar) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(file, f"image.{format}"))
-
+            await ctx.send(file = discord.File(file, f"DP.{format}"))
+            
+    @commands.command(aliases = ["sicon", "si"])
+    async def servericon(self, ctx, guild : discord.Guild, size : typing.Optional[int] = 512, format = "png"):
+        """gets a server's icon
+        __**Parameter**__
+        • size – The size of the image to display
+        • format – The format("png", "webp", "jpeg" or "jpg") to attempt to convert the avatar to."""
+        await ctx.message.delete()
+        icon = guild.icon_url_as(format = format, size = size)
+        async with ctx.session.get(icon) as resp:
+            image = await resp.read()
+        with io.BytesIO(image) as file:
+            await ctx.send(file = discord.File(file, f"icon.{format}"))
+        
 def setup(bot):
     bot.add_cog(Utility(bot))
