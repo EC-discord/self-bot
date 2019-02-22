@@ -230,11 +230,16 @@ class Utility:
             await ctx.send(file = discord.File(file, f"DP.{format}"))
             
     @commands.command(aliases = ["sicon", "si"])
-    async def servericon(self, ctx, guild : discord.Guild, size : typing.Optional[int] = 512, format = "png"):
+    async def servericon(self, ctx, guild, size : typing.Optional[int] = 512, format = "png"):
         """gets a server's icon
-        __**Parameter**__
+        __**Parameters**__
+        • guild - The name(caps lock sensitive) or id of the guild/server
         • size – The size of the image to display
-        • format – The format("png", "webp", "jpeg" or "jpg") to attempt to convert the avatar to."""
+        • format – The format("png", "webp", "jpeg" or "jpg") to attempt to convert the avatar to"""
+        if type(guild) == int:
+            guild = discord.utils.get(bot.guilds, id = guild)
+        if type(guild) == str:
+            guild = discord.utils.get(bot.guilds, name = guild)
         await ctx.message.delete()
         icon = guild.icon_url_as(format = format, size = size)
         async with ctx.session.get(icon) as resp:
