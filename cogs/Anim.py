@@ -2,7 +2,7 @@ import discord
 import asyncio
 from discord.ext import commands
 
-class Anim:
+class Anim(commands.Cog):
      """Animated messages"""
      def __init__(self, bot):
           self.bot = bot
