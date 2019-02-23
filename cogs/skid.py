@@ -17,7 +17,7 @@ import string
 import colorsys
 import inspect
 
-class skid: 
+class skid(commands.Cog): 
      def __init__(self, bot):
           self.bot = bot
           self._last_result = None
