@@ -3,7 +3,7 @@ from discord.ext import commands
 import asyncio
 
 
-class Mod:
+class Mod(commands.Cog):
     """useful commands for moderation"""
     def __init__(self, bot):
         self.bot = bot
