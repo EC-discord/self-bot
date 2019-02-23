@@ -12,7 +12,7 @@ import random
 import typing
 import io
 
-class Utility:
+class Utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.lang_conv = load_json('data/langs.json')
