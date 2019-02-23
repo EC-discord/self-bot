@@ -18,7 +18,7 @@ from PIL import Image,ImageFilter,ImageDraw,ImageFont
 from ext.colours import ColorNames
 
 
-class Noble:
+class Noble(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.stopwatches = {}
