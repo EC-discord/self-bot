@@ -90,11 +90,7 @@ class Misc(commands.Cog):
         • emoji - The name(case sensitive) or id of the emoji
         '''
         await ctx.message.delete()
-        try:
-          async with ctx.session.get(emoji.url) as resp:
-            image = await resp.read()
-        except:
-          async with ctx.session.get(f"https://cdn.discordapp.com/emojis/{emoji}.png") as resp:
+        async with ctx.session.get(emoji.url) as resp:
             image = await resp.read()
         if emoji.animated:
             with io.BytesIO(image) as file:
