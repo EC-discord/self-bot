@@ -128,6 +128,7 @@ class Utility(commands.Cog):
     @commands.command()
     async def nick(self, ctx, user : discord.Member, *, nickname : str = None):
         await user.edit(nick = nickname)
+        nick = nick or user.name
         await ctx.send(f"Changed {user.name}'s nickname to {nickname}")
     
     @commands.group()
@@ -206,8 +207,6 @@ class Utility(commands.Cog):
     async def choose(self, ctx, *, choices: commands.clean_content):
         '''choose! use , in between'''
         choices = choices.split(',')
-        if len(choices) < 2:
-            return await ctx.send('Not enough choices to pick from.')
         choices[0] = ' ' + choices[0]
         await ctx.send(str(random.choice(choices))[1:])
         
