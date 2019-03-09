@@ -128,7 +128,7 @@ class Utility(commands.Cog):
     @commands.command()
     async def nick(self, ctx, user : discord.Member, *, nickname : str = None):
         await user.edit(nick = nickname)
-        nick = nick or user.name
+        nickname = nickname or user.name
         await ctx.send(f"Changed {user.name}'s nickname to {nickname}")
     
     @commands.group()
