@@ -89,8 +89,8 @@ class Selfbot(commands.Bot):
             print(e)
 
     async def on_connect(self):
-        print('---------------\n'
-              'selfbot.py connected!')
+        print('---------------')
+        print('selfbot.py connected!')
 
     async def on_ready(self):
         '''Bot startup'''
