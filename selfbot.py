@@ -8,7 +8,6 @@ import datetime
 import json
 import os
 import re
-import textwrap
 
 class Selfbot(commands.Bot):
     '''
@@ -22,7 +21,7 @@ class Selfbot(commands.Bot):
     _mention_pattern = re.compile('|'.join(_mentions_transforms.keys()))
 
     def __init__(self, **attrs):
-        super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = True)
+        super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = True, max_messages=3000)
         self.formatter = EmbedHelp()
         self.session = aiohttp.ClientSession(loop=self.loop)
         self._extensions = [x.replace('.py', '') for x in os.listdir('cogs') if x.endswith('.py')]
@@ -98,7 +97,7 @@ class Selfbot(commands.Bot):
         '''Bot startup, sets uptime.'''
         if not hasattr(self, 'uptime'):
             self.uptime = datetime.datetime.utcnow()
-        print(textwrap.dedent('Logged in!'))
+        print('Logged in!')
 
     async def process_commands(self, message):
         '''Utilises the CustomContext subclass of discord.Context'''
