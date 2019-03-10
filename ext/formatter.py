@@ -37,7 +37,7 @@ class Paginator:
     max_size: int
         The maximum amount of codepoints allowed in a page.
     """
-    def __init__(self, max_size=1900):
+    def __init__(self, max_size=1995):
         self.max_size = max_size
         self._current_embed = discord.Embed()
         self._current_field = []
@@ -140,7 +140,7 @@ class EmbedHelp(commands.HelpFormatter):
         The maximum number of characters that fit in a line.
         Defaults to 80.
     """
-    def __init__(self, show_hidden=False, show_check_failure=False, width=75):
+    def __init__(self, show_hidden=False, show_check_failure=False, width=70):
         self.width = width
         self.show_hidden = show_hidden
         self.show_check_failure = show_check_failure
@@ -193,7 +193,7 @@ class EmbedHelp(commands.HelpFormatter):
 
     def get_ending_note(self):
         command_name = self.context.invoked_with
-        return "A selfbot made by Mirai#6303 **using a derived base cause he's a noob**"
+        return "A selfbot made by Mirai#6989 **using a derived base cause he's a noob**"
 
     async def filter_command_list(self):
         """Returns a filtered list of commands based on the two attributes
