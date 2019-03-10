@@ -4,7 +4,6 @@ from ext.context import CustomContext
 from ext.formatter import EmbedHelp
 from ext import embedtobox
 import aiohttp
-import datetime
 import json
 import os
 import re
@@ -94,9 +93,7 @@ class Selfbot(commands.Bot):
               'selfbot.py connected!')
 
     async def on_ready(self):
-        '''Bot startup, sets uptime.'''
-        if not hasattr(self, 'uptime'):
-            self.uptime = datetime.datetime.utcnow()
+        '''Bot startup'''
         print('Logged in!')
 
     async def process_commands(self, message):
