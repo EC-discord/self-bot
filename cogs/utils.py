@@ -157,7 +157,6 @@ class Utility(commands.Cog):
         • size – The size of the image to display
         • format – The format("png", "webp", "jpeg", "jpg" or "gif") to attempt to convert the avatar to.
         """
-        await ctx.message.delete()
         user = user or ctx.author
         if format is "gif" and user.is_avatar_animated() != True:
             format = "png" 
@@ -178,7 +177,6 @@ class Utility(commands.Cog):
             guild = discord.utils.get(self.bot.guilds, id = guild)
         if type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
-        await ctx.message.delete()
         icon = guild.icon_url_as(format = format, size = size)
         async with ctx.session.get(icon) as resp:
             image = await resp.read()
