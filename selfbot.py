@@ -26,7 +26,7 @@ class Selfbot(commands.Bot):
 
     def load_extensions(self, cogs=None, path='cogs.'):
         '''Loads the default set of extensions or a seperate one if given'''
-        for extension in cogs.:
+        for extension in "cogs.":
             try:
                 self.load_extension(f'{path}{extension}')
                 print(f'Loaded extension: {extension}')
