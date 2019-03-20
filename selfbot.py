@@ -24,7 +24,7 @@ class Selfbot(commands.Bot):
         self.session = aiohttp.ClientSession(loop=self.loop)
         self.load_extensions()
 
-    def load_extensions(self, cogs=None, path='cogs.'):
+    """def load_extensions(self, cogs=None, path='cogs.'):
         '''Loads the default set of extensions or a seperate one if given'''
         for extension in self._extensions:
             try:
@@ -32,7 +32,7 @@ class Selfbot(commands.Bot):
                 print(f'Loaded extension: {extension}')
             except:
                 print(f'LoadError: {extension}\n'
-                      f'{traceback.print_exc()}')
+                      f'{traceback.print_exc()}')"""
 
    
     @property
