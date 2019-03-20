@@ -1,0 +1,5 @@
+import discord
+from discord.ext import HelpCommand
+
+def get_command_signature(command):
+    return "A selfbot made by Mirai"
