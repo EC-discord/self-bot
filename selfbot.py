@@ -30,9 +30,9 @@ class Selfbot(commands.Bot):
             try:
                 self.load_extension(f'{path}{extension}')
                 print(f'Loaded extension: {extension}')
-            except Exception as e:
+            except:
                 print(f'LoadError: {extension}\n'
-                      f'{type(e).__name__}: {e}')
+                      '{traceback.print_exc()}')
 
    
     @property
