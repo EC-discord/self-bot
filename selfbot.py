@@ -22,7 +22,7 @@ class Selfbot(commands.Bot):
     def __init__(self, **attrs):
         super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = True, max_messages=3000)
         self.session = aiohttp.ClientSession(loop=self.loop)
-        self.load_extensions()
+        #self.load_extensions()
 
     """def load_extensions(self, cogs=None, path='cogs.'):
         '''Loads the default set of extensions or a seperate one if given'''
