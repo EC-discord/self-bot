@@ -22,6 +22,8 @@ class Selfbot(commands.Bot):
     def __init__(self, **attrs):
         super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = True, max_messages=3000)
         self.session = aiohttp.ClientSession(loop=self.loop)
+        for extension in [x[:-3] for x in os.listdir('cogs')]:
+            self.load_extension(f"cogs.{extension}")
         #self.load_extensions()
 
     """def load_extensions(self, cogs=None, path='cogs.'):
