@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from ext.context import CustomContext
-from discord.ext import HelpCommand
+from discord.ext.commands import HelpCommand
 from ext import embedtobox
 import aiohttp
 import json
