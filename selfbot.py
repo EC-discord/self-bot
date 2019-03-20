@@ -6,6 +6,7 @@ import aiohttp
 import json
 import os
 import re
+import traceback
 
 class Selfbot(commands.Bot):
     '''
@@ -32,7 +33,7 @@ class Selfbot(commands.Bot):
                 print(f'Loaded extension: {extension}')
             except:
                 print(f'LoadError: {extension}\n'
-                      '{traceback.print_exc()}')
+                      f'{traceback.print_exc()}')
 
    
     @property
