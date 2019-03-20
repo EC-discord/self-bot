@@ -1,16 +1,12 @@
 import discord
 from discord.ext import commands
 from ext.context import CustomContext
-from discord.ext.commands import HelpCommand
 from ext import embedtobox
 import aiohttp
 import json
 import os
 import re
 import traceback
-
-def get_command_signature(command):
-  return "A selfbot made by Mirai"
     
 class Selfbot(commands.Bot):
     '''
