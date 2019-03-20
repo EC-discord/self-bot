@@ -30,7 +30,7 @@ class Noble(commands.Cog):
         d = ImageDraw.Draw(img)
         c = 0
         length = int(len(args))
-        font = ImageFont.truetype('Tabitha.ttf', 27)
+        font = ImageFont.truetype('./Tabitha.ttf', 27)
         for m in range(length):
             x = 9
             d.text((x+c, 5), args[m], fill=(255, 255, 255), font = font)
@@ -63,7 +63,7 @@ class Noble(commands.Cog):
         new_im = Image.new("RGBA", (400,400))
         img.thumbnail((150,150))
         new_im.paste(img,(100,100))
-        font = ImageFont.truetype('arial.ttf', 19)
+        font = ImageFont.truetype('./arial.ttf', 19)
         xoff, yoff = (10,5)
         d = ImageDraw.Draw(new_im)
         d.text((90, 280), args, fill="green",font = font)
@@ -74,7 +74,7 @@ class Noble(commands.Cog):
     @commands.command()
     async def pictext(self,ctx,*,args):
         '''Turn Text to PIC'''
-        font = ImageFont.truetype('Tabitha.ttf', 21)
+        font = ImageFont.truetype('./Tabitha.ttf', 21)
         xoff, yoff = (10,5)
         img = Image.new('RGB', (500, 45),'black')
         d = ImageDraw.Draw(img)
