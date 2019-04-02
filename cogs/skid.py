@@ -39,7 +39,7 @@ class skid(commands.Cog):
                  result += char
          await ctx.message.edit(content=result[::-1])
     
-     @commands.command()
+     @commands.command(aliases = ["lol", "lmao"])
      async def spam(self, ctx, text : str, spam_frequency : int, *spam_delay : int):
          spam_delay = list(spam_delay)
          await ctx.message.delete()
