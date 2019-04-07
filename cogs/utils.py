@@ -150,7 +150,7 @@ class Utility(commands.Cog):
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, member : discord.Member = None):
+    async def picsu(self, ctx, *, member : discord.Member = None):
         """gets the Display Picture of a user
         __**Parameters**__
         • member – The tag, name or id of the user
@@ -160,7 +160,7 @@ class Utility(commands.Cog):
         async with ctx.session.get(avatar) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(file, f"DP.{format}"))
+            await ctx.send(file = discord.File(file))
             
     @commands.command(aliases = ["sicon", "si"])
     async def servericon(self, ctx, guild, size : typing.Optional[int] = 512, format = "png"):
