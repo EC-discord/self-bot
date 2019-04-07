@@ -150,10 +150,10 @@ class Utility(commands.Cog):
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, user : discord.Member = None, size : typing.Optional[int] = 512, format = "gif"):
+    async def picsu(self, ctx, member : discord.Member = None, size : typing.Optional[int] = 512, format = "gif"):
         """gets the Display Picture of a user
         __**Parameters**__
-        • user – Tag of the user to fetch his avatar
+        • member – The tag, name or id of the user
         • size – The size of the image to display
         • format – The format("png", "webp", "jpeg", "jpg" or "gif") to attempt to convert the avatar to.
         """
