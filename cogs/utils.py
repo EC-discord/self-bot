@@ -150,17 +150,13 @@ class Utility(commands.Cog):
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, member : discord.Member = None, size : typing.Optional[int] = 512, format = "gif"):
+    async def picsu(self, ctx, member : discord.Member = None):
         """gets the Display Picture of a user
         __**Parameters**__
         • member – The tag, name or id of the user
-        • size – The size of the image to display
-        • format – The format("png", "webp", "jpeg", "jpg" or "gif") to attempt to convert the avatar to.
         """
         user = user or ctx.author
-        if format is "gif" and user.is_avatar_animated() != True:
-            format = "png" 
-        avatar = user.avatar_url_as(format = format if format is not "gif" else None, size = size)
+        avatar = user.avatar_url_as(static_format = "png")
         async with ctx.session.get(avatar) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
