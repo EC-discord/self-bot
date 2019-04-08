@@ -155,8 +155,8 @@ class Utility(commands.Cog):
         __**Parameters**__
         • member – The tag, name or id of the user
         """
-        user = user or ctx.author
-        avatar = user.avatar_url_as(static_format = "png")
+        member = member or ctx.author
+        avatar = member.avatar_url_as(static_format = "png")
         async with ctx.session.get(avatar) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
