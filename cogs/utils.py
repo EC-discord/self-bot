@@ -169,15 +169,17 @@ class Utility(commands.Cog):
         • guild - The name(caps lock sensitive) or id of the guild/server
         • size – The size of the image to display
         • format – The format("png", "webp", "jpeg" or "jpg") to attempt to convert the avatar to"""
-        if type(guild) == int:
+        if guild is None:
+            guild = ctx.guild
+        elif type(guild) == int:
             guild = discord.utils.get(self.bot.guilds, id = guild)
-        if type(guild) == str:
+        elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
-        icon = guild.icon_url_as(format = format, size = size)
+        icon = f"{guild.icon_url_as(format = format, size = size)}"
         async with ctx.session.get(icon) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(file, f"icon.{format}"))
+            await ctx.send(file = discord.File(file))
         
 def setup(bot):
     bot.add_cog(Utility(bot))
