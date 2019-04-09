@@ -1,4 +1,3 @@
-from __future__ import division
 import discord
 import asyncio
 import random
@@ -90,7 +89,7 @@ class Misc(commands.Cog):
         • emoji - The name(case sensitive) or id of the emoji
         '''
         await ctx.message.delete()
-        async with ctx.session.get(emoji.url) as resp:
+        async with ctx.session.get(f"{emoji.url}") as resp:
             image = await resp.read()
         if emoji.animated:
             with io.BytesIO(image) as file:
