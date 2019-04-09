@@ -157,7 +157,7 @@ class Utility(commands.Cog):
         """
         member = member or ctx.author
         avatar = member.avatar_url_as(static_format = "png")
-        async with ctx.session.get(avatar) as resp:
+        async with ctx.session.get(f"{avatar}") as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
             await ctx.send(file = discord.File(file))
@@ -169,14 +169,12 @@ class Utility(commands.Cog):
         • guild - The name(caps lock sensitive) or id of the guild/server
         • size – The size of the image to display
         • format – The format("png", "webp", "jpeg" or "jpg") to attempt to convert the avatar to"""
-        if guild is None:
-            guild = ctx.guild
-        elif type(guild) == int:
+        if type(guild) == int:
             guild = discord.utils.get(self.bot.guilds, id = guild)
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
-        icon = f"{guild.icon_url_as(format = format, size = size)}"
-        async with ctx.session.get(icon) as resp:
+        icon = "guild.icon_url_as(format = format, size = size)"
+        async with ctx.session.get(f"{icon}") as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
             await ctx.send(file = discord.File(file))
