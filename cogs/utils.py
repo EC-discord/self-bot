@@ -166,7 +166,7 @@ class Utility(commands.Cog):
     async def servericon(self, ctx, guild, size : typing.Optional[int] = 512, format = "png"):
         """gets a server's icon
         __**Parameters**__
-        • guild - The name(caps lock sensitive) or id of the guild/server
+        • guild - The name(case sensitive) or id of the guild/server
         • size – The size of the image to display
         • format – The format("png", "webp", "jpeg" or "jpg") to attempt to convert the avatar to"""
         if type(guild) == int:
