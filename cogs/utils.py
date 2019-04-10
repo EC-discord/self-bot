@@ -180,7 +180,7 @@ class Utility(commands.Cog):
         async with ctx.session.get(str(icon)) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(file))
+            await ctx.send(file = discord.File(file, "icon.png"))
         
 def setup(bot):
     bot.add_cog(Utility(bot))
