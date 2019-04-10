@@ -162,7 +162,7 @@ class Utility(commands.Cog):
         async with ctx.session.get(str(avatar)) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(file, f"DP.{format}))
+            await ctx.send(file = discord.File(file, f"DP.{format}"))
             
     @commands.command(aliases = ["sicon", "si"])
     async def servericon(self, ctx, *, guild = None):
