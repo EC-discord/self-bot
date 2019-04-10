@@ -155,10 +155,11 @@ class Utility(commands.Cog):
         __**Parameters**__
         • member – The tag, name or id of the user
         """
+	format = None
         member = member or ctx.author
-        if format is "gif" and member.is_avatar_animated() != True:
+        if member.is_avatar_animated() != True:
 	        format = "png"
-        avatar = member.avatar_url_as(format = format if format is not "gif" else None, size = size)
+        avatar = member.avatar_url_as(format = format if format is not "gif" else None)
         async with ctx.session.get(str(avatar)) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
