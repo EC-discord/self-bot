@@ -156,11 +156,13 @@ class Utility(commands.Cog):
         • member – The tag, name or id of the user
         """
         member = member or ctx.author
-        avatar = member.avatar_url_as(static_format = "png")
+        if format is "gif" and member.is_avatar_animated() != True:
+	        format = "png"
+        avatar = member.avatar_url_as(format = format if format is not "gif" else None, size = size)
         async with ctx.session.get(str(avatar)) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(file))
+            await ctx.send(file = discord.File(file, f"DP.{format}))
             
     @commands.command(aliases = ["sicon", "si"])
     async def servericon(self, ctx, *, guild = None):
