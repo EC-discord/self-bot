@@ -70,13 +70,8 @@ class Utility(commands.Cog):
         nickname = nickname or user.name
         await ctx.send(f"Changed {user.name}'s nickname to {nickname}")
     
-    @commands.group()
-    async def cpres(self, ctx):
-        """Used to set a presence or status"""
-        pass
-    
-    @cpres.command()
-    async def presence(self, ctx, Type : str = "playing", *, message : str = None):
+    @commands.command()
+    async def cpres(self, ctx, Type : str = "playing", *, message : str = None):
         """Sets a presence
         __**Parameters**__
         • Type - "playing", "streaming", "listeningto" or "watching", defaults to playing
@@ -100,30 +95,15 @@ class Utility(commands.Cog):
                 await ctx.send(embed = em)
             else:
                 await ctx.send(f"Presence : {types[Type]} {message}")
-                
-    @cpres.command()
-    async def status(self, ctx, status : str = None):
-        """Sets your status
-        __**Parameters**__
-        • status - "online", "idle", "dnd" or "invisible", defaults to "online"
-        """
-        stats = {"online" : discord.Status.online, "dnd" : discord.Status.dnd, "idle" : discord.Status.idle, "invisible" : discord.Status.invisible}
-        if status is None:
-            await self.bot.change_presence(status = stats[status], afk = True)
-        elif status == ("online" or "invisible" or "idle"):
-            await self.bot.change_presence(status = stats[status], afk = True)
-        elif status == "dnd":
-            await self.bot.change_presence(status = stats[status], afk = False)
-        await ctx.send(f"Status : {stats[status]}")
             
     @commands.command()
     async def clear(self, ctx, *, serverid = "all"):
-        '''Marks messages from selected servers or emote servers as read'''
+        '''Marks messages from selected servers as read'''
         if serverid != None:
             if serverid == 'all':
                 for guild in self.bot.guilds:
                     await guild.ack()
-                await ctx.send('Cleared all unread messages')
+                await ctx.send('Cleared all unread messages', delete_after = 2)
                 return
             try:
                 serverid = int(serverid)
@@ -140,7 +120,7 @@ class Utility(commands.Cog):
         for guild in self.bot.guilds:
             if guild.id in emotes_servers:
                 await guild.ack()
-        await ctx.send('All messages marked read in emote servers!')
+        await ctx.send('All messages marked read in specified servers!')
 
     @commands.command()
     async def choose(self, ctx, *, choices: commands.clean_content):
