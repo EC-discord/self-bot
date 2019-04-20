@@ -135,7 +135,7 @@ class Utility(commands.Cog):
         __**Parameters**__
         • member – The tag, name or id of the user
         """
-        format = None
+        format = "gif"
         member = member or ctx.author
         if member.is_avatar_animated() != True:
 	        format = "png"
