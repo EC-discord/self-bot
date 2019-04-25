@@ -5,6 +5,10 @@ from discord.ext import commands
 class EC(commands.Cog): 
      def __init__(self, bot):
           self.bot = bot
+          
+     @commands.command()
+     async def snipe(self, ctx):
+          await ctx.message.edit(content = "(　-_･) ︻デ═一"    ▸")
     
      @commands.command()
      async def gib(self, ctx):
