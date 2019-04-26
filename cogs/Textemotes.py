@@ -8,7 +8,7 @@ class Textemotes(commands.Cog):
           
      @commands.command()
      async def snipe(self, ctx):
-          await ctx.message.edit(content = "(　-_･) ︻デ═一"    ▸")
+          await ctx.message.edit(content = '(　-_･) ︻デ═一"    ▸')
     
      @commands.command()
      async def powa(self, ctx):
