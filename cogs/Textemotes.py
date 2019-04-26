@@ -11,12 +11,12 @@ class EC(commands.Cog):
           await ctx.message.edit(content = "(　-_･) ︻デ═一"    ▸")
     
      @commands.command()
-     async def gib(self, ctx):
+     async def powa(self, ctx):
          """(づ｡◕‿‿◕｡)づ"""
          await ctx.message.edit(content="(づ｡◕‿‿◕｡)づ")
      
      @commands.command()
-     async def kflip(self, ctx):
+     async def flip(self, ctx):
          """(づ｡◕‿‿◕｡)づ︵ ┻━┻"""
          await ctx.message.edit(content="(づ｡◕‿‿◕｡)づ︵ ┻━┻")
      
