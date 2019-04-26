@@ -2,7 +2,7 @@ import discord
 import asyncio
 from discord.ext import commands
 
-class EC(commands.Cog): 
+class Textemotes(commands.Cog): 
      def __init__(self, bot):
           self.bot = bot
           
@@ -89,4 +89,4 @@ class EC(commands.Cog):
      
      
 def setup(bot):
-    bot.add_cog(EC(bot))
+    bot.add_cog(Textemotes(bot))
