@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 from ext.context import CustomContext
-from ext.helpformatter import helpformatter
 from ext import embedtobox
 import aiohttp
 import json
