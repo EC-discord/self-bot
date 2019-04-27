@@ -21,10 +21,9 @@ class Selfbot(commands.Bot):
     _mention_pattern = re.compile('|'.join(_mentions_transforms.keys()))
 
     def __init__(self, **attrs):
-        super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = True, max_messages=3000)
+        super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = True, max_messages=3000, help_command = helpformatter())
         self.session = aiohttp.ClientSession(loop=self.loop)
         self.load_extensions()
-        self.bot.help_command = helpformatter()
 
     def load_extensions(self):
         for extension in [x[:-3] for x in os.listdir('cogs')]:
