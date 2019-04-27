@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from ext.context import CustomContext
+from ext.helpformatter import helpformatter
 from ext import embedtobox
 import aiohttp
 import json
@@ -20,7 +21,7 @@ class Selfbot(commands.Bot):
     _mention_pattern = re.compile('|'.join(_mentions_transforms.keys()))
 
     def __init__(self, **attrs):
-        super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = True, max_messages=3000)
+        super().__init__(command_prefix=self.get_pre, self_bot=True, fetch_offline_members = True, max_messages=3000, help_command = helpformatter())
         self.session = aiohttp.ClientSession(loop=self.loop)
         self.load_extensions()
 
