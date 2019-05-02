@@ -8,8 +8,11 @@ class Textemotes(commands.Cog):
           
      @commands.command()
      async def snipe(self, ctx, member : discord.Member = None):
-          member = member or " "
-          await ctx.message.edit(content = f'(　-_･) ︻デ═一"    ▸ {member.mention}')
+          member = member or None
+          if member is None:
+               await ctx.message.edit(content = '(　-_･) ︻デ═一"    ▸')
+          else:
+              await ctx.message.edit(content = f'(　-_･) ︻デ═一"    ▸ {member.mention}')
     
      @commands.command()
      async def powa(self, ctx):
