@@ -99,7 +99,10 @@ class Selfbot(commands.Bot):
         self.ctx = await self.get_context(message, cls=CustomContext)
         if ctx.command is None:
             return
-        await self.invoke(ctx)       
+        await self.invoke(ctx)
+    
+    async def on_message_edit(self, before, after):
+        await self.process_commands(after)
         
 if __name__ == '__main__':
     Selfbot.init()
