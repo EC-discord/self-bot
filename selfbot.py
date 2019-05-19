@@ -103,6 +103,7 @@ class Selfbot(commands.Bot):
     
     async def on_message_edit(self, before, after):
         await self.process_commands(after)
+
         
 if __name__ == '__main__':
     Selfbot.init()
