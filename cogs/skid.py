@@ -150,14 +150,6 @@ class skid(commands.Cog):
         em = discord.Embed(color = 0xffd500)
         em.description = " ".join(translated)
         await ctx.send(embed = em)
-            
-     @commands.command()
-     async def haxu(self, ctx, limit : int = 10):
-         async for message in ctx.channel.history(limit = limit):
-             if message.author == self.bot.user:
-                await message.edit(content = "ㅤ ")
-                await asyncio.sleep(1)
-                await message.delete()
            
      @commands.command()
      async def getrekt(self, ctx, role : discord.Role):
