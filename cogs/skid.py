@@ -120,8 +120,8 @@ class skid(commands.Cog):
 
      def get_syntax_error(self, e):
          if e.text is None:
-             return f'```py\n{e.__class__.__name__}: {e}\n```'
-         return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
+             return f"```py\n{e.__class__.__name__}: {e}\n```"
+         return f"```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```"
           
      def getColor(self, colorHex):
         colorHex = str(colorHex)
