@@ -6,7 +6,7 @@ import json
 import requests
 from discord.ext import commands
 from ext.colours import ColorNames
-from PIL import Image,ImageFilter,ImageDraw,ImageFont
+from PIL import Image
 import io  
 
 
