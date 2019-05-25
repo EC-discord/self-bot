@@ -25,8 +25,8 @@ class Utility(commands.Cog):
         • text - the text to be translated
         """
         await ctx.send(translate(text, language))
-	await asyncio.sleep(2)
-	await ctx.message.delete()
+        await asyncio.sleep(2)
+        await ctx.message.delete()
         
     @commands.command()
     @commands.has_permissions(manage_emojis = True)
