@@ -32,16 +32,14 @@ class Misc(commands.Cog):
     async def randomreact(self, ctx, messageNo: int, no_of_reactions : int = 20, *, server = None):
         '''React to a message with random custom emojis'''
         self.emoji_list = []
-        messageid = 1
         await ctx.message.delete()
         if server is None:
           self.emoji_list = [emoji for emoji in self.bot.emojis if emoji.available]
         elif server:
           server = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
           self.emoji_list = [emoji for emoji in server.emojis if not emoji.animated]
-        async for message in ctx.channel.history(limit = 25):  
-          if messageid != messageNo:
-            messageid += 1
+        async for index, message in enumerate(ctx.channel.history(limit = 25)):  
+          if index != messageNo:
             continue
           for i in range(no_of_reactions):
             emoji = random.choice(self.emoji_list)
