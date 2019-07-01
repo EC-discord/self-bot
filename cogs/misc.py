@@ -38,7 +38,8 @@ class Misc(commands.Cog):
         elif server:
           server = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
           self.emoji_list = [emoji for emoji in server.emojis if not emoji.animated]
-        for index, message in enumerate(await ctx.channel.history(limit = 30).flatten()):  
+        print([e.name for e in self.emoji_list])
+        for index, message in enumerate(await ctx.channel.history(limit = 30).flatten()):
           if index != messageNo:
             continue
           for i in range(no_of_reactions):
