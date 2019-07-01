@@ -18,7 +18,7 @@ class Misc(commands.Cog):
         
     @commands.command()
     async def hexcode(self, ctx, *, role : discord.Role):
-        await ctx.send(f"{role.name} : role.color")
+        await ctx.send(f"{role.name} : {role.color}")
 
     @commands.command(aliases = ["emt"])
     async def embedtext(self, ctx, *, message):
@@ -38,7 +38,7 @@ class Misc(commands.Cog):
         elif server:
           server = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
           self.emoji_list = [emoji for emoji in server.emojis if not emoji.animated]
-        async for index, message in enumerate(await ctx.channel.history(limit = 25)):  
+        async for index, message in enumerate(ctx.channel.history(limit = 30).flatten()):  
           if index != messageNo:
             continue
           for i in range(no_of_reactions):
