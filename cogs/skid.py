@@ -133,11 +133,11 @@ class skid(commands.Cog):
        return self.getColor(color)  
 
      @commands.command()
-     async def rc(self, ctx):
+     async def rc(self, ctx, width = 200, height = 90):
         '''Generates a random color'''
         file = io.BytesIO()
         color = self.randomcolor()
-        Image.new('RGB', (200, 90), color.to_rgb()).save(file, format='PNG')
+        Image.new('RGB', (width, height), color.to_rgb()).save(file, format='PNG')
         file.seek(0)
         em = discord.Embed(color=color , title=f'Showing Color: {str(color)}')
         em.set_image(url='attachment://color.png')
