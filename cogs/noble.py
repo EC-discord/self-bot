@@ -38,7 +38,7 @@ class Noble(commands.Cog):
             c += 15
         file_list = glob.glob('*.png')
         list.sort(file_list)
-        clip = mpy.ImageSequenceClip(file_list, fps=fps)
+        clip = mpy.ImageSequenceClip(file_list, fps=10)
         clip.write_gif('content.gif', fps=10)
         await ctx.send(file=discord.File('content.gif'))
         await ctx.message.delete()
