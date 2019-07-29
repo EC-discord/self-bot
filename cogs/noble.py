@@ -5,6 +5,7 @@ import asyncio
 import random
 import time
 import datetime
+import os
 import codecs
 import aiohttp
 import urllib.request
@@ -47,7 +48,6 @@ class Noble(commands.Cog):
     @commands.command()
     async def pil(self, ctx,args, *,member : discord.Member=None):
         '''A SIMPLE DEMO FOR WELCOMING (DEV)'''
-        server = ctx.guild
         user = member or ctx.message.author
         avi = user.avatar_url
         url = avi
