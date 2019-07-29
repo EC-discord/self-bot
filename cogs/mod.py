@@ -30,7 +30,7 @@ class Mod(commands.Cog):
           if index == message:
             await message.remove_reaction(emoji, member)
                 
-    @conmands.command()
+    @commands.command()
     async def clearreactions(self, ctx, message : int):
         async for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
             if index == m:
