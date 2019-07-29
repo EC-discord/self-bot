@@ -34,13 +34,11 @@ class Noble(commands.Cog):
             x = 9
             d.text((x+c, 5), args[m], fill=(255, 255, 255), font = font)
             img.save(f'{m}.png')
-            c += 12
-        gif_name = 'content'
-        fps = 10
-        file_list = glob.glob('*.png') # Get all the pngs in the current directory
-        list.sort(file_list) # Sort the images by #, this may need to be tweaked for your use case
+            c += 15
+        file_list = glob.glob('*.png')
+        list.sort(file_list)
         clip = mpy.ImageSequenceClip(file_list, fps=fps)
-        clip.write_gif('{}.gif'.format(gif_name), fps=fps)
+        clip.write_gif('content.gif', fps=10)
         await ctx.send(file=discord.File('content.gif'))
         await ctx.message.delete()
         for f in glob.glob("*.png"):
