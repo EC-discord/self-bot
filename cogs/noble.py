@@ -29,12 +29,11 @@ class Noble(commands.Cog):
         img = Image.new('RGB', (500, 45),"black")
         d = ImageDraw.Draw(img)
         c = 0
-        length = int(len(args))
-        font = ImageFont.truetype('./rajdhani-regular.ttf', 27)
-        for m in range(length):
+        font = ImageFont.truetype('./Tabitha.ttf', 27)
+        for m in range(len(args)):
             x = 9
             d.text((x+c, 5), args[m], fill=(255, 255, 255), font = font)
-            img.save('{}.png'.format(m))
+            img.save(f'{m}.png')
             c += 12
         gif_name = 'content'
         fps = 10
@@ -93,9 +92,9 @@ class Noble(commands.Cog):
         await ctx.send(content = "{}".format(encoded_stuff))
 
     @commands.command()
-    async def decode(self,ctx,*,args):
+    async def decode(self,ctx,*,args : str):
         '''Decode to ascii'''
-        strOne = ("%s" % args).encode("ascii")
+        strOne = (args).encode("ascii")
         pad = len(strOne)%4
         strOne += b"="*pad
         encoded_stuff = codecs.decode(strOne.strip(),'base64')
