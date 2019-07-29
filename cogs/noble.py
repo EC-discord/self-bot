@@ -30,12 +30,12 @@ class Noble(commands.Cog):
         img = Image.new('RGB', (500, 45),"black")
         d = ImageDraw.Draw(img)
         c = 0
-        font = ImageFont.truetype('./rajdhani-regular.ttf', 27)
+        font = ImageFont.truetype('./Tabitha.ttf', 27)
         for m in range(len(args)):
             x = 9
             d.text((x+c, 5), args[m], fill=(255, 255, 255), font = font)
             img.save(f'{m}.png')
-            c += 15
+            c += 13
         file_list = glob.glob('*.png')
         list.sort(file_list)
         clip = mpy.ImageSequenceClip(file_list, fps=10)
