@@ -23,7 +23,19 @@ class Mod(commands.Cog):
             emb.description = f"You do not have the permissions to {method} {user.name}."
 
         return emb
-
+    
+    @commands.command()
+    async def removereaction(self, ctx, message : int, emoji : discord.Emoji, member : discord.Member):
+        async for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
+          if index == message:
+            await message.remove_reaction(emoji, member)
+                
+    @conmands.command()
+    async def clearreactions(self, ctx, message : int):
+        async for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
+            if index == m:
+                await m.clear_reactions()
+    
     @commands.command()
     async def kick(self, ctx, member : discord.Member, *, reason='Please write a reason!'):
         '''Kick someone'''
