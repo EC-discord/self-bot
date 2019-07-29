@@ -24,13 +24,13 @@ class Noble(commands.Cog):
         self.stopwatches = {}
 
     @commands.command()
-    async def textgif(self,ctx,*,args):#EC DO NOT COPY PASTE THIS INTO A BOT! I WILL KEEL YOU IF YOU DO!
+    async def textgif(self,ctx,*,args):
         '''Turn TEXT to GIF'''
         img = Image.new('RGB', (500, 45),"black")
         d = ImageDraw.Draw(img)
         c = 0
         length = int(len(args))
-        font = ImageFont.truetype('./Tabitha.ttf', 27)
+        font = ImageFont.truetype('./rajdhani-regular.ttf', 27)
         for m in range(length):
             x = 9
             d.text((x+c, 5), args[m], fill=(255, 255, 255), font = font)
