@@ -27,13 +27,13 @@ class Mod(commands.Cog):
     @commands.command()
     async def removereaction(self, ctx, message : int, emoji : discord.Emoji, member : discord.Member):
         for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
-          if index == m:
+          if index == message:
             await m.remove_reaction(emoji, member)
                 
     @commands.command()
     async def clearreactions(self, ctx, message : int):
         for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
-            if index == m:
+            if index == message:
                 await m.clear_reactions()
     
     @commands.command()
