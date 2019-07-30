@@ -27,8 +27,8 @@ class Mod(commands.Cog):
     @commands.command()
     async def removereaction(self, ctx, message : int, emoji : discord.Emoji, member : discord.Member):
         for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
-          if index == message:
-            await message.remove_reaction(emoji, member)
+          if index == m:
+            await m.remove_reaction(emoji, member)
                 
     @commands.command()
     async def clearreactions(self, ctx, message : int):
