@@ -17,6 +17,17 @@ class Misc(commands.Cog):
         self.emoji_list = []
         
     @commands.command()
+    async def antisnipe(self, ctx, limit : int = 1):
+        deleted = 0
+        async for m in ctx.channel.history(limit = 200):
+            if deleted == limit:
+                break
+            if m.author == ctx.author:
+                await m.edit(content = " ")
+                await m.delete()
+                deleted += 1
+        
+    @commands.command()
     async def hexcode(self, ctx, *, role : discord.Role):
         await ctx.send(f"{role.name} : {role.color}")
 
