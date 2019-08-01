@@ -19,7 +19,9 @@ class Misc(commands.Cog):
     @commands.command()
     async def antisnipe(self, ctx, limit : int = 1):
         deleted = 0
-        async for m in ctx.channel.history(limit = 200):
+        for i, m in enumerate(await ctx.channel.history(limit = 200).flatten()):
+            if i == 1:
+                continue
             if deleted == limit:
                 break
             if m.author == ctx.author:
