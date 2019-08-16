@@ -18,6 +18,8 @@ class Misc(commands.Cog):
         
     @commands.command(aliases = ["as"])
     async def antisnipe(self, ctx, limit : int = 1):
+        await ctx.message.edit(content = " ")
+        await ctx.message.delete()
         for i, m in enumerate(await ctx.channel.history(limit = 200).flatten()):
             if (m.author == ctx.author) and (limit == i):
                 await m.edit(content = " ")
