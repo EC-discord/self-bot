@@ -16,18 +16,14 @@ class Misc(commands.Cog):
         self.emoji_converter = commands.EmojiConverter()
         self.emoji_list = []
         
-    @commands.command()
+    @commands.command(aliases = ["as"])
     async def antisnipe(self, ctx, limit : int = 1):
-        deleted = 0
         for i, m in enumerate(await ctx.channel.history(limit = 200).flatten()):
             if i == 1:
                 continue
-            if deleted == limit:
-                break
-            if m.author == ctx.author:
-                await m.edit(content = " ")
+            if (m.author == ctx.author) and (limit + 1 == i):
+                await m.edit(content = "‏")
                 await m.delete()
-                deleted += 1
         
     @commands.command()
     async def hexcode(self, ctx, *, role : discord.Role):
