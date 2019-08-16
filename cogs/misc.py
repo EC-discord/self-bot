@@ -21,7 +21,7 @@ class Misc(commands.Cog):
         await ctx.message.edit(content = " ")
         await ctx.message.delete()
         for i, m in enumerate(await ctx.channel.history(limit = 200).flatten()):
-            if (m.author == ctx.author) and (limit == i):
+            if (m.author == ctx.author) and (limit - 1 == i):
                 await m.edit(content = " ")
                 await m.delete()
         
