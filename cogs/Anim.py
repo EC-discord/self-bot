@@ -84,14 +84,6 @@ class Anim(commands.Cog):
              await asyncio.sleep(1)
      
      @commands.command()
-     async def dance(self, ctx):
-         for i in range(1, 6, 1):
-             await ctx.message.edit(content="\\\(' - '   )\\")
-             await asyncio.sleep(1)
-             await ctx.message.edit(content="/(   ' - ')/")
-             await asyncio.sleep(1)
-     
-     @commands.command()
      async def virus(self, ctx, member : discord.Member = None, *, virus: str = "trojan"):
          wheelList = ['/', '-', '\\', '|']
          wheelIter = iter(wheelList)
@@ -189,7 +181,7 @@ class Anim(commands.Cog):
          await ctx.message.edit(content="`CTRL + R FOR MANUAL OVERRIDE..`")
      
      @commands.command()
-     async def woah(self, ctx):
+     async def wow(self, ctx):
          await ctx.message.edit(content="(   ' O ')")
          await asyncio.sleep(1)
          await ctx.message.edit(content="(  ' O ' )")
