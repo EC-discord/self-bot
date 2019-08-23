@@ -181,7 +181,7 @@ class Anim(commands.Cog):
          await ctx.message.edit(content="`CTRL + R FOR MANUAL OVERRIDE..`")
      
      @commands.command()
-     async def wow(self, ctx):
+     async def waow(self, ctx):
          await ctx.message.edit(content="(   ' O ')")
          await asyncio.sleep(1)
          await ctx.message.edit(content="(  ' O ' )")
