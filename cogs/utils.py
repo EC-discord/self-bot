@@ -23,7 +23,7 @@ class Utility(commands.Cog):
         __**Parameters**__
         • guild - the name or id of the guild
         """
-        if guilde is None:
+        if guild is None:
             guild = ctx.guild
         elif type(guild) == int:
             guild = discord.utils.get(self.bot.guilds, id = guild)
