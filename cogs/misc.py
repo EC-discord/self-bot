@@ -3,7 +3,6 @@ import asyncio
 import random
 import emoji
 import json
-import requests
 from discord.ext import commands
 from ext.colours import ColorNames
 from PIL import Image
