@@ -165,9 +165,9 @@ class Utility(commands.Cog):
         with io.BytesIO(image) as file:
             await ctx.send(file = discord.File(file, f"DP.{format}"))
             
-    @commands.command(aliases = ["sicon", "si"])
-    async def servericon(self, ctx, *, guild = None):
-        """gets a server's icon
+    @commands.command(aliases = ["gicon", "gi"])
+    async def guildicon(self, ctx, *, guild = None):
+        """gets a guild's icon
         __**Parameters**__
         • guild - The name(case sensitive) or id of the guild/server"""
         if guild is None:
