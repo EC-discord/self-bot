@@ -16,7 +16,23 @@ class Utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.lang_conv = load_json('data/langs.json')
-    
+        
+    @commands.command()
+    async def banner(self, ctx, *, guild = ctx.guild):
+        """gets a guild's banner image
+        __**Parameters**__
+        • guild - the name or id of the guild
+        """
+        if type(guild) == int:
+            guild = discord.utils.get(self.bot.guilds, id = guild)
+        elif type(guild) == str:
+            guild = discord.utils.get(self.bot.guilds, name = guild)
+        banner = guild.banner_url_as(format = "png")
+        async with ctx.session.get(str(banner)) as resp:
+            image = await resp.read()
+        with io.BytesIO(image) as file:
+            await ctx.send(file = discord.File(file, "banner.png"))
+        
     @commands.command()
     async def translate(self, ctx, language, *, text):
         """translates the string into a given language
@@ -148,13 +164,11 @@ class Utility(commands.Cog):
             await ctx.send(file = discord.File(file, f"DP.{format}"))
             
     @commands.command(aliases = ["sicon", "si"])
-    async def servericon(self, ctx, *, guild = None):
+    async def servericon(self, ctx, *, guild = ctx.guild):
         """gets a server's icon
         __**Parameters**__
         • guild - The name(case sensitive) or id of the guild/server"""
-        if guild is None:
-            guild = ctx.guild
-        elif type(guild) == int:
+        if type(guild) == int:
             guild = discord.utils.get(self.bot.guilds, id = guild)
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
