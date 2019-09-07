@@ -1,9 +1,7 @@
 import discord
 from discord.ext.commands import DefaultHelpCommand
+from discord.ext.commands import Bot
 
-class helpformatter(DefaultHelpCommand):
-  def __init__(self, bot):
-    self.bot = bot
-    
+class helpformatter(DefaultHelpCommand):    
   def get_ending_note(self):
     return f"A bot made by {self.bot.application_info().owner}"
