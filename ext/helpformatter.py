@@ -4,4 +4,4 @@ from discord.ext.commands import Bot
 
 class helpformatter(DefaultHelpCommand):    
   def get_ending_note(self):
-    return f"A bot made by {self.bot.application_info().owner}"
+    return f"A bot made by {bot.application_info().owner}"
