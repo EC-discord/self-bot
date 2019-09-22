@@ -90,27 +90,19 @@ class Mod(commands.Cog):
         else:
             await ctx.purge(limit=limit+1)
 
-    @commands.group(aliases = ["c"])
+    @commands.group(aliases = ["c"], invoke_without_subcommand = True)
     async def clean(self, ctx, limit : int = 15, member : discord.Member = None):
         '''Clean a number of your own or another users messages'''
         deleted = 0
         user = member or ctx.message.author
-        def msgcheck(amsg):
-            if user:
-                return amsg.author.id == user.id
-            return True
-        try:
-            await ctx.channel.purge(limit=limit, check=msgcheck)
-        except:
-            channel = ctx.message.channel
-            async for msg in channel.history():
-                if msgcheck(msg):
-                    await msg.delete()
-                    deleted += 1
-                    if deleted == limit:
-                        break
+        async for m in ctx.channel.history(limit = 100):
+            if m.author.id == user.id:
+                await msg.delete()
+                deleted += 1
+                if deleted == limit:
+                    break
                         
-    @clean.command(aliases = ["i"], invoke_without_command = True)
+    @clean.command(aliases = ["i"])
     async def images(self, ctx, imagesToDelete : int = 10):
         deleted = 0
         async for m in ctx.channel.history():
