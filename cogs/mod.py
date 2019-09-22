@@ -97,7 +97,7 @@ class Mod(commands.Cog):
         user = member or ctx.message.author
         async for m in ctx.channel.history(limit = 100):
             if m.author.id == user.id:
-                await msg.delete()
+                await m.delete()
                 deleted += 1
                 if deleted == limit:
                     break
