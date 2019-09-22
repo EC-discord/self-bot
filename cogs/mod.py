@@ -110,7 +110,7 @@ class Mod(commands.Cog):
                     if deleted == limit:
                         break
                         
-    @clean.command(aliases = ["i"])
+    @clean.command(aliases = ["i"], invoke_without_command = True)
     async def images(self, ctx, imagesToDelete : int = 10):
         deleted = 0
         async for m in ctx.channel.history():
