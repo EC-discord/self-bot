@@ -90,7 +90,7 @@ class Mod(commands.Cog):
         else:
             await ctx.purge(limit=limit+1)
 
-    @commands.command()
+    @commands.group(aliases = ["c"])
     async def clean(self, ctx, limit : int = 15, member : discord.Member = None):
         '''Clean a number of your own or another users messages'''
         deleted = 0
@@ -109,6 +109,16 @@ class Mod(commands.Cog):
                     deleted += 1
                     if deleted == limit:
                         break
+                        
+    @clean.command(aliases = ["i"])
+    async def images(self, ctx, imagesToDelete : int = 10):
+        deleted = 0
+        async for m in ctx.channel.history():
+            if m.attachments:
+                await m.delete()
+                deleted += 1
+                if imagesToDelete == deleted:
+                    break
 
     @commands.command()
     async def baninfo(self, ctx, *, name_or_id):
