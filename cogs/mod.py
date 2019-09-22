@@ -90,7 +90,7 @@ class Mod(commands.Cog):
         else:
             await ctx.purge(limit=limit+1)
 
-    @commands.group(aliases = ["c"], invoke_without_subcommand = True)
+    @commands.group(aliases = ["c"], invoke_without_command = True)
     async def clean(self, ctx, limit : int = 15, member : discord.Member = None):
         '''Clean a number of your own or another users messages'''
         deleted = 0
