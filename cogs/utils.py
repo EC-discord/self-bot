@@ -48,7 +48,7 @@ class Utility(commands.Cog):
         
     @commands.command()
     @commands.has_permissions(manage_emojis = True)
-    async def addemoji(self, ctx, emoji_name, emoji_link = '', *roles : discord.Role):
+    async def addemoji(self, ctx, emoji_name, emoji_link = '', *roles: discord.Role):
         """Add an emoji to a server
         __**Parameters**__
         • emoji_name – The emoji name. Must be at least 2 characters
@@ -72,7 +72,7 @@ class Utility(commands.Cog):
         await ctx.send(content = f"Deleted emoji : {emoji.name}", delete_after = 2)
         
     @commands.command()
-    async def editemoji(self, ctx, emoji : discord.Emoji, new_name):
+    async def editemoji(self, ctx, emoji: discord.Emoji, new_name):
         await emoji.edit(name = new_name)
         await ctx.send(content = f"Edited emoji {emoji_name} to {new_name}", delete_after = 2)
     
@@ -85,13 +85,18 @@ class Utility(commands.Cog):
         await self.bot.logout()
       
     @commands.command()
-    async def nick(self, ctx, user : discord.Member, *, nickname : str = None):
+    async def nick(self, ctx, user: discord.Member, *, nickname: str = None):
+        """change a user's nickname
+        Parameter
+        • user - the name or id of the user
+        • nickname - the nickname to change to
+        """
         await user.edit(nick = nickname)
         nickname = nickname or user.name
         await ctx.send(f"Changed {user.name}'s nickname to {nickname}")
     
     @commands.command()
-    async def cpres(self, ctx, Type : str = "playing", *, message : str = None):
+    async def cpres(self, ctx, Type: str = "playing", *, message: str = None):
         """Sets a presence
         __**Parameters**__
         • Type - "playing", "streaming", "listeningto" or "watching", defaults to playing
@@ -150,7 +155,7 @@ class Utility(commands.Cog):
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command()
-    async def picsu(self, ctx, *, member : discord.Member = None):
+    async def picsu(self, ctx, *, member: discord.Member = None):
         """gets the Display Picture of a user
         __**Parameters**__
         • member – The tag, name or id of the user
