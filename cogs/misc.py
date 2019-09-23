@@ -16,21 +16,24 @@ class Misc(commands.Cog):
         self.emoji_list = []
         
     @commands.command(aliases = ["as"])
-    async def antisnipe(self, ctx, limit : int = 1):
+    async def antisnipe(self, ctx):
         await ctx.message.edit(content = " ")
         await ctx.message.delete()
-        for i, m in enumerate(await ctx.channel.history(limit = 200).flatten()):
-            if (m.author == ctx.author) and (limit - 1 == i):
+        async for m in ctx.channel.history(limit = 100):
+            if m.author.id == ctx.author.id:
                 await m.edit(content = " ")
                 await m.delete()
+                break
         
     @commands.command()
     async def hexcode(self, ctx, *, role : discord.Role):
         await ctx.send(f"{role.name} : {role.color}")
 
-    @commands.command(aliases = ["emt"])
-    async def embedtext(self, ctx, *, message):
-        '''embed messages '''
+    @commands.command(aliases = ["em"])
+    async def embed(self, ctx, *, text):
+        '''embed messages
+        Parameters
+        • text - the text to embed'''
         await ctx.message.delete()
         em = discord.Embed(color=random.randint(0, 0xFFFFFF))
         em.description = message
@@ -106,18 +109,21 @@ class Misc(commands.Cog):
                 
     @commands.command()
     async def textreact(self, ctx, messageNo = 1, *, text):
+        """reacts to a message with emojis according to the text
+        Parameter
+        • messageNo - the number of the message to react to
+        • text - the text to react with
+        """
         text = [c for c in text.lower()]
-        messageId = 0
         emotes = {"a" : "🇦", "b" : "🇧", "c" : "🇨", "d" : "🇩", "e" : "🇪", "f" : "🇫", "g" : "🇬", "h" : "🇭",
                   "i" : "🇮", "j" : "🇯", "k" : "🇰", "l" : "🇱", "m" : "🇲", "n" : "🇳", "o" : "🇴", "p" : "🇵",
                   "q" : "🇶", "r" : "🇷", "s" : "🇸", "t" : "🇹", "u" : "🇺", "v" : "🇻", "w" : "🇼", "x" : "🇽",
                   "y" : "🇾", "z" : "🇿"}
-        async for m in ctx.channel.history(limit = 100):
-            if messageNo == messageId:
+        for i, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
+            if messageNo == i:
               for c in text:
                   await m.add_reaction(f"{emotes[c]}")
               break
-            messageId += 1
         
     @commands.command()
     async def textemote(self, ctx, *, msg):
