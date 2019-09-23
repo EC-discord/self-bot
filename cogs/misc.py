@@ -96,14 +96,14 @@ class Misc(commands.Cog):
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
 
-    @commands.command(name='emoji', aliases=['emote', 'e'])
-    async def _emoji(self, ctx, *, emoji: discord.Emoji):
+    @commands.command(name='emoji', aliases=['e'])
+    async def _emoji(self, ctx, emoji: discord.Emoji, size: int = 512):
         '''displays an enlarged pic of an emoji
         __**Parameters**__
         • emoji - The name(case sensitive) or id of the emoji
         '''
         await ctx.message.delete()
-        async with ctx.session.get(f"{emoji.url}") as resp:
+        async with ctx.session.get(f"{emoji.url}" + f"?size={size}") as resp:
             image = await resp.read()
         if emoji.animated:
             with io.BytesIO(image) as file:
