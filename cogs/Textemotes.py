@@ -7,7 +7,7 @@ class Textemotes(commands.Cog):
           self.bot = bot
           
      @commands.command()
-     async def snipe(self, ctx, member : discord.Member = None):
+     async def snipe(self, ctx, member: discord.Member = None):
           member = member or None
           if member is None:
                await ctx.message.edit(content = '(　-_･) ︻デ═一"    ▸')
