@@ -112,8 +112,7 @@ class Noble(commands.Cog):
             tmp = abs(self.stopwatches[author.id] - int(time.perf_counter()))
             tmp = str(datetime.timedelta(seconds=tmp))
             await ctx.send(author.mention + " Stopwatch stopped! Time: **" + tmp + "**")
-            self.stopwatches.pop(author.id, None)        
-            await ctx.send(file=discord.File('disabled.jpg'))
+            self.stopwatches.pop(author.id, None)
  
 
 def setup(bot):
