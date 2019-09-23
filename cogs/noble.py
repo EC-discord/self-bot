@@ -112,27 +112,9 @@ class Noble(commands.Cog):
             tmp = abs(self.stopwatches[author.id] - int(time.perf_counter()))
             tmp = str(datetime.timedelta(seconds=tmp))
             await ctx.send(author.mention + " Stopwatch stopped! Time: **" + tmp + "**")
-            self.stopwatches.pop(author.id, None)
+            self.stopwatches.pop(author.id, None)        
+            await ctx.send(file=discord.File('disabled.jpg'))
+ 
 
-    @commands.command()
-    async def disabled(self,ctx,*, member: discord.Member = None):
-        'Make A disabled MEME Image (one pic only) XD'
-        server = ctx.guild
-        user = member or ctx.message.author
-        avi = user.avatar_url
-        url = '{}'.format(avi)
-        response = requests.get(url, stream=True)
-        with open('img2.png', 'wb') as out_file:
-            shutil.copyfileobj(response.raw, out_file)
-        del response
-        img = Image.open("img2.png")
-        new_im = Image.open("disability.jpg")
-        img.thumbnail((98,98))
-        new_im.paste(img,(318,216))
-        new_im.save("disabled.jpg")
-        await ctx.message.delete()
-        await ctx.send(file=discord.File('disabled.jpg'))
-
-        
 def setup(bot):
     bot.add_cog(Noble(bot))
