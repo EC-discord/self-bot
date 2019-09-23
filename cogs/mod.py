@@ -92,7 +92,11 @@ class Mod(commands.Cog):
 
     @commands.group(aliases = ["c"], invoke_without_command = True)
     async def clean(self, ctx, limit: int = 15, member: discord.Member = None):
-        '''Clean a number of your own or another users messages'''
+        """delete a number of your own or another users messages
+        Parameters
+        • limit - number of messages to delete
+        • member - the name or id of the member whose messages are to be deleted
+        """
         deleted = 0
         user = member or ctx.message.author
         async for m in ctx.channel.history(limit = 100):
@@ -104,6 +108,10 @@ class Mod(commands.Cog):
                         
     @clean.command(aliases = ["i"])
     async def images(self, ctx, imagesToDelete: int = 10):
+        """deletes messages containing images
+        Parameters
+        • imagesToDelete - number of images to delete
+        """
         deleted = 0
         async for m in ctx.channel.history():
             if m.attachments:
@@ -111,6 +119,22 @@ class Mod(commands.Cog):
                 deleted += 1
                 if imagesToDelete == deleted:
                     break
+        await ctx.message.delete()
+                
+    @clean.commands(aliases = ["b"])
+    async def bots(self, ctx, messagesToDelete: int = 15):
+        """deletes messages sent by bots
+        Parameters
+        • messagesToDelete - number of messages to delete
+        """
+        deleted = 0
+        async for m in ctx.channel.history(limit = 200):
+            if m.author.bot:
+                await m.delete()
+                deleted += 1
+                if deleted == messagesToDelete:
+                    break
+        await ctx.message.delete()
 
     @commands.command()
     async def baninfo(self, ctx, *, name_or_id):
