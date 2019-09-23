@@ -28,7 +28,7 @@ class Misc(commands.Cog):
                 break
         
     @commands.command()
-    async def hexcode(self, ctx, *, role : discord.Role):
+    async def hexcode(self, ctx, *, role: discord.Role):
         await ctx.send(f"{role.name} : {role.color}")
 
     @commands.command(aliases = ["em"])
