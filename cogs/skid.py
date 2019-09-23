@@ -39,8 +39,8 @@ class skid(commands.Cog):
                  result += char
          await ctx.message.edit(content=result[::-1])
     
-     @commands.command(aliases = ["lol", "lmao"])
-     async def spam(self, ctx, text : str, spam_frequency : int, *spam_delay : int):
+     @commands.command()
+     async def spam(self, ctx, text: str, spam_frequency: int, *spam_delay: int):
          spam_delay = list(spam_delay)
          await ctx.message.delete()
          for i in range(spam_frequency):
@@ -154,10 +154,12 @@ class skid(commands.Cog):
         await ctx.send(embed = em)
            
      @commands.command()
-     async def getrekt(self, ctx, role : discord.Role):
-          "kicks all members having the specified role"
-          for member in role.members:
-              await member.kick()
+     async def getrekt(self, ctx, role: discord.Role):
+         """kicks all members having the specified role
+         Parameters
+         • role - the name or id of the role"""
+         for member in role.members:
+             await member.kick()
      
 def setup(bot):
    bot.add_cog(skid(bot))     
