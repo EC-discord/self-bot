@@ -6,7 +6,8 @@ import json
 from discord.ext import commands
 from ext.colours import ColorNames
 from PIL import Image
-import io  
+import io
+import typing
 
 
 class Misc(commands.Cog):
@@ -17,6 +18,7 @@ class Misc(commands.Cog):
         
     @commands.command(aliases = ["as"])
     async def antisnipe(self, ctx):
+        """prevents bots from sniping your last message"""
         await ctx.message.edit(content = " ")
         await ctx.message.delete()
         async for m in ctx.channel.history(limit = 100):
@@ -40,7 +42,7 @@ class Misc(commands.Cog):
         await ctx.send(embed=em)
     
     @commands.command(aliases = ["rr"])
-    async def randomreact(self, ctx, messageNo: int, no_of_reactions : int = 20, *, server = None):
+    async def randomreact(self, ctx, messageNo: int, no_of_reactions: int = 20, *, server = None):
         '''React to a message with random custom emojis'''
         self.emoji_list = []
         await ctx.message.delete()
@@ -59,11 +61,14 @@ class Misc(commands.Cog):
           break
           
     @commands.command()
-    async def react(self, ctx, index: int, *, reactions):
-        '''React to a specified message with reactions'''
+    async def react(self, ctx, messageNo: typing.Optional[int] = 1, *, emojis):
+        '''React to a specified message with reactions
+        Parameters
+        • messageNo - the number of the message to react to
+        • emojis - the names of the emojis to react with'''
         history = await ctx.channel.history(limit = 30).flatten()
-        message = history[index]
-        async for emoji in self.validate_emojis(ctx, reactions):
+        message = history[messageNo]
+        async for emoji in self.validate_emojis(ctx, emojis):
             await message.add_reaction(emoji)
         await ctx.message.delete()
 
@@ -92,7 +97,7 @@ class Misc(commands.Cog):
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
 
     @commands.command(name='emoji', aliases=['emote', 'e'])
-    async def _emoji(self, ctx, *, emoji : discord.Emoji):
+    async def _emoji(self, ctx, *, emoji: discord.Emoji):
         '''displays an enlarged pic of an emoji
         __**Parameters**__
         • emoji - The name(case sensitive) or id of the emoji
@@ -108,7 +113,7 @@ class Misc(commands.Cog):
                 await ctx.send(file = discord.File(file, "emote.png"))
                 
     @commands.command()
-    async def textreact(self, ctx, messageNo = 1, *, text):
+    async def textreact(self, ctx, messageNo: typing.Optional[int] = 1, *, text):
         """reacts to a message with emojis according to the text
         Parameter
         • messageNo - the number of the message to react to
@@ -124,6 +129,7 @@ class Misc(commands.Cog):
               for c in text:
                   await m.add_reaction(f"{emotes[c]}")
               break
+        await ctx.message.delete()
         
     @commands.command()
     async def textemote(self, ctx, *, msg):
