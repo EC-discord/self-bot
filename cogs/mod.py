@@ -24,20 +24,20 @@ class Mod(commands.Cog):
 
         return emb
     
-    @commands.command()
-    async def removereaction(self, ctx, message : int, emoji : discord.Emoji, member : discord.Member):
+    @commands.command(aliases = ["rere"])
+    async def removereaction(self, ctx, message: int, emoji: discord.Emoji, member: discord.Member):
         for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
           if index == message:
             await m.remove_reaction(emoji, member)
                 
     @commands.command()
-    async def clearreactions(self, ctx, message : int):
+    async def clearreactions(self, ctx, message: int):
         for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
             if index == message:
                 await m.clear_reactions()
     
     @commands.command()
-    async def kick(self, ctx, member : discord.Member, *, reason='Please write a reason!'):
+    async def kick(self, ctx, member: discord.Member, *, reason='Please write a reason!'):
         '''Kick someone'''
         try:
             await ctx.guild.kick(member, reason=reason)
@@ -51,7 +51,7 @@ class Mod(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command(aliases = ["banana"])
-    async def ban(self, ctx, member : discord.Member, *, reason='Please write a reason!'):
+    async def ban(self, ctx, member: discord.Member, *, reason='Please write a reason!'):
         '''Ban someone'''
         try:
             await ctx.guild.ban(member, reason=reason)
@@ -81,7 +81,7 @@ class Mod(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command(aliases=['prune'])
-    async def purge(self, ctx, limit : int, ignore_pins = None):
+    async def purge(self, ctx, limit: int, ignore_pins = None):
         '''Clean a number of messages
         set ignore_pins to p to ignore pinned messages
         e.g (prefix)purge 30 p'''
@@ -91,7 +91,7 @@ class Mod(commands.Cog):
             await ctx.purge(limit=limit+1)
 
     @commands.group(aliases = ["c"], invoke_without_command = True)
-    async def clean(self, ctx, limit : int = 15, member : discord.Member = None):
+    async def clean(self, ctx, limit: int = 15, member: discord.Member = None):
         '''Clean a number of your own or another users messages'''
         deleted = 0
         user = member or ctx.message.author
@@ -103,7 +103,7 @@ class Mod(commands.Cog):
                     break
                         
     @clean.command(aliases = ["i"])
-    async def images(self, ctx, imagesToDelete : int = 10):
+    async def images(self, ctx, imagesToDelete: int = 10):
         deleted = 0
         async for m in ctx.channel.history():
             if m.attachments:
