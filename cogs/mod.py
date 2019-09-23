@@ -121,7 +121,7 @@ class Mod(commands.Cog):
                     break
         await ctx.message.delete()
                 
-    @clean.commands(aliases = ["b"])
+    @clean.commands(aliases = ["bo"])
     async def bots(self, ctx, messagesToDelete: int = 15):
         """deletes messages sent by bots
         Parameters
