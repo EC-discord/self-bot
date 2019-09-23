@@ -101,6 +101,7 @@ class Misc(commands.Cog):
         '''displays an enlarged pic of an emoji
         __**Parameters**__
         • emoji - The name(case sensitive) or id of the emoji
+        • size - the size of the image
         '''
         await ctx.message.delete()
         async with ctx.session.get(f"{emoji.url}" + f"?size={size}") as resp:
