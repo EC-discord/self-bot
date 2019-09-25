@@ -137,22 +137,12 @@ class Mod(commands.Cog):
         await ctx.message.delete()
 
     @commands.command()
-    async def baninfo(self, ctx, *, name_or_id):
-        '''Check the reason of a ban from the audit logs.'''
-        ban = await ctx.get_ban(name_or_id)
-        em = discord.Embed()
-        em.color = await ctx.get_dominant_color(ban.user.avatar_url)
-        em.set_author(name=str(ban.user), icon_url=ban.user.avatar_url)
-        em.add_field(name='Reason', value=ban.reason or 'None')
-        em.set_thumbnail(url=ban.user.avatar_url)
-        em.set_footer(text=f'User ID: {ban.user.id}')
-
-        await ctx.send(embed=em)
-
-    @commands.command()
     @commands.has_permissions(manage_roles = True)
     async def addrole(self, ctx, member: discord.Member, *, role: discord.Role):
-        '''Add a role to someone else.'''
+        '''Add a role to someone else
+        Parameter
+        • member - the name or id of the member
+        • role - the name or id of the role'''
         if not role:
             return await ctx.send('That role does not exist.')
         await member.add_roles(role)
@@ -162,7 +152,10 @@ class Mod(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_roles = True)
     async def removerole(self, ctx, member: discord.Member, *, role: discord.Role):
-        '''Remove a role from someone else.'''
+        '''Remove a role from someone else
+        Parameter
+        • member - the name or id of the member
+        • role - the name or id of the role'''
         if not role:
             return await ctx.send('That role does not exist.')
         await member.remove_roles(role)
