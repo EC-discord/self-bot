@@ -149,7 +149,9 @@ class Utility(commands.Cog):
 
     @commands.command()
     async def choose(self, ctx, *, choices: commands.clean_content):
-        '''choose! use , in between'''
+        '''choose! use , in between
+        Parameters
+        • choices - the choices to choose from separated using ,'''
         choices = choices.split(',')
         choices[0] = ' ' + choices[0]
         await ctx.send(str(random.choice(choices))[1:])
