@@ -20,7 +20,7 @@ class Utility(commands.Cog):
     @commands.command()
     async def banner(self, ctx, *, guild = None):
         """gets a guild's banner image
-        __**Parameters**__
+        Parameters
         • guild - the name or id of the guild
         """
         if guild is None:
@@ -38,7 +38,7 @@ class Utility(commands.Cog):
     @commands.command()
     async def translate(self, ctx, language, *, text):
         """translates the string into a given language
-        __**Parameters**__
+        Parameters
         • language - the language to translate to
         • text - the text to be translated
         """
@@ -49,11 +49,11 @@ class Utility(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_emojis = True)
     async def addemoji(self, ctx, emoji_name, emoji_link = '', *roles: discord.Role):
-        """Add an emoji to a server
-        __**Parameters**__
+        """add an emoji to a server
+        Parameters
         • emoji_name – The emoji name. Must be at least 2 characters
         • emoji_link – The url or attachment of an image to turn into an emoji
-        • roles – A list of Roles that can use this emoji (case sensitive). Leave empty to make it available to everyone
+        • roles – A list of roles that can use this emoji. Leave empty to make it available to everyone
         """
         if ctx.message.attachments:
             emoji_link = ctx.message.attachments[0].url
@@ -67,12 +67,20 @@ class Utility(commands.Cog):
      
     @commands.command()
     async def delemoji(self, ctx, emoji: discord.Emoji):
-        "Deletes an emoji"
+        """deletes an emoji
+        Parameters
+        • emoji - the name or id of the emoji
+        """
         await emoji.delete()
         await ctx.send(content = f"Deleted emoji : {emoji.name}", delete_after = 2)
         
     @commands.command()
     async def editemoji(self, ctx, emoji: discord.Emoji, new_name):
+        """edits the name of an emoji
+        Parameters
+        • emoji - the name or id of the emoji
+        • new_name - the new name to use for the emoji
+        """
         await emoji.edit(name = new_name)
         await ctx.send(content = f"Edited emoji {emoji_name} to {new_name}", delete_after = 2)
     
@@ -96,56 +104,58 @@ class Utility(commands.Cog):
         await ctx.send(f"Changed {user.name}'s nickname to {nickname}")
     
     @commands.command()
-    async def cpres(self, ctx, Type: str = "playing", *, message: str = None):
+    async def cpres(self, ctx, Type: str = "playing", *, text: str = None):
         """Sets a presence
-        __**Parameters**__
+        Parameters
         • Type - "playing", "streaming", "listeningto" or "watching", defaults to playing
-        • message - The message to display as presence
+        • text - The text to display as presence
         """
         types = {"playing" : "Playing", "streaming" : "Streaming", "listeningto" : "Listening to", "watching" : "Watching"}
-        if message is None:
-            await self.bot.change_presence(activity = message, afk = True)
+        if text is None:
+            await self.bot.change_presence(activity = text, afk = True)
         else:
             if Type == "playing":
-                await self.bot.change_presence(activity=discord.Game(name=message), afk = True)
+                await self.bot.change_presence(activity=discord.Game(name=text), afk = True)
             elif Type == "streaming":
-                await self.bot.change_presence(activity=discord.Streaming(name=message, url=f'https://twitch.tv/{message}'), afk = True)
+                await self.bot.change_presence(activity=discord.Streaming(name=text, url=f'https://twitch.tv/{text}'), afk = True)
             elif Type == "listeningto":
-                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=message), afk = True)
+                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=text), afk = True)
             elif Type == "watching":
-                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=message), afk = True)
+                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=text), afk = True)
             em = discord.Embed(color=0xffd500, title="Presence")
-            em.description = f"Presence : {types[Type]} {message}"
+            em.description = f"Presence : {types[Type]} {text}"
             if ctx.author.guild_permissions.embed_links:
                 await ctx.send(embed = em)
             else:
-                await ctx.send(f"Presence : {types[Type]} {message}")
+                await ctx.send(f"Presence : {types[Type]} {text}")
             
-    @commands.command()
-    async def clear(self, ctx, *, serverid = "all"):
-        '''Marks messages from selected servers as read'''
-        if serverid != None:
-            if serverid == 'all':
-                for guild in self.bot.guilds:
-                    await guild.ack()
-                await ctx.send('Cleared all unread messages', delete_after = 2)
-                return
-            try:
-                serverid = int(serverid)
-            except:
-                await ctx.send('Invalid Server ID')
-                return
-            server = discord.utils.get(self.bot.guilds, id=int(serverid))
-            if server == None:
-                await ctx.send('Invalid Server ID')
-                return
-            await server.ack()
-            await ctx.send(f'All messages marked read in {server.name}!')
-            return
-        for guild in self.bot.guilds:
-            if guild.id in emotes_servers:
-                await guild.ack()
-        await ctx.send('All messages marked read in specified servers!')
+    @commands.group()
+    async def clear(self, ctx):
+        """marks all messages from specified servers as read"""
+        if ctx.invoked_subcommand is None:
+          for guild in self.bot.guilds:
+            await guild.ack()
+          await ctx.send('All messages marked read in specified servers!')
+    
+    @clear.command()
+    async def name(self, ctx, *, server_name = None):
+        """marks all messages from the specified server as read
+        Parameter
+        • server_name - the name of the server
+        """
+        server = discord.utils.find(lambda g: g.name == server_name, self.bot.guilds)
+        await server.acks()
+        await ctx.send(f"all messages marked read in {server.name}", delete_after = 2)
+        
+    @clear.command(name = "id")
+    async def _id(self, ctx, server_id : int):
+        """marks all messages from the specified server as read
+        Parameter
+        • server_id - the id of the server to mark as read
+        """
+        server = discord.utils.get(self.bot.guilds, id = server_id)
+        await server.ack()
+        await ctx.send(f"all messages marked read in {server.name}", delete_after = 2)
 
     @commands.command()
     async def choose(self, ctx, *, choices: commands.clean_content):
@@ -156,10 +166,10 @@ class Utility(commands.Cog):
         choices[0] = ' ' + choices[0]
         await ctx.send(str(random.choice(choices))[1:])
         
-    @commands.command()
-    async def picsu(self, ctx, *, member: discord.Member = None):
+    @commands.command(aliases = "a")
+    async def avatar(self, ctx, *, member: discord.Member = None):
         """gets the Display Picture of a user
-        __**Parameters**__
+        Parameters
         • member – The tag, name or id of the user
         """
         format = "gif"
@@ -175,7 +185,7 @@ class Utility(commands.Cog):
     @commands.command(aliases = ["gicon", "gi"])
     async def guildicon(self, ctx, *, guild = None):
         """gets a guild's icon
-        __**Parameters**__
+        Parameters
         • guild - The name(case sensitive) or id of the guild/server"""
         if guild is None:
             guild = ctx.guild
