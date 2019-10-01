@@ -32,11 +32,12 @@ class Misc(commands.Cog):
         await ctx.send(f"{role.name} : {role.color}")
 
     @commands.command(aliases = ["em"])
-    async def embed(self, ctx, *, text):
+    async def embed(self, ctx, color: typing.Optional[hex], *, text):
         '''embed messages
         Parameters
-        • text - the text to embed'''
-        em = discord.Embed(color=random.randint(0, 0xFFFFFF))
+        • text - the text to embed
+        • color - the color of the embed, random color is used if left empty'''
+        em = discord.Embed(color=color or random.randint(0, 0xFFFFFF))
         em.description = text
         await ctx.send(embed=em)
         await ctx.message.delete()
