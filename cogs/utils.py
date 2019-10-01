@@ -129,7 +129,7 @@ class Utility(commands.Cog):
             else:
                 await ctx.send(f"Presence : {types[Type]} {text}")
             
-    @commands.group()
+    @commands.group(invoke_without_command=True)
     async def clear(self, ctx):
         """marks all messages from specified servers as read"""
         if ctx.invoked_subcommand is None:
