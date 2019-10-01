@@ -144,7 +144,7 @@ class Utility(commands.Cog):
         • server_name - the name of the server
         """
         server = discord.utils.find(lambda g: g.name == server_name, self.bot.guilds)
-        await server.acks()
+        await server.ack()
         await ctx.send(f"all messages marked read in {server.name}", delete_after = 2)
         
     @clear.command(name = "id")
@@ -166,7 +166,7 @@ class Utility(commands.Cog):
         choices[0] = ' ' + choices[0]
         await ctx.send(str(random.choice(choices))[1:])
         
-    @commands.command(aliases = "a")
+    @commands.command(aliases = ["a"])
     async def avatar(self, ctx, *, member: discord.Member = None):
         """gets the Display Picture of a user
         Parameters
