@@ -136,6 +136,7 @@ class Utility(commands.Cog):
           for guild in self.bot.guilds:
             await guild.ack()
           await ctx.send('All messages marked read in specified servers!')
+        await ctx.message.delete()
     
     @clear.command()
     async def name(self, ctx, *, server_name):
