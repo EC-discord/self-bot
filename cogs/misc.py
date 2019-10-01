@@ -36,10 +36,10 @@ class Misc(commands.Cog):
         '''embed messages
         Parameters
         • text - the text to embed'''
-        await ctx.message.delete()
         em = discord.Embed(color=random.randint(0, 0xFFFFFF))
-        em.description = message
+        em.description = text
         await ctx.send(embed=em)
+        await ctx.message.delete()
     
     @commands.command(aliases = ["rr"])
     async def randomreact(self, ctx, messageNo: int, no_of_reactions: int = 20, *, server = None):
