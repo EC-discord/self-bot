@@ -131,7 +131,7 @@ class Utility(commands.Cog):
             
     @commands.group(invoke_without_command=True)
     async def clear(self, ctx):
-        """marks all messages from specified servers as read"""
+        """marks all messages from specified server as read"""
         if ctx.invoked_subcommand is None:
           for guild in self.bot.guilds:
             await guild.ack()
@@ -139,7 +139,7 @@ class Utility(commands.Cog):
     
     @clear.command()
     async def name(self, ctx, *, server_name):
-        """marks all messages from the specified server as read
+        """using the name of the server
         Parameter
         • server_name - the name of the server
         """
@@ -149,7 +149,7 @@ class Utility(commands.Cog):
         
     @clear.command(name = "id")
     async def _id(self, ctx, server_id : int):
-        """marks all messages from the specified server as read
+        """using the id of the server
         Parameter
         • server_id - the id of the server to mark as read
         """
