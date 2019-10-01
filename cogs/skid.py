@@ -7,13 +7,11 @@ from ext import embedtobox
 from PIL import Image
 import traceback
 import textwrap
-import aiohttp
 import asyncio
 import time
 import io
 import random
 from mtranslate import translate
-import string
 import colorsys
 import inspect
 
@@ -21,7 +19,6 @@ class skid(commands.Cog):
      def __init__(self, bot):
           self.bot = bot
           self._last_result = None
-          self.lang_conv = load_json('data/langs.json')
           self.text_flip = {}
           self.char_list = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}"
           self.alt_char_list = "{|}zʎxʍʌnʇsɹbdouɯlʞɾᴉɥƃɟǝpɔqɐ,‾^[\]Z⅄XMΛ∩┴SɹQԀONW˥ʞſIHפℲƎpƆq∀@¿<=>;:68ㄥ9ϛㄣƐᄅƖ0/˙-'+*(),⅋%$#¡"[::-1]
