@@ -105,7 +105,7 @@ class Utility(commands.Cog):
     
     @commands.command()
     async def cpres(self, ctx, Type: str = "playing", *, text: str = None):
-        """Sets a presence
+        """sets a presence
         Parameters
         • Type - "playing", "streaming", "listeningto" or "watching", defaults to playing
         • text - The text to display as presence
@@ -147,6 +147,7 @@ class Utility(commands.Cog):
         server = discord.utils.find(lambda s: server_name in s.name.lower(), self.bot.guilds)
         await server.ack()
         await ctx.send(f"all messages marked read in {server.name}", delete_after = 2)
+        await ctx.message.delete()
         
     @clear.command(name = "id")
     async def _id(self, ctx, server_id : int):
@@ -157,6 +158,7 @@ class Utility(commands.Cog):
         server = discord.utils.get(self.bot.guilds, id = server_id)
         await server.ack()
         await ctx.send(f"all messages marked read in {server.name}", delete_after = 2)
+        await ctx.message.delete()
 
     @commands.command()
     async def choose(self, ctx, *, choices: commands.clean_content):
