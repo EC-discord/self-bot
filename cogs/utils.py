@@ -138,12 +138,12 @@ class Utility(commands.Cog):
           await ctx.send('All messages marked read in specified servers!')
     
     @clear.command()
-    async def name(self, ctx, *, server_name = None):
+    async def name(self, ctx, *, server_name):
         """marks all messages from the specified server as read
         Parameter
         • server_name - the name of the server
         """
-        server = discord.utils.find(lambda g: g.name == server_name, self.bot.guilds)
+        server = discord.utils.find(lambda guild: guild.name == server_name, self.bot.guilds)
         await server.ack()
         await ctx.send(f"all messages marked read in {server.name}", delete_after = 2)
         
