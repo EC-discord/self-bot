@@ -32,7 +32,7 @@ class Misc(commands.Cog):
         await ctx.send(f"{role.name} : {role.color}")
 
     @commands.command(aliases = ["em"])
-    async def embed(self, ctx, color: typing.Optional[int], *, text):
+    async def embed(self, ctx, color: typing.Optional[int] = None, *, text):
         '''embed messages
         Parameters
         • text - the text to embed
