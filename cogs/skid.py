@@ -3,7 +3,6 @@ from discord.ext import commands
 from contextlib import redirect_stdout
 from ext.utility import load_json
 from urllib.parse import quote as uriquote
-from ext import embedtobox
 from PIL import Image
 import traceback
 import textwrap
@@ -141,22 +140,6 @@ class skid(commands.Cog):
           em.title(f'Showing Color: {str(color)}')
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
-          
-     @commands.command()
-     async def plt(self, ctx, *words):
-        """PigLatin Translator"""
-        translated = [w[1:] + w[0] + "ay" for w in words]
-        em = discord.Embed(color = 0xffd500)
-        em.description = " ".join(translated)
-        await ctx.send(embed = em)
-           
-     @commands.command()
-     async def getrekt(self, ctx, role: discord.Role):
-         """kicks all members having the specified role
-         Parameters
-         • role - the name or id of the role"""
-         for member in role.members:
-             await member.kick()
      
 def setup(bot):
-   bot.add_cog(skid(bot))     
+   bot.add_cog(skid(bot))
