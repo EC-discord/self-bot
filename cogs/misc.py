@@ -67,10 +67,10 @@ class misc(commands.Cog):
           break
           
     @commands.command()
-    async def react(self, ctx, messageNo: typing.Optional[int] = 1, *, emojis):
+    async def react(self, ctx, message_no: typing.Optional[int] = 1, *, emojis):
         '''react to a specified message with emojis
         Parameters
-        • messageNo - the number of the message to react to
+        • message_no - the index of the message to react to
         • emojis - the names of the emojis to react with'''
         history = await ctx.channel.history(limit = 30).flatten()
         message = history[messageNo]
@@ -113,7 +113,7 @@ class misc(commands.Cog):
         • emoji_no - which emoji to choose from incase there is more than one, defaults to the first
         '''
         await ctx.message.delete()
-        emoji = discord.utils.find(lambda em: (emoji in em.name) or (emoji == em.id), self.bot.emojis)
+        emoji = filter(lambda em: (emoji in em.name) or (emoji == em.id), self.bot.emojis)
         async with ctx.session.get(f"{emoji[emoji_no].url}") as resp:
             image = await resp.read()
         if emoji.animated:
