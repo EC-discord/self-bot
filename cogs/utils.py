@@ -132,7 +132,7 @@ class Utility(commands.Cog):
             
     @commands.group(invoke_without_command=True)
     async def clear(self, ctx):
-        """marks all messages from specified server as read"""
+        """marks all messages from all your servers as read"""
         if ctx.invoked_subcommand is None:
           for guild in self.bot.guilds:
             await guild.ack()
@@ -141,7 +141,7 @@ class Utility(commands.Cog):
     
     @clear.command()
     async def name(self, ctx, *, server_name):
-        """using the name of the server
+        """marks messages as read in a specified server using its name
         Parameter
         • server_name - the name of the server
         """
@@ -152,7 +152,7 @@ class Utility(commands.Cog):
         
     @clear.command(name = "id")
     async def _id(self, ctx, server_id : int):
-        """using the id of the server
+        """marks messages from a specified server as read using its id
         Parameter
         • server_id - the id of the server to mark as read
         """
@@ -171,8 +171,8 @@ class Utility(commands.Cog):
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command(aliases = ["a"])
-    async def avatar(self, ctx, *, member: discord.Member = None):
-        """gets the Display Picture of a user
+    async def pic(self, ctx, *, member: discord.Member = None):
+        """gets the display picture of a user
         Parameters
         • member – The tag, name or id of the user
         """
@@ -186,13 +186,12 @@ class Utility(commands.Cog):
         with io.BytesIO(image) as file:
             await ctx.send(file = discord.File(file, f"DP.{format}"))
             
-    @commands.command(aliases = ["gicon", "gi"])
+    @commands.command(aliases = ["gi"])
     async def guildicon(self, ctx, *, guild = None):
         """gets a guild's icon
         Parameters
         • guild - The name(case sensitive) or id of the guild/server"""
-        if guild is None:
-            guild = ctx.guild
+        guild = guild or ctx.guild
         if type(guild) == int:
             guild = discord.utils.get(self.bot.guilds, id = guild)
         elif type(guild) == str:
