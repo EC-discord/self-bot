@@ -99,9 +99,10 @@ class Utility(commands.Cog):
         • user - the name or id of the user
         • nickname - the nickname to change to
         """
+        prevnick = user.nick or user.name
         await user.edit(nick = nickname)
-        nickname = nickname or user.name
-        await ctx.send(f"Changed {user.name}'s nickname to {nickname}")
+        newnick = nickname or user.name
+        await ctx.send(f"Changed {prevnick}'s nickname to {newnick}")
     
     @commands.command()
     async def cpres(self, ctx, Type: str = "playing", *, text: str = None):
