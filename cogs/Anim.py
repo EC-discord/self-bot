@@ -11,7 +11,8 @@ class Anim(commands.Cog):
      async def loading(self, ctx):
          for num in range(1, 6, 1):
              dots = "." * num
-             await ctx.message.edit(content = f"```loading.{dots}{num}%```")
+             spaces = " " * (abs(num - 5))
+             await ctx.message.edit(content = f"```loading.{dots}{spaces}{num}%```")
              await asyncio.sleep(1)
          await ctx.message.edit(content = "``` Error! :C```")
          await asyncio.sleep(1)
@@ -43,45 +44,6 @@ class Anim(commands.Cog):
          await ctx.message.edit(content = ")")
          await asyncio.sleep(1)
          await ctx.message.edit(content = "*poofness*")
-          
-     @commands.command()
-     async def bam(self, ctx):
-         await ctx.message.edit(content = "( ͡° ͜ʖ ͡° )")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content = "╰( ͡° ͜ʖ ͡° )つ")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content = "╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ💥")
-     
-     @commands.command()
-     async def cathi(self, ctx, *, message = "Hi"):
-         for i in range(1, 8, 1):
-             await ctx.message.edit(content="""ຸ 　　　＿＿_＿＿
-　　／　／　  ／|"
-　　|￣￣￣￣|　|
-　　|　　　　|／
-　　￣￣￣￣""")
-             await asyncio.sleep(1.5)
-             await ctx.message.edit(content=f"""ຸ 　　　{message}...♡
- 　   　 ∧＿∧＿_
-　　／(´･ω･`)  ／＼
-　／|￣￣￣￣|＼／
-　　|　　　　|／
-　　￣￣￣￣""")
-             await asyncio.sleep(1.5)
-     
-     @commands.command()
-     async def catsu(self, ctx):
-         for i in range(1, 10, 1):
-             await ctx.message.edit(content="""{  |  |  }
-( ^ - ^ )
-( u   u )～""")
-             await asyncio.sleep(1)
-             await ctx.message.edit(content="""{ \  / }
-( ^ - ^ )
-( u   u )～""")
-             await asyncio.sleep(1)
      
      @commands.command()
      async def virus(self, ctx, member: discord.Member = None, *, virus: str = "trojan"):
@@ -115,24 +77,28 @@ class Anim(commands.Cog):
      
      @commands.command()
      async def table(self, ctx):
-         await ctx.message.edit(content="`(\°-°)\     ┬─┬`")
+         t = (']', '┻━┻', '[',  '┬─┬')
+         await ctx.message.edit(content=f"`(\°-°)\ {t[4]}`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content="`(\°□°)\     ┬─┬`")
+         await ctx.message.edit(content=f"`(\°□°)\ {t[4]}`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content="`(-°□°)-     ┬─┬`")
+         await ctx.message.edit(content=f"`(-°□°)- {t[4]}`")
          await asyncio.sleep(1)
-         await ctx.message.edit(content="`(╯°□°)╯     ┬─┬`")
+         await ctx.message.edit(content=f"`(╯°□°)╯ {t[1]}`")
          await asyncio.sleep(1)
-         wheelList = [']', '┻━┻', '[',  '┬─┬']
-         wheelIter = iter(wheelList)
-         for i in range(7, 39, 4):
-             try:
-                 wheel = next(wheelIter)
-             except StopIteration:
-                 wheelIter = iter(wheelList)
-                 wheel = next(wheelIter)
-             await ctx.message.edit(content=f"`(\°-°)\{(i * ' ')}{wheel}`")
-             await asyncio.sleep(1)
+         await ctx.message.edit(content=f"`(╯°□°)╯  {t[2]}`")                                    
+         await asyncio.sleep(1)
+         await ctx.message.edit(content=f"`(╯°□°)╯   {t[3]}`")
+         await asyncio.sleep(1)
+         await ctx.message.edit(content=f"`(╯°□°)╯    {t[4]}`")                           
+         await asyncio.sleep(1)
+         await ctx.message.edit(content=f"`(╯°□°)╯     {t[1]}`")                           
+         await asyncio.sleep(1)
+         await ctx.message.edit(content=f"`(╯°□°)╯      {t[2]}`")                           
+         await asyncio.sleep(1)
+         await ctx.message.edit(content=f"`(╯°□°)╯       {t[3]}`")                           
+         await asyncio.sleep(1)                                    
+         await ctx.message.edit(content=f"`(\°-°)\        {t[4]}`")                           
        
      @commands.command()
      async def warning(self, ctx):
@@ -179,22 +145,6 @@ class Anim(commands.Cog):
          await ctx.message.edit(content="`SHUT-DOWN EXIT ERROR ¯\\(｡･益･)/¯`")
          await asyncio.sleep(1)
          await ctx.message.edit(content="`CTRL + R FOR MANUAL OVERRIDE..`")
-     
-     @commands.command()
-     async def waow(self, ctx):
-         await ctx.message.edit(content="(   ' O ')")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="(  ' O ' )")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="( ' O '  )")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="(' O '   )")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="( ' O '  )")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="(  ' O ' )")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="(   ' O ')")
      
      @commands.command()
      async def deadchat(self, ctx):
