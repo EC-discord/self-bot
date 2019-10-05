@@ -2,17 +2,9 @@ import discord
 import asyncio
 from discord.ext import commands
 
-class Textemotes(commands.Cog): 
+class textemotes(commands.Cog): 
      def __init__(self, bot):
           self.bot = bot
-          
-     @commands.command()
-     async def snipe(self, ctx, member: discord.Member = " "):
-          member = member or " "
-          #if member is None:
-          #     await ctx.message.edit(content = '(　-_･) ︻デ═一"    ▸')
-          #else:
-          await ctx.message.edit(content = f'(　-_･) ︻デ═一"    ▸ {member}')
      
      @commands.command()
      async def thumbs(self, ctx):
@@ -42,4 +34,4 @@ class Textemotes(commands.Cog):
           
      
 def setup(bot):
-    bot.add_cog(Textemotes(bot))
+    bot.add_cog(textemotes(bot))
