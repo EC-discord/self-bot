@@ -7,12 +7,12 @@ class Textemotes(commands.Cog):
           self.bot = bot
           
      @commands.command()
-     async def snipe(self, ctx, member: discord.Member = None):
-          member = member or None
+     async def snipe(self, ctx, member: discord.Member = " "):
+          member = member or " "
           #if member is None:
           #     await ctx.message.edit(content = '(　-_･) ︻デ═一"    ▸')
           #else:
-          await ctx.message.edit(content = f'(　-_･) ︻デ═一"    ▸ {member.mention if member not None}')
+          await ctx.message.edit(content = f'(　-_･) ︻デ═一"    ▸ {member}')
      
      @commands.command()
      async def thumbs(self, ctx):
