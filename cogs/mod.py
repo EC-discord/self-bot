@@ -21,23 +21,20 @@ class Mod(commands.Cog):
                 emb.description = f'{user} was just {method}ed.'
         else:
             emb.description = f"You do not have the permissions to {method} {user.name}."
-
         return emb
-    
-    @commands.command(aliases = ["rere"])
-    async def removereaction(self, ctx, message: int, emoji: discord.Emoji, member: discord.Member):
-        for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
-          if index == message:
-            await m.remove_reaction(emoji, member)
                 
     @commands.command()
     async def clearreactions(self, ctx, message: int):
-        for index, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
-            if index == message:
+        """clear all reactions on a message
+        Parameters
+        • message - the number of the message from which to remove the reactions
+        """
+        for i, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
+            if i == message:
                 await m.clear_reactions()
     
     @commands.command()
-    async def kick(self, ctx, member: discord.Member, *, reason='Please write a reason!'):
+    async def kick(self, ctx, member: discord.Member, *, reason='Please write a reason'):
         '''Kick someone'''
         try:
             await ctx.guild.kick(member, reason=reason)
@@ -81,23 +78,26 @@ class Mod(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command(aliases=['prune'])
-    async def purge(self, ctx, limit: int, ignore_pins = None):
-        '''Clean a number of messages
-        set ignore_pins to p to ignore pinned messages
-        e.g (prefix)purge 30 p'''
-        if ignore_pins == "p":
-            await ctx.purge(limit = limit + 1, check = lambda m : m.pinned == False)
+    async def purge(self, ctx, amount: int, *, ignore_pins = True):
+        '''purge a number of messages
+        Parameters
+        • amount - the amount of messages to purge
+        • ignore_pins - pass a truthy value to ignore pinned messages, defaults to True
+        '''
+        if ignore_pins:
+            await ctx.purge(limit = amount+1, check = lambda m : m.pinned == False)
         else:
-            await ctx.purge(limit=limit+1)
+            await ctx.purge(limit=amount+1)
 
     @commands.group(aliases = ["c"], invoke_without_command = True)
-    async def clean(self, ctx, limit: int = 15, member: discord.Member = None):
+    async def clean(self, ctx, amount: int = 15, member: discord.Member = None):
         """delete a number of your own or another users messages
         Parameters
-        • limit - number of messages to delete
+        • amount - the amount of messages to delete
         • member - the name or id of the member whose messages are to be deleted
         """
         deleted = 0
+        await ctx.message.delete()
         user = member or ctx.message.author
         async for m in ctx.channel.history(limit = 100):
             if m.author.id == user.id:
