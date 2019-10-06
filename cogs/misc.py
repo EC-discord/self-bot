@@ -113,7 +113,7 @@ class misc(commands.Cog):
         • emoji_no - which emoji to choose from incase there is more than one, defaults to the first
         '''
         await ctx.message.delete()
-        emoji = tuple(filter(lambda em: (emoji in em.name) or (emoji == em.id), self.bot.emojis))[emoji_no]
+        emoji = tuple(filter(lambda em: (emoji in em.name) or (emoji == em.id), self.bot.emojis))[emoji_no-1]
         async with ctx.session.get(f"{emoji.url}") as resp:
             image = await resp.read()
         if emoji.animated:
