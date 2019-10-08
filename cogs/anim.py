@@ -2,8 +2,8 @@ import discord
 import asyncio
 from discord.ext import commands
 
-class Anim(commands.Cog):
-     """Animated messages"""
+class anim(commands.Cog):
+     """animated messages"""
      def __init__(self, bot):
           self.bot = bot
           
@@ -158,14 +158,6 @@ class Anim(commands.Cog):
                  wheel = next(wheelIter)
              await ctx.message.edit(content=f"`{wheel}`")
              await asyncio.sleep(1)
-     
-     @commands.command()
-     async def ghostie(self, ctx):
-         for i in range(7):                           
-             await ctx.message.edit(content="""(〜' - ')〜""")
-             await asyncio.sleep(1)
-             await ctx.message.edit(content="""〜(' - '〜)""")
-             await asyncio.sleep(1)
                                     
 def setup(bot):
-   bot.add_cog(Anim(bot))
+   bot.add_cog(anim(bot))
