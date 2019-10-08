@@ -48,17 +48,6 @@ class CustomContext(commands.Context):
             msg = await self._get_message(channel=channel_or_id, id=id)
         return msg
 
-    async def send_cmd_help(self):
-        '''Sends command help'''
-        if self.invoked_subcommand:
-            pages = self.formatter.format_help_for(self, self.invoked_subcommand)
-            for page in pages:
-                await self.send_message(self.message.channel, page)
-        else:
-            pages = self.formatter.format_help_for(self, self.command)
-            for page in pages:
-                await self.send_message(self.message.channel, page) 
-
     async def get_dominant_color(self, url=None, quality=10):
         '''Returns the dominant color of an image from a url'''
         maybe_col = os.environ.get('COLOR')
