@@ -34,20 +34,6 @@ class CustomContext(commands.Context):
         kwargs.setdefault('bulk', False)
         await self.channel.purge(*args, **kwargs)
 
-    async def _get_message(self, channel, id):
-        '''Goes through channel history to get a message'''
-        async for message in channel.history(limit=1000):
-            if message.id == id:
-                return message
-
-    async def get_message(self, channel_or_id, id=None):
-        '''Helper tool to get a message for selfbots'''
-        if isinstance(channel_or_id, int):
-            msg = await self._get_message(channel=self.channel, id=channel_or_id)
-        else:
-            msg = await self._get_message(channel=channel_or_id, id=id)
-        return msg
-
     async def get_dominant_color(self, url=None, quality=10):
         '''Returns the dominant color of an image from a url'''
         maybe_col = os.environ.get('COLOR')
