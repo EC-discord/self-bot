@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import asyncio
+import typing
 
 
 class Mod(commands.Cog):
@@ -90,7 +91,7 @@ class Mod(commands.Cog):
             await ctx.purge(limit=amount+1)
 
     @commands.group(aliases = ["c"], invoke_without_command = True)
-    async def clean(self, ctx, amount: int = 15, member: discord.Member = None):
+    async def clean(self, ctx, amount: typing.Optional[int] = 10, member: discord.Member = None):
         """delete a number of your own or another users messages
         Parameters
         • amount - the amount of messages to delete
@@ -137,7 +138,7 @@ class Mod(commands.Cog):
         await ctx.message.delete()
         
     @clean.command(aliases = ["w"])
-    async def word(self, ctx, messages_to_delete = 10, *, words: str):
+    async def word(self, ctx, messages_to_delete: typing.Optional[int] = 10, *, words: str):
         """deletes messages containing the specified words
         Parameters
         • words - the words to search for
