@@ -13,7 +13,7 @@ from ext.colours import ColorNames
 import codecs
 
 
-class Noble(commands.Cog):
+class noble(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -72,4 +72,4 @@ class Noble(commands.Cog):
         await ctx.send(content = "{}".format(decoded_stuff))
 
 def setup(bot):
-    bot.add_cog(Noble(bot))
+    bot.add_cog(noble(bot))
