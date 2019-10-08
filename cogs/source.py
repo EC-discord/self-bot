@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import inspect
 
-class Source(commands.Cog):
+class source(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
@@ -17,4 +17,4 @@ class Source(commands.Cog):
         await ctx.send(f"{nl}py\n{source_thing}{nl}")
         
 def setup(bot):
-    bot.add_cog(Source(bot))
+    bot.add_cog(source(bot))
