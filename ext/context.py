@@ -57,15 +57,7 @@ class CustomContext(commands.Context):
         else:
             pages = self.formatter.format_help_for(self, self.command)
             for page in pages:
-                await self.send_message(self.message.channel, page)
-
-    @staticmethod
-    def is_valid_image_url(url):
-        '''Checks if a url leads to an image.'''
-        types = ['.png', '.jpg', '.gif', '.bmp', '.webp', 'jpeg']
-        parsed = urlparse(url)
-        if any(parsed.path.endswith(i) for i in types):
-            return url.replace(parsed.query, 'size=128')
+                await self.send_message(self.message.channel, page) 
 
     async def get_dominant_color(self, url=None, quality=10):
         '''Returns the dominant color of an image from a url'''
@@ -76,9 +68,6 @@ class CustomContext(commands.Context):
         if maybe_col:
             raw = int(maybe_col.strip('#'), 16)
             return discord.Color(value=raw)
-
-        if not self.is_valid_image_url(url):
-            raise ValueError('Invalid image url passed.')
         try:
             async with self.session.get(url) as resp:
                 image = await resp.read()
