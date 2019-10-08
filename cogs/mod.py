@@ -94,7 +94,7 @@ class Mod(commands.Cog):
         """delete a number of your own or another users messages
         Parameters
         • amount - the amount of messages to delete
-        • member - the name or id of the member whose messages are to be deleted
+        • member - the member whose messages are to be deleted, deletes your own messages if not specified
         """
         deleted = 0
         await ctx.message.delete()
@@ -107,35 +107,51 @@ class Mod(commands.Cog):
                     break
                         
     @clean.command(aliases = ["i"])
-    async def images(self, ctx, imagesToDelete: int = 10):
+    async def images(self, ctx, images_to_delete: int = 10):
         """deletes messages containing images
         Parameters
-        • imagesToDelete - number of images to delete
+        • images_to_delete - number of images to delete
         """
         deleted = 0
         async for m in ctx.channel.history():
             if m.attachments:
                 await m.delete()
                 deleted += 1
-                if imagesToDelete == deleted:
+                if images_to_delete == deleted:
                     break
         await ctx.message.delete()
                 
     @clean.command(aliases = ["b"])
-    async def bots(self, ctx, messagesToDelete: int = 15):
+    async def bots(self, ctx, messages_to_delete: int = 15):
         """deletes messages sent by bots
         Parameters
-        • messagesToDelete - number of messages to delete
+        • messages_to_delete - number of messages to delete
         """
         deleted = 0
         async for m in ctx.channel.history(limit = 200):
             if m.author.bot:
                 await m.delete()
                 deleted += 1
+                if deleted == messages_to_delete:
+                    break
+        await ctx.message.delete()
+        
+    @clean.command(aliases = ["w"])
+    async def word(self, ctx, messages_to_delete = 10, *, words: str):
+        """deletes messages containing the specified words
+        Parameters
+        • words - the words to search for
+        • messages_to_delete - number of messages to delete
+        """
+        deleted = 0
+        async for m in ctx.channel.history(limit = 200):
+            if words in m.content:
+                await m.delete()
+                deleted += 1
                 if deleted == messagesToDelete:
                     break
         await ctx.message.delete()
-
+        
     @commands.command()
     @commands.has_permissions(manage_roles = True)
     async def addrole(self, ctx, member: discord.Member, *, role: discord.Role):
