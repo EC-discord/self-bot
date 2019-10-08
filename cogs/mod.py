@@ -104,7 +104,7 @@ class Mod(commands.Cog):
             if m.author.id == user.id:
                 await m.delete()
                 deleted += 1
-                if deleted == limit:
+                if deleted == amount:
                     break
                         
     @clean.command(aliases = ["i"])
@@ -114,7 +114,7 @@ class Mod(commands.Cog):
         • images_to_delete - number of images to delete
         """
         deleted = 0
-        async for m in ctx.channel.history():
+        async for m in ctx.channel.history(limit = 200):
             if m.attachments:
                 await m.delete()
                 deleted += 1
@@ -149,7 +149,7 @@ class Mod(commands.Cog):
             if words in m.content:
                 await m.delete()
                 deleted += 1
-                if deleted == messagesToDelete:
+                if deleted == messages_to_delete:
                     break
         await ctx.message.delete()
         
