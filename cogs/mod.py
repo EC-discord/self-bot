@@ -24,9 +24,9 @@ class mod(commands.Cog):
             emb.description = f"You do not have the permissions to {method} {user.name}."
         return emb
                 
-    @commands.command()
+    @commands.command(aliases = ["cr"])
     async def clearreactions(self, ctx, message: int):
-        """clear all reactions on a message
+        """clears all reactions on a message
         Parameters
         • message - the number of the message from which to remove the reactions
         """
@@ -36,7 +36,11 @@ class mod(commands.Cog):
     
     @commands.command()
     async def kick(self, ctx, member: discord.Member, *, reason='Please write a reason'):
-        '''Kick someone'''
+        '''kick someone
+        Parameters
+        • member - the member to kick
+        • reason - reason why the member was kicked
+        '''
         try:
             await ctx.guild.kick(member, reason=reason)
         except:
@@ -50,7 +54,11 @@ class mod(commands.Cog):
 
     @commands.command(aliases = ["banana"])
     async def ban(self, ctx, member: discord.Member, *, reason='Please write a reason!'):
-        '''Ban someone'''
+        '''ban someone
+        Parameters
+        • member - the member to ban
+        reason - reason why the member was banned
+        '''
         try:
             await ctx.guild.ban(member, reason=reason)
         except:
@@ -64,7 +72,11 @@ class mod(commands.Cog):
 
     @commands.command()
     async def unban(self, ctx, name_or_id, *, reason=None):
-        '''Unban someone'''
+        '''unban someone
+        Parameters
+        • name_or_id - name or id of the banned user
+        • reason - reason why the user was unbanned
+        '''
         ban = await ctx.get_ban(name_or_id)
 
         try:
@@ -149,7 +161,7 @@ class mod(commands.Cog):
             if words in m.content:
                 await m.delete()
                 deleted += 1
-                if deleted == messages_to_delete:
+                if deleted == messages_to_delete+1:
                     break
         await ctx.message.delete()
         
