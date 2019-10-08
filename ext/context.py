@@ -36,7 +36,7 @@ class CustomContext(commands.Context):
 
     async def _get_message(self, channel, id):
         '''Goes through channel history to get a message'''
-        async for message in channel.history(limit=5000):
+        async for message in channel.history(limit=1000):
             if message.id == id:
                 return message
 
