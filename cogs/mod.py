@@ -4,7 +4,7 @@ import asyncio
 import typing
 
 
-class Mod(commands.Cog):
+class mod(commands.Cog):
     """useful commands for moderation"""
     def __init__(self, bot):
         self.bot = bot
@@ -179,4 +179,4 @@ class Mod(commands.Cog):
         await ctx.send(f'Removed: `{role.name}`')
 
 def setup(bot):
-	bot.add_cog(Mod(bot))
+	bot.add_cog(mod(bot))
