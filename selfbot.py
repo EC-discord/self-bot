@@ -24,9 +24,9 @@ class Selfbot(commands.Bot):
         super().__init__(command_prefix=self.get_pre, self_bot=True, help_command = helpformatter(), guild_subscriptions = False)
         self.session = aiohttp.ClientSession(loop=self.loop)
         self.load_extensions()
-        self.initial_extensions = ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]
 
     def load_extensions(self):
+        initial_extensions = ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]
         for extension in  self.initial_extensions:
             try:
                 self.load_extension(extension)
