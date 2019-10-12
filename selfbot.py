@@ -14,7 +14,7 @@ class Selfbot(commands.Bot):
     Custom Client for selfbot.py - Made by someone
     '''
     
-    initial_extensions = ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]
+    self.initial_extensions = ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]
     
     _mentions_transforms = {
         '@everyone': '@\u200beveryone',
@@ -29,7 +29,7 @@ class Selfbot(commands.Bot):
         self.load_extensions()
 
     def load_extensions(self):
-        for extension in  initial_extensions:
+        for extension in  self.initial_extensions:
             try:
                 self.load_extension(extension)
                 print(f'Loaded extension: {extension[6:]}')
