@@ -26,8 +26,7 @@ class Selfbot(commands.Bot):
         self.load_extensions()
 
     def load_extensions(self):
-        initial_extensions = ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]
-        for extension in  self.initial_extensions:
+        for extension in ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]:
             try:
                 self.load_extension(extension)
                 print(f'Loaded extension: {extension[6:]}')
