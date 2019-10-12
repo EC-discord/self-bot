@@ -13,6 +13,9 @@ class Selfbot(commands.Bot):
     '''
     Custom Client for selfbot.py - Made by someone
     '''
+    
+    initial_extensions = ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]
+    
     _mentions_transforms = {
         '@everyone': '@\u200beveryone',
         '@here': '@\u200bhere'
@@ -26,12 +29,12 @@ class Selfbot(commands.Bot):
         self.load_extensions()
 
     def load_extensions(self):
-        for extension in [x[:-3] for x in os.listdir('cogs')]:
+        for extension in  initial_extensions:
             try:
-                self.load_extension(f'cogs.{extension}')
-                print(f'Loaded extension: {extension}')
+                self.load_extension(extension)
+                print(f'Loaded extension: {extension[6:]}')
             except:
-                print(f'LoadError: {extension}\n'
+                print(f'LoadError: {extension[6:]}\n'
                       f'{traceback.print_exc()}')
 
    
