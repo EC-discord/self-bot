@@ -12,7 +12,7 @@ import random
 import typing
 import io
 
-class Utility(commands.Cog):
+class utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.lang_conv = load_json('data/langs.json')
@@ -203,4 +203,4 @@ class Utility(commands.Cog):
             await ctx.send(file = discord.File(file, "icon.png"))
         
 def setup(bot):
-    bot.add_cog(Utility(bot))
+    bot.add_cog(utility(bot))
