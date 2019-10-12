@@ -13,8 +13,8 @@ class Selfbot(commands.Bot):
     '''
     Custom Client for selfbot.py - Made by someone
     '''
-    
-    self.initial_extensions = ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]
+    def __init__(self):
+        self.initial_extensions = ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]
     
     _mentions_transforms = {
         '@everyone': '@\u200beveryone',
