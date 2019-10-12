@@ -112,7 +112,6 @@ class misc(commands.Cog):
         • emoji - The name(case sensitive) or id of the emoji
         • emoji_no - which emoji to choose from incase there is more than one, defaults to the first
         '''
-        await ctx.message.delete()
         emoji = tuple(filter(lambda em: (emoji in em.name) or (emoji == em.id), self.bot.emojis))[emoji_no-1]
         async with ctx.session.get(f"{emoji.url}") as resp:
             image = await resp.read()
@@ -122,6 +121,7 @@ class misc(commands.Cog):
         else:
             with io.BytesIO(image) as file:
                 await ctx.send(file = discord.File(file, "emote.png"))
+        await ctx.message.delete()
                 
     @commands.command()
     async def textreact(self, ctx, messageNo: typing.Optional[int] = 1, *, text):
