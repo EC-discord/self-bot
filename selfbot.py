@@ -103,7 +103,15 @@ class Selfbot(commands.Bot):
     
     async def on_message_edit(self, before, after):
         await self.process_commands(after)
-
+    
+    async def on_message(self, m):
+        r = re.compile(r">(#\d{6}) (.*)")
+        r = r.match(m.content)
+        if r.group():
+            await m.delete()
+            await ctx.send(embed = discord.Embed(color = discord.Color(f"{r.group(1)}"), description = r.group(2))
+        await self.process_commands()
         
+       
 if __name__ == '__main__':
     Selfbot.init()
