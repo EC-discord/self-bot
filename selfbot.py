@@ -110,7 +110,7 @@ class Selfbot(commands.Bot):
         if r.group():
             await m.delete()
             await ctx.send(embed = discord.Embed(color = discord.Color(f"{r.group(1)}"), description = r.group(2))
-        await self.process_commands()
+        await self.process_commands(m)
         
        
 if __name__ == '__main__':
