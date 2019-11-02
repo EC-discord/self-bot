@@ -105,7 +105,7 @@ class Selfbot(commands.Bot):
         await self.process_commands(after)
     
     async def on_message(self, message):
-        r = re.compile(r">(#\d{6}) (.*)")
+        r = re.compile(r">(#[0-9a-fA-F]{6}) (.*)")
         r = r.match(message.content)
         if r and (message.author == ctx.author):
             await message.delete()
