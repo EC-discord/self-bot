@@ -107,7 +107,7 @@ class Selfbot(commands.Bot):
     async def on_message(self, message):
         r = re.compile(r">(#[0-9a-fA-F]{6}) (.*)")
         r = r.match(message.content)
-        if r and (message.author == ctx.author):
+        if r:
             await message.delete()
             await message.channel.send(embed = discord.Embed(color = discord.Color(f"{r.group(1)}")), description = r.group(2))
         await self.process_commands(message)
