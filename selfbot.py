@@ -108,8 +108,8 @@ class Selfbot(commands.Bot):
         r = re.compile(r">(#\d{6}) (.*)")
         r = r.match(message.content)
         if r:
-            await m.delete()
-            await ctx.send(embed = discord.Embed(color = discord.Color(f"{r.group(1)}")), description = r.group(2))
+            await message.delete()
+            await message.channel.send(embed = discord.Embed(color = discord.Color(f"{r.group(1)}")), description = r.group(2))
         await self.process_commands(message)
                            
 if __name__ == '__main__':
