@@ -170,8 +170,8 @@ class utility(commands.Cog):
         choices[0] = ' ' + choices[0]
         await ctx.send(str(random.choice(choices))[1:])
         
-    @commands.command(aliases = ["a"])
-    async def pic(self, ctx, *, member: discord.Member = None):
+    @commands.command(aliases = ["a", "pic"])
+    async def avatar(self, ctx, *, member: discord.Member = None):
         """gets the display picture of a user
         Parameters
         • member – The tag, name or id of the user
