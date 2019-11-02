@@ -171,7 +171,7 @@ class utility(commands.Cog):
         await ctx.send(str(random.choice(choices))[1:])
         
     @commands.command(aliases = ["a", "pic"])
-    async def avatar(self, ctx, size: typing.Optional[int] = None, *, member: discord.Member = None):
+    async def avatar(self, ctx, *, member: discord.Member = None):
         """gets the display picture of a user
         Parameters
         • member – The tag, name or id of the user
@@ -181,7 +181,7 @@ class utility(commands.Cog):
         if member.is_avatar_animated() != True:
 	        format = "png"
         avatar = member.avatar_url_as(format = format if format is not "gif" else None)
-        async with ctx.session.get(str(avatar)+f"?size={size if size else ' '}") as resp:
+        async with ctx.session.get(str(avatar)) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
             await ctx.send(file = discord.File(file, f"DP.{format}"))
