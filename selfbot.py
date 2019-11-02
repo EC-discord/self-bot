@@ -107,7 +107,7 @@ class Selfbot(commands.Bot):
     async def on_message(self, message):
         r = re.compile(r">(#\d{6}) (.*)")
         r = r.match(message.content)
-        if r.group():
+        if r:
             await m.delete()
             await ctx.send(embed = discord.Embed(color = discord.Color(f"{r.group(1)}")), description = r.group(2))
         await self.process_commands(message)
