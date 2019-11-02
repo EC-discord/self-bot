@@ -181,7 +181,7 @@ class utility(commands.Cog):
         if member.is_avatar_animated() != True:
 	        format = "png"
         avatar = member.avatar_url_as(format = format if format is not "gif" else None)
-        async with ctx.session.get(str(avatar)+f"?size={size if size else " "}") as resp:
+        async with ctx.session.get(str(avatar)+f"?size={size if size else ' '}") as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
             await ctx.send(file = discord.File(file, f"DP.{format}"))
