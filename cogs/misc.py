@@ -106,14 +106,15 @@ class misc(commands.Cog):
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
 
     @commands.command(name='emoji', aliases=['e'])
-    async def _emoji(self, ctx, emoji, emoji_no: int = 1):
+    async def _emoji(self, ctx, size: typing.Optional[int] = None, emoji, emoji_no: int = 1):
         '''displays an enlarged pic of an emoji
         Parameters
+        • size = the size of the image to display
         • emoji - The name(case sensitive) or id of the emoji
         • emoji_no - which emoji to choose from incase there is more than one, defaults to the first
         '''
         emoji = tuple(filter(lambda em: (emoji in em.name) or (emoji == em.id), self.bot.emojis))[emoji_no-1]
-        async with ctx.session.get(f"{emoji.url}") as resp:
+        async with ctx.session.get(f"{emoji.url}"+f"?size={size if size else ' '}") as resp:
             image = await resp.read()
         if emoji.animated:
             with io.BytesIO(image) as file:
