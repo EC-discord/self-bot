@@ -185,6 +185,7 @@ class utility(commands.Cog):
             image = await resp.read()
         with io.BytesIO(image) as file:
             await ctx.send(file = discord.File(file, f"DP.{format}"))
+        await ctx.delete()
             
     @commands.command(aliases = ["gi"])
     async def guildicon(self, ctx, *, guild = None):
