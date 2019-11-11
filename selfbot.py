@@ -100,17 +100,6 @@ class Selfbot(commands.Bot):
         if ctx.command is None:
             return
         await self.invoke(ctx)
-    
-    async def on_message_edit(self, before, after):
-        await self.process_commands(after)
-    
-    async def on_message(self, message):
-        r = re.compile(r">(#[0-9a-fA-F]{6}) (.*)")
-        r = r.match(message.content)
-        if r:
-            await message.delete()
-            await message.channel.send(embed = discord.Embed(color = discord.Color(int("0x"+f"{r.group(1)[1:]}", 16)), description = r.group(2)))
-        await self.process_commands(message)
                            
 if __name__ == '__main__':
     Selfbot.init()
