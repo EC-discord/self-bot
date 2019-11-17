@@ -62,7 +62,7 @@ class utility(commands.Cog):
             async with ctx.session.get(emoji_link) as resp:
                 image = await resp.read()
         created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image, roles = [r for r in roles if roles is not None])
-        await ctx.send(f"Emoji :{created_emoji.name}: created!")
+        await ctx.send(f"Emoji {created_emoji.name} created!")
      
     @commands.command()
     async def delemoji(self, ctx, emoji: discord.Emoji):
