@@ -71,7 +71,7 @@ class utility(commands.Cog):
         • emoji - the name or id of the emoji
         """
         await emoji.delete()
-        await ctx.send(content = f"Deleted emoji : {emoji.name}", delete_after = 2)
+        await ctx.send(content = f"Deleted emoji: {emoji.name}", delete_after = 2)
         
     @commands.command()
     async def editemoji(self, ctx, emoji: discord.Emoji, new_name):
