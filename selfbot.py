@@ -31,7 +31,7 @@ class Selfbot(commands.Bot):
                 self.load_extension(extension)
                 print(f'Loaded extension: {extension[5:]}')
             except:
-                c = discord.utils.get(self.get_all_channels(), guild__name = "Private Server O:" name = "selfbot-logs")
+                c = discord.utils.get(self.get_all_channels(), guild__name = "Private Server O:", name = "selfbot-logs")
                 await c.send(traceback.print_exc())
                 print(f'LoadError: {extension[5:]}\n'
                       f'{traceback.print_exc()}')
