@@ -148,15 +148,9 @@ class anim(commands.Cog):
      
      @commands.command()
      async def deadchat(self, ctx):
-         wheelList = ['DEAD CHAT', 'T DEAD CHA', 'AT DEAD CH', 'HAT DEAD C', 'CHAT DEAD', 'D CHAT DEA', 'AD CHAT DE', 'EAD CHAT D']
-         wheelIter = iter(wheelList)
-         for i in range(1, 10, 1):
-             try:
-                 wheel = next(wheelIter)
-             except StopIteration:
-                 wheelIter = iter(wheelList)
-                 wheel = next(wheelIter)
-             await ctx.message.edit(content=f"`{wheel}`")
+         dead = ('DEAD CHAT', 'T DEAD CHA', 'AT DEAD CH', 'HAT DEAD C', 'CHAT DEAD', 'D CHAT DEA', 'AD CHAT DE', 'EAD CHAT D', 'DEAD CHAT')
+         for d in dead:
+             await ctx.message.edit(content=d)
              await asyncio.sleep(1)
                                     
 def setup(bot):
