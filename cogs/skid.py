@@ -7,7 +7,6 @@ from PIL import Image
 import traceback
 import textwrap
 import asyncio
-import time
 import io
 import random
 from mtranslate import translate
