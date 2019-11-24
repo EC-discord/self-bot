@@ -166,7 +166,6 @@ class mod(commands.Cog):
         await ctx.message.delete()
         
     @commands.command()
-    @commands.has_permissions(manage_roles = True)
     async def addrole(self, ctx, member: discord.Member, *, role: discord.Role):
         '''Add a role to someone else
         Parameter
