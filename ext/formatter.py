@@ -21,9 +21,6 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
-import itertools
-import inspect
-import asyncio
 import discord
 from discord.ext import commands
 from discord.ext.commands.core import GroupMixin, Command
