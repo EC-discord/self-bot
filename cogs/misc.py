@@ -52,6 +52,7 @@ class misc(commands.Cog):
             emoji = random.choice(self.emoji_list)
             await message.add_reaction(emoji)
             self.emoji_list.remove(emoji)
+            await asyncio.sleep(0.1)
           break
           
     @commands.command()
