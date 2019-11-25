@@ -37,6 +37,7 @@ class misc(commands.Cog):
         • no_of_reactions - amount of random emojis to react with, defaults to 20
         • server - the server from which to choose the emojis to react with, defaults to global emojis
         '''
+        server = server.lower()
         self.emoji_list = []
         await ctx.message.delete()
         if server is None:
