@@ -1,5 +1,3 @@
-
-
 def paginate(text: str, maxlen: int):
     '''Simple generator that paginates text.'''
     last = 0

@@ -1,8 +1,6 @@
 import discord
-from discord.ext import commands
 import asyncio
 from colorthief import ColorThief
-from urllib.parse import urlparse
 import io
 import os
 

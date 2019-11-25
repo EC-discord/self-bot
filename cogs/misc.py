@@ -16,17 +16,6 @@ class misc(commands.Cog):
         self.emoji_converter = commands.EmojiConverter()
         self.emoji_list = []
         
-    @commands.command(aliases = ["as"])
-    async def antisnipe(self, ctx):
-        """deletes your previous message and prevents bots from sniping it"""
-        await ctx.message.edit(content = " ")
-        await ctx.message.delete()
-        async for m in ctx.channel.history(limit = 100):
-            if m.author.id == ctx.author.id:
-                await m.edit(content = " ")
-                await m.delete()
-                break
-        
     @commands.command()
     async def hexcode(self, ctx, *, role: discord.Role):
         await ctx.send(f"{role.name} : {role.color}")

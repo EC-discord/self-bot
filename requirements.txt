@@ -1,8 +1,6 @@
 git+https://github.com/Rapptz/discord.py
 mtranslate
 colorthief
-sympy
-psutil
 moviepy
 requests
 emoji
