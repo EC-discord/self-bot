@@ -30,13 +30,14 @@ class misc(commands.Cog):
         await ctx.message.delete()
     
     @commands.command(aliases = ["rr"])
-    async def randomreact(self, ctx, message_no: int, no_of_reactions: int = 20, *, server: str = None):
+    async def randomreact(self, ctx, message_no: int, no_of_reactions: typing.Optional[int] = 20, *, server: str = None):
         '''react to a message with random emojis
         Parameters
         • message_no - the index of the message to react to
         • no_of_reactions - amount of random emojis to react with, defaults to 20
         • server - the server from which to choose the emojis to react with, defaults to global emojis
         '''
+        message_no-=1
         server = server.lower()
         self.emoji_list = []
         await ctx.message.delete()
