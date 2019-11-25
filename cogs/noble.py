@@ -9,7 +9,6 @@ import glob
 import moviepy.editor as mpy
 from discord.ext import commands
 from PIL import Image, ImageDraw, ImageFont
-from ext.colours import ColorNames
 import codecs
 
 

@@ -2,9 +2,7 @@ import discord
 import asyncio
 import random
 import emoji
-import json
 from discord.ext import commands
-from ext.colours import ColorNames
 from PIL import Image
 import io
 import typing
