@@ -38,7 +38,7 @@ class misc(commands.Cog):
         • server - the server from which to choose the emojis to react with, defaults to global emojis
         '''
         message_no-=1
-        server = server.lower()
+        server = server.lower() if server else server
         self.emoji_list = []
         await ctx.message.delete()
         if server is None:
