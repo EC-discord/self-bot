@@ -23,7 +23,6 @@ DEALINGS IN THE SOFTWARE.
 
 import discord
 
-
 class Paginator:
     """A class that aids in paginating embeds for Discord messages.
     Attributes

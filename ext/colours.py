@@ -1,5 +1,4 @@
 class ColorNames:
-
     WebColorMap = {}
     WebColorMap["Alice Blue"] = "#F0F8FF"
     WebColorMap["Antique White"] = "#FAEBD7"
