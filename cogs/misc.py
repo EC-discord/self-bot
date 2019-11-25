@@ -30,7 +30,7 @@ class misc(commands.Cog):
         await ctx.message.delete()
     
     @commands.command(aliases = ["rr"])
-    async def randomreact(self, ctx, message_no: int, no_of_reactions: int = 20, *, server = None):
+    async def randomreact(self, ctx, message_no: int, no_of_reactions: int = 20, *, server: str = None):
         '''react to a message with random emojis
         Parameters
         • message_no - the index of the message to react to
@@ -42,8 +42,8 @@ class misc(commands.Cog):
         if server is None:
           self.emoji_list = [emoji for emoji in self.bot.emojis if emoji.name.startswith("GW")]
         elif server:
-          server = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
-          self.emoji_list = [emoji for emoji in server.emojis if not emoji.animated]
+          s = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
+          self.emoji_list = [emoji for emoji in s.emojis if not emoji.animated]
         for index, message in enumerate(await ctx.channel.history(limit = 30).flatten()):
           if index != message_no:
             continue
