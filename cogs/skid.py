@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 from contextlib import redirect_stdout
 from ext.utility import load_json
-from urllib.parse import quote as uriquote
 from PIL import Image
 import traceback
 import textwrap
