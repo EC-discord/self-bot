@@ -1,10 +1,6 @@
 import discord
 import base64
-import asyncio
-import random
-import datetime
 import os
-import json
 import glob
 import moviepy.editor as mpy
 from discord.ext import commands
@@ -59,7 +55,7 @@ class noble(commands.Cog):
         await ctx.send(content = "{}".format(encoded_stuff))
 
     @commands.command()
-    async def decode(self,ctx,*,args : str):
+    async def decode(self,ctx,*,args: str):
         '''Decode to ascii'''
         strOne = (args).encode("ascii")
         pad = len(strOne)%4
