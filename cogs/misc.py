@@ -23,7 +23,7 @@ class misc(commands.Cog):
         '''embed messages
         Parameters
         • text - the text to embed
-        • color - the color of the embed, random color is used if left empty'''
+        • color - the color of the embed, a random color is used if left empty'''
         em = discord.Embed(color=color or random.randint(0, 0xFFFFFF))
         em.description = text
         await ctx.send(embed=em)
