@@ -1,4 +1,5 @@
 import discord
+from discord import Color
 from discord.ext import commands
 from ext.context import CustomContext
 from ext.helpformatter import helpformatter
@@ -100,6 +101,13 @@ class Selfbot(commands.Bot):
         if ctx.command is None:
             return
         await self.invoke(ctx)
+        
+    @classmethod
+    def black(cls):
+        """A factory method that returns a :class:`Colour` with a value of ``0x000000``."""
+        return cls(0x000000)
+
+    discord.Color.black=black
         
     async def on_message_edit(self, before, after):
         await self.process_commands(after)
