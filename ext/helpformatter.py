@@ -3,4 +3,4 @@ from discord.ext.commands import DefaultHelpCommand
 
 class helpformatter(DefaultHelpCommand):
   def get_ending_note(self):
-    return f"A bot made by Mirai#6390"
+    return f"A bot made by Kaen#6390"
