@@ -189,7 +189,7 @@ class utility(commands.Cog):
         Parameters
         • guild - The name(case sensitive) or id of the guild/server"""
         guild = guild or ctx.guild
-        if type(guild) == int:
+        if int(guild):
             guild = discord.utils.get(self.bot.guilds, id = guild)
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
