@@ -190,7 +190,7 @@ class utility(commands.Cog):
         • guild - The name(case sensitive) or id of the guild/server"""
         guild = guild or ctx.guild
         if int(guild):
-            guild = discord.utils.get(self.bot.guilds, id = guild)
+            guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
         icon = guild.icon_url_as(format = "png")
