@@ -125,37 +125,6 @@ class utility(commands.Cog):
                 await ctx.send(embed = em)
             else:
                 await ctx.send(f"Presence : {types[Type]} {text}")
-            
-    @commands.group(invoke_without_command=True)
-    async def clear(self, ctx):
-        """marks all messages from all your servers as read"""
-        if ctx.invoked_subcommand is None:
-          for guild in self.bot.guilds:
-            await guild.ack()
-          await ctx.send('All messages marked read in specified servers!')
-        await ctx.message.delete()
-    
-    @clear.command()
-    async def name(self, ctx, *, server_name):
-        """marks messages as read in a specified server using its name
-        Parameter
-        • server_name - the name of the server
-        """
-        server = discord.utils.find(lambda s: server_name in s.name.lower(), self.bot.guilds)
-        await server.ack()
-        await ctx.send(f"all messages marked read in {server.name}", delete_after = 2)
-        await ctx.message.delete()
-        
-    @clear.command(name = "id")
-    async def _id(self, ctx, server_id : int):
-        """marks messages from a specified server as read using its id
-        Parameter
-        • server_id - the id of the server to mark as read
-        """
-        server = discord.utils.get(self.bot.guilds, id = server_id)
-        await server.ack()
-        await ctx.send(f"all messages marked read in {server.name}", delete_after = 2)
-        await ctx.message.delete()
 
     @commands.command()
     async def choose(self, ctx, *, choices: commands.clean_content):
