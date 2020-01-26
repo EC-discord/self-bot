@@ -7,7 +7,7 @@ class anim(commands.Cog):
      def __init__(self, bot):
           self.bot = bot
      @commands.command()
-     async def cathi(self, ctx, *text: str = None):
+     async def cathi(self, ctx, *, text: str = None):
          if text == None:
              text = "Hi..."
          list = ("""ຸ 　　　＿＿_＿＿
@@ -151,8 +151,16 @@ class anim(commands.Cog):
      
      @commands.command()
      async def deadchat(self, ctx):
-         dead = ('DEAD CHAT', 'T DEAD CHA', 'AT DEAD CH', 'HAT DEAD C', 'CHAT DEAD', 'D CHAT DEA', 'AD CHAT DE', 'EAD CHAT D', 'DEAD CHAT')
-         for d in dead:
+         list = ('DEAD CHAT',
+                 'T DEAD CHA',
+                 'AT DEAD CH',
+                 'HAT DEAD C',
+                 'CHAT DEAD',
+                 'D CHAT DEA',
+                 'AD CHAT DE',
+                 'EAD CHAT D',
+                 'DEAD CHAT')
+         for i in list:
              await ctx.message.edit(content=d)
              await asyncio.sleep(1)
                                     
