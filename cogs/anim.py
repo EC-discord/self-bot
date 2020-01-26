@@ -20,7 +20,7 @@ class anim(commands.Cog):
 　　￣￣￣￣""")
          for i in range(2):
             for cat in list:
-                await ctx.edit(content=cat)
+                await ctx.message.edit(content=cat)
                 await asyncio.sleep(1.5)
                    
      @commands.command()
