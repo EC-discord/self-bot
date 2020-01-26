@@ -7,7 +7,7 @@ class anim(commands.Cog):
      def __init__(self, bot):
           self.bot = bot
      @commands.command()
-     async def cathi(self, ctx, text: str = "Hi..."):
+     async def cathi(self, ctx, *text: str = "Hi..."):
          list = ("""ຸ 　　　＿＿_＿＿
 　　／　／　  ／|"
 　　|￣￣￣￣|　|
@@ -18,7 +18,7 @@ class anim(commands.Cog):
 　／|￣￣￣￣|＼／
 　　|　　　　|／
 　　￣￣￣￣""")
-         for i in range(2):
+         for i in range(3):
             for cat in list:
                 await ctx.message.edit(content=cat)
                 await asyncio.sleep(1.5)
@@ -94,27 +94,12 @@ class anim(commands.Cog):
      @commands.command()
      async def table(self, ctx):
          t = (']', '┻━┻', '[',  '┬─┬')
-         await ctx.message.edit(content=f"`(\°-°)\ {t[4]}`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`(\°□°)\ {t[4]}`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`(-°□°)- {t[4]}`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`(╯°□°)╯ {t[1]}`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`(╯°□°)╯  {t[2]}`")                                    
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`(╯°□°)╯   {t[3]}`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`(╯°□°)╯    {t[4]}`")                           
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`(╯°□°)╯     {t[1]}`")                           
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`(╯°□°)╯      {t[2]}`")                           
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`(╯°□°)╯       {t[3]}`")                           
-         await asyncio.sleep(1)                                    
-         await ctx.message.edit(content=f"`(\°-°)\        {t[4]}`")                           
+         list = (f"`(\°-°)\ {t[4]}`", f"`(\°□°)\ {t[4]}`", f"`(-°□°)- {t[4]}`", f"`(╯°□°)╯ {t[1]}`",
+                f"`(╯°□°)╯  {t[2]}`", f"`(╯°□°)╯   {t[3]}`", f"`(╯°□°)╯    {t[4]}`", f"`(╯°□°)╯     {t[1]}`",
+                f"`(╯°□°)╯      {t[2]}`", f"`(╯°□°)╯       {t[3]}`", f"`(\°-°)\        {t[4]}`")
+         for i in list:
+             await ctx.message.edit(content=i)
+             await asyncio.sleep(1.5)                     
        
      @commands.command()
      async def warning(self, ctx):
