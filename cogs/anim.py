@@ -38,16 +38,14 @@ class anim(commands.Cog):
           
      @commands.command()
      async def flop(self, ctx):
-          await ctx.message.edit(content = "(   ° - °) (' - '   )")
-          await asyncio.sleep(1)
-          await ctx.message.edit(content = "(\\\° - °)\ (' - '   )")
-          await asyncio.sleep(1)
-          await ctx.message.edit(content = "(—°□°)— (' - '   )")
-          await asyncio.sleep(1)
-          await ctx.message.edit(content = "(╯°□°)╯(' - '   )")
-          await asyncio.sleep(1)
-          await ctx.message.edit(content = "(╯°□°)╯︵(\\\ .o.)\\")
-
+         list = ("(   ° - °) (' - '   )",
+                 "(\\\° - °)\ (' - '   )",
+                 "(—°□°)— (' - '   )",
+                 "(╯°□°)╯(' - '   )",
+                 "(╯°□°)╯︵(\\\ .o.)\\")
+         for i in list:
+             await ctx.message.edit(content = i)
+             await asyncio.sleep(1.5)
      @commands.command()
      async def poof(self, ctx):
          """poofness"""
