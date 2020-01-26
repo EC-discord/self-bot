@@ -7,7 +7,9 @@ class anim(commands.Cog):
      def __init__(self, bot):
           self.bot = bot
      @commands.command()
-     async def cathi(self, ctx, *text: str = "Hi..."):
+     async def cathi(self, ctx, *text: str = None):
+         if text == None:
+             text = "Hi..."
          list = ("""ຸ 　　　＿＿_＿＿
 　　／　／　  ／|"
 　　|￣￣￣￣|　|
