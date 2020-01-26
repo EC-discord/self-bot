@@ -6,7 +6,23 @@ class anim(commands.Cog):
      """animated messages"""
      def __init__(self, bot):
           self.bot = bot
-          
+     @commands.command()
+     async def cathi(self, ctx, text: str = "Hi..."):
+         list = ("""ຸ 　　　＿＿_＿＿
+　　／　／　  ／|"
+　　|￣￣￣￣|　|
+　　|　　　　|／
+　　￣￣￣￣""", f"""ຸ 　　　{text}
+ 　   　 ∧＿∧＿_
+　　／(´･ω･`)  ／＼
+　／|￣￣￣￣|＼／
+　　|　　　　|／
+　　￣￣￣￣""")
+         for i in range(2):
+            for cat in list:
+                await ctx.edit(content=cat)
+                await asyncio.sleep(1.5)
+                   
      @commands.command()
      async def loading(self, ctx):
          for num in range(1, 6, 1):
