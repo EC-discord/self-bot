@@ -83,12 +83,17 @@ class anim(commands.Cog):
 
      @commands.command()
      async def boom(self, ctx):
-         for counter in range(5, -1, -1):
-             await ctx.message.edit(content = f"`THIS MESSAGE WILL SELF DESTRUCT IN {counter}`")
-             await asyncio.sleep(1)
-         await ctx.message.edit(content = "💣")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content = "💥")
+         list = ("```THIS MESSAGE WILL SELFDESTRUCT IN 5```",
+                 "```THIS MESSAGE WILL SELFDESTRUCT IN 4```",
+                 "```THIS MESSAGE WILL SELFDESTRUCT IN 3```",
+                 "```THIS MESSAGE WILL SELFDESTRUCT IN 2```",
+                 "```THIS MESSAGE WILL SELFDESTRUCT IN 1```",
+                 "```THIS MESSAGE WILL SELFDESTRUCT IN 0```",
+                 "💣",
+                 "💥")
+                 for i in list:
+                     await asyncio.sleep(1.5)
+                     await ctx.message.edit(content=i)               
           
      
      @commands.command()
