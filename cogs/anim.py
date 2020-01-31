@@ -93,59 +93,48 @@ class anim(commands.Cog):
      
      @commands.command()
      async def table(self, ctx):
-         t = (']', '┻━┻', '[',  '┬─┬')
-         list = (f"`(\°-°)\ {t[4]}`", f"`(\°□°)\ {t[4]}`", f"`(-°□°)- {t[4]}`", f"`(╯°□°)╯ {t[1]}`",
-                f"`(╯°□°)╯  {t[2]}`", f"`(╯°□°)╯   {t[3]}`", f"`(╯°□°)╯    {t[4]}`", f"`(╯°□°)╯     {t[1]}`",
-                f"`(╯°□°)╯      {t[2]}`", f"`(╯°□°)╯       {t[3]}`", f"`(\°-°)\        {t[4]}`")
+         list = ("`(\°-°)\  ┬─┬`",
+                 "`(\°□°)\  ┬─┬`",
+                 "`(-°□°)-  ┬─┬`",
+                 "`(╯°□°)╯    ]`",
+                 "`(╯°□°)╯     ┻━┻`",
+                 "`(╯°□°)╯       [`",
+                 "`(╯°□°)╯          ┬─┬`",
+                 "`(╯°□°)╯                 ]`",
+                 "`(╯°□°)╯                  ┻━┻`",
+                 "`(╯°□°)╯                         [`",
+                 "`(\°-°)\                               ┬─┬`")
          for i in list:
-             await ctx.message.edit(content=i)
-             await asyncio.sleep(1.5)                     
+             await asyncio.sleep(1.5)
+             await ctx.message.edit(content=i)                    
        
      @commands.command()
      async def warning(self, ctx):
-         await ctx.message.edit(content="`LOAD !! WARNING !! SYSTEM OVER`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`OAD !! WARNING !! SYSTEM OVERL`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`AD !! WARNING !! SYSTEM OVERLO`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`D !! WARNING !! SYSTEM OVERLOA`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`! WARNING !! SYSTEM OVERLOAD !`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`WARNING !! SYSTEM OVERLOAD !!`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`ARNING !! SYSTEM OVERLOAD !! W`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`RNING !! SYSTEM OVERLOAD !! WA`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`NING !! SYSTEM OVERLOAD !! WAR`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`ING !! SYSTEM OVERLOAD !! WARN`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`NG !! SYSTEM OVERLOAD !! WARNI`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`G !! SYSTEM OVERLOAD !! WARNIN`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`!! SYSTEM OVERLOAD !! WARNING`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`! SYSTEM OVERLOAD !! WARNING !`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`SYSTEM OVERLOAD !! WARNING !!`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`IMMINENT SHUT-DOWN IN 0.5 SEC!`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`WARNING !! SYSTEM OVERLOAD !!`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`IMMINENT SHUT-DOWN IN 0.2 SEC!`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`SYSTEM OVERLOAD !! WARNING !!`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`IMMINENT SHUT-DOWN IN 0.01 SEC!`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`SHUT-DOWN EXIT ERROR ¯\\(｡･益･)/¯`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content="`CTRL + R FOR MANUAL OVERRIDE..`")
+         list = ("`LOAD !! WARNING !! SYSTEM OVER`",
+                 "`OAD !! WARNING !! SYSTEM OVERL`",
+                 "`AD !! WARNING !! SYSTEM OVERLO`",
+                 "`D !! WARNING !! SYSTEM OVERLOA`",
+                 "`! WARNING !! SYSTEM OVERLOAD !`",
+                 "`WARNING !! SYSTEM OVERLOAD !!`",
+                 "`ARNING !! SYSTEM OVERLOAD !! W`",
+                 "`RNING !! SYSTEM OVERLOAD !! WA`",
+                 "`NING !! SYSTEM OVERLOAD !! WAR`",
+                 "`ING !! SYSTEM OVERLOAD !! WARN`",
+                 "`NG !! SYSTEM OVERLOAD !! WARNI`",
+                 "`G !! SYSTEM OVERLOAD !! WARNIN`",
+                 "`!! SYSTEM OVERLOAD !! WARNING`",
+                 "`! SYSTEM OVERLOAD !! WARNING !`",
+                 "`SYSTEM OVERLOAD !! WARNING !!`",
+                 "`IMMINENT SHUT-DOWN IN 0.5 SEC!`",
+                 "`WARNING !! SYSTEM OVERLOAD !!`",
+                 "`IMMINENT SHUT-DOWN IN 0.2 SEC!`",
+                 "`SYSTEM OVERLOAD !! WARNING !!`",
+                 "`IMMINENT SHUT-DOWN IN 0.01 SEC!`",                                    
+                 "`SHUT-DOWN EXIT ERROR ¯\\(｡･益･)/¯",
+                 "`CTRL + R FOR MANUAL OVERRIDE..`")
+                 for i in list:
+                     await asyncio.sleep(1.5)               
+                     await ctx.message.edit(content=i)
      
      @commands.command()
      async def deadchat(self, ctx):
@@ -159,8 +148,8 @@ class anim(commands.Cog):
                  'EAD CHAT D',
                  'DEAD CHAT')
          for i in list:
+             await asyncio.sleep(1.5)                       
              await ctx.message.edit(content=d)
-             await asyncio.sleep(1)
                                     
 def setup(bot):
    bot.add_cog(anim(bot))
