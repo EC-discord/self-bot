@@ -7,9 +7,7 @@ class anim(commands.Cog):
      def __init__(self, bot):
           self.bot = bot
      @commands.command()
-     async def cathi(self, ctx, *, text: str = None):
-         if text == None:
-             text = "Hi..."
+     async def cathi(self, ctx, *, text: str = "Hi..."):
          list = ("""ຸ 　　　＿＿_＿＿
 　　／　／　  ／|"
 　　|￣￣￣￣|　|
@@ -50,24 +48,22 @@ class anim(commands.Cog):
              await ctx.message.edit(content=i)
      
      @commands.command()
-     async def virus(self, ctx, member: discord.Member = None, *, virus: str = "trojan"):
-         wheelList = ['/', '-', '\\', '|']
-         wheelIter = iter(wheelList)
-         for i in range(2, 17, 2):
-             try:
-                 wheel = next(wheelIter)
-             except StopIteration:
-                 wheelIter = iter(wheelList)
-                 wheel = next(wheelIter)
-             await ctx.message.edit(content=f"`[{('▓' * i).ljust(16)}] {wheel} {virus}-virus.exe Packing files.`")
-             await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`Injecting virus.   |`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`Injecting virus..  /`")
-         await asyncio.sleep(1)  
-         await ctx.message.edit(content=f"`Injecting virus... -`")
-         await asyncio.sleep(1)
-         await ctx.message.edit(content=f"`Successfully Injected {virus}-virus.exe into {member.name}`")
+     async def virus(self, ctx, user: discord.Member = None, *, virus: str = "trojan"):
+         list = (f"``[▓▓▓                    ] / {virus}-virus.exe Packing files.``",
+                 f"``[▓▓▓▓▓▓▓                ] - {virus}-virus.exe Packing files..``",
+                 f"``[▓▓▓▓▓▓▓▓▓▓▓▓           ] \ {virus}-virus.exe Packing files..``",
+                 f"``[▓▓▓▓▓▓▓▓▓▓▓▓▓▓         ] | {virus}-virus.exe Packing files..``",
+                 f"``[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      ] / {virus}-virus.exe Packing files..``",
+                 f"``[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ] - {virus}-virus.exe Packing files..``",
+                 f"``[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] \ {virus}-virus.exe Packing files..``",
+                 f"``Successfully downloaded {virus}-virus.exe``",
+                 "``Injecting virus.   |``",
+                 "``Injecting virus..  /``",
+                 "``Injecting virus... -``",
+                 f"``Successfully Injected {virus}-virus.exe into {user.name}``")
+         for i in list:
+             await acyncio.sleep(1.5)
+             await ctx.message.edit(content=i)
 
      @commands.command()
      async def boom(self, ctx):
@@ -79,9 +75,9 @@ class anim(commands.Cog):
                  "```THIS MESSAGE WILL SELFDESTRUCT IN 0```",
                  "💣",
                  "💥")
-                 for i in list:
-                     await asyncio.sleep(1.5)
-                     await ctx.message.edit(content=i)               
+         for i in list:
+             await asyncio.sleep(1.5)
+             await ctx.message.edit(content=i)               
           
      
      @commands.command()
