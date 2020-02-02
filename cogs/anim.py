@@ -48,7 +48,7 @@ class anim(commands.Cog):
              await ctx.message.edit(content=i)
      
      @commands.command()
-     async def virus(self, ctx, user: discord.Member = None, *, virus: str = "trojan"):
+     async def virus(self, ctx, user: discord.Member = self.bot.me, *, virus: str = "trojan"):
          list = (f"``[▓▓▓                    ] / {virus}-virus.exe Packing files.``",
                  f"``[▓▓▓▓▓▓▓                ] - {virus}-virus.exe Packing files..``",
                  f"``[▓▓▓▓▓▓▓▓▓▓▓▓           ] \ {virus}-virus.exe Packing files..``",
@@ -123,21 +123,6 @@ class anim(commands.Cog):
                  "`CTRL + R FOR MANUAL OVERRIDE..`")
          for i in list:
              await asyncio.sleep(1.5)               
-             await ctx.message.edit(content=i)
-     
-     @commands.command()
-     async def deadchat(self, ctx):
-         list = ('DEAD CHAT',
-                 'T DEAD CHA',
-                 'AT DEAD CH',
-                 'HAT DEAD C',
-                 'CHAT DEAD',
-                 'D CHAT DEA',
-                 'AD CHAT DE',
-                 'EAD CHAT D',
-                 'DEAD CHAT')
-         for i in list:
-             await asyncio.sleep(1.5)                       
              await ctx.message.edit(content=i)
                                     
 def setup(bot):
