@@ -45,9 +45,9 @@ class anim(commands.Cog):
                  "')",
                  ")",
                  "*poofness*")
-          for i in list:
-              await asyncio.sleep(1.5)
-              await ctx.message.edit(content=i)
+         for i in list:
+             await asyncio.sleep(1.5)
+             await ctx.message.edit(content=i)
      
      @commands.command()
      async def virus(self, ctx, member: discord.Member = None, *, virus: str = "trojan"):
