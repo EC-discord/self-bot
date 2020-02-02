@@ -121,9 +121,9 @@ class anim(commands.Cog):
                  "`IMMINENT SHUT-DOWN IN 0.01 SEC!`",                                    
                  "`SHUT-DOWN EXIT ERROR ¯\\(｡･益･)/¯",
                  "`CTRL + R FOR MANUAL OVERRIDE..`")
-                 for i in list:
-                     await asyncio.sleep(1.5)               
-                     await ctx.message.edit(content=i)
+         for i in list:
+             await asyncio.sleep(1.5)               
+             await ctx.message.edit(content=i)
      
      @commands.command()
      async def deadchat(self, ctx):
