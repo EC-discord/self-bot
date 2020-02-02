@@ -63,7 +63,7 @@ class anim(commands.Cog):
                  "``Injecting virus... -``",
                  f"``Successfully Injected {virus}-virus.exe into {user.name}``")
          for i in list:
-             await acyncio.sleep(1.5)
+             await asyncio.sleep(1.5)
              await ctx.message.edit(content=i)
 
      @commands.command()
