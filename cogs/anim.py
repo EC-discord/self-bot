@@ -48,7 +48,7 @@ class anim(commands.Cog):
              await ctx.message.edit(content=i)
      
      @commands.command()
-     async def virus(self, ctx, user: discord.Member, *, virus: str = "trojan"):
+     async def virus(self, ctx, user: discord.Member = ctx.author, *, virus: str = "trojan"):
          user = user or ctx.author
          list = (f"``[▓▓▓                    ] / {virus}-virus.exe Packing files.``",
                  f"``[▓▓▓▓▓▓▓                ] - {virus}-virus.exe Packing files..``",
