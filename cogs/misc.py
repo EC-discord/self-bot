@@ -42,7 +42,7 @@ class misc(commands.Cog):
         self.emoji_list = []
         await ctx.message.delete()
         if server is None:
-          self.emoji_list = [emoji for emoji in self.bot.emojis if emoji.name.startswith("GW")]
+          self.emoji_list = [emoji for emoji in self.bot.emojis if emoji.is_usable()]#name.startswith("GW")]
         elif server:
           s = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
           self.emoji_list = [emoji for emoji in s.emojis if not emoji.animated]
