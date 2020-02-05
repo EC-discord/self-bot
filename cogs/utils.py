@@ -128,7 +128,7 @@ class utility(commands.Cog):
                 await ctx.send(f"Presence : {types[Type]} {text}")
              
     @commands.command(aliases = ["csc"])
-    async def customstatuscycling(self, ctx, delay: int, emoji: typing.Optional[discord.Emoji], *text: str = None):
+    async def customstatuscycling(self, ctx, delay: int, emoji: typing.Optional[discord.Emoji]=None, *text):
         for i in text:
             await self.bot.change_presence(activity=discord.CustomActivity(name=i, emoji=emoji), afk = True)
             await asyncio.sleep(delay)
