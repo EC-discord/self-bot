@@ -96,7 +96,7 @@ class misc(commands.Cog):
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
 
     @commands.command(name='emoji', aliases=['e'])
-    async def _emoji(self, ctx, size: typing.Optional[int], emoji: discord.Emoji):
+    async def _emoji(self, ctx, size: typing.Optional[int], emoji: typing.Union(discord.Emoji, discord.PartialEmoji]):
         '''displays an enlarged pic of an emoji
         Parameters
         • size = the size of the image to display
