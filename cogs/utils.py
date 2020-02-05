@@ -5,6 +5,7 @@ from mtranslate import translate
 from ext import embedtobox
 from PIL import Image
 import asyncio
+import typing
 import random
 import io
 
