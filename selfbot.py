@@ -11,9 +11,6 @@ import re
 import traceback
     
 class Selfbot(commands.Bot):
-    '''
-    Custom Client for selfbot.py - Made by someone
-    '''    
     _mentions_transforms = {
         '@everyone': '@\u200beveryone',
         '@here': '@\u200bhere'
@@ -87,7 +84,6 @@ class Selfbot(commands.Bot):
             print(e)
 
     async def on_connect(self):
-        print('---------------')
         print('connected!')
 
     async def on_ready(self):
@@ -133,7 +129,7 @@ class Selfbot(commands.Bot):
             if result is None:
                 result = discord.utils.get(bot.emojis, id=emoji_id)
             
-            emoji_id = int(match.group(3))
+            emoji_id = int(match.group(2))
             result = discord.PartialEmoji(name=None, id=emoji_id)
 
         if result is None:
