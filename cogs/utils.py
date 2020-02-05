@@ -101,9 +101,9 @@ class utility(commands.Cog):
         newnick = nickname or user.name
         await ctx.send(f"Changed {prevnick}'s nickname to {newnick}")
     
-    @commands.command()
-    async def cpres(self, ctx, Type: str = "playing", *, text: str = None):
-        """sets a presence
+    @commands.command(aliases = ["ca", "cactivity"])
+    async def customactivity(self, ctx, Type: str = "playing", *, text: str = None):
+        """sets a custom activity
         Parameters
         • Type - "playing", "streaming", "listeningto" or "watching", defaults to playing
         • text - The text to display as presence
@@ -128,7 +128,7 @@ class utility(commands.Cog):
                 await ctx.send(f"Presence : {types[Type]} {text}")
              
     @commands.command(aliases = ["csc"])
-    async def customstatuscycling(self, ctx, delay: int, emoji: typing.Optional["discord.Emoji"] = None, *text):
+    async def customstatuscycling(self, ctx, delay: int, emoji: typing.Optional[discord.Emoji] = None, *text):
         for i in text:
             self.bot.change_presence(activity=discord.CustomActivity(name=i, emoji=emoji), afk = True)
             await asyncio.sleep(delay)
