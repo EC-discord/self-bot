@@ -125,7 +125,13 @@ class utility(commands.Cog):
                 await ctx.send(embed = em)
             else:
                 await ctx.send(f"Presence : {types[Type]} {text}")
-
+             
+    @commands.command(aliases = ["csc"])
+    async def customstatuscycling(self, ctx, delay: int, emoji: typing.Optional["discord.Emoji"] = None, *text):
+        for i in text:
+            self.bot.change_presence(activity=discord.CustomActivit(name=i, emoji=emoji), afk = True)
+            await asyncio.sleep(delay)
+                        
     @commands.command()
     async def choose(self, ctx, *, choices: commands.clean_content):
         '''choose! use , in between
