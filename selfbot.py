@@ -105,39 +105,6 @@ class Selfbot(commands.Bot):
         return cls(0x000000)
 
     discord.Color.black=black
-    
-    async def convert(self, ctx, argument):
-        match = self._get_id_match(argument) or re.match(r'<a?:[a-zA-Z0-9\_]+:([0-9]+)>$|(\d{18})', argument)
-        result = None
-        bot = ctx.bot
-        guild = ctx.guild
-
-        if match is None:
-            # Try to get the emoji by name. Try local guild first.
-            if guild:
-                result = discord.utils.get(guild.emojis, name=argument)
-
-            if result is None:
-                result = discord.utils.get(bot.emojis, name=argument)
-        else:
-            emoji_id = int(match.group(1))
-
-            # Try to look up emoji by id.
-            if guild:
-                result = discord.utils.get(guild.emojis, id=emoji_id)
-
-            if result is None:
-                result = discord.utils.get(bot.emojis, id=emoji_id)
-            
-            emoji_id = int(match.group(2))
-            result = discord.PartialEmoji(name=None, id=emoji_id)
-
-        if result is None:
-            raise BadArgument('Emoji "{}" not found.'.format(argument))
-
-        return result
-    
-    discord.Emoji.convert=convert
         
     async def on_message_edit(self, before, after):
         await self.process_commands(after)
