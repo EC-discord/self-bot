@@ -25,7 +25,7 @@ class mod(commands.Cog):
         return emb
     
     @commands.command(aliases = ["cr"])
-    async def clearreaction(self, ctx, message: typing.Optional[int] = 1, emoji: discord.Emoji):
+    async def clearreaction(self, ctx, message: typing.Optional[int] = 1, emoji: discord.Emoji = None):
         """clear a specific reaction from the message
         Parameters
         • message - the number of the message from which to remove the reaction
