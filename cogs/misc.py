@@ -14,6 +14,17 @@ class misc(commands.Cog):
         self.emoji_converter = commands.EmojiConverter()
         self.emoji_list = []
         
+    @commands.command(aliases = ["tt"])
+    async def triggertyping(self, ctx, duration: int, channel: discord.TextChannel = None):
+        """sends a typing indicator for a specified amount of time
+        Parameters
+        • duration - how long to keep the typing indicator running
+        • channel - which channel to send the typing indicator in, defaults to the current channel
+        """
+        channel = channel or ctx.channel
+        async with channel.typing():
+            await asyncio.sleep(duration)
+        
     @commands.command()
     async def hexcode(self, ctx, *, role: discord.Role):
         await ctx.send(f"{role.name} : {role.color}")
