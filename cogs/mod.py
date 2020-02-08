@@ -63,8 +63,8 @@ class mod(commands.Cog):
 
         await ctx.send(embed=emb)
 
-    @commands.command(aliases = ["banana"])
-    async def ban(self, ctx, member: discord.Member, *, reason='Please write a reason!'):
+    @commands.command()
+    async def ban(self, ctx, member: discord.Member, *, reason='No reason given'):
         '''ban someone
         Parameters
         • member - the member to ban
