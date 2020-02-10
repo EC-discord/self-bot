@@ -27,14 +27,19 @@ class misc(commands.Cog):
         
     @commands.command()
     async def hexcode(self, ctx, *, role: discord.Role):
+        """returns the hexcode of a role's color
+        Parameters
+        • role - the role to display the color of
+        """
         await ctx.send(f"{role.name} : {role.color}")
 
     @commands.command(aliases = ["em"])
     async def embed(self, ctx, color: typing.Optional[discord.Color] = None, *, text):
-        '''embed messages
+        '''embed text
         Parameters
         • text - the text to embed
-        • color - the color of the embed, a random color is used if left empty'''
+        • color - the color of the embed, a random color is used if left empty
+        '''
         em = discord.Embed(color=color or random.randint(0, 0xFFFFFF))
         em.description = text
         await ctx.send(embed=em)
@@ -72,7 +77,8 @@ class misc(commands.Cog):
         '''react to a specified message with emojis
         Parameters
         • message_no - the index of the message to react to
-        • emojis - the names of the emojis to react with'''
+        • emojis - the emojis to react with
+        '''
         history = await ctx.channel.history(limit = 30).flatten()
         message = history[messageNo]
         async for emoji in self.validate_emojis(ctx, emojis):
@@ -108,9 +114,9 @@ class misc(commands.Cog):
 
     @commands.command(name='emoji', aliases=['e'])
     async def _emoji(self, ctx, size: typing.Optional[int], emoji: discord.Emoji):
-        '''displays an enlarged pic of an emoji
+        '''displays an enlarged pic of the emoji
         Parameters
-        • size = the size of the image to display
+        • size - the size of the image to display
         • emoji - The name(case sensitive) or id of the emoji
         '''
         async with ctx.session.get(f"{emoji.url}"+f"?size={size if size else ' '}") as resp:
