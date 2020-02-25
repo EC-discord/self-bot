@@ -169,7 +169,7 @@ class mod(commands.Cog):
         """
         deleted = 0
         async for m in ctx.channel.history(limit = 200):
-            if words in m.content:
+            if words in m.content.lower():
                 await m.delete()
                 deleted += 1
                 if deleted == messages_to_delete+1:
