@@ -8,7 +8,6 @@ import textwrap
 import asyncio
 import io
 import random
-from mtranslate import translate
 import colorsys
 import inspect
 
