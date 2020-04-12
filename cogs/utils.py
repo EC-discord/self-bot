@@ -150,10 +150,11 @@ class utility(commands.Cog):
         if type(user) != discord.Member:
             r = re.compile(r"@(.*#\d{4})|(\d{18})")
             r = r.match(user)
-            if r.group(2):
-                user = int(r.group(2))
-            elif r.group(1):
-                user = r.group(1)
+            if r:
+                if r.group(2):
+                    user = int(r.group(2))
+                elif r.group(1):
+                    user = r.group(1)
         if type(user) == str and type(user) != int:
             user = ctx.guild.get_member_named(user)
         if type(user) == str:
