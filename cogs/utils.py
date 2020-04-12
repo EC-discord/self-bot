@@ -146,7 +146,7 @@ class utility(commands.Cog):
         • user – The tag, name or id of the user
         """
         user = user or ctx.author
-        if user[0] == "@" and user[-5] == "#" and user[1] != "@":
+        if (user[0] == "@") and (user[-5]) == "#") and (user[1] != "@"):
             user = user[1:-5]
         try:
             user = int(user)
