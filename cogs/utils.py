@@ -160,7 +160,7 @@ class utility(commands.Cog):
         try:
             guild = int(guild)
         except:
-            continue
+            pass
         if type(guild) == int:
             guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
