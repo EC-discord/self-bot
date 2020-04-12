@@ -136,7 +136,7 @@ class utility(commands.Cog):
         
     def get_user_from_global_cache(self, user):
         for u in self.bot.users:
-            if user. == u.name:
+            if user == u.name:
                 return user
                    
     @commands.command(aliases = ["a", "pic"])
