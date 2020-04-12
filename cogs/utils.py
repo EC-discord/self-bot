@@ -140,11 +140,12 @@ class utility(commands.Cog):
                 return user
                    
     @commands.command(aliases = ["a", "pic"])
-    async def avatar(self, ctx, *, user):
+    async def avatar(self, ctx, *, user = None):
         """gets the display picture of a user
         Parameters
         • user – The tag, name or id of the user
         """
+        user = user or ctx.author
         try:
             user = int(user)
         except:
