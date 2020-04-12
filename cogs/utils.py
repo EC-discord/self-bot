@@ -150,7 +150,7 @@ class utility(commands.Cog):
         except:
             pass
         if type(user) == discord.Member:
-            user = str(user)
+            user = str(user)[:-5]
         user = ctx.get_member_named(user)
         if user is None and type(user) == str:
             user = get_user_from_global_cache(user)
