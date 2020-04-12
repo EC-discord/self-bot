@@ -147,7 +147,7 @@ class utility(commands.Cog):
         """
         user = user or ctx.author
         try:
-            user = discord.utils.get(bot.users, name = user)
+            user = discord.utils.get(bot.users, name = user[1:-5])
         except:
             pass
         try:
