@@ -146,22 +146,19 @@ class utility(commands.Cog):
         Parameters
         • user – The tag, name or id of the user
         """
-        r = re.compile(r"@((.*)#\d{4})")
         user = user or ctx.author
-        if type(user) == discord.Member:
-            user = str(user)
-        r = r.match(user)
-        if r:
-            user=r.group(1)
-        try:
-            user = int(user)
-        except:
-            pass
         if type(user) != discord.Member:
+            r = re.compile(r"@(.*#\d{4})|(\d{18})")
+            r = r.match(user)
+            if r.group(2):
+                user = int(r.group(2))
+            elif r.group(1):
+                user = r.group(1)
+        if type(user) == str and type(user) != int:
             user = ctx.guild.get_member_named(user)
-        if user is None and type(user) == str:
+        if type(user) == str:
             user = get_user_from_global_cache(user)
-        elif user is None and type(user) == int:
+        elif type(user) == int:
             user = await self.bot.fetch_user(user)
         if user.is_avatar_animated():
             format = "gif"
