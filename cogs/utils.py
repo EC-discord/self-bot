@@ -147,12 +147,17 @@ class utility(commands.Cog):
         """
         user = user or ctx.author
         try:
+            user = discord.utils.get(bot.users, name = user)
+        except:
+            pass
+        try:
             user = int(user)
         except:
             pass
         if type(user) == discord.Member:
             user = str(user)[:-5]
-        user = ctx.guild.get_member_named(user)
+        if type(user) != discord.Member:
+            user = ctx.guild.get_member_named(user)
         if user is None and type(user) == str:
             user = get_user_from_global_cache(user)
         elif user is None and type(user) == int:
