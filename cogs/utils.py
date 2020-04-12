@@ -156,8 +156,6 @@ class utility(commands.Cog):
             user = int(user)
         except:
             pass
-        if type(user) == discord.Member:
-            user = str(user)[:-5]
         if type(user) != discord.Member:
             user = ctx.guild.get_member_named(user)
         if user is None and type(user) == str:
