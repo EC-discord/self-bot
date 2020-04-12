@@ -136,7 +136,7 @@ class utility(commands.Cog):
         
     def get_user_from_global_cache(self, user):
         for u in self.bot.users:
-            if user.name == u.name:
+            if user. == u.name:
                 return user
                    
     @commands.command(aliases = ["a", "pic"])
@@ -146,10 +146,8 @@ class utility(commands.Cog):
         • user – The tag, name or id of the user
         """
         user = user or ctx.author
-        try:
-            user = discord.utils.get(bot.users, name = user[1:-5])
-        except:
-            pass
+        if user[1] == "@" and user[-5] == "#" and user[2] != "@":
+            user = user[1:-5]
         try:
             user = int(user)
         except:
