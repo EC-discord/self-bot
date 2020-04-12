@@ -148,6 +148,7 @@ class utility(commands.Cog):
         """
         user = user or ctx.author
         if type(user) != discord.Member:
+            user = str(user)
             r = re.compile(r"@(.*#\d{4})|(\d{18})")
             r = r.match(user)
             if r:
