@@ -8,6 +8,7 @@ import asyncio
 import typing
 import random
 import io
+import re
 
 class utility(commands.Cog):
     def __init__(self, bot):
@@ -145,9 +146,11 @@ class utility(commands.Cog):
         Parameters
         • user – The tag, name or id of the user
         """
+        r = re.compile(r"@((.*)#\d{4})"||r"\d{18}")
         user = user or ctx.author
-        if (user[0] == "@") and (user[-5]) == "#") and (user[1] != "@"):
-            user = user[1:-5]
+        r = r.match(user)
+        if r:
+            user=r.group(1)
         try:
             user = int(user)
         except:
