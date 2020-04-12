@@ -148,7 +148,7 @@ class utility(commands.Cog):
         """
         r = re.compile(r"@((.*)#\d{4})||\d{18}")
         user = user or ctx.author
-        r = r.match(user)
+        r = r.match(str(user))
         if r:
             user=r.group(1)
         try:
