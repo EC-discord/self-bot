@@ -150,7 +150,7 @@ class utility(commands.Cog):
         if type(user) != discord.Member:
             user = str(user)
             r = re.compile(r"@(.*#\d{4})|(\d{18})")
-            r = r.match(user)
+            r = r.search(user)
             if r:
                 if r.group(2):
                     user = int(r.group(2))
