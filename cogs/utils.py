@@ -146,7 +146,7 @@ class utility(commands.Cog):
         Parameters
         • user – The tag, name or id of the user
         """
-        r = re.compile(r"@((.*)#\d{4})"||r"\d{18}")
+        r = re.compile(r"@((.*)#\d{4})||\d{18}")
         user = user or ctx.author
         r = r.match(user)
         if r:
