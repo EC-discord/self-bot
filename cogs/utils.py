@@ -134,17 +134,31 @@ class utility(commands.Cog):
         choices[0] = ' ' + choices[0]
         await ctx.send(str(random.choice(choices))[1:])
         
+    def get_user_from_global_cache(self, user):
+        for u in self.bot.users:
+            if user.name == u.name:
+                return user
+                   
     @commands.command(aliases = ["a", "pic"])
-    async def avatar(self, ctx, *, member: discord.Member = None):
+    async def avatar(self, ctx, *, user):
         """gets the display picture of a user
         Parameters
-        • member – The tag, name or id of the user
+        • user – The tag, name or id of the user
         """
-        format = "gif"
-        member = member or ctx.author
-        if member.is_avatar_animated() != True:
-	        format = "png"
-        avatar = member.avatar_url_as(format = format if format is not "gif" else None)
+        try:
+            user = int(user)
+        except:
+            pass
+        user = ctx.get_member_named(user)
+        if user is None and type(user) == str:
+            user = get_user_from_global_cache(user)
+        elif user is None and type(user) == int:
+            user = await self.bot.fetch_user(user)
+        if user.is_avatar_animated():
+            format = "gif"
+        else:
+            format = "png"
+        avatar = user.avatar_url_as(format = format)
         async with ctx.session.get(str(avatar)) as resp:
             image = await resp.read()
         with io.BytesIO(image) as file:
