@@ -148,10 +148,11 @@ class utility(commands.Cog):
         """
         r = re.compile(r"@((.*)#\d{4})")
         user = user or ctx.author
-        if user:
-            r = r.match(str(user))
-            if r:
-                user=r.group(1)
+        if type(user) == discord.Member:
+            user = str(user)
+        r = r.match(user)
+        if r:
+            user=r.group(1)
         try:
             user = int(user)
         except:
