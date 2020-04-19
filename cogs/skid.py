@@ -134,7 +134,7 @@ class skid(commands.Cog):
         file.seek(0)
         em = discord.Embed(color=color)
         if show_hexcode:
-          em.title(f'Showing Color: {str(color)}')
+          em.title = f'Showing Color: {str(color)}'
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
      
