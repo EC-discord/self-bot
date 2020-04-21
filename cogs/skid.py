@@ -23,14 +23,13 @@ class skid(commands.Cog):
               self.text_flip[self.alt_char_list[idx]] = char
                
      @commands.command()
-     async def eml(self, ctx, no_of_lines: int = 4, delay: int = 0):
+     async def eml(self, ctx, no_of_lines: int = 4):
          """displays lines in embeds
          Parameters
          • no_of_lines - how many lines to display, defaults to 4
-         • delay - delay between sending lines, defaults to 0
          """
          for _ in range(no_of_lines):
-              await ctx.invoke(self.bot.get_command("rc"), 100, 5, False)
+              await ctx.invoke(self.bot.get_command("rc"), 200, 5, False)
      
      @commands.command()
      async def textflip(self, ctx, *, message):
