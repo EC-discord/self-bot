@@ -20,7 +20,17 @@ class skid(commands.Cog):
           self.alt_char_list = "{|}zʎxʍʌnʇsɹbdouɯlʞɾᴉɥƃɟǝpɔqɐ,‾^[\]Z⅄XMΛ∩┴SɹQԀONW˥ʞſIHפℲƎpƆq∀@¿<=>;:68ㄥ9ϛㄣƐᄅƖ0/˙-'+*(),⅋%$#¡"[::-1]
           for idx, char in enumerate(self.char_list):
               self.text_flip[char] = self.alt_char_list[idx]
-              self.text_flip[self.alt_char_list[idx]] = char       
+              self.text_flip[self.alt_char_list[idx]] = char
+               
+     @commands.command()
+     async def eml(self, ctx, no_of_lines: int = 4, delay: int = 0):
+         """displays lines in embeds
+         Parameters
+         • no_of_lines - how many lines to display, defaults to 4
+         • delay - delay between sending lines, defaults to 0
+         """
+         for _ in range(no_of_lines):
+              await ctx.invoke(self.bot.get_command("rc"), 100, 5)
      
      @commands.command()
      async def textflip(self, ctx, *, message):
