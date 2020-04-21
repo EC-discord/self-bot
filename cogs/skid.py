@@ -30,7 +30,7 @@ class skid(commands.Cog):
          • delay - delay between sending lines, defaults to 0
          """
          for _ in range(no_of_lines):
-              await ctx.invoke(self.bot.get_command("rc"), 100, 5)
+              await ctx.invoke(self.bot.get_command("rc"), 100, 5, False)
      
      @commands.command()
      async def textflip(self, ctx, *, message):
