@@ -24,12 +24,12 @@ class Selfbot(commands.Bot):
         self.load_extensions()
 
     def load_extensions(self):
-        for extension in ["cogs.anim", "cogs.misc", "cogs.mod", "cogs.noble", "cogs.skid", "cogs.source", "cogs.textemotes", "cogs.utils"]:
+        for extension in ["anim", "misc", "mod", "noble", "skid", "source", "textemotes", "utils"]:
             try:
-                self.load_extension(extension)
-                print(f'Loaded extension: {extension[5:]}')
+                self.load_extension(f"cogs.{extension}")
+                print(f'Loaded extension: {extension}')
             except:
-                print(f'LoadError: {extension[5:]}\n'
+                print(f'LoadError: {extension}\n'
                       f'{traceback.print_exc()}')
 
    
