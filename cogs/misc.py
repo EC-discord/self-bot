@@ -100,13 +100,15 @@ class misc(commands.Cog):
                     pass
 
     @commands.command(aliases=['color', 'colour', 'sc'])
-    async def get_color(self, ctx, *, color: discord.Colour):
+    async def get_color(self, ctx, color: discord.Colour, width: int = 200, height: int = 90):
         '''displays a color from its name or hex value
         Parameters
         • color - the name or hexcode of the color to display
+        • width - width of the image to display, defaults to 200
+        • height - height of the image to display, defaults to 90
         '''
         file = io.BytesIO()
-        Image.new('RGB', (200, 90), color.to_rgb()).save(file, format='PNG')
+        Image.new('RGB', (width, height), color.to_rgb()).save(file, format='PNG')
         file.seek(0)
         em = discord.Embed(color=color, title=f'Showing Color: {str(color)}')
         em.set_image(url='attachment://color.png')
@@ -131,7 +133,7 @@ class misc(commands.Cog):
                 
     @commands.command()
     async def textreact(self, ctx, messageNo: typing.Optional[int] = 1, *, text):
-        """reacts to a message with emojis according to the text
+        """reacts to a message with emojis corresponding to the text
         Parameter
         • messageNo - the number of the message to react to
         • text - the text to react with
@@ -148,37 +150,6 @@ class misc(commands.Cog):
               break
         await ctx.message.delete()
         
-    @commands.command()
-    async def textemote(self, ctx, *, text):
-        """convert text into emojis
-        Parameters
-        • text - the text to turn into emojis
-        """
-        await ctx.message.delete()
-        out = msg.lower()
-        text = out.replace(' ', '    ').replace('10', '\u200B:keycap_ten:')\
-                  .replace('ab', '\u200B🆎').replace('cl', '\u200B🆑')\
-                  .replace('0', '\u200B:zero:').replace('1', '\u200B:one:')\
-                  .replace('2', '\u200B:two:').replace('3', '\u200B:three:')\
-                  .replace('4', '\u200B:four:').replace('5', '\u200B:five:')\
-                  .replace('6', '\u200B:six:').replace('7', '\u200B:seven:')\
-                  .replace('8', '\u200B:eight:').replace('9', '\u200B:nine:')\
-                  .replace('!', '\u200B❗').replace('?', '\u200B❓')\
-                  .replace('vs', '\u200B🆚').replace('.', '\u200B🔸')\
-                  .replace(',', '🔻').replace('a', '\u200B🅰')\
-                  .replace('b', '\u200B🅱').replace('c', '\u200B🇨')\
-                  .replace('d', '\u200B🇩').replace('e', '\u200B🇪')\
-                  .replace('f', '\u200B🇫').replace('g', '\u200B🇬')\
-                  .replace('h', '\u200B🇭').replace('i', '\u200B🇮')\
-                  .replace('j', '\u200B🇯').replace('k', '\u200B🇰')\
-                  .replace('l', '\u200B🇱').replace('m', '\u200B🇲')\
-                  .replace('n', '\u200B🇳').replace('ñ', '\u200B🇳')\
-                  .replace('o', '\u200B🅾').replace('p', '\u200B🅿')\
-                  .replace('q', '\u200B🇶').replace('r', '\u200B🇷')\
-                  .replace('s', '\u200B🇸').replace('t', '\u200B🇹')\
-                  .replace('u', '\u200B🇺').replace('v', '\u200B🇻')\
-                  .replace('w', '\u200B🇼').replace('x', '\u200B🇽')\
-                  .replace('y', '\u200B🇾').replace('z', '\u200B🇿')
 
 def setup(bot):
     bot.add_cog(misc(bot))
