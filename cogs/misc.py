@@ -111,7 +111,10 @@ class misc(commands.Cog):
         file = io.BytesIO()
         Image.new('RGB', (width, height), color.to_rgb()).save(file, format='PNG')
         file.seek(0)
-        em = discord.Embed(color=color, title=f'Showing Color: {str(color)}')
+        if show_hexcode:
+            em = discord.Embed(color=color, title=f'Showing Color: {str(color)}')
+        elif show_hexcode == False or "false":
+            em = discord.Embed(color=color)
         em.set_image(url='attachment://color.png')
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
 
