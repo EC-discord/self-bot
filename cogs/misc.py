@@ -100,12 +100,13 @@ class misc(commands.Cog):
                     pass
 
     @commands.command(aliases=['color', 'colour', 'sc'])
-    async def get_color(self, ctx, color: discord.Colour, width: int = 200, height: int = 90):
+    async def getcolor(self, ctx, color: discord.Colour, width: int = 200, height: int = 90, show_hexcode = True):
         '''displays a color from its name or hex value
         Parameters
         • color - the name or hexcode of the color to display
         • width - width of the image to display, defaults to 200
         • height - height of the image to display, defaults to 90
+        • show_hexcode - whether to display the hexcode of the color, defaults to True
         '''
         file = io.BytesIO()
         Image.new('RGB', (width, height), color.to_rgb()).save(file, format='PNG')
