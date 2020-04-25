@@ -123,7 +123,7 @@ class mod(commands.Cog):
         deleted = 0
         await ctx.message.delete()
         user = member or ctx.message.author
-        async for m in ctx.channel.history(limit = 100).get(author__id=user.id):
+        async for m in await ctx.channel.history(limit = 100).get(author__id=user.id):
             await m.delete()
             deleted += 1
             if deleted == amount:
