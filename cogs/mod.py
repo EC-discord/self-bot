@@ -113,7 +113,7 @@ class mod(commands.Cog):
         else:
             await ctx.purge(limit=amount+1)
 
-    def message_author(self, message):
+    def message_author(self, message, member):
         message.author.id == member.id
 
     @commands.group(aliases = ["c"], invoke_without_command = True)
@@ -126,7 +126,7 @@ class mod(commands.Cog):
         deleted = 0
         await ctx.message.delete()
         user = member or ctx.message.author
-        async for m in ctx.channel.history().filter(self.message_author):
+        async for m in ctx.channel.history().filter(self.message_author, member):
             await m.delete()
             deleted += 1
             if deleted == amount:
