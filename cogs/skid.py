@@ -43,11 +43,10 @@ class skid(commands.Cog):
     
      @commands.command()
      async def spam(self, ctx, text: str, spam_frequency: int, *spam_delay: int):
-         spam_delay = list(spam_delay)
          await ctx.message.delete()
          for i in range(spam_frequency):
              await ctx.send(text)
-             await asyncio.sleep(random.choice([num for num in spam_delay]))
+             await asyncio.sleep(random.choice(spam_delay))
      
      @commands.command(pass_context=True, hidden=True, name='eval')
      async def _eval(self, ctx, *, body: str):
