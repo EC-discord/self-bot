@@ -121,12 +121,12 @@ class mod(commands.Cog):
         """delete a number of your own or another users messages
         Parameters
         • amount - the amount of messages to delete
-        • member - the member whose messages are to be deleted, deletes your own messages if not specified
+        • member - the member whose messages are to be deleted, deletes your own messages by default
         """
         deleted = 0
         await ctx.message.delete()
         user = member or ctx.message.author
-        async for m in ctx.channel.history().filter(message_author):
+        async for m in ctx.channel.history().filter(self.message_author):
             await m.delete()
             deleted += 1
             if deleted == amount:
