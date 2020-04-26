@@ -57,9 +57,8 @@ class utility(commands.Cog):
         elif emoji_url:
             async with ctx.session.get(emoji_url) as resp:
                 image = await resp.read()
-        created_emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
-        e = discord.utils.get(ctx.guild.emojis, name = emoji_name)
-        await ctx.send(f"Emoji {e.name} created!")
+        await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
+        await ctx.send(f"Emoji {emoji_name} created!")
      
     @commands.command()
     async def delemoji(self, ctx, emoji: discord.Emoji):
