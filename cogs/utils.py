@@ -51,11 +51,9 @@ class utility(commands.Cog):
         • emoji_url – The url or attachment of an image to turn into an emoji
         """
         if ctx.message.attachments:
-            emoji_link = ctx.message.attachments[0].url
-            async with ctx.session.get(emoji_link) as resp:
-                image = await resp.read()
-        elif emoji_url:
-            async with ctx.session.get(emoji_url) as resp:
+            emoji_url = ctx.message.attachments[0].url
+        async with aiohttp.ClientSession() as session:
+            async with session.get(emoji_url) as resp:
                 image = await resp.read()
         await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
         await ctx.send(f"Emoji {emoji_name} created!")
