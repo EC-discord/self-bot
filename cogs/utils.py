@@ -9,6 +9,7 @@ import typing
 import random
 import io
 import re
+import aiohttp
 
 class utility(commands.Cog):
     def __init__(self, bot):
