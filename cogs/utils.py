@@ -28,8 +28,9 @@ class utility(commands.Cog):
             guild = discord.utils.get(self.bot.guilds, id = guild)
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
-        banner = guild.banner_url_as(format = "png").save("banner")
-        await ctx.send(file = discord.File(banner, "banner.png"))
+        banner = guild.banner_url_as(format = "png").read()
+        with io.BytesIO(banner) as f:
+            await ctx.send(file = discord.File(f, "banner.png"))
         
     @commands.command()
     async def translate(self, ctx, language, *, text):
@@ -49,11 +50,12 @@ class utility(commands.Cog):
         • emoji_url – The url or attachment of an image to turn into an emoji
         """
         if ctx.message.attachments:
-            emoji_url = ctx.message.attachments[0].url
-        async with aiohttp.ClientSession() as session:
-            async with session.get(emoji_url) as resp:
-                image = await resp.read()
-        await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
+            emoji_url = ctx.message.attachments[0].read()
+        elif emoji_url:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(emoji_url) as resp:
+                    image = await resp.read()
+        emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
         await ctx.send(f"Emoji {emoji_name} created!")
      
     @commands.command()
@@ -161,10 +163,8 @@ class utility(commands.Cog):
             format = "gif"
         else:
             format = "png"
-        avatar = user.avatar_url_as(format = format)
-        async with ctx.session.get(str(avatar)) as resp:
-            image = await resp.read()
-        with io.BytesIO(image) as file:
+        avatar = user.avatar_url_as(format = format).read()
+        with io.BytesIO(avatar) as file:
             await ctx.send(file = discord.File(file, f"DP.{format}"))
         await ctx.delete()
             
@@ -182,10 +182,8 @@ class utility(commands.Cog):
             guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
-        icon = guild.icon_url_as(format = "png")
-        async with ctx.session.get(str(icon)) as resp:
-            image = await resp.read()
-        with io.BytesIO(image) as file:
+        icon = guild.icon_url_as(format = "png").read()
+        with io.BytesIO(icon) as file:
             await ctx.send(file = discord.File(file, "icon.png"))
         
 def setup(bot):
