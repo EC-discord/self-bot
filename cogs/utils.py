@@ -28,11 +28,8 @@ class utility(commands.Cog):
             guild = discord.utils.get(self.bot.guilds, id = guild)
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
-        banner = guild.banner_url_as(format = "png")
-        async with ctx.session.get(str(banner)) as resp:
-            image = await resp.read()
-        with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(file, "banner.png"))
+        banner = guild.banner_url_as(format = "png").save("banner")
+            await ctx.send(file = discord.File(banner, "banner.png"))
         
     @commands.command()
     async def translate(self, ctx, language, *, text):
