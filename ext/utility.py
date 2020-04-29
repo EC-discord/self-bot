@@ -1,5 +1,4 @@
 import json
-from discord import Color
 
 def load_json(path):
     try:
