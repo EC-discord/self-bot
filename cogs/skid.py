@@ -24,7 +24,7 @@ class skid(commands.Cog):
                
      @commands.command()
      async def eml(self, ctx, no_of_lines: int = 4):
-         """displays lines in embeds
+         """displays colorful lines in embeds
          Parameters
          • no_of_lines - how many lines to display, defaults to 4
          """
