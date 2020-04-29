@@ -28,7 +28,7 @@ class mod(commands.Cog):
     async def clearreaction(self, ctx, message: typing.Optional[int] = 1, emoji: discord.Emoji = None):
         """clear a specific reaction from the message
         Parameters
-        • message - the number of the message from which to remove the reaction
+        • message - the message number from which to remove the reaction
         • emoji - the reaction to remove from the message
         """
         for i, m in enumerate(await ctx.channel.history().flatten()):
@@ -198,8 +198,6 @@ class mod(commands.Cog):
         Parameter
         • member - the name or id of the member
         • role - the name or id of the role'''
-        if not role:
-            return await ctx.send('That role does not exist.')
         await member.remove_roles(role)
         await ctx.send(f'Removed: `{role.name}`')
 
