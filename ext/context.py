@@ -10,11 +10,6 @@ class CustomContext(commands.Context):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
-    def session(self):
-        '''Returns the bot's aiohttp client session'''
-        return self.bot.session
-
     def delete(self):
         '''shortcut'''
         return self.message.delete()
@@ -43,8 +38,9 @@ class CustomContext(commands.Context):
             raw = int(maybe_col.strip('#'), 16)
             return discord.Color(value=raw)
         try:
-            async with self.session.get(url) as resp:
-                image = await resp.read()
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url) as resp:
+                    image = await resp.read()
         except:
             return discord.Color.default()
 
