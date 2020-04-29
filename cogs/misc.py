@@ -6,7 +6,7 @@ from discord.ext import commands
 from PIL import Image
 import io
 import typing
-
+import aiohttp
 
 class misc(commands.Cog):
     def __init__(self, bot):
@@ -66,9 +66,8 @@ class misc(commands.Cog):
           if index != message_no:
             continue
           for i in range(no_of_reactions):
-            emoji = random.choice(self.emoji_list)
+            emoji = self.emoji_list.pop(random.choice(self.emoji_list))
             await message.add_reaction(emoji)
-            self.emoji_list.remove(emoji)
             await asyncio.sleep(0.1)
           break
           
@@ -125,8 +124,9 @@ class misc(commands.Cog):
         • size - the size of the image to display
         • emoji - The name(case sensitive) or id of the emoji
         '''
-        async with ctx.session.get(f"{emoji.url}"+f"?size={size if size else ' '}") as resp:
-            image = await resp.read()
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f"{emoji.url}"+f"?size={size if size else ' '}") as resp:
+                image = await resp.read()
         if emoji.animated:
             with io.BytesIO(image) as file:
                 await ctx.send(file=discord.File(file, "emote.gif"))
