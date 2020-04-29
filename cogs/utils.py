@@ -28,7 +28,7 @@ class utility(commands.Cog):
             guild = discord.utils.get(self.bot.guilds, id = guild)
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
-        banner = guild.banner_url_as(format = "png").read()
+        banner = await guild.banner_url_as(format = "png").read()
         with io.BytesIO(banner) as f:
             await ctx.send(file = discord.File(f, "banner.png"))
         
@@ -50,7 +50,7 @@ class utility(commands.Cog):
         • emoji_url – The url or attachment of an image to turn into an emoji
         """
         if ctx.message.attachments:
-            emoji_url = ctx.message.attachments[0].read()
+            image = await ctx.message.attachements[0].read()
         elif emoji_url:
             async with aiohttp.ClientSession() as session:
                 async with session.get(emoji_url) as resp:
@@ -104,18 +104,22 @@ class utility(commands.Cog):
         • Type - "playing", "streaming", "listeningto" or "watching", defaults to playing
         • text - The text to display as presence
         """
-        types = {"playing" : "Playing", "streaming" : "Streaming", "listeningto" : "Listening to", "watching" : "Watching"}
+        types = {"playing" : "Playing", "streaming" : "Streaming", "listeningto" : "Listening to", "watching" :
+                "Watching"}
         if text is None:
             await self.bot.change_presence(activity = text, afk = True)
         else:
             if Type == "playing":
                 await self.bot.change_presence(activity=discord.Game(name=text), afk = True)
             elif Type == "streaming":
-                await self.bot.change_presence(activity=discord.Streaming(name=text, url=f'https://twitch.tv/{text}'), afk = True)
+                await self.bot.change_presence(activity=discord.Streaming(name=text, url=f'https://twitch.tv/{text}'),
+                afk = True)
             elif Type == "listeningto":
-                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=text), afk = True)
+                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening,
+                name=text), afk = True)
             elif Type == "watching":
-                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=text), afk = True)
+                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=text),
+                afk = True)
             em = discord.Embed(color=0xffd500, title="Presence")
             em.description = f"Presence : {types[Type]} {text}"
             if ctx.author.guild_permissions.embed_links:
@@ -163,7 +167,7 @@ class utility(commands.Cog):
             format = "gif"
         else:
             format = "png"
-        avatar = user.avatar_url_as(format = format).read()
+        avatar = await user.avatar_url_as(format = format).read()
         with io.BytesIO(avatar) as file:
             await ctx.send(file = discord.File(file, f"DP.{format}"))
         await ctx.delete()
@@ -182,7 +186,7 @@ class utility(commands.Cog):
             guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
-        icon = guild.icon_url_as(format = "png").read()
+        icon = await guild.icon_url_as(format = "png").read()
         with io.BytesIO(icon) as file:
             await ctx.send(file = discord.File(file, "icon.png"))
         
