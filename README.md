@@ -1,6 +1,3 @@
-## Hmmmm...
+#### Selfbot for Discord
 
-	Self bot written in python, Thanks to verixx for the base. 
-	Edited to fewer commands and additional cog by Quanta(N) 
-
-	EC Don't be a skid (  ' - ')7
+this selfbot was made for educational purposes, a selfbot may get you banned from discord, use at your own risk
