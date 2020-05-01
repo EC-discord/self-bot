@@ -10,7 +10,6 @@ import random
 import io
 import re
 import aiohttp
-import itertools
 
 class utility(commands.Cog):
     def __init__(self, bot):
@@ -43,21 +42,20 @@ class utility(commands.Cog):
         await ctx.send(translate(text, language))
         
     @commands.command()
-    async def addemoji(self, ctx, emoji_names: commands.Greedy[str], *emoji_urls = None):
-        """add an emoji to a server
+    async def addemoji(self, ctx, emoji_names, emoji_urls = None):
+        """adds an emoji to a server
         Parameters
-        • emoji_names – the emoji names
-        • emoji_urls – the urls or attachments of images to turn into emojis
+        • emoji_name – the emoji name
+        • emoji_url – the url or attachment of an image to turn into an emoji
         """
-        for emoji_name, emoji_url in itertools.zip(emoji_names, emoji_urls):
-            if ctx.message.attachments:
-                image = await ctx.message.attachements[0].read()
-            elif emoji_url:
-                async with aiohttp.ClientSession() as session:
-                    async with session.get(emoji_url) as resp:
-                        image = await resp.read()
-            emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
-            await ctx.send(f"Emoji {emoji_name} created!")
+        if ctx.message.attachments:
+            image = await ctx.message.attachements[0].read()
+        elif emoji_url:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(emoji_url) as resp:
+                    image = await resp.read()
+        emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
+        await ctx.send(f"Emoji {emoji_name} created!")
      
     @commands.command()
     async def delemoji(self, ctx, emoji: discord.Emoji):
