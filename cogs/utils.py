@@ -10,6 +10,7 @@ import random
 import io
 import re
 import aiohttp
+import itertools
 
 class utility(commands.Cog):
     def __init__(self, bot):
@@ -42,15 +43,13 @@ class utility(commands.Cog):
         await ctx.send(translate(text, language))
         
     @commands.command()
-    @commands.has_permissions(manage_emojis = True)
     async def addemoji(self, ctx, emoji_names: commands.Greedy[str], *emoji_urls = None):
         """add an emoji to a server
         Parameters
         • emoji_names – the emoji names
         • emoji_urls – the urls or attachments of images to turn into emojis
         """
-        for emoji_name in emoji_names:
-          for emoji_url in emoji_urls:
+        for emoji_name, emoji_url in itertools.zip(emoji_names, emoji_urls):
             if ctx.message.attachments:
                 image = await ctx.message.attachements[0].read()
             elif emoji_url:
