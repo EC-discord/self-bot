@@ -43,20 +43,22 @@ class utility(commands.Cog):
         
     @commands.command()
     @commands.has_permissions(manage_emojis = True)
-    async def addemoji(self, ctx, emoji_name, emoji_url = None):
+    async def addemoji(self, ctx, emoji_names: commands.Greedy[str], *emoji_urls = None):
         """add an emoji to a server
         Parameters
-        • emoji_name – The emoji name. Must be at least 2 characters
-        • emoji_url – The url or attachment of an image to turn into an emoji
+        • emoji_names – the emoji names
+        • emoji_urls – the urls or attachments of images to turn into emojis
         """
-        if ctx.message.attachments:
-            image = await ctx.message.attachements[0].read()
-        elif emoji_url:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(emoji_url) as resp:
-                    image = await resp.read()
-        emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
-        await ctx.send(f"Emoji {emoji_name} created!")
+        for emoji_name in emoji_names:
+          for emoji_url in emoji_urls:
+            if ctx.message.attachments:
+                image = await ctx.message.attachements[0].read()
+            elif emoji_url:
+                async with aiohttp.ClientSession() as session:
+                    async with session.get(emoji_url) as resp:
+                        image = await resp.read()
+            emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
+            await ctx.send(f"Emoji {emoji_name} created!")
      
     @commands.command()
     async def delemoji(self, ctx, emoji: discord.Emoji):
