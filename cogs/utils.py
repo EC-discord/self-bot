@@ -45,7 +45,7 @@ class utility(commands.Cog):
     async def addemoji(self, ctx, emoji_names, emoji_urls = None):
         """adds an emoji to a server
         Parameters
-        • emoji_name – the emoji name
+        • emoji_name – the name of the emoji
         • emoji_url – the url or attachment of an image to turn into an emoji
         """
         if ctx.message.attachments:
