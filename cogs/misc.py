@@ -66,7 +66,7 @@ class misc(commands.Cog):
           if index != message_no:
             continue
           for i in range(no_of_reactions):
-            emoji = self.emoji_list.pop(random.choice(self.emoji_list))
+            emoji = self.emoji_list.pop(self.emoji_list.index(random.choice(self.emoji_list)))
             await message.add_reaction(emoji)
             await asyncio.sleep(0.1)
           break
