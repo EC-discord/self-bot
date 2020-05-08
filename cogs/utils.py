@@ -42,7 +42,7 @@ class utility(commands.Cog):
         await ctx.send(translate(text, language))
         
     @commands.command()
-    async def addemoji(self, ctx, emoji_names, emoji_urls = None):
+    async def addemoji(self, ctx, emoji_name, emoji_url = None):
         """adds an emoji to a server
         Parameters
         • emoji_name – the name of the emoji
