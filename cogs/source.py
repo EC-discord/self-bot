@@ -12,7 +12,7 @@ class source(commands.Cog):
         Parameters
         • command - the name of the command
         """
-        a = '```'
+        a = '`'*3
         source_thing = inspect.getsource(self.bot.get_command(command).callback)
         await ctx.send(f"{a}py\n{source_thing}{a}")
         
