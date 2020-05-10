@@ -12,8 +12,9 @@ class source(commands.Cog):
         Parameters
         • command - the name of the command
         """
+        a = '```'
         source_thing = inspect.getsource(self.bot.get_command(command).callback)
-        await ctx.send(f"```py\n{source_thing}```")
+        await ctx.send(f"{a}py\n{source_thing}{a}")
         
 def setup(bot):
     bot.add_cog(source(bot))
