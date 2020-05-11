@@ -177,6 +177,7 @@ class utility(commands.Cog):
         Parameters
         • guild - The name(case sensitive) or id of the guild/server"""
         guild = guild or ctx.guild
+        format = "png"
         try:
             guild = int(guild)
         except:
@@ -186,8 +187,10 @@ class utility(commands.Cog):
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
         icon = await guild.icon_url_as(format = "png").read()
+        if guild.is_icon_animated():
+            format = "gif"
         with io.BytesIO(icon) as file:
-            await ctx.send(file = discord.File(file, "icon.png"))
+            await ctx.send(file = discord.File(file, f"icon.{format}"))
         
 def setup(bot):
     bot.add_cog(utility(bot))
