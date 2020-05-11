@@ -186,9 +186,9 @@ class utility(commands.Cog):
             guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
-        icon = await guild.icon_url_as(format = "png").read()
         if guild.is_icon_animated():
             format = "gif"
+        icon = await guild.icon_url_as(format = format).read()
         with io.BytesIO(icon) as file:
             await ctx.send(file = discord.File(file, f"icon.{format}"))
         
