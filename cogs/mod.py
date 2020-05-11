@@ -64,7 +64,7 @@ class mod(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def ban(self, ctx, member: command.Greedy[discord.Member, int], *, reason='No reason given'):
+    async def ban(self, ctx, member: commands.Greedy[discord.Member, int], *, reason='No reason given'):
         '''ban someone, can also be used to be ban a someone not in the guild using their id
         Parameters
         • member - the member to ban
