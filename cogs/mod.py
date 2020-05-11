@@ -64,21 +64,17 @@ class mod(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def ban(self, ctx, member: discord.Member, *, reason='No reason given'):
-        '''ban someone
+    async def ban(self, ctx, member: command.Greedy[discord.Member, int], *, reason='No reason given'):
+        '''ban someone, can also be used to be ban a someone not in the guild using their id
         Parameters
         • member - the member to ban
-        reason - reason why the member was banned
+        • reason - reason why the member was banned
         '''
-        try:
+        if type(member) == discord.Member:
             await ctx.guild.ban(member, reason=reason)
-        except:
-            success = False
         else:
-            success = True
-
-        emb = await self.format_mod_embed(ctx, member, success, 'ban')
-
+            await ctx.guild.ban(discord.Object(member), reason=reason)
+        emb = await self.format_mod_embed(ctx, member, True, 'ban')
         await ctx.send(embed=emb)
 
     @commands.command()
