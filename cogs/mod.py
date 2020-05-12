@@ -11,6 +11,8 @@ class mod(commands.Cog):
 
     async def format_mod_embed(self, ctx, user, success, method, duration = None, location=None):
         '''Helper func to format an embed to prevent extra code'''
+        if type(user) == int:
+            user=await self.bot.fetch_user(user)
         emb = discord.Embed()
         emb.set_author(name=method.title(), icon_url=user.avatar_url_as(static_format="png"))
         emb.color = await ctx.get_dominant_color(user.avatar_url)
