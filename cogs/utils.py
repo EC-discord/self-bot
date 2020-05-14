@@ -15,6 +15,22 @@ class utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.lang_conv = load_json('data/langs.json')
+
+    @commands.command()
+    async def splash(self, ctx, *, guild = None):
+        """gets a guild's invite splash(invite background)
+        Parameters
+        • guild - the name or id of the guild
+        """
+        if guild is None:
+            guild = ctx.guild
+        elif type(guild) == int:
+            guild = discord.utils.get(self.bot.guilds, id = guild)
+        elif type(guild) == str:
+            guild = discord.utils.get(self.bot.guilds, name = guild)
+        splash = await guild.splash_url_as(format = "png").read()
+        with io.BytesIO(splash) as f:
+            await ctx.send(file = discord.File(f, "splash.png"))
         
     @commands.command()
     async def banner(self, ctx, *, guild = None):
