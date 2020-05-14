@@ -101,7 +101,7 @@ class utility(commands.Cog):
                 async with session.get(emoji_url) as resp:
                     image = await resp.read()
         emoji = await ctx.guild.create_custom_emoji(name = emoji_name, image = image)
-        await ctx.send(f"Emoji {emoji_name} created!")
+        await ctx.send(f"Emoji {emoji.name} created!")
      
     @commands.command()
     async def delemoji(self, ctx, emoji: discord.Emoji):
@@ -109,8 +109,9 @@ class utility(commands.Cog):
         Parameters
         • emoji - the name or id of the emoji
         """
+        name = emoji.name
         await emoji.delete()
-        await ctx.send(content = f"Deleted emoji: {emoji.name}", delete_after = 2)
+        await ctx.send(content = f"Deleted emoji: {name}", delete_after = 2)
         
     @commands.command()
     async def editemoji(self, ctx, emoji: discord.Emoji, new_name):
