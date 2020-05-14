@@ -17,6 +17,36 @@ class utility(commands.Cog):
         self.lang_conv = load_json('data/langs.json')
 
     @commands.command()
+    async def setbanner(self, ctx, *, banner = None):
+        """sets the guilds banner
+        Parameters
+        • banner - the attachment or url of the image to use as a banner
+        """
+        if ctx.message.attachments:
+            image = await ctx.message.attachments[0].read()
+        elif banner:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(banner) as resp:
+                    image = await resp.read()
+        await ctx.guild.edit(banner=image)
+        await ctx.send("Banner updated")
+
+    @commands.command()
+    async def setsplash(self, ctx, *, splash = None):
+        """sets the guilds invite splash
+        Parameters
+        • splash - the attachment or url of the image to use as the invite splash
+        """
+        if ctx.message.attachments:
+            image = await ctx.message.attachments[0].read()
+        elif splash:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(splash) as resp:
+                    image = await resp.read()
+        await ctx.guild.edit(splash=image)
+        await ctx.send("Invite Splash updated")
+
+    @commands.command()
     async def splash(self, ctx, *, guild = None):
         """gets a guild's invite splash(invite background)
         Parameters
