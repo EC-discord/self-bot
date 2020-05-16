@@ -95,7 +95,7 @@ class utility(commands.Cog):
         • emoji_url – the url or attachment of an image to turn into an emoji
         """
         if ctx.message.attachments:
-            image = await ctx.message.attachements[0].read()
+            image = await ctx.message.attachments[0].read()
         elif emoji_url:
             async with aiohttp.ClientSession() as session:
                 async with session.get(emoji_url) as resp:
