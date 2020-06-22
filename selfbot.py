@@ -76,8 +76,7 @@ class Selfbot(commands.Bot):
             print(e)
 
     async def on_connect(self):
-        print('connected!')
-        await self.wait_until_ready()    
+        print('connected')  
         await self.change_presence(status=discord.Status.online, afk=True)
         print("presence set")
 
