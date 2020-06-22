@@ -93,7 +93,6 @@ class Selfbot(commands.Bot):
         
     @classmethod
     def black(cls):
-        """A factory method that returns a :class:`Colour` with a value of ``0x000000``."""
         return cls(0x000000)
 
     discord.Color.black=black
@@ -109,8 +108,8 @@ class Selfbot(commands.Bot):
             await message.channel.send(embed = discord.Embed(color = discord.Color(int("0x"+f"{r.group(1)[1:]}", 16)), description = r.group(2)))
         await self.process_commands(message)
         
-    await bot.wait_until_ready()    
-    await self.change_presence(status=discord.Status.online, afk=True)
+    bot.wait_until_ready()    
+    self.change_presence(status=discord.Status.online, afk=True)
                            
 if __name__ == '__main__':
     Selfbot.init()
