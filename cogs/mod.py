@@ -29,11 +29,11 @@ class mod(commands.Cog):
     
     @commands.command()
     async def savestate(self, ctx, user: discord.Member):
-        self.saved_roles[user.id]=user.roles
+        self.saved_roles[user.id]=user.roles[1:]
         
     @commands.command()
     async def loadstate(self, ctx, user: discord.Member):
-        await user.add_roles(role for role in self.saved_roles[user.id])
+        await user.add_roles[[role for role in self.saved_roles[user.id]])
     
     @commands.command(aliases = ["cr"])
     async def clearreaction(self, ctx, message: typing.Optional[int] = 1, emoji: discord.Emoji = None):
