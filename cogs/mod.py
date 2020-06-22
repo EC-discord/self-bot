@@ -8,6 +8,7 @@ class mod(commands.Cog):
     """useful commands for moderation"""
     def __init__(self, bot):
         self.bot = bot
+        self.saved_roles = {:}
 
     async def format_mod_embed(self, ctx, user, success, method, duration = None, location=None):
         '''Helper func to format an embed to prevent extra code'''
@@ -25,6 +26,14 @@ class mod(commands.Cog):
         else:
             emb.description = f"You do not have the permissions to {method} {user.name}."
         return emb
+    
+    @commands.command()
+    async def savestate(self, ctx, user: discord.Member):
+        self.saved_roles[user.id]=user.roles
+        
+    @commands.command()
+    async def loadstate(self, ctx, user: discord.Member):
+            await user.add_roles(role for role in self.saved_roles[user.id])
     
     @commands.command(aliases = ["cr"])
     async def clearreaction(self, ctx, message: typing.Optional[int] = 1, emoji: discord.Emoji = None):
