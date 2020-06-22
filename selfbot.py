@@ -76,14 +76,12 @@ class Selfbot(commands.Bot):
             print(e)
 
     async def on_connect(self):
-        print('connected')  
-        await self.change_presence(status=discord.Status.online, afk=True)
-        print("presence set")
+        print('connected')
 
-    """async def on_ready(self):
+    async def on_ready(self):
         '''Bot startup'''
         print('Logged in!')
-        await self.change_presence(status=discord.Status.online, afk=True)"""
+        await self.change_presence(status=discord.Status.online, afk=True)
 
     async def process_commands(self, message):
         '''Utilises the CustomContext subclass of discord.Context'''
