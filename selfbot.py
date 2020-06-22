@@ -78,10 +78,10 @@ class Selfbot(commands.Bot):
     async def on_connect(self):
         print('connected!')
 
-    async def on_ready(self):
+    '''async def on_ready(self):
         '''Bot startup'''
         print('Logged in!')
-        await self.change_presence(status=discord.Status.online, afk=True)
+        await self.change_presence(status=discord.Status.online, afk=True)'''
 
     async def process_commands(self, message):
         '''Utilises the CustomContext subclass of discord.Context'''
@@ -108,6 +108,9 @@ class Selfbot(commands.Bot):
             await message.delete()
             await message.channel.send(embed = discord.Embed(color = discord.Color(int("0x"+f"{r.group(1)[1:]}", 16)), description = r.group(2)))
         await self.process_commands(message)
+        
+    await bot.wait_until_ready()    
+    await self.change_presence(status=discord.Status.online, afk=True)
                            
 if __name__ == '__main__':
     Selfbot.init()
