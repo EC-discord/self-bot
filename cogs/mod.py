@@ -8,6 +8,7 @@ class mod(commands.Cog):
     """useful commands for moderation"""
     def __init__(self, bot):
         self.bot = bot
+        self.saved_roles = {:}
 
     async def format_mod_embed(self, ctx, user, success, method, duration = None, location=None):
         '''Helper func to format an embed to prevent extra code'''
