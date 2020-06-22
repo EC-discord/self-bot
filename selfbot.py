@@ -77,6 +77,9 @@ class Selfbot(commands.Bot):
 
     async def on_connect(self):
         print('connected!')
+        await self.wait_until_ready()    
+        await self.change_presence(status=discord.Status.online, afk=True)
+        print("presence set")
 
     """async def on_ready(self):
         '''Bot startup'''
@@ -107,9 +110,6 @@ class Selfbot(commands.Bot):
             await message.delete()
             await message.channel.send(embed = discord.Embed(color = discord.Color(int("0x"+f"{r.group(1)[1:]}", 16)), description = r.group(2)))
         await self.process_commands(message)
-        
-    bot.wait_until_ready()    
-    self.change_presence(status=discord.Status.online, afk=True)
                            
 if __name__ == '__main__':
     Selfbot.init()
