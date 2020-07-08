@@ -54,8 +54,8 @@ class utility(commands.Cog):
         """
         if guild is None:
             guild = ctx.guild
-        elif type(guild) == int:
-            guild = discord.utils.get(self.bot.guilds, id = guild)
+        elif discord.utils.get(self.bot.guilds, id = int(guild)) is not None:
+            guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
         splash = await guild.splash_url_as(format = "png").read()
