@@ -13,6 +13,13 @@ class misc(commands.Cog):
         self.bot = bot
         self.emoji_converter = commands.EmojiConverter()
         self.emoji_list = []
+
+    @commands.command()
+    async def snipe(self, ctx):
+        try:
+            await ctx.send(self.snipes[ctx.message.author.id])
+        except:
+            await ctx.send(self.snipes[ctx.message.channel.id])
         
     @commands.command(aliases = ["tt"])
     async def triggertyping(self, ctx, duration: int, channel: discord.TextChannel = None):
