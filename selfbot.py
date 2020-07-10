@@ -100,7 +100,7 @@ class Selfbot(commands.Bot):
 
     async def on_message_delete(self, message):
         if message.guild is None:
-            self.snipes[message.user.id] = message.content
+            self.snipes[message.author.id] = message.content
         else:
             self.snipes[message.channel.id] = message.content
         
