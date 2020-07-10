@@ -14,6 +14,7 @@ class Selfbot(commands.Bot):
     def __init__(self, **attrs):
         super().__init__(command_prefix=self.get_pre, self_bot=True, help_command = helpformatter())
         self.load_extensions()
+        self.snipes={}
 
     def load_extensions(self):
         for extension in ("anim", "misc", "mod", "noble", "skid", "source", "textemotes", "utils"):
@@ -96,6 +97,12 @@ class Selfbot(commands.Bot):
         return cls(0x000000)
 
     discord.Color.black=black
+
+    async def on_message_delete(self, message):
+        if message.guild is None:
+            self.snipes[message.user.id] = message.content
+        else:
+            self.snipes[message.channel.id] = message.content
         
     async def on_message_edit(self, before, after):
         await self.process_commands(after)
