@@ -54,7 +54,7 @@ class utility(commands.Cog):
         """
         if guild is None:
             guild = ctx.guild
-        elif discord.utils.get(self.bot.guilds, id = int(guild)) is not None:
+        elif guild.isdigit():
             guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
@@ -70,8 +70,8 @@ class utility(commands.Cog):
         """
         if guild is None:
             guild = ctx.guild
-        elif type(guild) == int:
-            guild = discord.utils.get(self.bot.guilds, id = guild)
+        elif guild.isdigit():
+            guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
         banner = await guild.banner_url_as(format = "png").read()
