@@ -12,7 +12,7 @@ import traceback
     
 class Selfbot(commands.Bot):
     def __init__(self, **attrs):
-        super().__init__(command_prefix=self.get_pre, self_bot=True, help_command = helpformatter())
+        super().__init__(command_prefix=self.get_pre, self_bot=True, help_command = helpformatter(), guild_subscriptions = False)
         self.load_extensions()
         self.snipes={}
 
