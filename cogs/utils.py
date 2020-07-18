@@ -54,7 +54,7 @@ class utility(commands.Cog):
         """
         if guild is None:
             guild = ctx.guild
-        elif guild.isdigit():
+        elif guild.isdigit() and len(guild)==18:
             guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
@@ -70,7 +70,7 @@ class utility(commands.Cog):
         """
         if guild is None:
             guild = ctx.guild
-        elif guild.isdigit():
+        elif guild.isdigit() and len(guild)==18:
             guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
@@ -203,11 +203,11 @@ class utility(commands.Cog):
                     user = int(r.group(2))
                 elif r.group(1):
                     user = r.group(1)
-        if type(user) == str and type(user) != int:
-            user = ctx.guild.get_member_named(user)
         if type(user) == str:
+            user = ctx.guild.get_member_named(user)
+        if user is None:
             user = get_user_from_global_cache(user)
-        elif type(user) == int:
+        elif user.isdigit() and len(user)==18:
             user = await self.bot.fetch_user(user)
         if user.is_avatar_animated():
             format = "gif"
@@ -225,11 +225,7 @@ class utility(commands.Cog):
         • guild - The name(case sensitive) or id of the guild/server"""
         guild = guild or ctx.guild
         format = "png"
-        try:
-            guild = int(guild)
-        except:
-            pass
-        if type(guild) == int:
+        if guild.isdigit() and len(guild)==18:
             guild = discord.utils.get(self.bot.guilds, id = int(guild))
         elif type(guild) == str:
             guild = discord.utils.get(self.bot.guilds, name = guild)
