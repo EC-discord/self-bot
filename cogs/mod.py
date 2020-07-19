@@ -63,6 +63,7 @@ class mod(commands.Cog):
         • member - the member to kick
         • reason - reason why the member was kicked
         '''
+        self.saved_roles[user.id]=user.roles[1:]
         try:
             await ctx.guild.kick(member, reason=reason)
         except:
@@ -81,10 +82,11 @@ class mod(commands.Cog):
         • member - the member to ban
         • reason - reason why the member was banned
         '''
+        self.saved_roles[user.id]=user.roles[1:]
         if type(member) == discord.Member:
-            await ctx.guild.ban(member, reason=reason)
+            await ctx.guild.ban(member, reason=reason, delete_message_days=0)
         else:
-            await ctx.guild.ban(discord.Object(member), reason=reason)
+            await ctx.guild.ban(discord.Object(member), reason=reason, delete_message_days=0)
         emb = await self.format_mod_embed(ctx, member, True, 'ban')
         await ctx.send(embed=emb)
 
@@ -109,7 +111,7 @@ class mod(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command(aliases=['prune'])
-    async def purge(self, ctx, amount: int, *, ignore_pins = True):
+    async def purge(self, ctx, amount: int = 10, *, ignore_pins = True):
         '''purge a number of messages
         Parameters
         • amount - the amount of messages to purge
