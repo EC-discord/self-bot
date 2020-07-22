@@ -203,11 +203,11 @@ class utility(commands.Cog):
                     user = int(r.group(2))
                 elif r.group(1):
                     user = r.group(1)
-            if type(user) == str:
-                user = ctx.guild.get_member_named(user)
+        if type(user) == str:
+            user = ctx.guild.get_member_named(user)
         if user is None:
             user = get_user_from_global_cache(user)
-        elif user.isdigit() and len(user)==18:
+        elif str(user).isdigit() and len(user)==18:
             user = await self.bot.fetch_user(user)
         if user.is_avatar_animated():
             format = "gif"
