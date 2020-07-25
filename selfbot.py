@@ -99,7 +99,8 @@ class Selfbot(commands.Bot):
     discord.Color.black=black
 
     async def on_message_delete(self, message):
-        self.snipes[message.channel.id] = message.content
+        if len(message.content) != 1:
+            self.snipes[message.channel.id] = message.content
         
     async def on_message_edit(self, before, after):
         await self.process_commands(after)
