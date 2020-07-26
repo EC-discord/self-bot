@@ -9,6 +9,7 @@ import json
 import os
 import re
 import traceback
+import sys
     
 class Selfbot(commands.Bot):
     def __init__(self, **attrs):
