@@ -120,6 +120,7 @@ class utility(commands.Cog):
         • emoji - the name or id of the emoji
         • new_name - the new name to use for the emoji
         """
+        emoji_name = emoji.name
         await emoji.edit(name = new_name)
         await ctx.send(content = f"Edited emoji {emoji_name} to {new_name}", delete_after = 2)
     
