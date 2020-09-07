@@ -101,7 +101,7 @@ class Selfbot(commands.Bot):
 
     async def on_message_delete(self, message):
         if len(message.content) != 1:
-            self.snipes[message.channel.id] = message.content
+            self.snipes[message.channel.id] = {"content": message.content, "author": message.author}
         
     async def on_message_edit(self, before, after):
         await self.process_commands(after)
