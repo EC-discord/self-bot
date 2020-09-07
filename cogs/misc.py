@@ -16,8 +16,7 @@ class misc(commands.Cog):
 
     @commands.group()
     async def snipe(self, ctx):
-        await ctx.send(f'''> {self.bot.snipes[ctx.message.channel.id]["content"]}
-                       author: {self.bot.snipes[ctx.message.channel.id]["author"]}''')
+        await ctx.send(f'''> {self.bot.snipes[ctx.message.channel.id]["content"]}\nauthor: {self.bot.snipes[ctx.message.channel.id]["author"]}''')
 
     @commands.command(aliases = ["tt"])
     async def triggertyping(self, ctx, duration: int, channel: discord.TextChannel = None):
