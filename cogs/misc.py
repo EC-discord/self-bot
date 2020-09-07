@@ -14,10 +14,14 @@ class misc(commands.Cog):
         self.emoji_converter = commands.EmojiConverter()
         self.emoji_list = []
 
-    @commands.command()
+    @commands.group()
     async def snipe(self, ctx):
-        await ctx.send("> "+self.bot.snipes[ctx.message.channel.id])
-        
+        await ctx.send("> "+self.bot.snipes[ctx.message.channel.id]["content"])
+
+    @snipe.command()
+    async def author(self, ctx):
+        await ctx.send(self.bot.snipes[ctx.message.channel.id]["author"])
+
     @commands.command(aliases = ["tt"])
     async def triggertyping(self, ctx, duration: int, channel: discord.TextChannel = None):
         """sends a typing indicator for a specified amount of time
