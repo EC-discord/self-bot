@@ -4,4 +4,3 @@ colorthief
 moviepy
 requests
 emoji
-git+https://github.com/jovinjijo/python-ffmpeg-buildpack
