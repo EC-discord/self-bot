@@ -83,7 +83,7 @@ class misc(commands.Cog):
         • emojis - the emojis to react with
         '''
         history = await ctx.channel.history(limit = 30).flatten()
-        message = history[messageNo]
+        message = history[message_no]
         async for emoji in self.validate_emojis(ctx, emojis):
             await message.add_reaction(emoji)
         await ctx.message.delete()
