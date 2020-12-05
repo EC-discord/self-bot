@@ -76,7 +76,7 @@ class misc(commands.Cog):
           break
           
     @commands.command()
-    async def react(self, ctx, message_no: typing.Optional[int] = 1, *, emojis):
+    async def react(self, ctx, message_no: typing.Optional[int] = 1, *emojis):
         '''react to a specified message with emojis
         Parameters
         • message_no - the index of the message to react to
