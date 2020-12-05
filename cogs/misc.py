@@ -84,7 +84,7 @@ class misc(commands.Cog):
         '''
         history = await ctx.channel.history(limit = 30).flatten()
         message = history[message_no]
-        async for emoji in self.validate_emojis(ctx, emojis):
+        async for emoji in self.validate_emojis(ctx, *emojis):
             await message.add_reaction(emoji)
         await ctx.message.delete()
 
