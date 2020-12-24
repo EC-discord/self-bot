@@ -133,10 +133,10 @@ class misc(commands.Cog):
                 image = await resp.read()
         if emoji.animated:
             with io.BytesIO(image) as file:
-                await ctx.send(file=discord.File(file, "emote.gif"))
+                await ctx.send(file=discord.File(file, f"{emoji.name}.gif"))
         else:
             with io.BytesIO(image) as file:
-                await ctx.send(file = discord.File(file, "emote.png"))
+                await ctx.send(file = discord.File(file, f"{emoji.name}.png"))
         await ctx.message.delete()
                 
     @commands.command()
