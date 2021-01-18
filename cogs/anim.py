@@ -21,8 +21,8 @@ class anim(commands.Cog):
 　　￣￣￣￣""")
          for i in range(3):
              for cat in list:
-               await asyncio.sleep(1.5)
-               await ctx.message.edit(content=cat)                   
+               await ctx.message.edit(content=cat)
+               await asyncio.sleep(1)                   
           
      @commands.command()
      async def flop(self, ctx):
@@ -32,8 +32,8 @@ class anim(commands.Cog):
                  "(╯°□°)╯(' - '   )",
                  "(╯°□°)╯︵(\\\ .o.)\\")
          for i in list:
-             await asyncio.sleep(1.5)
              await ctx.message.edit(content = i)
+             await asyncio.sleep(1)
                
      @commands.command()
      async def poof(self, ctx):
@@ -45,8 +45,8 @@ class anim(commands.Cog):
                  ")",
                  "*poofness*")
          for i in list:
-             await asyncio.sleep(1.5)
              await ctx.message.edit(content=i)
+             await asyncio.sleep(1)
      
      @commands.command()
      async def virus(self, ctx, user: discord.Member = None, *, virus: str = "trojan"):
@@ -64,8 +64,8 @@ class anim(commands.Cog):
                  "``Injecting virus... -``",
                  f"``Successfully Injected {virus}-virus.exe into {user.name}``")
          for i in list:
-             await asyncio.sleep(1.5)
              await ctx.message.edit(content=i)
+             await asyncio.sleep(1)
 
      @commands.command()
      async def boom(self, ctx):
@@ -78,8 +78,8 @@ class anim(commands.Cog):
                  "💣",
                  "💥")
          for i in list:
-             await asyncio.sleep(1.5)
-             await ctx.message.edit(content=i)               
+             await ctx.message.edit(content=i)
+             await asyncio.sleep(1)              
           
      
      @commands.command()
@@ -96,8 +96,8 @@ class anim(commands.Cog):
                  "`(╯°□°)╯                         [`",
                  "`(\°-°)\                               ┬─┬`")
          for i in list:
-             await asyncio.sleep(1.5)
-             await ctx.message.edit(content=i)                    
+             await ctx.message.edit(content=i)
+             await asyncio.sleep(1)                 
        
      @commands.command()
      async def warning(self, ctx):
@@ -123,9 +123,9 @@ class anim(commands.Cog):
                  "`IMMINENT SHUT-DOWN IN 0.01 SEC!`",                                    
                  "`SHUT-DOWN EXIT ERROR ¯\\(｡･益･)/¯",
                  "`CTRL + R FOR MANUAL OVERRIDE..`")
-         for i in list:
-             await asyncio.sleep(1.5)               
+         for i in list:               
              await ctx.message.edit(content=i)
+             await asyncio.sleep(1)
                                     
 def setup(bot):
    bot.add_cog(anim(bot))
