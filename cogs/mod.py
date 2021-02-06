@@ -191,15 +191,16 @@ class mod(commands.Cog):
         await ctx.message.delete()
         
     @commands.command()
-    async def addrole(self, ctx, member: discord.Member, *, role: discord.Role):
-        '''Add a role to someone else
+    async def addroles(self, ctx, member: discord.Member, *roles: discord.Role):
+        '''Add roles to a user
         Parameter
         • member - the name or id of the member
-        • role - the name or id of the role'''
-        if not role:
-            return await ctx.send('That role does not exist.')
-        await member.add_roles(role)
-        await ctx.send(f'Added: `{role.name}`')
+        • roles - the name or id of the role'''
+        output=""
+        await member.add_roles(*roles)
+        for role in roles:
+            output+=f'Added: `{role.name}`\n'
+        await ctx.send(output, delete_after=2)
 
 
     @commands.command()
