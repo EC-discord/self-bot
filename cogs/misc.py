@@ -65,7 +65,7 @@ class misc(commands.Cog):
         self.emoji_list = []
         await ctx.message.delete()
         if server is None:
-            if await ctx.message.author.profile.premium:
+            if await ctx.message.author.profile().premium:
                 self.emoji_list = [emoji for emoji in ctx.message.guild.emojis]
             else:
                 self.emoji_list = [emoji for emoji in ctx.message.guild.emojis if not emoji.animated]
