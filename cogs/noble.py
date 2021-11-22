@@ -13,15 +13,15 @@ class noble(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def textgif(self,ctx,*,args):
-        '''Turn TEXT to GIF'''
-        img = Image.new('RGB', (500, 45),"black")
+    async def textgif(self, ctx, *, args):
+        """Turn TEXT to GIF"""
+        img = Image.new('RGB', (500, 45), "black")
         d = ImageDraw.Draw(img)
         c = 0
         font = ImageFont.truetype('./Tabitha.ttf', 27)
         for m in range(len(args)):
             x = 9
-            d.text((x+c, 5), args[m], fill=(255, 255, 255), font = font)
+            d.text((x + c, 5), args[m], fill=(255, 255, 255), font=font)
             img.save(f'{m}.png')
             c += 13
         file_list = glob.glob('*.png')
@@ -34,37 +34,38 @@ class noble(commands.Cog):
             os.remove(f)
 
     @commands.command()
-    async def pictext(self,ctx,*,args):
-        '''Turn Text to PIC'''
+    async def pictext(self, ctx, *, args):
+        """Turn Text to PIC"""
         font = ImageFont.truetype('./Tabitha.ttf', 21)
-        xoff, yoff = (10,5)
-        img = Image.new('RGB', (500, 45),'black')
+        xoff, yoff = (10, 5)
+        img = Image.new('RGB', (500, 45), 'black')
         d = ImageDraw.Draw(img)
-        d.text((9, 5), args, fill="white",font = font)
+        d.text((9, 5), args, fill="white", font=font)
         img.save('content.jpeg')
         await ctx.message.delete()
         await ctx.send(file=discord.File('content.jpeg'))
 
     @commands.command()
-    async def encode(self,ctx,*,args):
-        '''Encode ascii Text to base64'''
+    async def encode(self, ctx, *, args):
+        """Encode ascii Text to base64"""
         decoded_stuff = base64.b64encode('{}'.format(args).encode('ascii'))
         encoded_stuff = str(decoded_stuff)
-        encoded_stuff = encoded_stuff[2:len(encoded_stuff)-1]
+        encoded_stuff = encoded_stuff[2:len(encoded_stuff) - 1]
         await ctx.message.delete()
-        await ctx.send(content = "{}".format(encoded_stuff))
+        await ctx.send(content="{}".format(encoded_stuff))
 
     @commands.command()
-    async def decode(self,ctx,*,args: str):
-        '''Decode to ascii'''
+    async def decode(self, ctx, *, args: str):
+        """Decode to ascii"""
         strOne = (args).encode("ascii")
-        pad = len(strOne)%4
-        strOne += b"="*pad
-        encoded_stuff = codecs.decode(strOne.strip(),'base64')
+        pad = len(strOne) % 4
+        strOne += b"=" * pad
+        encoded_stuff = codecs.decode(strOne.strip(), 'base64')
         decoded_stuff = str(encoded_stuff)
-        decoded_stuff = decoded_stuff[2:len(decoded_stuff)-1]
+        decoded_stuff = decoded_stuff[2:len(decoded_stuff) - 1]
         await ctx.message.delete()
-        await ctx.send(content = "{}".format(decoded_stuff))
+        await ctx.send(content="{}".format(decoded_stuff))
+
 
 def setup(bot):
     bot.add_cog(noble(bot))

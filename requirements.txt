@@ -1,6 +1,9 @@
 discord.py
-mtranslate
-colorthief
-moviepy
+mtranslate~=1.8
+colorthief~=0.2.1
+moviepy~=1.0.3
 requests
-emoji
+emoji~=1.2.0
+
+aiohttp~=3.7.4.post0
+Pillow~=8.2.0

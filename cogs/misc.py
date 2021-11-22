@@ -8,6 +8,7 @@ import io
 import typing
 import aiohttp
 
+
 class misc(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -16,9 +17,10 @@ class misc(commands.Cog):
 
     @commands.group()
     async def snipe(self, ctx):
-        await ctx.send(f'''> {self.bot.snipes[ctx.message.channel.id]["content"]}\nauthor: {self.bot.snipes[ctx.message.channel.id]["author"]}''')
+        await ctx.send(
+            f'''> {self.bot.snipes[ctx.message.channel.id]["content"]}\nauthor: {self.bot.snipes[ctx.message.channel.id]["author"]}''')
 
-    @commands.command(aliases = ["tt"])
+    @commands.command(aliases=["tt"])
     async def triggertyping(self, ctx, duration: int, channel: discord.TextChannel = None):
         """sends a typing indicator for a specified amount of time
         Parameters
@@ -28,7 +30,7 @@ class misc(commands.Cog):
         channel = channel or ctx.channel
         async with channel.typing():
             await asyncio.sleep(duration)
-        
+
     @commands.command()
     async def hexcode(self, ctx, *, role: discord.Role):
         """returns the hexcode of a role's color
@@ -37,7 +39,7 @@ class misc(commands.Cog):
         """
         await ctx.send(f"{role.name} : {role.color}")
 
-    @commands.command(aliases = ["em"])
+    @commands.command(aliases=["em"])
     async def embed(self, ctx, color: typing.Optional[discord.Color] = None, *, text):
         '''embed text
         Parameters
@@ -48,33 +50,34 @@ class misc(commands.Cog):
         em.description = text
         await ctx.send(embed=em)
         await ctx.message.delete()
-    
-    @commands.command(aliases = ["rr"])
-    async def randomreact(self, ctx, message_no: int, no_of_reactions: typing.Optional[int] = 20, *, server: str = None):
+
+    @commands.command(aliases=["rr"])
+    async def randomreact(self, ctx, message_no: int, no_of_reactions: typing.Optional[int] = 20, *,
+                          server: str = None):
         '''react to a message with random emojis
         Parameters
         • message_no - the index of the message to react to
         • no_of_reactions - amount of random emojis to react with, defaults to 20
         • server - the server from which to choose the emojis to react with, defaults to global emojis
         '''
-        message_no-=1
+        message_no -= 1
         server = server.lower() if server else server
         self.emoji_list = []
         await ctx.message.delete()
         if server is None:
-          self.emoji_list = [emoji for emoji in self.bot.emojis if emoji.name.startswith("GW")]
+            self.emoji_list = [emoji for emoji in ctx.message.guild.emojis]
         elif server:
-          s = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
-          self.emoji_list = [emoji for emoji in s.emojis if not emoji.animated]
-        for index, message in enumerate(await ctx.channel.history(limit = 30).flatten()):
-          if index != message_no:
-            continue
-          for i in range(no_of_reactions):
-            emoji = self.emoji_list.pop(self.emoji_list.index(random.choice(self.emoji_list)))
-            await message.add_reaction(emoji)
-            await asyncio.sleep(0.1)
-          break
-          
+            s = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
+            self.emoji_list = [emoji for emoji in s.emojis if not emoji.animated]
+        for index, message in enumerate(await ctx.channel.history(limit=30).flatten()):
+            if index != message_no:
+                continue
+            for i in range(no_of_reactions):
+                emoji = self.emoji_list.pop(self.emoji_list.index(random.choice(self.emoji_list)))
+                await message.add_reaction(emoji)
+                await asyncio.sleep(0.1)
+            break
+
     @commands.command()
     async def react(self, ctx, message_no: typing.Optional[int] = 1, *emojis):
         '''react to a specified message with emojis
@@ -82,7 +85,7 @@ class misc(commands.Cog):
         • message_no - the index of the message to react to
         • emojis - the emojis to react with
         '''
-        history = await ctx.channel.history(limit = 30).flatten()
+        history = await ctx.channel.history(limit=30).flatten()
         message = history[message_no]
         async for emoji in self.validate_emojis(ctx, *emojis):
             await message.add_reaction(emoji)
@@ -103,7 +106,7 @@ class misc(commands.Cog):
                     pass
 
     @commands.command(aliases=['color', 'colour', 'sc'])
-    async def getcolor(self, ctx, color: discord.Colour, width: int = 200, height: int = 90, show_hexcode = True):
+    async def getcolor(self, ctx, color: discord.Colour, width: int = 200, height: int = 90, show_hexcode=True):
         '''displays a color from its name or hex value
         Parameters
         • color - the name or hexcode of the color to display
@@ -122,23 +125,23 @@ class misc(commands.Cog):
         await ctx.send(file=discord.File(file, 'color.png'), embed=em)
 
     @commands.command(name='emoji', aliases=['e'])
-    async def _emoji(self, ctx, emoji: discord.Emoji, size: int=None):
+    async def _emoji(self, ctx, emoji: discord.Emoji, size: int = None):
         '''displays an enlarged pic of the emoji
         Parameters
         • size - the size of the image to display
         • emoji - The name(case sensitive) or id of the emoji
         '''
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"{emoji.url}"+f"?size={size if size else ' '}") as resp:
+            async with session.get(f"{emoji.url}" + f"?size={size if size else ' '}") as resp:
                 image = await resp.read()
         if emoji.animated:
             with io.BytesIO(image) as file:
                 await ctx.send(file=discord.File(file, f"{emoji.name}.gif"))
         else:
             with io.BytesIO(image) as file:
-                await ctx.send(file = discord.File(file, f"{emoji.name}.png"))
+                await ctx.send(file=discord.File(file, f"{emoji.name}.png"))
         await ctx.message.delete()
-                
+
     @commands.command()
     async def textreact(self, ctx, messageNo: typing.Optional[int] = 1, *, text):
         """reacts to a message with emojis corresponding to the text
@@ -147,17 +150,17 @@ class misc(commands.Cog):
         • text - the text to react with
         """
         text = (c for c in text.lower())
-        emotes = {"a" : "🇦", "b" : "🇧", "c" : "🇨", "d" : "🇩", "e" : "🇪", "f" : "🇫", "g" : "🇬", "h" : "🇭",
-                  "i" : "🇮", "j" : "🇯", "k" : "🇰", "l" : "🇱", "m" : "🇲", "n" : "🇳", "o" : "🇴", "p" : "🇵",
-                  "q" : "🇶", "r" : "🇷", "s" : "🇸", "t" : "🇹", "u" : "🇺", "v" : "🇻", "w" : "🇼", "x" : "🇽",
-                  "y" : "🇾", "z" : "🇿"}
-        for i, m in enumerate(await ctx.channel.history(limit = 100).flatten()):
+        emotes = {"a": "🇦", "b": "🇧", "c": "🇨", "d": "🇩", "e": "🇪", "f": "🇫", "g": "🇬", "h": "🇭",
+                  "i": "🇮", "j": "🇯", "k": "🇰", "l": "🇱", "m": "🇲", "n": "🇳", "o": "🇴", "p": "🇵",
+                  "q": "🇶", "r": "🇷", "s": "🇸", "t": "🇹", "u": "🇺", "v": "🇻", "w": "🇼", "x": "🇽",
+                  "y": "🇾", "z": "🇿"}
+        for i, m in enumerate(await ctx.channel.history(limit=100).flatten()):
             if messageNo == i:
-              for c in text:
-                  await m.add_reaction(f"{emotes[c]}")
-              break
+                for c in text:
+                    await m.add_reaction(f"{emotes[c]}")
+                break
         await ctx.message.delete()
-        
+
 
 def setup(bot):
     bot.add_cog(misc(bot))
