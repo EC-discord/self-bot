@@ -52,7 +52,7 @@ class misc(commands.Cog):
         await ctx.message.delete()
 
     @commands.command(aliases=["rr"])
-    async def randomreact(self, ctx, message_no: int, no_of_reactions: typing.Optional[int] = 20, *,
+    async def randomreact(self, ctx, message_no: typing.Optional[int] = 1, no_of_reactions: typing.Optional[int] = 20, *,
                           server: str = None):
         '''react to a message with random emojis
         Parameters
@@ -65,10 +65,16 @@ class misc(commands.Cog):
         self.emoji_list = []
         await ctx.message.delete()
         if server is None:
-            self.emoji_list = [emoji for emoji in ctx.message.guild.emojis]
+            if await ctx.message.author.profile.premium:
+                self.emoji_list = [emoji for emoji in ctx.message.guild.emojis]
+            else:
+                self.emoji_list = [emoji for emoji in ctx.message.guild.emojis if not emoji.animated]
         elif server:
             s = discord.utils.find(lambda s: server in s.name.lower(), self.bot.guilds)
-            self.emoji_list = [emoji for emoji in s.emojis if not emoji.animated]
+            if await ctx.message.author.profile.premium:
+                self.emoji_list = [emoji for emoji in s.emojis]
+            else:
+                self.emoji_list = [emoji for emoji in s.emojis if not emoji.animated]
         for index, message in enumerate(await ctx.channel.history(limit=30).flatten()):
             if index != message_no:
                 continue
